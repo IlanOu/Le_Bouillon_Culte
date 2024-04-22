@@ -9,11 +9,12 @@ import time
 MIFAREReader = SimpleMFRC522()
 
 # Bienvenue
-print("Lecture de cartes RFID...")
+print("Lecture de cartes RFID")
 
 # Cette boucle détecte les cartes RFID
 try:
     while True:
+        print("Lecture en cours...")
         id, text = MIFAREReader.read()
         
         print("id : ")
