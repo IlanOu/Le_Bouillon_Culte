@@ -49,6 +49,7 @@ class Debug:
     verbose = True
     prefixActive = True
     blocking = True
+    emojisActive = True
 
     @staticmethod
     def _get_log_prefix(level, class_name, func_name, line_number):
@@ -94,16 +95,20 @@ class Debug:
 
     @staticmethod
     def LogSuccess(message):
+        if Debug.emojisActive:
+            message = "✅ - " + message
         Debug._log(message, Style.OK_GREEN)
 
     @staticmethod
     def LogWarning(message):
+        if Debug.emojisActive:
+            message = "❕ - " + message
         Debug._log(message, Style.WARNING)
 
     @staticmethod
     def LogError(message):
         Debug.prefixActive = True
-        Debug._log(message, Style.FAIL + Style.BOLD)
+        Debug._log("❌ - " + message, Style.FAIL + Style.BOLD)
         if Debug.blocking == True:
             sys.exit()
         Debug.prefixActive = False

@@ -15,6 +15,7 @@ print("Lecture de cartes RFID")
 try:
     while True:
         print("Lecture en cours...")
+        print(MIFAREReader.read())
         id, text = MIFAREReader.read()
         
         print("id : ")
