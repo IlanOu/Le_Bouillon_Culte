@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+from toolbox.Debug import Debug
 
 class Button:
     def __init__(self, pin):
@@ -9,7 +10,7 @@ class Button:
     def process(self):
         button_state = GPIO.input(self.pin)
         if button_state == GPIO.LOW:
-            print("Bouton pressé")
+            Debug.LogWhisper("Bouton pressé")
             return True
         else:
             return False

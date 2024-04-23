@@ -112,5 +112,11 @@ class Debug:
         if Debug.blocking == True:
             sys.exit()
         Debug.prefixActive = False
+        
+    
 
-
+    @staticmethod
+    def LogColor(message, style=Style.RESET):
+        if isinstance(style, list):
+            style = "".join(style)
+        Debug._log(style + message, Style.WARNING)

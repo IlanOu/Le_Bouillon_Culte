@@ -1,4 +1,4 @@
-from toolbox.Debug import Debug
+from toolbox.Debug import Debug, Style
 from toolbox.Speeker import Speaker, GttsEngine, Pyttsx3Engine
 import time
 # import toolbox.ImageDisplayer
@@ -66,13 +66,15 @@ MIFAREReader = SimpleMFRC522()
 try:
     while True:
         
+        Debug.LogWhisper("Passez le badge devant le capteur RFID...")
         id, text = MIFAREReader.read()
         
         # Poser une question aléatoire
         question = random.choice(questions)
-        print(f"Question : {question}")
+        Debug.LogColor(f"Question : {question}", [Style.OK_CYAN, Style.UNDERLINE])
         Speaker.say(question, GttsEngine())
         
+        Debug.LogWhisper("Appuyez sur le bouton svp...")
         # Attendre que le bouton soit pressé
         button_pressed = False
         while not button_pressed:
@@ -81,7 +83,7 @@ try:
 
         # Donner une réponse aléatoire
         reponse = random.choice(result)
-        print(f"Réponse : {reponse}")
+        Debug.LogColor(f"Réponse : {reponse}", [Style.PURPLE, Style.ITALIC])
         Speaker.say(reponse, GttsEngine())
         
 
