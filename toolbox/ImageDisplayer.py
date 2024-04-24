@@ -1,66 +1,40 @@
-# import pygame
+import sys
+from PyQt5.QtWidgets import QApplication, QLabel, QWidget
+from PyQt5.QtCore import Qt, QThread, pyqtSignal
 
-# def display_image(image_path, x, y):
-#     """
-#     Affiche une image à une position spécifique sur l'écran.
+class PyQtWindowThread(QThread):
+    finished = pyqtSignal()
 
-#     Args:
-#         image_path (str): Chemin d'accès au fichier image.
-#         x (int): Coordonnée x de la position de l'image.
-#         y (int): Coordonnée y de la position de l'image.
-#     """
-#     pygame.init()
+    def __init__(self, app):
+        super().__init__()
+        self.window = None
+        self.app = app
 
-#     # Obtenir les dimensions de l'écran
-#     screen_info = pygame.display.Info()
-#     screen_width, screen_height = screen_info.current_w, screen_info.current_h
+    def run(self):
+        # self.app = QApplication(sys.argv)
+        self.app.exec_()
+        self.finished.emit()
 
-#     # Créer une fenêtre de la taille de l'écran
-#     screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
+    def open_window(self, text):
+        self.window = QWidget()
+        self.window.setWindowTitle("Fenêtre PyQt5")
+        self.window.showFullScreen()
 
-#     # Charger l'image
-#     image = pygame.image.load(image_path)
+        label = QLabel(text, self.window)
+        label.setAlignment(Qt.AlignCenter)
+        label.resize(self.window.size())
 
-#     # Obtenir les dimensions de l'image
-#     image_width, image_height = image.get_size()
+        self.window.show()
 
-#     # Calculer la position de l'image en tenant compte des dimensions de l'écran
-#     image_x = x
-#     image_y = y
-
-#     # Boucle principale
-#     running = True
-#     while running:
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 running = False
-
-#         # Effacer l'écran
-#         screen.fill((0, 0, 0))
-
-#         # Afficher l'image à la position spécifiée
-#         screen.blit(image, (image_x, image_y))
-
-#         # Mettre à jour l'affichage
-#         pygame.display.flip()
-
-#     pygame.quit()
+    def close_window(self):
+        if self.window:
+            self.window.close()
+            self.window = None
 
 # # Exemple d'utilisation
-# # display_image("chemin/vers/image.png", 100, 200)
+# window_thread = PyQtWindowThread()
+# window_thread.start()
 
-from PyQt5.QtWidgets import QApplication, QLabel
-from PyQt5.QtGui import QPixmap
-import sys
-
-def display_image(image_path, x, y):
-    app = QApplication(sys.argv)
-    label = QLabel()
-    pixmap = QPixmap(image_path)
-    label.setPixmap(pixmap)
-    label.move(x, y)
-    label.showFullScreen()
-    sys.exit(app.exec_())
-
-# Exemple d'utilisation
-# display_image("chemin/vers/image.png", 100, 200)
+# window_thread.open_window("Coucou")
+# # ... effectuer des actions ici, par exemple tts.say("Coucou") ...
+# window_thread.close_window()
