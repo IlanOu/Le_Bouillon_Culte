@@ -23,6 +23,8 @@ Debug.prefixActive = False
 # toolbox.ImageDisplayer.display_image("./Images/Questions/question.png", 0, 0)
  """
 
+# toolbox.ImageDisplayer.display_image("./Images/Questions/question.png", 0, 0)
+
 # Speaker.say("Bonjour à tous, je suis enchanté !", GttsEngine())
 
 

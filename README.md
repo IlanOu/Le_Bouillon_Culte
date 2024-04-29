@@ -19,6 +19,6 @@ pip install -r ./requirements.txt
 <!-- 
 ```bash
 sudo apt-get install mpg123
-sudo apt-get install espeak
+sudo apt-get install espeak0
 sudo apt-get install libttspico-utils
 ``` -->
