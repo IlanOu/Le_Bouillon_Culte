@@ -31,10 +31,10 @@ class PyQtWindowThread(QThread):
             self.window.close()
             self.window = None
 
-# Exemple d'utilisation
-window_thread = PyQtWindowThread()
-window_thread.start()
+# # Exemple d'utilisation
+# window_thread = PyQtWindowThread()
+# window_thread.start()
 
-window_thread.open_window("Coucou")
-# ... effectuer des actions ici, par exemple tts.say("Coucou") ...
-window_thread.close_window()
+# window_thread.open_window("Coucou")
+# # ... effectuer des actions ici, par exemple tts.say("Coucou") ...
+# window_thread.close_window()
