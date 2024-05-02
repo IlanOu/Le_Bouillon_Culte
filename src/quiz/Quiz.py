@@ -26,3 +26,55 @@ class Quiz:
 
     def get_random_response(self):
         return random.choice(self.responses)
+
+class QuizManager:
+    def __init__(self):
+        self.quizzes = []
+        self.current_quiz = None
+        self.state = 'start'
+
+    def add_quiz(self, quiz):
+        self.quizzes.append(quiz)
+
+    def start(self):
+        self.state = 'choose_quiz'
+
+    def choose_quiz(self):
+        if len(self.quizzes) == 0:
+            print("Aucun quiz disponible.")
+            self.state = 'end'
+        else:
+            print("Choisis un quiz :")
+            for i, quiz in enumerate(self.quizzes):
+                print(f"{i + 1}. {quiz.json_file}")
+            choice = int(input("Entrez le numéro du quiz : "))
+            self.current_quiz = self.quizzes[choice - 1]
+            self.state = 'run_quiz'
+
+    def run_quiz(self):
+        question = self.current_quiz.get_random_question()
+        print(question)
+        response = input("Votre réponse : ")
+        correct_response = self.current_quiz.get_random_response()
+        if response.lower() == correct_response.lower():
+            print("Bravo, c'est la bonne réponse !")
+        else:
+            print(f"Désolé, la réponse attendue était '{correct_response}'.")
+        self.state = 'choose_quiz'
+
+    def run(self):
+        while self.state != 'end':
+            if self.state == 'start':
+                self.start()
+            elif self.state == 'choose_quiz':
+                self.choose_quiz()
+            elif self.state == 'run_quiz':
+                self.run_quiz()
+
+# Exemple d'utilisation
+manager = QuizManager()
+quiz1 = Quiz("quiz1.json")
+quiz2 = Quiz("quiz2.json")
+manager.add_quiz(quiz1)
+manager.add_quiz(quiz2)
+manager.run()

@@ -1,5 +1,10 @@
-from src.Application import App
+# from src.Application import App
 
-if __name__ == "__main__":
-    app = App()
-    app.run()
+# if __name__ == "__main__":
+#     app = App()
+#     app.run()
+
+
+# -------------------------------- à supprimer ------------------------------- #
+
+
