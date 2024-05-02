@@ -1,10 +1,10 @@
-from src.toolbox.Speeker import Speaker, GttsEngine, Pyttsx3Engine
 from src.objects.Displayer.WebDisplayer import WebApp, StringUpdater
-import threading
-from src.toolbox.Debug import Debug, Style
-import time
-from src.quiz.Quiz import Quiz
 from src.objects.rfid.RFIDReader import RFIDReader
+from src.toolbox.Speeker import Speaker, GttsEngine, Pyttsx3Engine
+from src.toolbox.Debug import Debug, Style
+from src.quiz.Quiz import Quiz
+import threading
+import time
 
 
 
