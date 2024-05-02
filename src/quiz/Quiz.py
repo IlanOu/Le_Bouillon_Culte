@@ -71,10 +71,10 @@ class QuizManager:
             elif self.state == 'run_quiz':
                 self.run_quiz()
 
-# Exemple d'utilisation
-manager = QuizManager()
-quiz1 = Quiz("quiz1.json")
-quiz2 = Quiz("quiz2.json")
-manager.add_quiz(quiz1)
-manager.add_quiz(quiz2)
-manager.run()
+# # Exemple d'utilisation
+# manager = QuizManager()
+# quiz1 = Quiz("quiz1.json")
+# quiz2 = Quiz("quiz2.json")
+# manager.add_quiz(quiz1)
+# manager.add_quiz(quiz2)
+# manager.run()
