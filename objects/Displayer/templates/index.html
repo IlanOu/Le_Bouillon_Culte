@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mon Interface Web</title>
+  <title>Chaîne dynamique</title>
 </head>
 <body>
-    <h1>Bienvenue sur mon interface web !</h1>
-    <p>Ceci est une simple interface web créée avec Flask.</p>
+  <div id="dynamic-string">{{ string }}</div>
+  <script>
+    const eventSource = new EventSource("/stream");
+    eventSource.onmessage = (event) => {
+      document.getElementById('dynamic-string').textContent = event.data;
+    };
+  </script>
 </body>
 </html>
