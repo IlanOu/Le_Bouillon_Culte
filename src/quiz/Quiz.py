@@ -4,39 +4,52 @@ from src.toolbox.Debug import Debug
 
 Debug.prefixActive = False
 
+# Quiz protocol
+# ---------------------------------------------------------------------------- #
+
 class Quiz:
     def __init__(self, json_file=""):
-        self.json_file = json_file
-        self.questions = []
-        self.responses = []
+        # self.json_file = json_file
+        # self.questions = []
+        # self.responses = []
         
-        if json_file != "":
-            self.fill_questions()
-            self.fill_responses()
+        # if json_file != "":
+        #     self.fill_questions()
+        #     self.fill_responses()
+        pass
 
     def fill_questions(self):
-        with open(self.json_file, 'r') as file:
-            data = json.load(file)
-            self.questions = data.get('question', [])
+        # with open(self.json_file, 'r') as file:
+        #     data = json.load(file)
+        #     self.questions = data.get('question', [])
+        pass
 
     def fill_responses(self):
-        with open(self.json_file, 'r') as file:
-            data = json.load(file)
-            self.responses = data.get('answers', [])
+        # with open(self.json_file, 'r') as file:
+        #     data = json.load(file)
+        #     self.responses = data.get('answers', [])
+        pass
 
     def get_random_question(self):
-        raise NotImplementedError("La méthode get_random_question doit être implémentée dans les classes dérivées.")
+        # raise NotImplementedError("La méthode get_random_question doit être implémentée dans les classes dérivées.")
+        pass
 
     def get_random_response(self):
-        raise NotImplementedError("La méthode get_random_response doit être implémentée dans les classes dérivées.")
+        # raise NotImplementedError("La méthode get_random_response doit être implémentée dans les classes dérivées.")
+        pass
 
+
+# Quizzes
+# ---------------------------------------------------------------------------- #
 
 class QuizA(Quiz):
     def get_random_question(self):
-        return random.choice(self.questions)
+        # return random.choice(self.questions)
+        pass
 
     def get_random_response(self):
-        return random.choice(self.responses)
+        # return random.choice(self.responses)
+        pass
 
 
 class QuizB(Quiz):
@@ -48,7 +61,49 @@ class QuizB(Quiz):
         # Implémentation spécifique pour QuizB
         pass
 
-# Définissez les autres classes QuizC, QuizD, QuizE et QuizF de la même manière
+
+class QuizC(Quiz):
+    def get_random_question(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+    def get_random_response(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+
+class QuizD(Quiz):
+    def get_random_question(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+    def get_random_response(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+
+class QuizE(Quiz):
+    def get_random_question(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+    def get_random_response(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+
+class QuizF(Quiz):
+    def get_random_question(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+    def get_random_response(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+
+# Quiz manager
+# ---------------------------------------------------------------------------- #
 
 class QuizManager:
     def __init__(self):
@@ -94,7 +149,10 @@ class QuizManager:
             elif self.state == 'run_quiz':
                 self.run_quiz()
 
+
+
 # # Exemple d'utilisation
+# ---------------------------------------------------------------------------- #
 # manager = QuizManager()
 # quiz1 = QuizA("quiz1.json")
 # quiz2 = QuizB("quiz2.json")
