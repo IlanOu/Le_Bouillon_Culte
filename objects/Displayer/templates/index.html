@@ -2,14 +2,47 @@
 <html>
 <head>
   <title>Chaîne dynamique</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div id="dynamic-string">{{ string }}</div>
+  <div class="text" id="dynamic-question">{{ string }}</div>
+  <div class="text" id="dynamic-answer">{{ string }}</div>
+  
   <script>
     const eventSource = new EventSource("/stream");
     eventSource.onmessage = (event) => {
-      document.getElementById('dynamic-string').textContent = event.data;
+      const question = event.data.split("~*-*~")[0];
+      const answer = event.data.split("~*-*~")[1];
+      
+      console.log(question)
+      console.log(answer)
+
+      document.getElementById('dynamic-question').textContent = question;
+      document.getElementById('dynamic-answer').textContent = answer;
     };
   </script>
 </body>
 </html>
+
+
+
+<style>
+
+body {
+    background-color: black;
+    width: 100vw;
+    height:95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    transition: all 0.75s ease;
+}
+.text {
+    color: white;
+    font-size: 50px;
+}
+
+</style>
