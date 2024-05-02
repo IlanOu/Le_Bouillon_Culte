@@ -1,0 +1,150 @@
+{
+    "Auvergne-Rhônes-Alpes":
+     [
+         {
+             "question": "Quelle est cette musique ?",
+             "audio": "C2_CE_9.mp3",
+             "answers": [
+                 "La Montagne",
+                 "Ma France",
+                 "La dame de Haute-Savoie",
+                 "Accueille-moi paysage"
+             ],
+             "correct_answer": "La Montagne, Jean Ferrat",
+             "details": "[Suite de la musique]"
+         },
+
+
+         {
+            "question": "Quelle est cette musique ?",
+            "audio": "",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "",
+            "details": "[Suite de la musique]"
+        }
+     ],
+
+     "Île-de-France":
+     [
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "C2_NE_1.mp3",
+            "answers": [
+                "Ne pleure pas, Jacques Brel",
+                "Je t’offrirais, Claude François",
+                "Il ne pleut pas, Patrick Bruel",
+                "Ne me quitte pas, Jacques Brel"
+            ],
+            "correct_answer": "Ne me quitte pas, Jacques Brel",
+            "details": "[Suite de la musique]"
+        },
+
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "Mon amant de Saint-Jean, Lucienne Delyle",
+            "details": "[Suite de la musique]"
+        }
+     ],
+
+
+     "Bretagne":
+     [
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "C1_NO_1.mp3",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "Tri Martolod, Alan Stivel",
+            "details": "[Suite de la musique]"
+        },
+
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "",
+            "details": "[Suite de la musique]"
+        }
+     ],
+
+
+     "Hauts-de-France":
+     [
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "C2_NO_8.mp3",
+            "answers": [
+                "Souvenir de France",
+                "Souvenir de France",
+                "L’Avventura",
+                "Est ce une fille ou un garçon ?"
+            ],
+            "correct_answer": "Made in Normandie, Stone & Charden",
+            "details": "[Suite de la musique]"
+        },
+
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "",
+            "details": "[Suite de la musique]"
+        }
+     ],
+
+
+     "Provence-Alpes-Côte d'Azur":
+     [
+        {
+            "question": "Quel insecte produit ce son ?",
+            "audio": "Q2_SE_1.mp3",
+            "answers": [
+                "Le grillon",
+                "La sauterelle",
+                "La cigale",
+                "Le criquet"
+            ],
+            "correct_answer": "La cigale",
+            "details": "[Suite de la musique]"
+        },
+
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "",
+            "answers": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "correct_answer": "",
+            "details": "[Suite de la musique]"
+        }
+     ]
+}

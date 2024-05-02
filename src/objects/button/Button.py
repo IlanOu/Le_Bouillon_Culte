@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from toolbox.Debug import Debug
+from src.toolbox.Debug import Debug
 
 class Button:
     def __init__(self, pin):
