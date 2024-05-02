@@ -1,13 +1,16 @@
 import json
 import random
+from src.toolbox.Debug import Debug
+
+Debug.prefixActive = False
 
 class Quiz:
     def __init__(self, json_file=""):
         self.json_file = json_file
-        self.questions = ["Salut, comment vons-je ?", "Je suis un lapin ?"]
-        self.responses = ["Eu, okay", "Non merci"]
+        self.questions = []
+        self.responses = []
         
-        if (json_file != ""):
+        if json_file != "":
             self.fill_questions()
             self.fill_responses()
 
@@ -22,10 +25,30 @@ class Quiz:
             self.responses = data.get('answers', [])
 
     def get_random_question(self):
+        raise NotImplementedError("La méthode get_random_question doit être implémentée dans les classes dérivées.")
+
+    def get_random_response(self):
+        raise NotImplementedError("La méthode get_random_response doit être implémentée dans les classes dérivées.")
+
+
+class QuizA(Quiz):
+    def get_random_question(self):
         return random.choice(self.questions)
 
     def get_random_response(self):
         return random.choice(self.responses)
+
+
+class QuizB(Quiz):
+    def get_random_question(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+    def get_random_response(self):
+        # Implémentation spécifique pour QuizB
+        pass
+
+# Définissez les autres classes QuizC, QuizD, QuizE et QuizF de la même manière
 
 class QuizManager:
     def __init__(self):
@@ -41,25 +64,25 @@ class QuizManager:
 
     def choose_quiz(self):
         if len(self.quizzes) == 0:
-            print("Aucun quiz disponible.")
+            Debug.Log("Aucun quiz disponible.")
             self.state = 'end'
         else:
-            print("Choisis un quiz :")
+            Debug.Log("Choisis un quiz :")
             for i, quiz in enumerate(self.quizzes):
-                print(f"{i + 1}. {quiz.json_file}")
+                Debug.Log(f"{i + 1}. {quiz.json_file}")
             choice = int(input("Entrez le numéro du quiz : "))
             self.current_quiz = self.quizzes[choice - 1]
             self.state = 'run_quiz'
 
     def run_quiz(self):
         question = self.current_quiz.get_random_question()
-        print(question)
+        Debug.Log(question)
         response = input("Votre réponse : ")
         correct_response = self.current_quiz.get_random_response()
         if response.lower() == correct_response.lower():
-            print("Bravo, c'est la bonne réponse !")
+            Debug.Log("Bravo, c'est la bonne réponse !")
         else:
-            print(f"Désolé, la réponse attendue était '{correct_response}'.")
+            Debug.Log(f"Désolé, la réponse attendue était '{correct_response}'.")
         self.state = 'choose_quiz'
 
     def run(self):
@@ -73,8 +96,9 @@ class QuizManager:
 
 # # Exemple d'utilisation
 # manager = QuizManager()
-# quiz1 = Quiz("quiz1.json")
-# quiz2 = Quiz("quiz2.json")
+# quiz1 = QuizA("quiz1.json")
+# quiz2 = QuizB("quiz2.json")
+# # Ajoutez les autres instances de quiz
 # manager.add_quiz(quiz1)
 # manager.add_quiz(quiz2)
 # manager.run()
