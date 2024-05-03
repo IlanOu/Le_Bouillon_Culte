@@ -56,7 +56,7 @@ class Quiz_BlindTest(Quiz):
     
     
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
+        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
         question = self.get_random_question(zone)
         
         

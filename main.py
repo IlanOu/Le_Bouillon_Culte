@@ -20,8 +20,8 @@ quiz5 = Quiz_CultureG("./assets/json/culture_g.json")
 # quiz6 = Quiz_("./assets/json/.json")
 
 manager.add_quiz(quiz1)
-# manager.add_quiz(quiz2)
-# manager.add_quiz(quiz3)
+# manager.add_quiz(quiz2) # Todo -> à faire
+# manager.add_quiz(quiz3) # Todo -> à faire
 # manager.add_quiz(quiz4)
 # manager.add_quiz(quiz5)
 # manager.add_quiz(quiz6)
