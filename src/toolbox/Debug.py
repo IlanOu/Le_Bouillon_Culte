@@ -86,24 +86,24 @@ class Debug:
 
     @staticmethod
     def Log(message):
-        Debug._log(message)
+        Debug._log(str(message))
 
     @staticmethod
     def LogWhisper(message):
         if Debug.verbose:
-            Debug._log(message, Style.DARK_GRAY + Style.DIM + Style.ITALIC)
+            Debug._log(str(message), Style.DARK_GRAY + Style.DIM + Style.ITALIC)
 
     @staticmethod
     def LogSuccess(message):
         if Debug.emojisActive:
-            message = "✅ - " + message
-        Debug._log(message, Style.OK_GREEN)
+            message = "✅ - " + str(message)
+        Debug._log(str(message), Style.OK_GREEN)
 
     @staticmethod
     def LogWarning(message):
         if Debug.emojisActive:
             message = "❕ - " + message
-        Debug._log(message, Style.WARNING)
+        Debug._log(str(message), Style.WARNING)
 
     @staticmethod
     def LogError(message):

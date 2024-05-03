@@ -4,102 +4,209 @@ from src.toolbox.Debug import Debug
 
 Debug.prefixActive = False
 
+
 # Quiz protocol
 # ---------------------------------------------------------------------------- #
 
 class Quiz:
-    def __init__(self, json_file=""):
-        # self.json_file = json_file
-        # self.questions = []
-        # self.responses = []
-        
-        # if json_file != "":
-        #     self.fill_questions()
-        #     self.fill_responses()
-        pass
+    def __init__(self, jsonPath=""):
+        self.name=""
+        self.jsonPath = jsonPath
+        self.datas = {}
 
-    def fill_questions(self):
-        # with open(self.json_file, 'r') as file:
-        #     data = json.load(file)
-        #     self.questions = data.get('question', [])
-        pass
+    def process(self):
+        Debug.LogError("La méthode get_random_question doit être implémentée dans les classes dérivées.")
 
-    def fill_responses(self):
-        # with open(self.json_file, 'r') as file:
-        #     data = json.load(file)
-        #     self.responses = data.get('answers', [])
-        pass
 
-    def get_random_question(self):
-        # raise NotImplementedError("La méthode get_random_question doit être implémentée dans les classes dérivées.")
-        pass
 
-    def get_random_response(self):
-        # raise NotImplementedError("La méthode get_random_response doit être implémentée dans les classes dérivées.")
-        pass
 
 
 # Quizzes
 # ---------------------------------------------------------------------------- #
 
-class QuizA(Quiz):
-    def get_random_question(self):
-        # return random.choice(self.questions)
-        pass
+class Quiz_BlindTest(Quiz):
+    def __init__(self, jsonPath = ""):
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.name = "Blind test"
+        self.fill_datas()
+        
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
 
-    def get_random_response(self):
-        # return random.choice(self.responses)
-        pass
+
+    def get_random_question(self, zone=""):
+        if self.datas == {}:
+            Debug.LogError("Il n'y a pas de données dans le Json 'blind_test.json'. Vérifiez le contenu du Json.")
+            return None
+        
+        if zone == "" or not zone in self.datas:
+            Debug.LogError("La zone est incorrectement définie pour le blind_test.")
+            Debug.LogWhisper("Vous pouvez mettre une zone avec : quiz.set_zone('zone').")
+            return None
+        
+        random_question = random.choice(self.datas[zone])
+        return random_question
+    
+    
+    def process(self):
+        zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
+        question = self.get_random_question(zone)
+        
+        question_value = question["question"]
+        possible_responses_value = question["answers"]
+        response_value = question["correct_answer"]
+        audio_value = question["audio"]
+        details_value = question["details"]
+        
+        Debug.LogWhisper("Question : " + question_value)
+        Debug.LogWhisper("Réponses possibles : \n - " + "\n - ".join(possible_responses_value))
+        Debug.LogWhisper("Réponse : " + response_value)
+        
+        """ 
+        1. Poser la question
+        2. Passer la musique
+        3. Proposer les réponses
+        4. Attendre la réponse de l'utilisateur
+        5. Afficher la réponse + détails
+        """
+        
+        Debug.Log(question)
 
 
-class QuizB(Quiz):
-    def get_random_question(self):
+
+class Quiz_OuCest(Quiz):
+    def __init__(self, jsonPath = ""):
+        self.name = "Où c'est ?"
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.fill_datas()
+    
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
+
+
+    def get_random_question(self, zone=""):
+        if self.datas == {}:
+            Debug.LogError("Il n'y a pas de données dans le Json 'ou_cest.json'. Vérifiez le contenu du Json.")
+            return None
+        
+        if zone == "" or not zone in self.datas:
+            Debug.LogError("La zone est incorrectement définie pour le ou_cest.")
+            Debug.LogWhisper("Vous pouvez mettre une zone avec : quiz.set_zone('zone').")
+            return None
+        
+        random_question = random.choice(self.datas[zone])
+        return random_question
+
+    def process(self):
+        zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
+        question = self.get_random_question(zone)
+        
+        question_value = question["question"]
+        image_value = question["image"]
+        response_value = zone
+        hint_value = question["answers"]
+        details_value = question["details"]
+
+        """
+        1. Dire les consignes "Vous devez placer le pion au bon endroit"
+        2. Poser la question "Où se trouve, " + question_value
+        3. Vérifier si le pion est placé au bon endroit sur la carte.
+           S'il n'est pas placé, dire -> hint_value.
+        4. Afficher la response_value + details_value
+        """
+
+        Debug.Log(question)
+
+
+
+class Quiz_DevineSuite(Quiz):
+    def __init__(self, jsonPath = ""):
+        self.name = "Devine la suite"
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.fill_datas()
+
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
+
+    def get_random_question(self, zone):
         # Implémentation spécifique pour QuizB
         pass
 
-    def get_random_response(self):
-        # Implémentation spécifique pour QuizB
+    def process(self):
         pass
 
 
-class QuizC(Quiz):
-    def get_random_question(self):
+
+class Quiz_QuiSuisJe(Quiz):
+    def __init__(self, jsonPath = ""):
+        self.name = "Qui suis-je ?"
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.fill_datas()
+
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
+
+    def get_random_question(self, zone):
         # Implémentation spécifique pour QuizB
         pass
 
-    def get_random_response(self):
-        # Implémentation spécifique pour QuizB
+    def process(self):
         pass
 
 
-class QuizD(Quiz):
-    def get_random_question(self):
+
+class Quiz_CultureG(Quiz):
+    def __init__(self, jsonPath = ""):
+        self.name = "Culture générale"
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.fill_datas()
+
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
+
+    def get_random_question(self, zone):
         # Implémentation spécifique pour QuizB
         pass
 
-    def get_random_response(self):
-        # Implémentation spécifique pour QuizB
+    def process(self):
         pass
 
-
-class QuizE(Quiz):
-    def get_random_question(self):
-        # Implémentation spécifique pour QuizB
-        pass
-
-    def get_random_response(self):
-        # Implémentation spécifique pour QuizB
-        pass
 
 
 class QuizF(Quiz):
-    def get_random_question(self):
+    def __init__(self, jsonPath = ""):
+        self.name = "QuizF"
+        self.jsonPath = jsonPath
+        self.datas = {}
+        self.fill_datas()
+
+    def fill_datas(self):
+        if (self.jsonPath != ""):
+            with open(self.jsonPath, 'r') as file:
+                self.datas = json.load(file)
+
+    def get_random_question(self, zone):
         # Implémentation spécifique pour QuizB
         pass
 
-    def get_random_response(self):
-        # Implémentation spécifique pour QuizB
+    def process(self):
         pass
+
 
 
 # Quiz manager
@@ -109,45 +216,29 @@ class QuizManager:
     def __init__(self):
         self.quizzes = []
         self.current_quiz = None
-        self.state = 'start'
+        self.zone = ""
 
-    def add_quiz(self, quiz):
+    def set_zone(self, zone):
+        self.zone = zone
+
+    def add_quiz(self, quiz: Quiz):
         self.quizzes.append(quiz)
+        
+    def get_random_quiz(self):
+        random_quiz = random.choice(self.quizzes)
+        return random_quiz
 
-    def start(self):
-        self.state = 'choose_quiz'
+    def set_current_quiz(self, quiz: Quiz):
+        self.current_quiz = quiz
 
-    def choose_quiz(self):
-        if len(self.quizzes) == 0:
-            Debug.Log("Aucun quiz disponible.")
-            self.state = 'end'
-        else:
-            Debug.Log("Choisis un quiz :")
-            for i, quiz in enumerate(self.quizzes):
-                Debug.Log(f"{i + 1}. {quiz.json_file}")
-            choice = int(input("Entrez le numéro du quiz : "))
-            self.current_quiz = self.quizzes[choice - 1]
-            self.state = 'run_quiz'
-
-    def run_quiz(self):
-        question = self.current_quiz.get_random_question()
-        Debug.Log(question)
-        response = input("Votre réponse : ")
-        correct_response = self.current_quiz.get_random_response()
-        if response.lower() == correct_response.lower():
-            Debug.Log("Bravo, c'est la bonne réponse !")
-        else:
-            Debug.Log(f"Désolé, la réponse attendue était '{correct_response}'.")
-        self.state = 'choose_quiz'
 
     def run(self):
-        while self.state != 'end':
-            if self.state == 'start':
-                self.start()
-            elif self.state == 'choose_quiz':
-                self.choose_quiz()
-            elif self.state == 'run_quiz':
-                self.run_quiz()
+        if self.current_quiz == None:
+            Debug.LogError("Définissez d'abord le quiz ! [ Utilisez set_quiz() ]")
+        # question = self.current_quiz.get_random_question(self.zone)
+        self.current_quiz.process()
+
+
 
 
 

@@ -1,0 +1,132 @@
+{
+    "Auvergne-Rhônes-Alpes": [
+      {
+        "question": "Quel est le point culminant d'Auvergne ?",
+        "answers": [
+          "Le Puy de Dôme",
+          "Le Puy de Pariou",
+          "Le Plomb du Cantal",
+          "Le Puy de Sancy"
+        ],
+        "correct_answer": "Le Puy de Sancy",
+        "details": "Le puy de Sancy est une montagne des monts Dore dans le département du Puy-de-Dôme. Avec ses 1 885 mètres d'altitude, c'est le point le plus élevé du Massif central et le plus haut volcan de France métropolitaine.",
+        "details_image": "C6_CE_16.jpg"
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ],
+    "Île-de-France": [
+      {
+        "question": "Combien y a-t-il de monuments historiques en Île-de-France ?",
+        "answers": [
+          "70",
+          "300",
+          "181",
+          "157"
+        ],
+        "correct_answer": "181",
+        "details": "Dans ces monuments on peut retrouver le panthéon, la tour Eiffel, l’Opéra Garnier…",
+        "details_image": ""
+      },
+      {
+        "question": "Quel célèbre écrivain et poète français a vécu à Paris pendant les années 40, écrivant notamment \"Le Petit Prince\" ?",
+        "answers": [
+          "Albert Camus",
+          "Jean-Paul Sartre",
+          "Antoine de Saint-Exupéry",
+          ""
+        ],
+        "correct_answer": "Antoine de Saint-Exupéry",
+        "details": "",
+        "details_image": ""
+      }
+    ],
+    "Bretagne": [
+      {
+        "question": "Quel est le nom de la charcuterie traditionnellement utilisée dans une galette complète ?",
+        "answers": [
+          "Jambon blanc",
+          "Saucisse de Toulouse",
+          "Andouille",
+          "Lard fumé"
+        ],
+        "correct_answer": "Lard fumé",
+        "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
+        "details_image": "C2_NO_2.jpg"
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ],
+    "Hauts de France": [
+      {
+        "question": "Comment dit-on “Il tombe des cordes” dans le nord de la France ?",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "Ça drache",
+        "details": "Cette expression est la traduction en Ch’ti qui provient du mot flamand “Draschen”.",
+        "details_image": ""
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",      
+        "details_image": ""
+      }
+    ],
+    "PACA": [
+      {
+        "question": "Quel célèbre festival cinématographique fondé en 1939, se déroule chaque année dans une ville de la région PACA ?",
+        "answers": [
+          "Le festival cinéméditérannée",
+          "Le festival de Caen",
+          "Le festival de Cannes",
+          "Les Oscars"
+        ],
+        "correct_answer": "Le festival de Cannes",
+        "details": "La première édition du festival de Cannes qui s’est produite en 1939 sera annulée pour cause de guerre en raison de l’invasion de la pologne par l’allemagne. Seule une partie du film Quasimodo a été diffusée avant que le festival ne plis bagage.",
+        "details_image": "R6_SE_1.jpg"
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ]
+  }

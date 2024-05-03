@@ -38,6 +38,29 @@ class CoquiTTSEngine(TTSEngine):
 """
 
 
+class ElevenLabsEngine(TTSEngine):
+    def say(self, text: str):
+        from elevenlabs.client import ElevenLabs
+        from elevenlabs import play, stream, save
+        from dotenv import load_dotenv
+        import os 
+        
+        
+        load_dotenv()
+        
+        key = os.environ.get("ELEVENLABS_API_KEY")
+        client = ElevenLabs(
+            api_key=key
+        )
+        
+        audio = client.generate(
+            text=text,
+            voice="Martin Dupont Profond", # Nicolas Petit
+            model="eleven_multilingual_v2")
+        
+        play(audio)
+        
+
 
 # Pyttsx3
 # ----------------------------------------------------------------------------

@@ -1,0 +1,132 @@
+{
+    "Auvergne-Rhônes-Alpes": [
+      {
+        "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". Qui suis-je ?",
+        "answers": [
+          "Bourvil",
+          "Alain Chabat",
+          "Fernand Raynaud",
+          "Coluche"
+        ],
+        "correct_answer": "Fernand Raynaud",
+        "details": "Fernand Raynaud est un artiste comique de scène français né le 19 mai 1926 à Clermont-Ferrand",
+        "details_image": "C1_CE_10.jpg"
+      },
+      {
+        "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. Qui suis-je ?",
+        "answers": [
+          "Vladimir Lénine",
+          "Sigmund Freud",
+          "Frank Sinatra",
+          "Jean Moulin"
+        ],
+        "correct_answer": "Jean Moulin",
+        "details": "Jean Moulin était un haut fonctionnaire français et un héros de la Résistance française pendant la Seconde Guerre mondiale sous l’autorité de Charles de Gaulle. Moulin a été torturé et est décédé des suites de ses blessures en 1943.",
+        "details_image": "2_C2_CE_2.jpg"
+      }
+    ],
+    "Île-de-France": [
+      {
+        "question": "J’ai été maire de Paris pendant 18 ans puis président de la République, qui suis-je ?",
+        "answers": [
+          "François Mitterrand",
+          "Jacques Chirac",
+          "Charles De Gaulle",
+          "Nicolas Sarkozy"
+        ],
+        "correct_answer": "Jacques Chirac",
+        "details": "Il a été maire de Paris de 1977 à 1995 et président de la République de 1995 à 2007.",
+        "details_image": "C1_NE_2.jpg"
+      },
+      {
+        "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. Qui suis-je ?",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "Chantal Lauby",
+        "details": "Chantal Lauby, une figure emblématique de la comédie française, est une artiste aux multiples talents. Sa carrière s'étend du cinéma à la télévision en passant par le théâtre. Avec son style unique, elle incarne souvent des personnages hauts en couleur, mêlant subtilité et excentricité.",
+        "details_image": ""
+      }
+    ],
+    "Bretagne": [
+      {
+        "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique ?",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "Alan Stivell",
+        "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
+        "details_image": "C2_NO_2.jpg"
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ],
+    "Hauts de France": [
+      {
+        "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme” Qui suis-je?",
+        "answers": [
+          "Sainte Thérèse de Lisieux",
+          "Sainte Marie",
+          "Sainte Ophélie",
+          "Sainte Anne"
+        ],
+        "correct_answer": "Sainte Thérèse de Lisieux",
+        "details": "Inconnue de son vivant, sa renommée et sa dévotion se sont répandues dans le monde entier après la publication de ses écrits autobiographiques, sous le titre “Histoire d’une âme”.",
+        "details_image": ""
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ],
+    "PACA": [
+      {
+        "question": "J’ai rempli tout au long de ma vie plusieurs fonctions. J’ai été entrepreneur, chanteur, présentateur télé et je me suis même lancé dans la politique. Originaire de la région parisienne, j’ai eu la chance de diriger un grand club de foot français seul gagnant national de la champions league. Qui suis-je ?",
+        "answers": [
+          "Bernard Tapie",
+          "Pascal Sevran",
+          "Robert",
+          "Louis-Dreyfus"
+        ],
+        "correct_answer": "Bernard Tapie",
+        "details": "",
+        "details_image": ""
+      },
+      {
+        "question": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "",
+        "details_image": ""
+      }
+    ]
+  }

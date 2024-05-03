@@ -1,0 +1,152 @@
+{
+    "Auvergne-Rhônes-Alpes": [
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "A’rvi ",
+        "answers": [
+          "Pâ",
+          "Dô",
+          "Là",
+          "Si"
+        ],
+        "correct_answer": "Pâ",
+        "details": "Cette expression haut-savoyarde signifie “Au revoir”."
+      },
+      {
+        "question": "Quelle est la suite de la musique ?",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "Le  lac vagabond",
+          "La rivière aux sanglots",
+          "Le fleuve enchanté",
+          "La rivière insolente"
+        ],
+        "correct_answer": "La rivière insolente",
+        "details": "[Suite de la musique]"
+      }
+    ],
+    "Île-de-France": [
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu, je sais que tu m'attends. J'irai par la forêt, j'irai par la montagne…",
+        "answers": [
+          "Je ne puis demeurer loin de toi plus longtemps.",
+          "Je ne serai plus longtemps loin de toi.",
+          "Aussi loin que tu seras, je demeure près de toi.",
+          "J’irai par les océans."
+        ],
+        "correct_answer": "Je ne puis demeurer loin de toi plus longtemps.",
+        "details": "“Demain, dès l’aube” est un poème très connu de Victor Hugo, publié en 1856 dans le recueil “Les Contemporains”."
+      },
+      {
+        "question": "Quelle est la suite de la musique ?",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "Errent des solitaires",
+          "Trébuchent des amis",
+          "Marchent des amoureux",
+          "Danse des voisins"
+        ],
+        "correct_answer": "Marchent des amoureux",
+        "details": "[Suite de la musique]"
+      }
+    ],
+    "Bretagne": [
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "[Suite de la musique]"
+      },
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "[Suite de la musique]"
+      }
+    ],
+    "Hauts-de-France": [
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "Il pleut comme...",
+        "answers": [
+          "Un torrent d’océan",
+          "Vache qui pisse",
+          "Du pipi de chat",
+          "Un temps écosssais"
+        ],
+        "correct_answer": "Vache qui pisse",
+        "details": "On emploie la vache car une vache laitière peut uriner jusqu’à 19 fois par jour."
+      },
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "[Suite de la musique]"
+      }
+    ],
+    "Provence-Alpes-Côte d'Azur": [
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "[Suite de la musique]"
+      },
+      {
+        "question": "Completez la suite",
+        "audio-1": "",
+        "audio-2": "",
+        "texte-1": "",
+        "answers": [
+          "",
+          "",
+          "",
+          ""
+        ],
+        "correct_answer": "",
+        "details": "[Suite de la musique]"
+      }
+    ]
+  }
