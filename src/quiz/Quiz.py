@@ -1,6 +1,9 @@
 import json
 import random
 from src.toolbox.Debug import Debug
+from src.toolbox.Speaker import *
+
+
 
 Debug.prefixActive = False
 
@@ -31,6 +34,7 @@ class Quiz_BlindTest(Quiz):
         self.name = "Blind test"
         self.fill_datas()
         
+        
     def fill_datas(self):
         if (self.jsonPath != ""):
             with open(self.jsonPath, 'r') as file:
@@ -55,15 +59,28 @@ class Quiz_BlindTest(Quiz):
         zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
         question = self.get_random_question(zone)
         
+        
+        # Get values
         question_value = question["question"]
         possible_responses_value = question["answers"]
+        possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
         response_value = question["correct_answer"]
         audio_value = question["audio"]
         details_value = question["details"]
         
         Debug.LogWhisper("Question : " + question_value)
-        Debug.LogWhisper("Réponses possibles : \n - " + "\n - ".join(possible_responses_value))
+        Debug.LogWhisper("Réponses possibles : " + possible_responses_value)
         Debug.LogWhisper("Réponse : " + response_value)
+        
+        # 1.
+        Speaker.say(question_value)
+        
+        # 2.
+        pass
+    
+        # 3.
+        Speaker.say(possible_responses_value)
+        
         
         """ 
         1. Poser la question
@@ -102,6 +119,8 @@ class Quiz_OuCest(Quiz):
         
         random_question = random.choice(self.datas[zone])
         return random_question
+
+
 
     def process(self):
         zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum

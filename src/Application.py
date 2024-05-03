@@ -1,6 +1,6 @@
 from src.objects.Displayer.WebDisplayer import WebApp, StringUpdater
 from src.objects.rfid.RFIDReader import RFIDReader
-from src.toolbox.Speeker import Speaker, GttsEngine, Pyttsx3Engine
+from src.toolbox.Speaker import Speaker, GttsEngine, Pyttsx3Engine
 from src.toolbox.Debug import Debug, Style
 from src.quiz.Quiz import Quiz
 import threading

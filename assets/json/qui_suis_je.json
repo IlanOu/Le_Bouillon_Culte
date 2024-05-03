@@ -1,132 +1,132 @@
 {
-    "Auvergne-Rhônes-Alpes": [
-      {
-        "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". Qui suis-je ?",
-        "answers": [
-          "Bourvil",
-          "Alain Chabat",
-          "Fernand Raynaud",
-          "Coluche"
-        ],
-        "correct_answer": "Fernand Raynaud",
-        "details": "Fernand Raynaud est un artiste comique de scène français né le 19 mai 1926 à Clermont-Ferrand",
-        "details_image": "C1_CE_10.jpg"
-      },
-      {
-        "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. Qui suis-je ?",
-        "answers": [
-          "Vladimir Lénine",
-          "Sigmund Freud",
-          "Frank Sinatra",
-          "Jean Moulin"
-        ],
-        "correct_answer": "Jean Moulin",
-        "details": "Jean Moulin était un haut fonctionnaire français et un héros de la Résistance française pendant la Seconde Guerre mondiale sous l’autorité de Charles de Gaulle. Moulin a été torturé et est décédé des suites de ses blessures en 1943.",
-        "details_image": "2_C2_CE_2.jpg"
-      }
-    ],
-    "Île-de-France": [
-      {
-        "question": "J’ai été maire de Paris pendant 18 ans puis président de la République, qui suis-je ?",
-        "answers": [
-          "François Mitterrand",
-          "Jacques Chirac",
-          "Charles De Gaulle",
-          "Nicolas Sarkozy"
-        ],
-        "correct_answer": "Jacques Chirac",
-        "details": "Il a été maire de Paris de 1977 à 1995 et président de la République de 1995 à 2007.",
-        "details_image": "C1_NE_2.jpg"
-      },
-      {
-        "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. Qui suis-je ?",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "Chantal Lauby",
-        "details": "Chantal Lauby, une figure emblématique de la comédie française, est une artiste aux multiples talents. Sa carrière s'étend du cinéma à la télévision en passant par le théâtre. Avec son style unique, elle incarne souvent des personnages hauts en couleur, mêlant subtilité et excentricité.",
-        "details_image": ""
-      }
-    ],
-    "Bretagne": [
-      {
-        "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique ?",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "Alan Stivell",
-        "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
-        "details_image": "C2_NO_2.jpg"
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ],
-    "Hauts de France": [
-      {
-        "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme” Qui suis-je?",
-        "answers": [
-          "Sainte Thérèse de Lisieux",
-          "Sainte Marie",
-          "Sainte Ophélie",
-          "Sainte Anne"
-        ],
-        "correct_answer": "Sainte Thérèse de Lisieux",
-        "details": "Inconnue de son vivant, sa renommée et sa dévotion se sont répandues dans le monde entier après la publication de ses écrits autobiographiques, sous le titre “Histoire d’une âme”.",
-        "details_image": ""
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ],
-    "PACA": [
-      {
-        "question": "J’ai rempli tout au long de ma vie plusieurs fonctions. J’ai été entrepreneur, chanteur, présentateur télé et je me suis même lancé dans la politique. Originaire de la région parisienne, j’ai eu la chance de diriger un grand club de foot français seul gagnant national de la champions league. Qui suis-je ?",
-        "answers": [
-          "Bernard Tapie",
-          "Pascal Sevran",
-          "Robert",
-          "Louis-Dreyfus"
-        ],
-        "correct_answer": "Bernard Tapie",
-        "details": "",
-        "details_image": ""
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ]
-  }
+  "Auvergne-Rhônes-Alpes": [
+    {
+      "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". Qui suis-je ?",
+      "answers": [
+        "Bourvil",
+        "Alain Chabat",
+        "Fernand Raynaud",
+        "Coluche"
+      ],
+      "correct_answer": "Fernand Raynaud",
+      "details": "Fernand Raynaud est un artiste comique de scène français né le 19 mai 1926 à Clermont-Ferrand",
+      "details_image": "C1_CE_10.jpg"
+    },
+    {
+      "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. Qui suis-je ?",
+      "answers": [
+        "Vladimir Lénine",
+        "Sigmund Freud",
+        "Frank Sinatra",
+        "Jean Moulin"
+      ],
+      "correct_answer": "Jean Moulin",
+      "details": "Jean Moulin était un haut fonctionnaire français et un héros de la Résistance française pendant la Seconde Guerre mondiale sous l’autorité de Charles de Gaulle. Moulin a été torturé et est décédé des suites de ses blessures en 1943.",
+      "details_image": "2_C2_CE_2.jpg"
+    }
+  ],
+  "Île-de-France": [
+    {
+      "question": "J’ai été maire de Paris pendant 18 ans puis président de la République, qui suis-je ?",
+      "answers": [
+        "François Mitterrand",
+        "Jacques Chirac",
+        "Charles De Gaulle",
+        "Nicolas Sarkozy"
+      ],
+      "correct_answer": "Jacques Chirac",
+      "details": "Il a été maire de Paris de 1977 à 1995 et président de la République de 1995 à 2007.",
+      "details_image": "C1_NE_2.jpg"
+    },
+    {
+      "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. Qui suis-je ?",
+      "answers": [
+        "Muriel Robin",
+        "Chantal Lauby",
+        "Florence Foresti",
+        "Élodie Poux"
+      ],
+      "correct_answer": "Chantal Lauby",
+      "details": "Chantal Lauby, une figure emblématique de la comédie française, est une artiste aux multiples talents. Sa carrière s'étend du cinéma à la télévision en passant par le théâtre. Avec son style unique, elle incarne souvent des personnages hauts en couleur, mêlant subtilité et excentricité.",
+      "details_image": "2_C1_NE_1.jpg"
+    }
+  ],
+  "Bretagne": [
+    {
+      "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique ?",
+      "answers": [
+        "Francis Cabrel",
+        "Jean-Micel Jarre",
+        "Alan Stivell",
+        "Calogero"
+      ],
+      "correct_answer": "Alan Stivell",
+      "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
+      "details_image": "C2_NO_2.jpg"
+    },
+    {
+      "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques. J'ai également été le maire de ma ville natale en Bretagne. Qui suis-je ?",
+      "answers": [
+        "Valéry Giscard d'Estaing",
+        "Georges Pompidou",
+        "François Mitérrand",
+        "Yves Guillou"
+      ],
+      "correct_answer": "Valéry Giscard d'Estaing",
+      "details": "Valéry Giscard d'Estaing était un homme politique français qui a occupé plusieurs postes de responsabilité au sein du gouvernement français. Il a été président de la Répiblique française de 1974 à 1981. C'était également une personne connu pour son style élégant et son engagement européen.",
+      "details_image": "2_C2_NO_2.jpg"
+    }
+  ],
+  "Hauts de France": [
+    {
+      "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme” Qui suis-je?",
+      "answers": [
+        "Sainte Thérèse de Lisieux",
+        "Sainte Marie",
+        "Sainte Ophélie",
+        "Sainte Anne"
+      ],
+      "correct_answer": "Sainte Thérèse de Lisieux",
+      "details": "Inconnue de son vivant, sa renommée et sa dévotion se sont répandues dans le monde entier après la publication de ses écrits autobiographiques, sous le titre \"Histoire d’une âme\".",
+      "details_image": "C1_NO_9.jpg"
+    },
+    {
+      "question": "Je suis un grand écrivain du XIXe siècle, j'ai écrit \"Le tour du Monde en quatre-vingts jours\". Qui suis-je ?",
+      "answers": [
+        "Honoré de Balzac",
+        "Jules Verne",
+        "Victor Hugo",
+        "Charles Baudelaire"
+      ],
+      "correct_answer": "Jules Verne",
+      "details": "Jules Verne est devenu un écrivain célèbre grâce à ses romans d'aventures évoquant les progrès scientifiques et tecnologiques du XIXe siècle. Il est aujourd'hui le quatrième auteur mondial. ",
+      "details_image": "C1_NO_5.jpg"
+    }
+  ],
+  "PACA": [
+    {
+      "question": "J’ai rempli tout au long de ma vie plusieurs fonctions. J’ai été entrepreneur, chanteur, présentateur télé et je me suis même lancé dans la politique. Originaire de la région parisienne, j’ai eu la chance de diriger un grand club de foot français seul gagnant national de la champions league. Qui suis-je ?",
+      "answers": [
+        "Bernard Tapie",
+        "Pascal Sevran",
+        "Robert",
+        "Louis-Dreyfus"
+      ],
+      "correct_answer": "Bernard Tapie",
+      "details": "",
+      "details_image": "R1_SE_1.png.webp"
+    },
+    {
+      "question": "Je suis un acteur, humoriste, chanteur et réalisateur français, né le 8 mai 1903 à Marseille et mort le 26 février 1971 à Paris dans le 16e arrondissemments. Issu du music-hall, durant plusieurs décennies, j'ai été une des plus grandes vedettes du cinéma français. Qui suis-je ?",
+      "answers": [
+        "Pagnol",
+        "Fernandel",
+        "Bourvil",
+        "Jean Gabin"
+      ],
+      "correct_answer": "Fernand Joseph Désiré Constandin, dit Fernandel",
+      "details": "Lors d'une interview, Fernandel confessa que tous les films qu'il a pu faire en compagnie de Pagnol n'était pas du cinéma. C'était simplement une caméra qui filmait leur quotidien pour en faire transparaître une narration qui allait donner naissance à un film.",
+      "details_image": "R1_SE_2.png.webp"
+    }
+  ]
+}
