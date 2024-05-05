@@ -74,6 +74,7 @@ class Quiz_BlindTest(Quiz):
         
         # Initialisation et exécution de l'application
         webApp = WebApp(update_interval=1)
+        
 
         webApp.show(question_value)
         Speaker.say(question_value, GttsEngine())

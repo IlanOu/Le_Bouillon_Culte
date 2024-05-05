@@ -6,7 +6,6 @@
 
 
 # -------------------------------- à supprimer ------------------------------- #
-
 from src.quiz.Quiz import *
 
 # Exemple d'utilisation
@@ -38,5 +37,5 @@ manager.run()
 """ 
 from src.toolbox.Speaker import *
 
-Speaker.say("Salut, je suis un texte de teste ! Je parles parfaitement bien !", ElevenLabsEngine()) 
+Speaker.say("Salut, je suis un texte de test ! Je parles parfaitement bien !", ElevenLabsEngine()) 
 """
