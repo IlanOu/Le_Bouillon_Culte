@@ -3,6 +3,7 @@ import random
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import *
 
+from src.objects.Displayer.WebDisplayer import *
 
 
 Debug.prefixActive = False
@@ -63,23 +64,35 @@ class Quiz_BlindTest(Quiz):
         # Get values
         question_value = question["question"]
         possible_responses_value = question["answers"]
-        possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
+        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
+        display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
         audio_value = question["audio"]
         details_value = question["details"]
         
-        Debug.LogWhisper("Question : " + question_value)
-        Debug.LogWhisper("Réponses possibles : " + possible_responses_value)
-        Debug.LogWhisper("Réponse : " + response_value)
-        
         # 1.
-        Speaker.say(question_value)
+        
+        # Initialisation et exécution de l'application
+        webApp = WebApp(update_interval=1)
+
+        webApp.show(question_value)
+        Speaker.say(question_value, GttsEngine())
         
         # 2.
         pass
     
         # 3.
-        Speaker.say(possible_responses_value)
+        webApp.show(question_value + " ~ " + display_possible_responses_value)
+        Speaker.say(speakeable_possible_responses_value, GttsEngine())
+        
+        # 4.
+        pass
+        
+        # 5.
+        response = "La bonne réponse était : " + response_value
+        webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value)
+        Speaker.say(response, GttsEngine())
+        Speaker.say(details_value, GttsEngine())
         
         
         """ 
@@ -90,7 +103,6 @@ class Quiz_BlindTest(Quiz):
         5. Afficher la réponse + détails
         """
         
-        Debug.Log(question)
 
 
 

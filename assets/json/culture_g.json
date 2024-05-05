@@ -1,132 +1,132 @@
 {
-    "Auvergne-Rhônes-Alpes": [
-      {
-        "question": "Quel est le point culminant d'Auvergne ?",
-        "answers": [
-          "Le Puy de Dôme",
-          "Le Puy de Pariou",
-          "Le Plomb du Cantal",
-          "Le Puy de Sancy"
-        ],
-        "correct_answer": "Le Puy de Sancy",
-        "details": "Le puy de Sancy est une montagne des monts Dore dans le département du Puy-de-Dôme. Avec ses 1 885 mètres d'altitude, c'est le point le plus élevé du Massif central et le plus haut volcan de France métropolitaine.",
-        "details_image": "C6_CE_16.jpg"
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ],
-    "Île-de-France": [
-      {
-        "question": "Combien y a-t-il de monuments historiques en Île-de-France ?",
-        "answers": [
-          "70",
-          "300",
-          "181",
-          "157"
-        ],
-        "correct_answer": "181",
-        "details": "Dans ces monuments on peut retrouver le panthéon, la tour Eiffel, l’Opéra Garnier…",
-        "details_image": ""
-      },
-      {
-        "question": "Quel célèbre écrivain et poète français a vécu à Paris pendant les années 40, écrivant notamment \"Le Petit Prince\" ?",
-        "answers": [
-          "Albert Camus",
-          "Jean-Paul Sartre",
-          "Antoine de Saint-Exupéry",
-          ""
-        ],
-        "correct_answer": "Antoine de Saint-Exupéry",
-        "details": "",
-        "details_image": ""
-      }
-    ],
-    "Bretagne": [
-      {
-        "question": "Quel est le nom de la charcuterie traditionnellement utilisée dans une galette complète ?",
-        "answers": [
-          "Jambon blanc",
-          "Saucisse de Toulouse",
-          "Andouille",
-          "Lard fumé"
-        ],
-        "correct_answer": "Lard fumé",
-        "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
-        "details_image": "C2_NO_2.jpg"
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ],
-    "Hauts de France": [
-      {
-        "question": "Comment dit-on “Il tombe des cordes” dans le nord de la France ?",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "Ça drache",
-        "details": "Cette expression est la traduction en Ch’ti qui provient du mot flamand “Draschen”.",
-        "details_image": ""
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",      
-        "details_image": ""
-      }
-    ],
-    "PACA": [
-      {
-        "question": "Quel célèbre festival cinématographique fondé en 1939, se déroule chaque année dans une ville de la région PACA ?",
-        "answers": [
-          "Le festival cinéméditérannée",
-          "Le festival de Caen",
-          "Le festival de Cannes",
-          "Les Oscars"
-        ],
-        "correct_answer": "Le festival de Cannes",
-        "details": "La première édition du festival de Cannes qui s’est produite en 1939 sera annulée pour cause de guerre en raison de l’invasion de la pologne par l’allemagne. Seule une partie du film Quasimodo a été diffusée avant que le festival ne plis bagage.",
-        "details_image": "R6_SE_1.jpg"
-      },
-      {
-        "question": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "",
-        "details_image": ""
-      }
-    ]
-  }
+  "Auvergne-Rhônes-Alpes": [
+    {
+      "question": "Quel est le point culminant d'Auvergne ?",
+      "answers": [
+        "Le Puy de Dôme",
+        "Le Puy de Pariou",
+        "Le Plomb du Cantal",
+        "Le Puy de Sancy"
+      ],
+      "correct_answer": "Le Puy de Sancy",
+      "details": "Le puy de Sancy est une montagne des monts Dore dans le département du Puy-de-Dôme. Avec ses 1 885 mètres d'altitude, c'est le point le plus élevé du Massif central et le plus haut volcan de France métropolitaine.",
+      "details_image": "C6_CE_16.jpg"
+    },
+    {
+      "question": "À combien s'élève le Mont-Blanc ?",
+      "answers": [
+        "6 963 mètres",
+        "5 949 mètres",
+        "3 512 mètres",
+        "4 809 mètres"
+      ],
+      "correct_answer": "4 809 mètres",
+      "details": "Le Mont-Blanc, situé dans les Alpes françaises, est le plus haut sommet d'Europe occidentale avec 4 809 mètres d'altitude. Il attire les alpinistes du monde entier.",
+      "details_image": "C6_CE_4.jpg"
+    }
+  ],
+  "Île-de-France": [
+    {
+      "question": "Combien y a-t-il de monuments historiques en Île-de-France ?",
+      "answers": [
+        "70 monuments",
+        "300 monuments",
+        "181 monuments",
+        "157 monuments"
+      ],
+      "correct_answer": "181 monuments",
+      "details": "Dans ces monuments on peut retrouver le panthéon, la tour Eiffel, l’Opéra Garnier…",
+      "details_image": ""
+    },
+    {
+      "question": "Quel célèbre écrivain et poète français a vécu à Paris pendant les années 40, écrivant notamment \"Le Petit Prince\" ?",
+      "answers": [
+        "Albert Camus",
+        "Jean-Paul Sartre",
+        "Pierre Molaine ",
+        "Antoine de Saint-Exupéry"
+      ],
+      "correct_answer": "Antoine de Saint-Exupéry",
+      "details": "Antoine de Saint-Exupéry est né en 1900 à Lyon puis à vécu une partie de sa vie à Paris pendant ses études à l'École Supérieure des Beaux Arts de Paris. Il était écrivain, poète, aviateur et reporter français. Il est devenu un écrivain célèbre grâce au conte du \"Petit Prince\" publié en 1943 lorsqu'in était à New York. Maljeureusement Antoine de Saint-Exupéry meurt d'un crash d'avion le 31 juillet 1944 dans la mer Méditerranée au niveau des côtes marseillaises.",
+      "details_image": "2_C6_NE_1.jpg"
+    }
+  ],
+  "Bretagne": [
+    {
+      "question": "Quel est le nom breton de Rennes ?",
+      "answers": [
+        "Rhoazon",
+        "Rendez",
+        "Roenhez",
+        "Rhanhez"
+      ],
+      "correct_answer": "Rhoazon",
+      "details": "La ville de Rennes est la capitale de la région de la Bretagne en France, c'est une ville vibrante mêlant histoire et modernité. Connue pour son architecture médiévale préservée, ses rues pavées et sa cathédrale gothique.",
+      "details_image": "C2_NO_8.jpg"
+    },
+    {
+      "question": "Comment s'appelle le drapeau breton ?",
+      "answers": [
+        "Le Gwenn-ho-de",
+        "Le Gwenn-ha-du",
+        "Le Gwenn-he-du",
+        "Le Gwenn-he-da"
+      ],
+      "correct_answer": "Le Gwenn-ha-du",
+      "details": "La Bretagne est renommée pour sa riche histoire, sa culture unique et ses paysages pittoresques. Le drapeau breton, connu sous le nom de \"Gwenn-ha-du\" en breton, se compose de neuf bandes horizontales alternant entre les couleurs blanche et noire, avec une diagonale rouge partant du coin inférieur gauche et se terminant dans le coin supérieur droit.",
+      "details_image": ""
+    }
+  ],
+  "Hauts de France": [
+    {
+      "question": "Comment dit-on “Il tombe des cordes” dans le nord de la France ?",
+      "answers": [
+        "Ça mouille",
+        "Ça tone",
+        "Ça tombe",
+        "Ça drache"
+      ],
+      "correct_answer": "Ça drache",
+      "details": "Cette expression est la traduction en Ch’ti qui provient du mot flamand “Draschen”.",
+      "details_image": ""
+    },
+    {
+      "question": "Quel dialecte est employé dans le Nord-Pas-de-Calais ?",
+      "answers": [
+        "Le Flamand",
+        "Le Picard",
+        "L'Argot",
+        "Le Vannetais"
+      ],
+      "correct_answer": "Le Picard",
+      "details": "Le Picard est le dialecte traditionnellement employé dans la région Haut-de-France. Ce dialecte est plus connu sous l'appellation \"Chti\" ou \"Chtimi\". Ce sobriquet a été donné pendant la Première Guerre Mondiale aux Poilus du Nord.",      
+      "details_image": ""
+    }
+  ],
+  "PACA": [
+    {
+      "question": "Quel célèbre festival cinématographique fondé en 1939, se déroule chaque année dans une ville de la région PACA ?",
+      "answers": [
+        "Le festival cinéméditérannée",
+        "Le festival de Caen",
+        "Le festival de Cannes",
+        "Les Oscars"
+      ],
+      "correct_answer": "Le festival de Cannes",
+      "details": "La première édition du festival de Cannes qui s’est produite en 1939 sera annulée pour cause de guerre en raison de l’invasion de la pologne par l’allemagne. Seule une partie du film Quasimodo a été diffusée avant que le festival ne plis bagage.",
+      "details_image": "R6_SE_1.jpg"
+    },
+    {
+      "question": "Combien de points doivent être inscrits à la pétanque pour remporter une partie ?",
+      "answers": [
+        "8 points",
+        "11 points",
+        "13 points",
+        "15 points"
+      ],
+      "correct_answer": "13 points",
+      "details": "Sans surprise, la France, pays créateur de la pétanque, est le premier pratiquant de la pétanque. Mais saviez-vous que le deuxième pays ayant le plus de licenciés était la Thaïlande ? Surprenant n'est-ce pas ?",
+      "details_image": "R6_SE_2.png.webp"
+    }
+  ]
+}

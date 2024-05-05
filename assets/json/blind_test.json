@@ -17,12 +17,12 @@
             "question": "Quelle est cette musique ?",
             "audio": "",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "A",
+                "B",
+                "C",
+                "D"
             ],
-            "correct_answer": "",
+            "correct_answer": "B",
             "details": "[Suite de la musique]"
         }
      ],
