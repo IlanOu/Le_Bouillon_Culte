@@ -2,6 +2,8 @@ import os
 import random
 from pygame import mixer
 
+
+
 class MusicPlayer:
     def __init__(self, music_dir):
         self.music_dir = music_dir

@@ -7,8 +7,13 @@ from src.quiz.quizzes.TroisImages import QuizF
 
 from src.quiz.Quiz import Quiz
 
+from src.toolbox.Debug import Debug
+
 import random
 
+
+
+Debug.prefixActive = False
 
 # ------------------------------- Quiz manager ------------------------------- #
 
@@ -64,5 +69,3 @@ class QuizManager:
             self.current_quiz.process()
         except KeyboardInterrupt:
             Debug.LogSuccess("Programme interrompu par l'utilisateur")
-
-

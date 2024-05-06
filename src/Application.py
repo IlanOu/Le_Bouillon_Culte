@@ -48,6 +48,7 @@ class App:
                 
         except KeyboardInterrupt:
             Debug.LogSuccess("Programme interrompu par l'utilisateur")
+            sys.exit()
         finally:
             self.rfid_reader.cleanup()
 

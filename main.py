@@ -13,6 +13,7 @@
 from src.quiz.QuizManager import QuizManager
 from src.objects.rfid.RFIDReader import RFIDReader
 
+
 # Exemple d'utilisation
 rfid_reader = RFIDReader()
 manager = QuizManager(rfid_reader)
