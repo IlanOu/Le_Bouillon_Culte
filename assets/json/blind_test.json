@@ -15,14 +15,15 @@
          },
          {
             "question": "Quelle est cette musique ?",
-            "audio": "",
+            "audio": "Javanaise.mp3",
             "answers": [
-                "A",
-                "B",
-                "C",
-                "D"
+                "Sous le Ciel de Paris - Yves Montand",
+                "La Javanaise - Serge Gainsbourg",
+                "Ne Me Quitte Pas - Jacques Brel",
+                "Que Reste-t-il de Nos Amours ? - Charles Trenet"
+
             ],
-            "correct_answer": "B",
+            "correct_answer": "La Javanaise, Serge Gainsbourg",
             "details": "[Suite de la musique]"
         }
      ],

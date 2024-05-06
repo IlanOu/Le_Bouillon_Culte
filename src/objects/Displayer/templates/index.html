@@ -11,6 +11,8 @@
     const eventSource = new EventSource("/stream");
     eventSource.onmessage = (event) => {
       const text = event.data;
+
+      
       console.log(text)
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';

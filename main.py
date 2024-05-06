@@ -8,12 +8,18 @@
 # -------------------------------- à supprimer ------------------------------- #
 from src.quiz.Quiz import *
 
+from src.quiz.quizzes.BlindTest import Quiz_BlindTest
+from src.quiz.quizzes.DevineSuite import Quiz_DevineSuite
+from src.quiz.quizzes.OuCest import Quiz_OuCest
+from src.quiz.quizzes.QuiSuisJe import Quiz_QuiSuisJe
+from src.quiz.quizzes.CultureG import Quiz_CultureG
+
 # Exemple d'utilisation
 manager = QuizManager()
 
 quiz1 = Quiz_BlindTest("./assets/json/blind_test.json")
-quiz2 = Quiz_OuCest("./assets/json/ou_cest.json")
-quiz3 = Quiz_DevineSuite("./assets/json/devine_suite.json")
+# quiz2 = Quiz_OuCest("./assets/json/ou_cest.json")
+# quiz3 = Quiz_DevineSuite("./assets/json/devine_suite.json")
 quiz4 = Quiz_QuiSuisJe("./assets/json/qui_suis_je.json")
 quiz5 = Quiz_CultureG("./assets/json/culture_g.json")
 # quiz6 = Quiz_("./assets/json/.json")
@@ -21,8 +27,10 @@ quiz5 = Quiz_CultureG("./assets/json/culture_g.json")
 manager.add_quiz(quiz1)
 # manager.add_quiz(quiz2) # Todo -> à faire
 # manager.add_quiz(quiz3) # Todo -> à faire
+
 # manager.add_quiz(quiz4)
 # manager.add_quiz(quiz5)
+
 # manager.add_quiz(quiz6)
 
 # manager.set_current_quiz(quiz1)
