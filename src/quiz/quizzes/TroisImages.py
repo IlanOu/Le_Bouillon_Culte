@@ -1,12 +1,13 @@
 import json
 from src.quiz.Quiz import Quiz
 
-# Devine la suite 
+
+# Quiz F
 # ---------------------------------------------------------------------------- #
 
-class Quiz_DevineSuite(Quiz):
+class QuizF(Quiz):
     def __init__(self, rfid_reader, json_path = ""):
-        self.name = "Devine la suite"
+        self.name = "QuizF"
         self.json_path = json_path
         self.datas = {}
         self.fill_datas()

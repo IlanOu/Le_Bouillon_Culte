@@ -27,7 +27,7 @@ class MusicPlayer:
         music_length = mixer.Sound(music_file_path).get_length()
 
         # Choisir un temps de départ aléatoire
-        start_time = random.uniform(0, music_length - duration)
+        start_time = random.uniform(0, music_length - duration*2)
 
         mixer.music.play(start=start_time)
 

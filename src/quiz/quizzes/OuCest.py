@@ -2,12 +2,6 @@ import json
 import random
 
 from src.toolbox.Debug import Debug
-from src.toolbox.Speaker import *
-
-from src.quiz.MusicPlayer import MusicPlayer
-
-from src.objects.Displayer.WebDisplayer import *
-from src.objects.rfid.RFIDReader import RFIDReader
 
 from src.quiz.Quiz import Quiz
 
@@ -15,15 +9,16 @@ from src.quiz.Quiz import Quiz
 # ---------------------------------------------------------------------------- #
 
 class Quiz_OuCest(Quiz):
-    def __init__(self, jsonPath = ""):
+    def __init__(self, rfid_reader, json_path = ""):
         self.name = "Où c'est ?"
-        self.jsonPath = jsonPath
+        self.json_path = json_path
         self.datas = {}
         self.fill_datas()
+        self.rfid_reader = rfid_reader
     
     def fill_datas(self):
-        if (self.jsonPath != ""):
-            with open(self.jsonPath, 'r') as file:
+        if (self.json_path != ""):
+            with open(self.json_path, 'r') as file:
                 self.datas = json.load(file)
 
 
