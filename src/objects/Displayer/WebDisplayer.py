@@ -4,6 +4,8 @@ import logging
 
 from src.toolbox.Debug import *
 
+
+
 """
 Lancer le WebDisplayer :
 
@@ -27,7 +29,6 @@ class StringUpdater:
     def show(self, text: str):
         self.text = str(text)
         self.update_event.set()
-
 
 class WebApp(object):
     _instance = None
@@ -63,12 +64,12 @@ class WebApp(object):
 
         return cls._instance
 
-    def show(self, text):
+    def show(self, text, mode="text"):
         if not self.is_running:
-            self.string_updater.show(text)
+            self.string_updater.show(mode + "||" + text)
 
             self.server = threading.Thread(target=self.app.run, kwargs={'debug': False, 'use_reloader': False})
             self.server.start()
             self.is_running = True
         else:
-            self.string_updater.show(text)
+            self.string_updater.show(mode + "||" + text)

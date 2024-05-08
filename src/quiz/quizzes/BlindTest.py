@@ -4,12 +4,11 @@ import random
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import *
 
+from src.quiz.Quiz import Quiz
 from src.quiz.MusicPlayer import MusicPlayer
 
 from src.objects.Displayer.WebDisplayer import *
-# from src.objects.rfid.RFIDReader import RFIDReader
 
-from src.quiz.Quiz import Quiz
 
 
 # Blind test 
@@ -22,6 +21,8 @@ class Quiz_BlindTest(Quiz):
         self.name = "Blind test"
         self.fill_datas()
         self.rfid_reader = rfid_reader
+        
+        self.webApp = WebApp(update_interval=1)
         
         
     def fill_datas(self):
@@ -59,12 +60,7 @@ class Quiz_BlindTest(Quiz):
         details_value = question["details"]
         
         # 1.
-        
-        # Initialisation et exécution de l'application
-        webApp = WebApp(update_interval=1)
-        
-
-        webApp.show(question_value)
+        self.webApp.show(question_value, "text")
         Speaker.say(question_value, GttsEngine())
         
         # 2.
@@ -77,7 +73,7 @@ class Quiz_BlindTest(Quiz):
         
     
         # 3.
-        webApp.show(question_value + " ~ " + display_possible_responses_value)
+        self.webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
         
         # 4.
@@ -86,7 +82,7 @@ class Quiz_BlindTest(Quiz):
         
         # 5.
         response = "La bonne réponse était : " + response_value
-        webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value)
+        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         Speaker.say(response, GttsEngine())
         # Speaker.say(details_value, GttsEngine())
         player.play_next_random_section()

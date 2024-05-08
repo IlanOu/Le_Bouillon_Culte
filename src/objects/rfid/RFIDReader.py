@@ -1,24 +1,34 @@
-from src.toolbox.Debug import Debug, Style
+from src.toolbox.Debug import Debug
 from src.objects.button.Button import Button
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import time
 
+from src.objects.Displayer.WebDisplayer import WebApp
+
 class RFIDReader:
-    def __init__(self):
-        self.button = Button(16)
+    def __init__(self, button_pins=[16]):
+        self.buttons = [Button(pin) for pin in button_pins]
         self.MIFAREReader = SimpleMFRC522()
+        self.webApp = WebApp(update_interval=1)
 
     def read_rfid(self):
         Debug.LogWhisper("Passez le badge devant le capteur RFID...")
+        self.webApp.show("Placez le pion sur la carte")
+        
+        
         id, text = self.MIFAREReader.read()
         return id, text
 
     def wait_for_button_press(self):
-        Debug.LogWhisper("Appuyez sur le bouton svp...")
-        button_pressed = False
-        while not button_pressed:
-            button_pressed = self.button.process()
+        Debug.LogWhisper("Appuyez sur un bouton svp...")
+        # self.webApp.show("Appuyez sur un des boutons")
+        
+        while True:
+            for button in self.buttons:
+                if button.process():
+                    Debug.LogWhisper(f"Pin du bouton pressé: {button.pin}")
+                    return button.pin
             time.sleep(0.1)
 
     def cleanup(self):

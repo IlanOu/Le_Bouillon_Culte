@@ -10,52 +10,82 @@
   <script>
     const eventSource = new EventSource("/stream");
     eventSource.onmessage = (event) => {
-      const text = event.data;
-
-      
-      console.log(text)
+      const data = event.data;
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
-      if (text.includes('|')) {
-        const [tableTitle, tableContent] = text.includes('~') ? text.split('~') : ['', text];
-        const words = tableContent.split('|');
+      if (data.includes('||')) {
+        const [mode, content] = data.split('||');
 
-        if (tableTitle) {
-          const title = document.createElement('h3');
-          title.classList.add('title');
-          title.innerText = tableTitle;
-          dynamicContent.appendChild(title);
+        console.log(mode)
+
+
+        switch (mode) {
+          case 'text':
+            renderText(content, dynamicContent);
+            break;
+          case 'table':
+            renderTable(content, dynamicContent);
+            break;
+          case 'image':
+            renderImage(content, dynamicContent);
+            break;
+          default:
+            console.log("Mode non pris en charge");
         }
-
-        const table = document.createElement('table');
-        table.classList.add('table');
-
-        for (let i = 0; i < words.length; i += 2) {
-          const row = document.createElement('tr');
-          const cell1 = document.createElement('td');
-          cell1.innerHTML = words[i].trim().split('/n').join('<br>');
-          row.appendChild(cell1);
-
-          if (words[i + 1]) {
-            const cell2 = document.createElement('td');
-            cell2.innerHTML = words[i + 1].trim().split('/n').join('<br>');
-            row.appendChild(cell2);
-          }
-
-          table.appendChild(row);
-        }
-
-        dynamicContent.appendChild(table);
       } else {
-        const paragraphs = text.split('/n').filter(p => p.trim() !== '').map(paragraph => {
-          const p = document.createElement('p');
-          p.innerText = paragraph;
-          return p;
-        });
-        paragraphs.forEach(paragraph => dynamicContent.appendChild(paragraph));
+        console.log("Erreur, aucun mode n'est spécifié");
       }
     };
+
+    function renderText(content, container) {
+      const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
+        const p = document.createElement('p');
+        p.innerText = paragraph;
+        return p;
+      });
+      paragraphs.forEach(paragraph => container.appendChild(paragraph));
+    }
+
+    function renderTable(content, container) {
+      const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
+      const words = tableContent.split('|');
+
+      if (tableTitle) {
+        const title = document.createElement('h3');
+        title.classList.add('title');
+        title.innerText = tableTitle;
+        container.appendChild(title);
+      }
+
+      const table = document.createElement('table');
+      table.classList.add('table');
+
+      for (let i = 0; i < words.length; i += 2) {
+        const row = document.createElement('tr');
+        const cell1 = document.createElement('td');
+        cell1.innerHTML = words[i].trim().split('/n').join('<br>');
+        row.appendChild(cell1);
+
+        if (words[i + 1]) {
+          const cell2 = document.createElement('td');
+          cell2.innerHTML = words[i + 1].trim().split('/n').join('<br>');
+          row.appendChild(cell2);
+        }
+
+        table.appendChild(row);
+      }
+
+      container.appendChild(table);
+    }
+
+    function renderImage(content, container) {
+      const img = document.createElement('img');
+      img.src = content;
+      img.style.maxWidth = '100%';
+      img.style.maxHeight = '100%';
+      container.appendChild(img);
+    }
   </script>
 </body>
 </html>
