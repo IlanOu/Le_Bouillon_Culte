@@ -63,9 +63,11 @@ class QuizManager:
 
     def run(self):
         if self.current_quiz == None:
-            Debug.LogError("Définissez d'abord le quiz ! [ Utilisez set_quiz() ]")
+            Debug.LogError("Définissez d'abord le quiz ! [ Utilisez setup() ]")
         # question = self.current_quiz.get_random_question(self.zone)
         try:
+            self.rfid_reader.read_rfid()
+            
             self.current_quiz.process()
         except KeyboardInterrupt:
             Debug.LogSuccess("Programme interrompu par l'utilisateur")

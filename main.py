@@ -21,7 +21,6 @@ manager.setup()
 manager.run()
 
 
-
 # ----------------------------------- Test ----------------------------------- #
 """ 
 from src.toolbox.Speaker import *

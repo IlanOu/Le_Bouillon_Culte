@@ -120,3 +120,70 @@ class Debug:
         if isinstance(style, list):
             style = "".join(style)
         Debug._log(style + message, Style.WARNING)
+
+    
+    @staticmethod
+    def LogSeparator(msg=None, style=None):
+        log_length = 50
+
+        to_print = ""
+
+        if msg is None:
+            to_print = "-" * log_length
+        else:
+            string_length = len(str(msg))
+            separator_length = int((log_length - string_length) / 2)
+
+            if string_length < log_length:
+                to_print = "-" * separator_length + " " + str(msg) + " " + "-" * separator_length
+            else:
+                to_print = str(msg)
+        
+        
+        while len(to_print) < log_length:
+            to_print += "-"
+        
+        while len(to_print) > log_length:
+            to_print = to_print[1:]
+        
+        prefix_active = Debug.prefixActive
+        Debug.prefixActive = False
+        if style == None:
+            Debug._log(str(to_print), Style.BOLD + Style.PURPLE)
+        else:
+            Debug._log(str(to_print), style)
+        
+        Debug.prefixActive = prefix_active
+
+    @staticmethod
+    def LogFatSeparator(msg, style=None):
+        log_length = 50
+        string_length = len(str(msg))
+
+        space_length = int((log_length - string_length) / 2)
+        separator_length = log_length
+
+        
+        center = " "*space_length + str(msg) + " "*space_length
+
+        if string_length > log_length:
+            separator_length = string_length
+        else:
+            while len(center) < log_length:
+                center += " "
+            
+            while len(center) > log_length:
+                center = center[1:]
+        
+        line = "-"*separator_length
+        
+        to_print = line + "\n" + center + "\n" + line
+        
+        prefix_active = Debug.prefixActive
+        Debug.prefixActive = False
+        if style == None:
+            Debug._log(str(to_print), Style.PURPLE + Style.BOLD)
+        else:
+            Debug._log(str(to_print), style)
+        
+        Debug.prefixActive = prefix_active
