@@ -1,7 +1,7 @@
 {
   "Auvergne-Rhônes-Alpes": [
     {
-      "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". Qui suis-je ?",
+      "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". /n Qui suis-je ?",
       "answers": [
         "Bourvil",
         "Alain Chabat",
@@ -13,7 +13,7 @@
       "details_image": "C1_CE_10.jpg"
     },
     {
-      "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. Qui suis-je ?",
+      "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. /n Qui suis-je ?",
       "answers": [
         "Vladimir Lénine",
         "Sigmund Freud",
@@ -27,7 +27,7 @@
   ],
   "Île-de-France": [
     {
-      "question": "J’ai été maire de Paris pendant 18 ans puis président de la République, qui suis-je ?",
+      "question": "J’ai été maire de Paris pendant 18 ans puis président de la République. /n Qui suis-je ?",
       "answers": [
         "François Mitterrand",
         "Jacques Chirac",
@@ -39,7 +39,7 @@
       "details_image": "C1_NE_2.jpg"
     },
     {
-      "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. Qui suis-je ?",
+      "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. /n Qui suis-je ?",
       "answers": [
         "Muriel Robin",
         "Chantal Lauby",
@@ -53,7 +53,7 @@
   ],
   "Bretagne": [
     {
-      "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique ?",
+      "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique. /n Qui suis-je ?",
       "answers": [
         "Francis Cabrel",
         "Jean-Micel Jarre",
@@ -65,7 +65,7 @@
       "details_image": "C2_NO_2.jpg"
     },
     {
-      "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques. J'ai également été le maire de ma ville natale en Bretagne. Qui suis-je ?",
+      "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques. /nJ'ai également été le maire de ma ville natale en Bretagne. /n Qui suis-je ?",
       "answers": [
         "Valéry Giscard d'Estaing",
         "Georges Pompidou",
@@ -79,7 +79,7 @@
   ],
   "Hauts de France": [
     {
-      "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme” Qui suis-je?",
+      "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme”. /n Qui suis-je?",
       "answers": [
         "Sainte Thérèse de Lisieux",
         "Sainte Marie",
@@ -91,7 +91,7 @@
       "details_image": "C1_NO_9.jpg"
     },
     {
-      "question": "Je suis un grand écrivain du XIXe siècle, j'ai écrit \"Le tour du Monde en quatre-vingts jours\". Qui suis-je ?",
+      "question": "Je suis un grand écrivain du XIXe siècle, j'ai écrit \"Le tour du Monde en quatre-vingts jours\". /n Qui suis-je ?",
       "answers": [
         "Honoré de Balzac",
         "Jules Verne",

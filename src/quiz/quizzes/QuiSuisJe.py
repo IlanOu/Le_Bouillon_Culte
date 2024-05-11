@@ -48,7 +48,7 @@ class Quiz_QuiSuisJe(Quiz):
         # Get values
         question_value = question["question"]
         possible_responses_value = question["answers"]
-        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
+        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
         display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
         details_value = question["details"]
@@ -57,7 +57,7 @@ class Quiz_QuiSuisJe(Quiz):
     
         # 1. Display question
         self.webApp.show(question_value, "text")
-        Speaker.say(question_value, GttsEngine())
+        Speaker.say(question_value.replace("/n", ""), GttsEngine())
         
         # 2.
         self.webApp.show(display_possible_responses_value, "table")
@@ -74,8 +74,9 @@ class Quiz_QuiSuisJe(Quiz):
         
         time.sleep(3)
         pass # Show image
-        self.webApp.show("./assets/images/" + details_image_value, "image")
+        self.webApp.show("images/" + details_image_value, "image")
         
-        time.sleep(1000)
+        time.sleep(10)
+        
         
         
