@@ -46,7 +46,7 @@ class QuizManager:
         quiz5 = Quiz_CultureG(self.rfid_reader, "./assets/json/culture_g.json")
         # quiz6 = Quiz_(self.rfid_reader, "./assets/json/.json")
 
-        # self.add_quiz(quiz1)
+        self.add_quiz(quiz1)
         # self.add_quiz(quiz2) # Todo -> à faire
         # self.add_quiz(quiz3) # Todo -> à faire
 
@@ -56,14 +56,14 @@ class QuizManager:
         # self.add_quiz(quiz6)
 
         # self.__set_current_quiz(quiz1)
-        random_quiz = self.__get_random_quiz()
-        self.__set_current_quiz(random_quiz)
-
 
     def run(self):
+        random_quiz = self.__get_random_quiz()
+        self.__set_current_quiz(random_quiz)
+        
         if self.current_quiz == None:
             Debug.LogError("Définissez d'abord le quiz ! [ Utilisez setup() ]")
-        # question = self.current_quiz.get_random_question(self.zone)
+
         try:
             self.rfid_reader.read_rfid()
             
