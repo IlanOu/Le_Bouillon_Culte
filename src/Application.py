@@ -72,5 +72,4 @@ class App:
         manager.setup()
         
         while self.running:
-            # manager.set_random_quiz()
             manager.run()

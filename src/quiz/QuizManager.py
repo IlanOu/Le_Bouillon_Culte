@@ -46,12 +46,12 @@ class QuizManager:
         quiz5 = Quiz_CultureG(self.rfid_reader, "./assets/json/culture_g.json")
         # quiz6 = Quiz_(self.rfid_reader, "./assets/json/.json")
 
-        self.add_quiz(quiz1)
+        self.add_quiz(quiz1) # à mettre avant le 13/05
         # self.add_quiz(quiz2) # Todo -> à faire
         # self.add_quiz(quiz3) # Todo -> à faire
 
         self.add_quiz(quiz4) # à mettre avant le 13/05
-        # self.add_quiz(quiz5) # à mettre avant le 13/05
+        self.add_quiz(quiz5) # à mettre avant le 13/05
 
         # self.add_quiz(quiz6)
 
