@@ -80,18 +80,25 @@ class QuizManager:
 
     def run(self):
         self.rfid_reader.webApp.show("Faites tourner la roue !")
-        Debug.LogSeparator("Appuyez sur 'Entré' pour lancer")
+        Debug.LogWhisper("Appuyez sur 'Entré' pour lancer")
         input("")
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
         
         
         if self.current_quiz == None:
-            Debug.LogError("Définissez d'abord le quiz ! [ Utilisez setup() ]")
+            Debug.LogError("Aucun quiz n'est définit")
         try:
+            # Wait for RFID
             self.rfid_reader.read_rfid()
             
+            # Run quiz
             self.current_quiz.process()
+            
+            # On finish, cleanup GPIO
+            self.rfid_reader.cleanup()
+        
+        # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
             self.rfid_reader.webApp.show("❌ Programme stoppé", "stop")
             Debug.LogError("Programme interrompu par l'utilisateur")

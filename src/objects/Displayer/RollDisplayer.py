@@ -27,7 +27,6 @@ class RollingNumberDisplay:
         while True:
             current_number = random.choice(self.numbers)
             self.webApp.show(str(current_number), "roll")
-            print(current_number)
             time.sleep(self.initial_delay)
 
             # Arrêter le défilement lorsque le nombre cible est atteint
@@ -41,7 +40,6 @@ class RollingNumberDisplay:
         for i in range(num_steps + 1):
             current_number = random.choice(self.numbers)
             self.webApp.show(str(current_number), "roll")
-            print(current_number)
 
             # Calculer le nouveau délai avec une fonction exponentielle modifiée
             delay = self.initial_delay + (self.final_delay - self.initial_delay) * (1 - math.exp(-(i / num_steps)**2))

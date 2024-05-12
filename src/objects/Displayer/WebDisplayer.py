@@ -35,7 +35,7 @@ class WebApp(object):
 
     def __new__(cls, update_interval=5):
         if cls._instance is None:
-            Debug.Log("Server is running on : 127.0.0.1:5000")
+            Debug.LogSeparator("Server is running on : 127.0.0.1:5000")
 
             cls._instance = super(WebApp, cls).__new__(cls)
             cls._instance.app = Flask(__name__)

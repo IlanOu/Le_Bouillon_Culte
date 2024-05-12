@@ -9,20 +9,22 @@ from src.objects.Displayer.WebDisplayer import WebApp
 class RFIDReader:
     def __init__(self, button_pins=[16]):
         self.buttons = [Button(pin) for pin in button_pins]
-        self.MIFAREReader = SimpleMFRC522()
+        self.RFID = SimpleMFRC522()
         self.webApp = WebApp(update_interval=1)
 
     def read_rfid(self):
         Debug.LogWhisper("Passez le badge devant le capteur RFID...")
         self.webApp.show("Placez le pion sur la carte")
         
-        
-        id, text = self.MIFAREReader.read()
+        id, text = self.RFID.read()
         return id, text
 
     def wait_for_button_press(self):
         Debug.LogWhisper("Appuyez sur un bouton svp...")
         # self.webApp.show("Appuyez sur un des boutons")
+        
+        for button in self.buttons:
+            button.setup_button()
         
         while True:
             for button in self.buttons:
