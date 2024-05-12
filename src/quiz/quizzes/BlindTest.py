@@ -22,7 +22,9 @@ class Quiz_BlindTest(Quiz):
         self.fill_datas()
         self.rfid_reader = rfid_reader
         
-        self.webApp = WebApp(update_interval=1)
+        # self.webApp = WebApp(update_interval=1)
+        self.webApp = self.rfid_reader.webApp
+        
         
         
     def fill_datas(self):

@@ -17,9 +17,6 @@
       if (data.includes('||')) {
         const [mode, content] = data.split('||');
 
-        console.log(mode)
-
-
         switch (mode) {
           case 'text':
             renderText(content, dynamicContent);
@@ -30,6 +27,9 @@
           case 'image':
             renderImage(content, dynamicContent);
             break;
+          case 'stop':
+            renderStop(content, dynamicContent);
+            break;
           default:
             console.log("Mode non pris en charge");
         }
@@ -38,6 +38,9 @@
       }
     };
 
+
+    // Text
+    // -----------------------------------------------------
     function renderText(content, container) {
       const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
         const p = document.createElement('p');
@@ -47,6 +50,8 @@
       paragraphs.forEach(paragraph => container.appendChild(paragraph));
     }
 
+    // Table
+    // -----------------------------------------------------
     function renderTable(content, container) {
       const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
       const words = tableContent.split('|');
@@ -79,6 +84,9 @@
       container.appendChild(table);
     }
 
+
+    // Image
+    // -----------------------------------------------------
     function renderImage(content, container) {
       const img = document.createElement('img');
       img.src = content;
@@ -86,6 +94,15 @@
       img.style.maxHeight = '100%';
       img.style.objectFit = 'contain';
       container.appendChild(img);
+    }
+    
+    // STOP
+    // -----------------------------------------------------
+    function renderStop(stopString, container) {
+      const stopMessage = document.createElement('h2');
+      stopMessage.classList.add('stopError');
+      stopMessage.innerText = stopString;
+      container.appendChild(stopMessage);
     }
   </script>
 </body>
@@ -141,6 +158,12 @@ h2 {
     color: white;
     text-align: center;
     margin-bottom: 10px;
+}
+
+
+.stopError{
+    color: red;
+    text-align: center;
 }
 
 #dynamic-content {

@@ -63,10 +63,10 @@ class QuizManager:
         
         if self.current_quiz == None:
             Debug.LogError("Définissez d'abord le quiz ! [ Utilisez setup() ]")
-
         try:
             self.rfid_reader.read_rfid()
             
             self.current_quiz.process()
         except KeyboardInterrupt:
+            self.rfid_reader.webApp.show("❌ Programme stoppé", "stop")
             Debug.LogError("Programme interrompu par l'utilisateur")
