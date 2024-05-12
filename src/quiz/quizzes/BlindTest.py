@@ -7,7 +7,7 @@ from src.toolbox.Speaker import *
 from src.quiz.Quiz import Quiz
 from src.quiz.MusicPlayer import MusicPlayer
 
-from src.objects.Displayer.WebDisplayer import *
+from src.objects.displayer.WebDisplayer import *
 
 
 

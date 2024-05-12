@@ -7,7 +7,7 @@ from src.quiz.quizzes.TroisImages import QuizF
 
 from src.quiz.Quiz import Quiz
 
-from src.objects.Displayer.RollDisplayer import RollingNumberDisplay
+from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 
 
 from src.toolbox.Debug import Debug

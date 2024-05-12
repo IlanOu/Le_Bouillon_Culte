@@ -1,7 +1,7 @@
 import time
 import random
 import math
-from src.objects.Displayer.WebDisplayer import WebApp
+from src.objects.displayer.WebDisplayer import WebApp
 
 class RollingNumberDisplay:
     def __init__(self, numbers, target_number, num_rolls=3):

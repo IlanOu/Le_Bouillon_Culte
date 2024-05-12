@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import time
 
-from src.objects.Displayer.WebDisplayer import WebApp
+from src.objects.displayer.WebDisplayer import WebApp
 
 class SensorsManager:
     def __init__(self, button_pins=[16]):
