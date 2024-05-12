@@ -6,7 +6,6 @@ class App:
     def __init__(self):
         self.running = True
     
-    
     def run(self):
         rfid_reader = RFIDReader()
         manager = QuizManager(rfid_reader)
