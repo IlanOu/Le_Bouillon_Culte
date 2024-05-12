@@ -143,6 +143,6 @@ class Speaker:
             text (str): Le texte à lire.
             engine (TTSEngine, optional): Le moteur de synthèse vocale à utiliser. Par défaut, Pyttsx3Engine est utilisé.
         """
-        Debug.LogColor(">> " + text, Style.ITALIC + Style.BLUE)
+        Debug.LogColor("[TTS]> " + text, Style.ITALIC + Style.BLUE)
         engine.say(text)
         

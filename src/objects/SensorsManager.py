@@ -1,10 +1,15 @@
-from src.toolbox.Debug import Debug
+from src.toolbox.Debug import Debug, Style
+
 from src.objects.button.Button import Button
+from src.objects.displayer.WebDisplayer import WebApp
+
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import time
 
-from src.objects.displayer.WebDisplayer import WebApp
+
+# Sensors Manager
+# ---------------------------------------------------------------------------- #
 
 class SensorsManager:
     def __init__(self, button_pins=[16]):
@@ -13,14 +18,14 @@ class SensorsManager:
         self.webApp = WebApp(update_interval=1)
 
     def read_rfid(self):
-        Debug.LogWhisper("Passez le badge devant le capteur RFID...")
+        Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
         self.webApp.show("Placez le pion sur la carte")
         
         id, text = self.RFID.read()
         return id, text
 
     def wait_for_button_press(self):
-        Debug.LogWhisper("Appuyez sur un bouton svp...")
+        Debug.LogColor("[Action]> Appuyez sur un bouton svp...", Style.PURPLE + Style.ITALIC)
         
         for button in self.buttons:
             button.setup_button()
@@ -28,7 +33,7 @@ class SensorsManager:
         while True:
             for button in self.buttons:
                 if button.process():
-                    Debug.LogWhisper(f"Pin du bouton pressé: {button.pin}")
+                    Debug.LogWhisper(f"[Log]> Pin du bouton pressé: {button.pin}")
                     return button.pin
             time.sleep(0.1)
 

@@ -2,6 +2,8 @@ import time
 import random
 import math
 from src.objects.displayer.WebDisplayer import WebApp
+from src.toolbox.Debug import Debug
+
 
 class RollingNumberDisplay:
     def __init__(self, numbers, target_number, num_rolls=3):
@@ -53,7 +55,7 @@ class RollingNumberDisplay:
         time.sleep(0.5)
         # Afficher le nombre cible une dernière fois après le ralentissement
         self.webApp.show(str(self.target_number), "roll")
-        print(self.target_number)
+        Debug.LogWhisper("[Log]> " + self.target_number)
 
 
 """

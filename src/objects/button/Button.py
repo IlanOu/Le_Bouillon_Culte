@@ -13,7 +13,7 @@ class Button:
     def process(self):
         button_state = GPIO.input(self.pin)
         if button_state == GPIO.LOW:
-            Debug.LogWhisper("Bouton pressé")
+            Debug.LogWhisper("[Log]> Bouton pressé")
             return True
         else:
             return False

@@ -1,4 +1,4 @@
-
+""" 
 # Using simple MFRC522
 
 import RPi.GPIO as GPIO
@@ -26,7 +26,7 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
-
+ """
 
 """
 

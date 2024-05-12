@@ -9,8 +9,7 @@ from src.quiz.Quiz import Quiz
 
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 
-
-from src.toolbox.Debug import Debug
+from src.toolbox.Debug import Debug, Style
 
 import random
 import time
@@ -18,7 +17,6 @@ import time
 Debug.prefixActive = False
 
 # ------------------------------- Quiz manager ------------------------------- #
-
 
 class QuizManager:
     def __init__(self, sensors_manager):
@@ -86,14 +84,14 @@ class QuizManager:
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
         self.sensors_manager.webApp.show("Faites tourner la roue !")
-        Debug.LogWhisper("Appuyez sur 'Entré' pour lancer")
+        Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         input("")
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
         
         
         if self.current_quiz == None:
-            Debug.LogError("Aucun quiz n'est définit")
+            Debug.LogError("[Error]> Aucun quiz n'est définit")
         
         # Run quiz
         # ---------------------------------------------------------------------------- #
@@ -110,4 +108,4 @@ class QuizManager:
         # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
             self.sensors_manager.webApp.show("❌ Programme stoppé", "stop")
-            Debug.LogError("Programme interrompu par l'utilisateur")
+            Debug.LogError("[Error]> Programme interrompu par l'utilisateur")

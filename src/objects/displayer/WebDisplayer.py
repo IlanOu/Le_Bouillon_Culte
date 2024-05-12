@@ -29,6 +29,7 @@ class StringUpdater:
     def show(self, text: str):
         self.text = str(text)
         self.update_event.set()
+        Debug.LogWhisper("[Display]> " + text)
 
 class WebApp(object):
     _instance = None
