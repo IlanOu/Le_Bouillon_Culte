@@ -30,6 +30,9 @@
           case 'stop':
             renderStop(content, dynamicContent);
             break;
+          case 'roll':
+            renderRoll(content, dynamicContent);
+            break;
           default:
             console.log("Mode non pris en charge");
         }
@@ -104,6 +107,18 @@
       stopMessage.innerText = stopString;
       container.appendChild(stopMessage);
     }
+
+
+    // Roll
+    // -----------------------------------------------------
+    function renderRoll(rollString, container) {
+      const rollContent = document.createElement('h2');
+      rollContent.classList.add('rollContent');
+      rollContent.innerText = rollString;
+      container.appendChild(rollContent);
+    }
+
+
   </script>
 </body>
 </html>
@@ -164,6 +179,12 @@ h2 {
 .stopError{
     color: red;
     text-align: center;
+}
+
+.rollContent{
+  font-size: 40px;
+  color: white;
+  text-align: center;
 }
 
 #dynamic-content {

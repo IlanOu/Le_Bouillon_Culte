@@ -7,10 +7,13 @@ from src.quiz.quizzes.TroisImages import QuizF
 
 from src.quiz.Quiz import Quiz
 
+from src.objects.Displayer.RollDisplayer import RollingNumberDisplay
+
+
 from src.toolbox.Debug import Debug
 
 import random
-
+import time
 
 Debug.prefixActive = False
 
@@ -33,6 +36,24 @@ class QuizManager:
     def __get_random_quiz(self):
         random_quiz = random.choice(self.quizzes)
         return random_quiz
+
+    
+    def __display_random_quiz(self):
+        quizzes_names = []
+        for quiz in self.quizzes:
+            quizzes_names.append(quiz.name)
+        
+        random_quiz = self.__get_random_quiz()
+        target_quiz = random_quiz.name
+        num_rolls = 20
+
+        rolling_display = RollingNumberDisplay(quizzes_names, target_quiz, num_rolls)
+        rolling_display.display_rolling_number()
+        
+        time.sleep(3)
+        
+        return random_quiz 
+
 
     def __set_current_quiz(self, quiz: Quiz):
         self.current_quiz = quiz
@@ -58,8 +79,12 @@ class QuizManager:
         # self.__set_current_quiz(quiz1)
 
     def run(self):
-        random_quiz = self.__get_random_quiz()
+        self.rfid_reader.webApp.show("Faites tourner la roue !")
+        Debug.LogSeparator("Appuyez sur 'Entré' pour lancer")
+        input("")
+        random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
+        
         
         if self.current_quiz == None:
             Debug.LogError("Définissez d'abord le quiz ! [ Utilisez setup() ]")
