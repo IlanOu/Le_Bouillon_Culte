@@ -40,9 +40,9 @@ class WebApp(object):
             cls._instance = super(WebApp, cls).__new__(cls)
             cls._instance.app = Flask(__name__)
             cls._instance.app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-            cls._instance.app.config['SERVER_NAME'] = '127.0.0.1:5000'  # Ajoutez cette ligne
-            cls._instance.app.config['APPLICATION_ROOT'] = '/'  # Ajoutez cette ligne
-            cls._instance.app.config['PREFERRED_URL_SCHEME'] = 'http'  # Ajoutez cette ligne
+            cls._instance.app.config['SERVER_NAME'] = '127.0.0.1:5000'
+            cls._instance.app.config['APPLICATION_ROOT'] = '/'
+            cls._instance.app.config['PREFERRED_URL_SCHEME'] = 'http'
             cls._instance.string_updater = StringUpdater(update_interval)
             cls._instance.is_running = False
             cls._instance.server = None

@@ -1,5 +1,5 @@
 from src.quiz.QuizManager import QuizManager
-from src.objects.rfid.RFIDReader import RFIDReader
+from src.objects.SensorsManager import SensorsManager
 
 
 class App:
@@ -8,8 +8,8 @@ class App:
     
     
     def run(self):
-        rfid_reader = RFIDReader()
-        manager = QuizManager(rfid_reader)
+        sensors_manager = SensorsManager()
+        manager = QuizManager(sensors_manager)
         manager.setup()
         
         while self.running:

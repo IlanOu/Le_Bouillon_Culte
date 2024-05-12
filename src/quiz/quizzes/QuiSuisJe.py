@@ -13,15 +13,15 @@ import time
 # ---------------------------------------------------------------------------- #
 
 class Quiz_QuiSuisJe(Quiz):
-    def __init__(self, rfid_reader, json_path = ""):
+    def __init__(self, sensors_manager, json_path = ""):
         self.name = "Qui suis-je ?"
         self.json_path = json_path
         self.datas = {}
         self.fill_datas()
-        self.rfid_reader = rfid_reader
+        self.sensors_manager = sensors_manager
         
         # self.webApp = WebApp(update_interval=1)
-        self.webApp = self.rfid_reader.webApp
+        self.webApp = self.sensors_manager.webApp
         
 
     def fill_datas(self):
@@ -65,7 +65,7 @@ class Quiz_QuiSuisJe(Quiz):
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
-        self.rfid_reader.wait_for_button_press()
+        self.sensors_manager.wait_for_button_press()
         
         # 4. Display response
         response = "La bonne réponse était : " + response_value

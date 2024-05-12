@@ -6,7 +6,7 @@ import time
 
 from src.objects.Displayer.WebDisplayer import WebApp
 
-class RFIDReader:
+class SensorsManager:
     def __init__(self, button_pins=[16]):
         self.buttons = [Button(pin) for pin in button_pins]
         self.RFID = SimpleMFRC522()
@@ -21,7 +21,6 @@ class RFIDReader:
 
     def wait_for_button_press(self):
         Debug.LogWhisper("Appuyez sur un bouton svp...")
-        # self.webApp.show("Appuyez sur un des boutons")
         
         for button in self.buttons:
             button.setup_button()

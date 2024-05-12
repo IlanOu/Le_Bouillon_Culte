@@ -6,11 +6,11 @@ Debug.prefixActive = False
 # ------------------------------- Quiz protocol ------------------------------ #
 
 class Quiz:
-    def __init__(self, rfid_reader, jsonpath=""):
+    def __init__(self, sensors_manager, jsonpath=""):
         self.name=""
         self.jsonpath = jsonpath
         self.datas = {}
-        self.rfid_reader = rfid_reader
+        self.sensors_manager = sensors_manager
 
     def process(self):
         Debug.LogError("La méthode get_random_question doit être implémentée dans les classes dérivées.")

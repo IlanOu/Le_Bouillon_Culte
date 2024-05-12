@@ -5,12 +5,12 @@ from src.quiz.Quiz import Quiz
 # ---------------------------------------------------------------------------- #
 
 class Quiz_DevineSuite(Quiz):
-    def __init__(self, rfid_reader, json_path = ""):
+    def __init__(self, sensors_manager, json_path = ""):
         self.name = "Devine la suite"
         self.json_path = json_path
         self.datas = {}
         self.fill_datas()
-        self.rfid_reader = rfid_reader
+        self.sensors_manager = sensors_manager
 
     def fill_datas(self):
         if (self.json_path != ""):

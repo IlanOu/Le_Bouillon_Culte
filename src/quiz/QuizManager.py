@@ -21,11 +21,11 @@ Debug.prefixActive = False
 
 
 class QuizManager:
-    def __init__(self, rfid_reader):
+    def __init__(self, sensors_manager):
         self.quizzes = []
         self.current_quiz = None
         self.zone = ""
-        self.rfid_reader = rfid_reader
+        self.sensors_manager = sensors_manager
 
     def set_zone(self, zone):
         self.zone = zone
@@ -60,26 +60,32 @@ class QuizManager:
 
     
     def setup(self):
-        quiz1 = Quiz_BlindTest(self.rfid_reader, "./assets/json/blind_test.json")
-        # quiz2 = Quiz_OuCest(self.rfid_reader, "./assets/json/ou_cest.json")
-        # quiz3 = Quiz_DevineSuite(self.rfid_reader, "./assets/json/devine_suite.json")
-        quiz4 = Quiz_QuiSuisJe(self.rfid_reader, "./assets/json/qui_suis_je.json")
-        quiz5 = Quiz_CultureG(self.rfid_reader, "./assets/json/culture_g.json")
-        # quiz6 = Quiz_(self.rfid_reader, "./assets/json/.json")
+        
+        # Get quizzes json content
+        # ---------------------------------------------------------------------------- #
+        quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
+        # quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
+        # quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
+        quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
+        quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
+        # quiz6 = Quiz_(self.sensors_manager, "./assets/json/.json")
 
+
+        # Add quizzes to the system
+        # ---------------------------------------------------------------------------- #
         self.add_quiz(quiz1) # à mettre avant le 13/05
         # self.add_quiz(quiz2) # Todo -> à faire
         # self.add_quiz(quiz3) # Todo -> à faire
-
         self.add_quiz(quiz4) # à mettre avant le 13/05
         self.add_quiz(quiz5) # à mettre avant le 13/05
-
         # self.add_quiz(quiz6)
 
-        # self.__set_current_quiz(quiz1)
 
     def run(self):
-        self.rfid_reader.webApp.show("Faites tourner la roue !")
+        
+        # Turn the wheel
+        # ---------------------------------------------------------------------------- #
+        self.sensors_manager.webApp.show("Faites tourner la roue !")
         Debug.LogWhisper("Appuyez sur 'Entré' pour lancer")
         input("")
         random_quiz = self.__display_random_quiz()
@@ -88,17 +94,20 @@ class QuizManager:
         
         if self.current_quiz == None:
             Debug.LogError("Aucun quiz n'est définit")
+        
+        # Run quiz
+        # ---------------------------------------------------------------------------- #
         try:
             # Wait for RFID
-            self.rfid_reader.read_rfid()
+            self.sensors_manager.read_rfid()
             
             # Run quiz
             self.current_quiz.process()
             
             # On finish, cleanup GPIO
-            self.rfid_reader.cleanup()
+            self.sensors_manager.cleanup()
         
         # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
-            self.rfid_reader.webApp.show("❌ Programme stoppé", "stop")
+            self.sensors_manager.webApp.show("❌ Programme stoppé", "stop")
             Debug.LogError("Programme interrompu par l'utilisateur")

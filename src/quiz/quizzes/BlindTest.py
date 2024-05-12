@@ -15,15 +15,15 @@ from src.objects.Displayer.WebDisplayer import *
 # ---------------------------------------------------------------------------- #
 
 class Quiz_BlindTest(Quiz):
-    def __init__(self, rfid_reader, json_path = ""):
+    def __init__(self, sensors_manager, json_path = ""):
         self.json_path = json_path
         self.datas = {}
         self.name = "Blind test"
         self.fill_datas()
-        self.rfid_reader = rfid_reader
+        self.sensors_manager = sensors_manager
         
         # self.webApp = WebApp(update_interval=1)
-        self.webApp = self.rfid_reader.webApp
+        self.webApp = self.sensors_manager.webApp
         
         
         
@@ -48,11 +48,12 @@ class Quiz_BlindTest(Quiz):
     
     
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
+        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant la zone avec les capteurs RFID
         question = self.get_random_question(zone)
         
         
         # Get values
+        # ---------------------------------------------------------------------------- #
         question_value = question["question"]
         possible_responses_value = question["answers"]
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
@@ -61,40 +62,30 @@ class Quiz_BlindTest(Quiz):
         audio_value = question["audio"]
         details_value = question["details"]
         
-        # 1.
+        
+        # System
+        # ---------------------------------------------------------------------------- #
+        
+        # 1. Poser la question
         self.webApp.show(question_value, "text")
         Speaker.say(question_value, GttsEngine())
         
-        # 2.
-        # Exemple d'utilisation
+        # 2. Passer la musique
         music_dir = "./assets/musics/"
         player = MusicPlayer(music_dir)
         music_file = audio_value
         player.play_random_section(music_file)
-        
-        
     
-        # 3.
+        # 3. Proposer les réponses
         self.webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
         
-        # 4.
-        # pass
-        self.rfid_reader.wait_for_button_press()
+        # 4. Attendre la réponse de l'utilisateur
+        self.sensors_manager.wait_for_button_press()
         
-        # 5.
+        # 5. Afficher la réponse + détails
         response = "La bonne réponse était : " + response_value
         self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         Speaker.say(response, GttsEngine())
-        # Speaker.say(details_value, GttsEngine())
         player.play_next_random_section()
-        
-        
-        """ 
-        1. Poser la question
-        2. Passer la musique
-        3. Proposer les réponses
-        4. Attendre la réponse de l'utilisateur
-        5. Afficher la réponse + détails
-        """
         
