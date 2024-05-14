@@ -63,7 +63,7 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
         # quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
-        # quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
+        quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
         quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
         # quiz6 = Quiz_(self.sensors_manager, "./assets/json/.json")
@@ -71,19 +71,19 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        self.add_quiz(quiz1) # à mettre avant le 13/05
+        # self.add_quiz(quiz1) # Fait
         # self.add_quiz(quiz2) # Todo -> à faire
-        # self.add_quiz(quiz3) # Todo -> à faire
-        self.add_quiz(quiz4) # à mettre avant le 13/05
-        self.add_quiz(quiz5) # à mettre avant le 13/05
-        # self.add_quiz(quiz6)
+        # self.add_quiz(quiz3) # Todo -> En cours
+        self.add_quiz(quiz4) # Fait
+        # self.add_quiz(quiz5) # Fait
+        # self.add_quiz(quiz6) # Todo -> à faire
 
 
     def run(self):
         
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
-        self.sensors_manager.webApp.show("Faites tourner la roue !")
+        self.sensors_manager.webApp.show("La partie va commencer !")
         Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         input("")
         random_quiz = self.__display_random_quiz()

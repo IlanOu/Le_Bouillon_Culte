@@ -71,7 +71,7 @@ class Quiz_BlindTest(Quiz):
         Speaker.say(question_value, GttsEngine())
         
         # 2. Passer la musique
-        music_dir = "./assets/musics/"
+        music_dir = "./assets/audio/"
         player = MusicPlayer(music_dir)
         music_file = audio_value
         player.play_random_section(music_file)

@@ -4,7 +4,6 @@ from src.quiz.Quiz import Quiz
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker, GttsEngine
-from src.objects.displayer.WebDisplayer import WebApp
 
 import random
 import time
@@ -74,7 +73,6 @@ class Quiz_QuiSuisJe(Quiz):
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        pass # Show image
         self.webApp.show("images/" + details_image_value, "image")
         
         time.sleep(10)

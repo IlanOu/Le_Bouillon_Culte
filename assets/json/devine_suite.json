@@ -1,32 +1,32 @@
 {
     "Auvergne-Rhônes-Alpes": [
       {
-        "question": "Completez la suite",
+        "question": "Completez la suite :",
         "audio-1": "",
         "audio-2": "",
         "texte-1": "A’rvi ",
         "answers": [
-          "Pâ",
           "Dô",
           "Là",
+          "Pâ",
           "Si"
         ],
-        "correct_answer": "Pâ",
-        "details": "Cette expression haut-savoyarde signifie “Au revoir”."
+        "correct_answer": "Pâ. A'rvi Pâ !",
+        "details": "Cette expression Haute-Savoyarde signifie \"Au revoir\"."
       },
       {
         "question": "Quelle est la suite de la musique ?",
-        "audio-1": "",
-        "audio-2": "",
+        "audio-1": "2_C4_CE_audio1.mp3",
+        "audio-2": "2_C4_CE_audio2.mp3",
         "texte-1": "",
         "answers": [
-          "Le  lac vagabond",
-          "La rivière aux sanglots",
-          "Le fleuve enchanté",
-          "La rivière insolente"
+            "Le lac rayonnant",
+            "La rivière insolente",
+            "Le fleuve désolant",
+            "La rivière consolante"
         ],
         "correct_answer": "La rivière insolente",
-        "details": "[Suite de la musique]"
+        "details": "La maladie d’amour, Michel Sardou"
       }
     ],
     "Île-de-France": [

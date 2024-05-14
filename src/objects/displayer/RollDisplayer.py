@@ -39,18 +39,19 @@ class RollingNumberDisplay:
         # Afficher les nombres de manière aléatoire avec ralentissement
         delay = self.initial_delay
         num_steps = len(self.numbers) - 1
-        for i in range(num_steps + 1):
-            current_number = random.choice(self.numbers)
-            self.webApp.show(str(current_number), "roll")
+        if num_steps > 0:
+            for i in range(num_steps + 1):
+                current_number = random.choice(self.numbers)
+                self.webApp.show(str(current_number), "roll")
 
-            # Calculer le nouveau délai avec une fonction exponentielle modifiée
-            delay = self.initial_delay + (self.final_delay - self.initial_delay) * (1 - math.exp(-(i / num_steps)**2))
+                # Calculer le nouveau délai avec une fonction exponentielle modifiée
+                delay = self.initial_delay + (self.final_delay - self.initial_delay) * (1 - math.exp(-(i / num_steps)**2))
 
-            time.sleep(delay)
+                time.sleep(delay)
 
-            # Afficher le nombre cible si c'est la dernière itération
-            if i == num_steps:
-                current_number = self.target_number
+                # Afficher le nombre cible si c'est la dernière itération
+                if i == num_steps:
+                    current_number = self.target_number
 
         time.sleep(0.5)
         # Afficher le nombre cible une dernière fois après le ralentissement

@@ -1,9 +1,13 @@
 import os
 import random
 from pygame import mixer
+from src.toolbox.Singleton import singleton
+import time
+
+from src.toolbox.Debug import Debug
 
 
-
+@singleton
 class MusicPlayer:
     def __init__(self, music_dir):
         self.music_dir = music_dir
@@ -14,11 +18,22 @@ class MusicPlayer:
     def get_audio_files(self):
         return [f for f in os.listdir(self.music_dir) if f.endswith(".mp3") or f.endswith(".wav")]
 
+    def play(self, audio_path: str, duration=None):
+        mixer.music.load(audio_path)
+        mixer.music.play()
+
+        if duration == None:
+            duration = mixer.Sound(audio_path).get_length()
+
+        time.sleep(duration)
+
+        mixer.music.stop()
+
     def play_random_section(self, music_file, duration=10):
         music_file_path = os.path.join(self.music_dir, music_file)
 
         if not os.path.isfile(music_file_path):
-            print(f"Le fichier {music_file} n'existe pas dans le dossier.")
+            Debug.LogWarning(f"Le fichier {music_file} n'existe pas dans le dossier.")
             return
 
         mixer.music.load(music_file_path)
@@ -33,7 +48,6 @@ class MusicPlayer:
 
         mixer.music.play(start=start_time)
 
-        import time
         time.sleep(duration)
 
         mixer.music.stop()
@@ -41,7 +55,7 @@ class MusicPlayer:
 
     def play_next_random_section(self, duration=10):
         if self.current_music is None or self.last_stop_time is None:
-            print("Aucune musique en cours de lecture ou pas de temps d'arrêt précédent.")
+            Debug.LogWarning("Aucune musique en cours de lecture ou pas de temps d'arrêt précédent.")
             return
 
         music_file_path = self.current_music
@@ -55,7 +69,6 @@ class MusicPlayer:
         mixer.music.load(music_file_path)
         mixer.music.play(start=start_time)
 
-        import time
         time.sleep(duration)
 
         mixer.music.stop()
