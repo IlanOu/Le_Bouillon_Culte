@@ -1,10 +1,14 @@
 # ----------------------------------- Main ----------------------------------- #
 
 from src.Application import App
+from src.Config import Config
 
 if __name__ == "__main__":
-    app = App()
-    app.run()
+    try:
+        app = App()
+        app.run()
+    except KeyboardInterrupt:
+        Config().stopProgram()
 
 
 # ----------------------------------- Test ----------------------------------- #

@@ -5,6 +5,8 @@ from src.quiz.Quiz import Quiz
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker, GttsEngine
 
+from src.Config import Config
+
 import random
 import time
 
@@ -18,9 +20,6 @@ class Quiz_QuiSuisJe(Quiz):
         self.datas = {}
         self.fill_datas()
         self.sensors_manager = sensors_manager
-        
-        # self.webApp = WebApp(update_interval=1)
-        self.webApp = self.sensors_manager.webApp
         
 
     def fill_datas(self):
@@ -56,11 +55,11 @@ class Quiz_QuiSuisJe(Quiz):
 
     
         # 1. Display question
-        self.webApp.show(question_value, "text")
+        Config().webApp.show(question_value, "text")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
         
         # 2.
-        self.webApp.show(display_possible_responses_value, "table")
+        Config().webApp.show(display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
@@ -68,12 +67,12 @@ class Quiz_QuiSuisJe(Quiz):
         
         # 4. Display response
         response = "La bonne réponse était : " + response_value
-        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        self.webApp.show("images/" + details_image_value, "image")
+        Config().webApp.show("images/" + details_image_value, "image")
         
         time.sleep(10)
         

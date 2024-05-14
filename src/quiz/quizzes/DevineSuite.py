@@ -5,6 +5,7 @@ from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker, GttsEngine
 from src.quiz.MusicPlayer import MusicPlayer
 
+from src.Config import Config
 
 import random
 import time
@@ -21,8 +22,6 @@ class Quiz_DevineSuite(Quiz):
         self.fill_datas()
         self.sensors_manager = sensors_manager
         
-        self.webApp = self.sensors_manager.webApp
-
     def fill_datas(self):
         if (self.json_path != ""):
             with open(self.json_path, 'r') as file:
@@ -65,12 +64,12 @@ class Quiz_DevineSuite(Quiz):
 
 
         # 1. Display question
-        self.webApp.show(question_value, "text")
+        Config().webApp.show(question_value, "text")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
         
         
         if text_mode:
-            self.webApp.show(first_text_value, "text")
+            Config().webApp.show(first_text_value, "text")
             Speaker.say(first_text_value, GttsEngine())
         else:
             # Play Audio
@@ -79,7 +78,7 @@ class Quiz_DevineSuite(Quiz):
             
         
         # 2. Display responses
-        self.webApp.show(display_possible_responses_value, "table")
+        Config().webApp.show(display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
@@ -87,12 +86,12 @@ class Quiz_DevineSuite(Quiz):
         
         # 4. Display response
         response = "La bonne réponse était : " + response_value
-        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
         # Play Audio
         if text_mode:

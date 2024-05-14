@@ -11,8 +11,12 @@ from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 
 from src.toolbox.Debug import Debug, Style
 
+from src.Config import Config
+
+
 import random
 import time
+
 
 Debug.prefixActive = False
 
@@ -62,7 +66,7 @@ class QuizManager:
         # Get quizzes json content
         # ---------------------------------------------------------------------------- #
         quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
-        # quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
+        quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
         quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
         quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
@@ -72,9 +76,9 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         # self.add_quiz(quiz1) # Fait
-        # self.add_quiz(quiz2) # Todo -> à faire
-        # self.add_quiz(quiz3) # Todo -> En cours
-        self.add_quiz(quiz4) # Fait
+        self.add_quiz(quiz2) # Todo -> à faire
+        # self.add_quiz(quiz3) # Fait
+        # self.add_quiz(quiz4) # Fait
         # self.add_quiz(quiz5) # Fait
         # self.add_quiz(quiz6) # Todo -> à faire
 
@@ -83,7 +87,7 @@ class QuizManager:
         
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
-        self.sensors_manager.webApp.show("La partie va commencer !")
+        Config().webApp.show("La partie va commencer !")
         Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         input("")
         random_quiz = self.__display_random_quiz()
@@ -107,5 +111,5 @@ class QuizManager:
         
         # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
-            self.sensors_manager.webApp.show("❌ Programme stoppé", "stop")
+            Config().webApp.show("❌ Programme stoppé", "stop")
             Debug.LogError("[Error]> Programme interrompu par l'utilisateur")

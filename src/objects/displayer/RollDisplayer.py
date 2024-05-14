@@ -1,21 +1,20 @@
 import time
 import random
 import math
-from src.objects.displayer.WebDisplayer import WebApp
 from src.toolbox.Debug import Debug
 
+from src.Config import Config
 
 class RollingNumberDisplay:
     def __init__(self, numbers, target_number, num_rolls=3):
         self.numbers = numbers
         self.target_number = target_number
         self.num_rolls = num_rolls
-        self.webApp = WebApp()
         self.initial_delay = 0.05  # Délai initial (rapide)
         self.final_delay = 0.5  # Délai final (ralenti)
 
     def display_rolling_number(self):
-        self.webApp.show("", "roll")
+        Config().webApp.show("", "roll")
         time.sleep(2)
         for roll in range(self.num_rolls):
             if roll == self.num_rolls - 1:
@@ -28,7 +27,7 @@ class RollingNumberDisplay:
         # Afficher les nombres de manière aléatoire
         while True:
             current_number = random.choice(self.numbers)
-            self.webApp.show(str(current_number), "roll")
+            Config().webApp.show(str(current_number), "roll")
             time.sleep(self.initial_delay)
 
             # Arrêter le défilement lorsque le nombre cible est atteint
@@ -42,7 +41,7 @@ class RollingNumberDisplay:
         if num_steps > 0:
             for i in range(num_steps + 1):
                 current_number = random.choice(self.numbers)
-                self.webApp.show(str(current_number), "roll")
+                Config().webApp.show(str(current_number), "roll")
 
                 # Calculer le nouveau délai avec une fonction exponentielle modifiée
                 delay = self.initial_delay + (self.final_delay - self.initial_delay) * (1 - math.exp(-(i / num_steps)**2))
@@ -55,7 +54,7 @@ class RollingNumberDisplay:
 
         time.sleep(0.5)
         # Afficher le nombre cible une dernière fois après le ralentissement
-        self.webApp.show(str(self.target_number), "roll")
+        Config().webApp.show(str(self.target_number), "roll")
         Debug.LogWhisper("[Log]> " + self.target_number)
 
 

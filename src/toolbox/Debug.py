@@ -42,7 +42,7 @@ class Style:
     UNDERLINE = '\033[4m'
 
     RESET = '\033[0m'
-    SEPARATOR = '- ' * 40 + '\n'
+    SEPARATOR = '.' * 50 + '\n'
 
 
 class Debug:
@@ -50,6 +50,7 @@ class Debug:
     prefixActive = True
     blocking = True
     emojisActive = True
+    separatorChar = "-"
 
     @staticmethod
     def _get_log_prefix(level, class_name, func_name, line_number):
@@ -67,7 +68,7 @@ class Debug:
         else:
             func_name_str += "() "
 
-        prefix = f"{Style.DIM}{Style.SEPARATOR}{level}[{current_time}] \n{Style.BOLD}{class_name_str}{func_name_str}{Style.RESET}{level}{Style.DIM}Line {line_number}:{Style.RESET} \n"
+        prefix = f"{Style.DIM}{Style.SEPARATOR}{level}[{current_time}] - {Style.BOLD}{class_name_str}{func_name_str}{Style.RESET}{level}{Style.DIM + Style.ITALIC}Line {line_number}:{Style.RESET}\n"
         return prefix
 
     @staticmethod
@@ -96,19 +97,19 @@ class Debug:
     @staticmethod
     def LogSuccess(message):
         if Debug.emojisActive:
-            message = "✅ - " + str(message)
+            message = "|✅| " + str(message)
         Debug._log(str(message), Style.OK_GREEN)
 
     @staticmethod
     def LogWarning(message):
         if Debug.emojisActive:
-            message = "❕ - " + message
+            message = "|🟨| " + message
         Debug._log(str(message), Style.WARNING)
 
     @staticmethod
     def LogError(message):
         Debug.prefixActive = True
-        Debug._log("❌ - " + message, Style.FAIL + Style.BOLD)
+        Debug._log("|❌| " + message, Style.FAIL + Style.BOLD)
         if Debug.blocking == True:
             sys.exit()
         Debug.prefixActive = False
@@ -129,19 +130,19 @@ class Debug:
         to_print = ""
 
         if msg is None:
-            to_print = "-" * log_length
+            to_print = Debug.separatorChar * log_length
         else:
             string_length = len(str(msg))
             separator_length = int((log_length - string_length) / 2)
 
             if string_length < log_length:
-                to_print = "-" * separator_length + " " + str(msg) + " " + "-" * separator_length
+                to_print = Debug.separatorChar * separator_length + " " + str(msg) + " " + Debug.separatorChar * separator_length
             else:
                 to_print = str(msg)
         
         
         while len(to_print) < log_length:
-            to_print += "-"
+            to_print += Debug.separatorChar
         
         while len(to_print) > log_length:
             to_print = to_print[1:]
@@ -175,7 +176,7 @@ class Debug:
             while len(center) > log_length:
                 center = center[1:]
         
-        line = "-"*separator_length
+        line = Debug.separatorChar*separator_length
         
         to_print = line + "\n" + center + "\n" + line
         

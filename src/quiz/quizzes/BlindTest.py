@@ -9,6 +9,7 @@ from src.quiz.MusicPlayer import MusicPlayer
 
 from src.objects.displayer.WebDisplayer import *
 
+from src.Config import Config
 
 
 # Blind test 
@@ -21,10 +22,6 @@ class Quiz_BlindTest(Quiz):
         self.name = "Blind test"
         self.fill_datas()
         self.sensors_manager = sensors_manager
-        
-        # self.webApp = WebApp(update_interval=1)
-        self.webApp = self.sensors_manager.webApp
-        
         
         
     def fill_datas(self):
@@ -67,7 +64,7 @@ class Quiz_BlindTest(Quiz):
         # ---------------------------------------------------------------------------- #
         
         # 1. Poser la question
-        self.webApp.show(question_value, "text")
+        Config().webApp.show(question_value, "text")
         Speaker.say(question_value, GttsEngine())
         
         # 2. Passer la musique
@@ -77,7 +74,7 @@ class Quiz_BlindTest(Quiz):
         player.play_random_section(music_file)
     
         # 3. Proposer les réponses
-        self.webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
+        Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
         
         # 4. Attendre la réponse de l'utilisateur
@@ -85,7 +82,7 @@ class Quiz_BlindTest(Quiz):
         
         # 5. Afficher la réponse + détails
         response = "La bonne réponse était : " + response_value
-        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         Speaker.say(response, GttsEngine())
         player.play_next_random_section()
         
