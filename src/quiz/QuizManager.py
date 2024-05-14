@@ -8,6 +8,7 @@ from src.quiz.quizzes.TroisImages import QuizF
 from src.quiz.Quiz import Quiz
 
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
+from src.objects.joystick.StateJoystick import *
 
 from src.toolbox.Debug import Debug, Style
 
@@ -85,7 +86,8 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         self.sensors_manager.webApp.show("Faites tourner la roue !")
         Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
-        input("")
+        while Joystick.get_current_state() == StateJoystick.UP:
+            pass
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
         
