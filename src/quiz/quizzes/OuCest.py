@@ -27,15 +27,12 @@ class Quiz_OuCest(Quiz):
                 self.datas = json.load(file)
 
 
-    def get_random_question(self, zone=""):
+    def get_random_question(self):
         if self.datas == {}:
             Debug.LogError("Il n'y a pas de données dans le Json 'ou_cest.json'. Vérifiez le contenu du Json.")
             return None
         
-        if zone == "" or not zone in self.datas:
-            Debug.LogError("La zone est incorrectement définie pour le ou_cest.")
-            Debug.LogWhisper("Vous pouvez mettre une zone avec : quiz.set_zone('zone').")
-            return None
+        zone = random.choice(list(self.datas.keys()))
         
         random_question = random.choice(self.datas[zone])
         return random_question
@@ -43,7 +40,7 @@ class Quiz_OuCest(Quiz):
 
 
     def process(self):
-        question = self.get_random_question(Config().zone)
+        question = self.get_random_question()
         
         # Get values
         # ---------------------------------------------------------------------------- #
@@ -59,7 +56,7 @@ class Quiz_OuCest(Quiz):
         # ---------------------------------------------------------------------------- #
         
         # 1. Display question
-        Config().webApp.show(question_value, "text")
+        Config().webApp.show("Où se trouve " + question_value, "text")
         Speaker.say("Où se trouve : ", GttsEngine())
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
         

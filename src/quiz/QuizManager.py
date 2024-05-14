@@ -76,7 +76,7 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         # self.add_quiz(self.quiz1) # Fait
-        self.add_quiz(self.quiz2) # Todo -> à faire
+        # self.add_quiz(self.quiz2) # Fait
         # self.add_quiz(self.quiz3) # Fait
         # self.add_quiz(self.quiz4) # Fait
         # self.add_quiz(self.quiz5) # Fait
@@ -84,7 +84,6 @@ class QuizManager:
 
 
     def run(self):
-        
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
         Config().webApp.show("La partie va commencer !")
@@ -92,7 +91,6 @@ class QuizManager:
         input("")
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
-        
         
         if self.current_quiz == None:
             Debug.LogError("[Error]> Aucun quiz n'est définit")
