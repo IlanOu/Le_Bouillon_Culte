@@ -45,8 +45,7 @@ class Quiz_BlindTest(Quiz):
     
     
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant la zone avec les capteurs RFID
-        question = self.get_random_question(zone)
+        question = self.get_random_question(Config().zone)
         
         
         # Get values
@@ -68,8 +67,7 @@ class Quiz_BlindTest(Quiz):
         Speaker.say(question_value, GttsEngine())
         
         # 2. Passer la musique
-        music_dir = "./assets/audio/"
-        player = MusicPlayer(music_dir)
+        player = MusicPlayer(Config().audio_dir)
         music_file = audio_value
         player.play_random_section(music_file)
     

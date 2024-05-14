@@ -42,10 +42,10 @@ class Quiz_DevineSuite(Quiz):
 
 
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
-        question = self.get_random_question(zone)
+        question = self.get_random_question(Config().zone)
         
         # Get values
+        # ---------------------------------------------------------------------------- #
         question_value = question["question"]
         possible_responses_value = question["answers"]
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
@@ -57,8 +57,9 @@ class Quiz_DevineSuite(Quiz):
         details_value = question["details"]
     
     
-        audio_dir = "./assets/audio/"
-        music_player = MusicPlayer(audio_dir)
+        # System
+        # ---------------------------------------------------------------------------- #
+        music_player = MusicPlayer(Config().audio_dir)
 
         text_mode = first_text_value != ''
 
@@ -73,7 +74,7 @@ class Quiz_DevineSuite(Quiz):
             Speaker.say(first_text_value, GttsEngine())
         else:
             # Play Audio
-            full_audio_path = os.path.join(audio_dir, first_audio_value)
+            full_audio_path = os.path.join(Config().audio_dir, first_audio_value)
             music_player.play(full_audio_path)
             
         
@@ -97,7 +98,7 @@ class Quiz_DevineSuite(Quiz):
         if text_mode:
             time.sleep(10)
         else:
-            full_audio_path = os.path.join(audio_dir, second_audio_value)
+            full_audio_path = os.path.join(Config().audio_dir, second_audio_value)
             music_player.play(full_audio_path)
         
             time.sleep(3)

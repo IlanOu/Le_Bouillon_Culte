@@ -65,22 +65,22 @@ class QuizManager:
         
         # Get quizzes json content
         # ---------------------------------------------------------------------------- #
-        quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
-        quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
-        quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
-        quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
-        quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
-        # quiz6 = Quiz_(self.sensors_manager, "./assets/json/.json")
+        self.quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
+        self.quiz2 = Quiz_OuCest(self.sensors_manager, "./assets/json/ou_cest.json")
+        self.quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
+        self.quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
+        self.quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
+        # self.quiz6 = Quiz_(self.sensors_manager, "./assets/json/.json")
 
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(quiz1) # Fait
-        self.add_quiz(quiz2) # Todo -> à faire
-        # self.add_quiz(quiz3) # Fait
-        # self.add_quiz(quiz4) # Fait
-        # self.add_quiz(quiz5) # Fait
-        # self.add_quiz(quiz6) # Todo -> à faire
+        # self.add_quiz(self.quiz1) # Fait
+        self.add_quiz(self.quiz2) # Todo -> à faire
+        # self.add_quiz(self.quiz3) # Fait
+        # self.add_quiz(self.quiz4) # Fait
+        # self.add_quiz(self.quiz5) # Fait
+        # self.add_quiz(self.quiz6) # Todo -> à faire
 
 
     def run(self):
@@ -100,8 +100,9 @@ class QuizManager:
         # Run quiz
         # ---------------------------------------------------------------------------- #
         try:
-            # Wait for RFID
-            self.sensors_manager.read_rfid()
+            if self.current_quiz != self.quiz2:
+                # Wait for RFID
+                self.sensors_manager.read_rfid()
             
             # Run quiz
             self.current_quiz.process()

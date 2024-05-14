@@ -119,6 +119,23 @@
     }
 
 
+    function openFullscreen() {
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+          elem.msRequestFullscreen();
+        }
+      }
+
+
+      // Attacher la fonction openFullscreen() à un événement de clic
+      document.addEventListener('click', function() {
+        openFullscreen();
+      });
+
   </script>
 </body>
 </html>

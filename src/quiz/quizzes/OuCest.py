@@ -1,9 +1,14 @@
 import json
-import random
+from src.quiz.Quiz import Quiz
 
 from src.toolbox.Debug import Debug
+from src.toolbox.Speaker import Speaker, GttsEngine
 
-from src.quiz.Quiz import Quiz
+from src.Config import Config
+
+import random
+import time
+
 
 # Où c'est ?
 # ---------------------------------------------------------------------------- #
@@ -38,21 +43,37 @@ class Quiz_OuCest(Quiz):
 
 
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" #TODO -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
-        question = self.get_random_question(zone)
+        question = self.get_random_question(Config().zone)
         
+        # Get values
+        # ---------------------------------------------------------------------------- #
         question_value = question["question"]
-        image_value = question["image"]
-        response_value = zone
-        hint_value = question["answers"]
+        answer_value = question["answers"]
+        # speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
+        # display_possible_responses_value = " | ".join(possible_responses_value)
+        response_value = Config().zone
         details_value = question["details"]
 
-        """
-        1. Dire les consignes "Vous devez placer le pion au bon endroit"
-        2. Poser la question "Où se trouve, " + question_value
-        3. Vérifier si le pion est placé au bon endroit sur la carte.
-           S'il n'est pas placé, dire -> hint_value.
-        4. Afficher la response_value + details_value
-        """
-
-        Debug.Log(question)
+    
+        # System
+        # ---------------------------------------------------------------------------- #
+        
+        # 1. Display question
+        Config().webApp.show(question_value, "text")
+        Speaker.say("Où se trouve : ", GttsEngine())
+        Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        
+        # 2.
+        Config().webApp.show(answer_value, "text")
+        Speaker.say(answer_value, GttsEngine())
+    
+        # 3. Wait for RFID # TODO -> Obtenir la position grâce aux différents capteurs RFID
+        self.sensors_manager.read_rfid()
+        
+        # 4. Display response
+        response = "La bonne réponse était : " + response_value
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        
+        Speaker.say(response, GttsEngine())
+        
+        time.sleep(10)

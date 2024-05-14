@@ -40,10 +40,10 @@ class Quiz_CultureG(Quiz):
         return random_question
 
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
-        question = self.get_random_question(zone)
+        question = self.get_random_question(Config().zone)
         
         # Get values
+        # ---------------------------------------------------------------------------- #
         question_value = question["question"]
         possible_responses_value = question["answers"]
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
@@ -53,6 +53,9 @@ class Quiz_CultureG(Quiz):
         details_image_value = question["details_image"]
 
     
+        # System
+        # ---------------------------------------------------------------------------- #
+        
         # 1. Display question
         Config().webApp.show(question_value, "text")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
