@@ -3,7 +3,7 @@ from src.quiz.quizzes.DevineSuite import Quiz_DevineSuite
 from src.quiz.quizzes.OuCest import Quiz_OuCest
 from src.quiz.quizzes.QuiSuisJe import Quiz_QuiSuisJe
 from src.quiz.quizzes.CultureG import Quiz_CultureG
-from src.quiz.quizzes.TroisImages import QuizF
+from src.quiz.quizzes.TroisImages import Quiz_TroisImages
 
 from src.quiz.Quiz import Quiz
 
@@ -70,16 +70,16 @@ class QuizManager:
         self.quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
         self.quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         self.quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
-        # self.quiz6 = Quiz_(self.sensors_manager, "./assets/json/.json")
+        self.quiz6 = Quiz_TroisImages(self.sensors_manager, "./assets/json/3_images.json")
 
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # Fait
-        # self.add_quiz(self.quiz2) # Fait
-        # self.add_quiz(self.quiz3) # Fait
-        # self.add_quiz(self.quiz4) # Fait
-        # self.add_quiz(self.quiz5) # Fait
+        self.add_quiz(self.quiz1) # Fait
+        self.add_quiz(self.quiz2) # Fait
+        self.add_quiz(self.quiz3) # Fait
+        self.add_quiz(self.quiz4) # Fait
+        self.add_quiz(self.quiz5) # Fait
         # self.add_quiz(self.quiz6) # Todo -> à faire
 
 

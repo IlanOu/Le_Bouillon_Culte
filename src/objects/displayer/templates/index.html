@@ -33,6 +33,9 @@
           case 'roll':
             renderRoll(content, dynamicContent);
             break;
+          case '3images':
+            render3Images(content, dynamicContent);
+            break;
           default:
             console.log("Mode non pris en charge");
         }
@@ -99,6 +102,31 @@
       container.appendChild(img);
     }
     
+    // 3 images
+    // -----------------------------------------------------
+    function render3Images(content, container) {
+      const images = content.split('|');
+
+      if (images.length !== 3) {
+        console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");
+        return;
+      }
+
+      const imagesContainer = document.createElement('div');
+      imagesContainer.classList.add('images-container');
+
+      images.forEach(imageUrl => {
+        const img = document.createElement('img');
+        img.src = imageUrl.trim();
+        img.style.maxWidth = '33%';
+        img.style.maxHeight = '100%';
+        img.style.objectFit = 'contain';
+        imagesContainer.appendChild(img);
+      });
+
+      container.appendChild(imagesContainer);
+    }
+
     // STOP
     // -----------------------------------------------------
     function renderStop(stopString, container) {
@@ -108,7 +136,6 @@
       container.appendChild(stopMessage);
     }
 
-
     // Roll
     // -----------------------------------------------------
     function renderRoll(rollString, container) {
@@ -117,6 +144,8 @@
       rollContent.innerText = rollString;
       container.appendChild(rollContent);
     }
+    
+    
 
 
     function openFullscreen() {
@@ -129,7 +158,6 @@
           elem.msRequestFullscreen();
         }
       }
-
 
       // Attacher la fonction openFullscreen() à un événement de clic
       document.addEventListener('click', function() {
