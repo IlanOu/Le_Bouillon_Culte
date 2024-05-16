@@ -2,8 +2,6 @@ from src.toolbox.Singleton import singleton
 from src.toolbox.Debug import Debug
 from src.objects.displayer.WebDisplayer import WebApp
 
-import sys
-import os
 
 @singleton
 class Config:
@@ -16,6 +14,3 @@ class Config:
         self.webApp.show("❌ Programme stoppé", "stop")
         Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
         self.webApp.exit()
-        # sys.exit(0)
-        # os._exit()
-        
