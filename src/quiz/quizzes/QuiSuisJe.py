@@ -45,7 +45,7 @@ class Quiz_QuiSuisJe(Quiz):
         # Get values
         # ---------------------------------------------------------------------------- #
         question_value = question["question"]
-        possible_responses_value = question["answers"]
+        possible_responses_value = random.sample(question["answers"], len(question["answers"]))
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
         display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
