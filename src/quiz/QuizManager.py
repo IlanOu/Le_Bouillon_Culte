@@ -80,7 +80,7 @@ class QuizManager:
         # self.add_quiz(self.quiz3) # Fait
         # self.add_quiz(self.quiz4) # Fait
         # self.add_quiz(self.quiz5) # Fait
-        # self.add_quiz(self.quiz6) # Fait
+        self.add_quiz(self.quiz6) # Fait
 
 
     def run(self):
