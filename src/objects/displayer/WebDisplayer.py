@@ -51,7 +51,7 @@ class WebApp(object):
             cls._instance.is_running = False
             cls._instance.server = None
             
-            cls._instance.page_loaded = {}
+            cls._instance.page_loaded = False
             
 
             # Removing useless logs
@@ -90,18 +90,15 @@ class WebApp(object):
                 data = request.get_json()
                 if data and data.get('loaded'):
                     # Enregistrer l'information de chargement de page pour l'utilisateur
-                    cls._instance.page_loaded[request.remote_addr] = True
-                    Debug.LogSuccess("Client connecté !!")
+                    cls._instance.page_loaded = True
+                    Debug.LogWhisper("[Log]> Écran cliqué")
                     return jsonify({'message': 'La page a été chargée côté client.'})
                 else:
                     return jsonify({'message': 'Erreur lors de la vérification du chargement de la page.'})
             
 
-
         return cls._instance
     
-    
-
     def exit(self):
         exit(0)
         
