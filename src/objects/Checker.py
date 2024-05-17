@@ -15,12 +15,18 @@ class Checker:
         
         Debug.LogFatSeparator("Start Checker")
         
-        # datas = self.sensors_checker.check_sensors()
-        # if not datas["pass"]:
-        #     WebApp().show(datas["message"],"stop")
-        #     Debug.LogError(datas["message"])
-        #     return
         
+        # Check Sensors : Buttons - Screen
+        # ---------------------------------------------------------------------------- #
+        datas = self.sensors_checker.check_sensors()
+        if not datas["pass"]:
+            WebApp().show(datas["message"],"stop")
+            Debug.LogError(datas["message"])
+            return
+        
+        
+        # Check Internet
+        # ---------------------------------------------------------------------------- #
         datas_internet = self.internet_checker.check_internet_connection()
         if not datas_internet["pass"]:
             WebApp().show(datas_internet["message"],"stop")
