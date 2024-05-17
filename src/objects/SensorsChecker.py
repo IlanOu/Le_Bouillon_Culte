@@ -25,8 +25,8 @@ class SensorsChecker:
         for pin in Config().buttons_pins:
             self.check_button(pin)
         
-        if self.buttons_error:
-            return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
+            if self.buttons_error:
+                return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
  
 
         # Check WebApp
