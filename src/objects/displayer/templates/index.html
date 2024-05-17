@@ -107,6 +107,8 @@
     function render3Images(content, container) {
       const images = content.split('|');
 
+      console.log("Images -> " + images)
+
       if (images.length !== 3) {
         console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");
         return;

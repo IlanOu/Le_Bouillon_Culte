@@ -74,7 +74,7 @@ class Quiz_QuiSuisJe(Quiz):
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        Config().webApp.show("images/" + details_image_value, "image")
+        Config().webApp.show(details_image_value, "image")
         
         time.sleep(10)
         

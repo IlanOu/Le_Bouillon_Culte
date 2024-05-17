@@ -92,9 +92,17 @@ class WebApp(object):
 
     def show(self, content, mode="text"):
         with self.app.app_context():
+            image_urls = []
+
             if mode == "image":
-                image_url = url_for('static', filename=content, _external=True)
+                image_url = url_for('static', filename="images/" + content, _external=True)
                 content = image_url
+            elif mode == "3images":
+                for image in content.split("|"):
+                    image_url = url_for('static', filename=f"images/{image}", _external=True)
+                    image_urls.append(image_url)
+
+                content = "|".join(image_urls)
 
         if not self.is_running:
             self.string_updater.show(mode + "||" + content)

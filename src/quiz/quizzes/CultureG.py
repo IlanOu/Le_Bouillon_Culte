@@ -75,6 +75,6 @@ class Quiz_CultureG(Quiz):
         
         time.sleep(3)
         pass # Show image
-        Config().webApp.show("images/" + details_image_value, "image")
+        Config().webApp.show(details_image_value, "image")
         
         time.sleep(10)
