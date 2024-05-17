@@ -10,7 +10,7 @@ class Config:
         self.webApp = WebApp()
         self.zone = "Auvergne-Rhône-Alpes" # Todo -> temp value / à changer plus tard en récupérant via les étapes précédentes dans l'Enum
         
-    def stopProgram(self):
+    def stop_program(self):
         self.webApp.show("❌ Programme stoppé", "stop")
         Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
         self.webApp.exit()

@@ -7,8 +7,8 @@ class Checker:
         self.sensors_checker = SensorsChecker()
         
 
-    def checkSensors(self):
-        datas = self.sensors_checker.checkSensors()
+    def check_sensors(self):
+        datas = self.sensors_checker.check_sensors()
         if not datas["pass"]:
             Debug.LogError(datas["message"])
             return

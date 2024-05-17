@@ -13,9 +13,9 @@ class SensorsChecker:
         self.buttons_pin_error = None
         self.time_to_press = 10
 
-    def checkSensors(self):
+    def check_sensors(self):
         while self.buttons_error == False:
-            self.checkButtons()
+            self.check_buttons()
             break
         
         datas_to_send = {}
@@ -27,10 +27,10 @@ class SensorsChecker:
         
         return datas_to_send
 
-    def checkRFIDs(self):
+    def check_RFIDs(self):
         pass
 
-    def checkButtons(self):
+    def check_buttons(self):
         for button_pin in self.buttons_pin:
             button = Button(button_pin)
             self.timer = threading.Timer(self.time_to_press, self.handle_timeout, args=[button_pin])
@@ -43,6 +43,3 @@ class SensorsChecker:
         self.buttons_error = True
         self.buttons_pin_error = pin_button
         self.sensors_manager.stop_waiting_for_buttons()
-        
-    def test(self):
-        self.sensors_manager.wait_for_button_press(button=Button(16))

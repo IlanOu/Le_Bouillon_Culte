@@ -9,7 +9,7 @@ class App:
     
     def run(self):
         
-        Checker().checkSensors()
+        Checker().check_sensors()
         
         sensors_manager = SensorsManager()
         manager = QuizManager(sensors_manager)
