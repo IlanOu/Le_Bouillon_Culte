@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, url_for
+from flask import Flask, render_template, Response, url_for, request, jsonify
 import threading
 import logging
 
@@ -50,16 +50,28 @@ class WebApp(object):
             cls._instance.string_updater = StringUpdater(update_interval)
             cls._instance.is_running = False
             cls._instance.server = None
+            
+            cls._instance.page_loaded = {}
+            
 
             # Removing useless logs
             log = logging.getLogger('werkzeug')
             log.setLevel(logging.ERROR)
 
+
+
             # Redirection
+            
+            # Home page
+            # ---------------------------------------------------------------------------- #
             @cls._instance.app.route('/')
             def home():
+                
                 return render_template('index.html', string=cls._instance.string_updater.text)
 
+
+            # To refresh page 
+            # ---------------------------------------------------------------------------- #
             @cls._instance.app.route('/stream')
             def stream():
                 def generate_stream():
@@ -70,7 +82,25 @@ class WebApp(object):
 
                 return Response(generate_stream(), mimetype='text/event-stream')
 
+
+            # Check if page has been loaded for client
+            # ---------------------------------------------------------------------------- #
+            @cls._instance.app.route('/page-loaded', methods=['POST'])
+            def page_loaded_event():
+                data = request.get_json()
+                if data and data.get('loaded'):
+                    # Enregistrer l'information de chargement de page pour l'utilisateur
+                    cls._instance.page_loaded[request.remote_addr] = True
+                    Debug.LogSuccess("Client connecté !!")
+                    return jsonify({'message': 'La page a été chargée côté client.'})
+                else:
+                    return jsonify({'message': 'Erreur lors de la vérification du chargement de la page.'})
+            
+
+
         return cls._instance
+    
+    
 
     def exit(self):
         exit(0)

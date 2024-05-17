@@ -164,7 +164,24 @@
       // Attacher la fonction openFullscreen() à un événement de clic
       document.addEventListener('click', function() {
         openFullscreen();
+        sendLoadedEvent();
       });
+
+
+      // Fonction pour envoyer une requête au serveur Flask
+      function sendLoadedEvent() {
+        fetch('/page-loaded', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ loaded: true })
+        })
+        .catch(error => console.error('Error:', error));
+      }
+
+      // Appeler la fonction sendLoadedEvent() lorsque la page est chargée
+      // window.onload = sendLoadedEvent;
 
   </script>
 </body>
