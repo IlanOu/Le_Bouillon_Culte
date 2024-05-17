@@ -11,19 +11,12 @@ class InternetChecker:
 
     def is_connected(self):
         try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            sock.settimeout(self.timeout)
-
-            sock.sendto(b"", (self.host, self.port))
-            sock.recv(1024)
-            
+            socket.setdefaulttimeout(self.timeout)
+            socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((self.host, self.port))
             return True
-        except socket.error:
+        except socket.error as ex:
+            print(ex)
             return False
-        except Exception as e:
-            print(e)
-        finally:
-            sock.close()
 
 
     def check_internet_connection(self):
