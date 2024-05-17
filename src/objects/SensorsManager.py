@@ -15,8 +15,8 @@ from src.toolbox.Singleton import singleton
 
 @singleton
 class SensorsManager:
-    def __init__(self, button_pins=[16]):
-        self.buttons = [Button(pin) for pin in button_pins]
+    def __init__(self):
+        self.buttons = [Button(pin) for pin in Config().buttons_pins]
         self.RFID = SimpleMFRC522()
         
         self.waiting_for_button = False

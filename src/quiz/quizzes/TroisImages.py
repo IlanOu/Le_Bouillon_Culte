@@ -2,6 +2,7 @@ from src.quiz.Quiz import Quiz
 from src.toolbox.Debug import Debug
 from src.Config import Config
 from src.toolbox.Speaker import Speaker, GttsEngine
+from src.objects.button.Button import Button
 
 import json
 import random
@@ -65,7 +66,8 @@ class Quiz_TroisImages(Quiz):
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
-        self.sensors_manager.wait_for_button_press()
+        response_index = possible_responses_value.index(response_value)
+        self.sensors_manager.wait_for_button_press(Button(Config().buttons_pins[response_index]))
         
         # 4. Display response
         response = "La bonne réponse était : " + response_value

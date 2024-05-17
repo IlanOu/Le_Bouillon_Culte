@@ -7,7 +7,7 @@ from src.toolbox.Debug import Debug, Style
 
 class SensorsChecker:
     def __init__(self):
-        self.buttons_pin = [16]
+        self.buttons_pin = Config().buttons_pins
         self.sensors_manager = SensorsManager()
         self.timer = None
         
@@ -22,11 +22,12 @@ class SensorsChecker:
         
         # Check Buttons
         # ---------------------------------------------------------------------------- #
-        self.check_buttons()
+        for pin in Config().buttons_pins:
+            self.check_button(pin)
         
         if self.buttons_error:
             return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
-
+ 
 
         # Check WebApp
         # ---------------------------------------------------------------------------- #
@@ -34,7 +35,6 @@ class SensorsChecker:
         
         if not web_app_data:
             return {"pass": False, "message": "Temps d'attente dépassé pour charger la page web."}
-        
         
         return {"pass": True, "message": ""}
         
@@ -69,14 +69,14 @@ class SensorsChecker:
 
     # Button Checker
     # ---------------------------------------------------------------------------- #
-    def check_buttons(self):
-        for button_pin in self.buttons_pin:
-            button = Button(button_pin)
-            self.timer = threading.Timer(self.time_to_press, self.handle_timeout, args=[button_pin])
-            self.timer.start()
-            self.sensors_manager.wait_for_button_press(button=button)
-            self.timer.cancel()
-            return
+    def check_button(self, button_pin):
+        Config().webApp.show("Appuyez sur le bouton " + str(button_pin))
+        button = Button(button_pin)
+        self.timer = threading.Timer(self.time_to_press, self.handle_timeout, args=[button_pin])
+        self.timer.start()
+        self.sensors_manager.wait_for_button_press(button=button)
+        self.timer.cancel()
+        return
 
     def handle_timeout(self, pin_button):
         self.buttons_error = True
