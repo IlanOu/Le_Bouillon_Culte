@@ -1,7 +1,7 @@
 {
-  "Auvergne-Rhônes-Alpes": [
+  "Auvergne-Rhône-Alpes": [
     {
-      "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\". /n Qui suis-je ?",
+      "question": "Je suis un célèbre humoriste français, connu pour mes sketchs humoristiques et mon personnage de \"Le Plombier\"./n Qui suis-je ?",
       "answers": [
         "Bourvil",
         "Alain Chabat",
@@ -13,7 +13,7 @@
       "details_image": "C1_CE_10.jpg"
     },
     {
-      "question": "J'ai joué un rôle crucial dans la coordination des mouvements de résistance pendant la Seconde Guerre mondiale. /n Qui suis-je ?",
+      "question": "J'ai joué un rôle crucial dans la résistance pendant la Seconde Guerre mondiale./n Qui suis-je ?",
       "answers": [
         "Vladimir Lénine",
         "Sigmund Freud",

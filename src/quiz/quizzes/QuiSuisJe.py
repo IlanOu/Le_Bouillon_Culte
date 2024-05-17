@@ -1,10 +1,10 @@
 import json
 from src.quiz.Quiz import Quiz
 
-
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker, GttsEngine
-from src.objects.displayer.WebDisplayer import WebApp
+
+from src.Config import Config
 
 import random
 import time
@@ -19,9 +19,6 @@ class Quiz_QuiSuisJe(Quiz):
         self.datas = {}
         self.fill_datas()
         self.sensors_manager = sensors_manager
-        
-        # self.webApp = WebApp(update_interval=1)
-        self.webApp = self.sensors_manager.webApp
         
 
     def fill_datas(self):
@@ -43,12 +40,12 @@ class Quiz_QuiSuisJe(Quiz):
         return random_question
 
     def process(self):
-        zone = "Auvergne-Rhônes-Alpes" # Todo -> à changer plus tard en récupérant via les étapes précédentes dans l'Enum
-        question = self.get_random_question(zone)
+        question = self.get_random_question(Config().zone)
         
         # Get values
+        # ---------------------------------------------------------------------------- #
         question_value = question["question"]
-        possible_responses_value = question["answers"]
+        possible_responses_value = random.sample(question["answers"], len(question["answers"]))
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
         display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
@@ -56,12 +53,15 @@ class Quiz_QuiSuisJe(Quiz):
         details_image_value = question["details_image"]
 
     
+        # System
+        # ---------------------------------------------------------------------------- #
+        
         # 1. Display question
-        self.webApp.show(question_value, "text")
+        Config().webApp.show(question_value, "text")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
         
         # 2.
-        self.webApp.show(display_possible_responses_value, "table")
+        Config().webApp.show(display_possible_responses_value, "table")
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
@@ -69,13 +69,12 @@ class Quiz_QuiSuisJe(Quiz):
         
         # 4. Display response
         response = "La bonne réponse était : " + response_value
-        self.webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        pass # Show image
-        self.webApp.show("images/" + details_image_value, "image")
+        Config().webApp.show(details_image_value, "image")
         
         time.sleep(10)
         

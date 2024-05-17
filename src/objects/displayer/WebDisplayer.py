@@ -1,10 +1,10 @@
-from flask import Flask, render_template, Response, url_for
+from flask import Flask, render_template, Response, url_for, request, jsonify
 import threading
 import logging
 
 from src.toolbox.Debug import *
 
-
+import socket
 
 """
 Lancer le WebDisplayer :
@@ -36,27 +36,42 @@ class WebApp(object):
 
     def __new__(cls, update_interval=5):
         if cls._instance is None:
-            Debug.LogSeparator("Server is running on : 127.0.0.1:5000")
 
             cls._instance = super(WebApp, cls).__new__(cls)
+            
+            ip_adress = cls._instance.get_ip_address()
+            Debug.LogSeparator(f"Server is running on : {ip_adress}:5000")
+            
             cls._instance.app = Flask(__name__)
             cls._instance.app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-            cls._instance.app.config['SERVER_NAME'] = '127.0.0.1:5000'
+            cls._instance.app.config['SERVER_NAME'] = f'{ip_adress}:5000'
             cls._instance.app.config['APPLICATION_ROOT'] = '/'
             cls._instance.app.config['PREFERRED_URL_SCHEME'] = 'http'
             cls._instance.string_updater = StringUpdater(update_interval)
             cls._instance.is_running = False
             cls._instance.server = None
+            
+            cls._instance.page_loaded = False
+            
 
             # Removing useless logs
             log = logging.getLogger('werkzeug')
             log.setLevel(logging.ERROR)
 
+
+
             # Redirection
+            
+            # Home page
+            # ---------------------------------------------------------------------------- #
             @cls._instance.app.route('/')
             def home():
+                
                 return render_template('index.html', string=cls._instance.string_updater.text)
 
+
+            # To refresh page 
+            # ---------------------------------------------------------------------------- #
             @cls._instance.app.route('/stream')
             def stream():
                 def generate_stream():
@@ -67,13 +82,54 @@ class WebApp(object):
 
                 return Response(generate_stream(), mimetype='text/event-stream')
 
+
+            # Check if page has been loaded for client
+            # ---------------------------------------------------------------------------- #
+            @cls._instance.app.route('/page-loaded', methods=['POST'])
+            def page_loaded_event():
+                data = request.get_json()
+                if data and data.get('loaded'):
+                    # Enregistrer l'information de chargement de page pour l'utilisateur
+                    cls._instance.page_loaded = True
+                    Debug.LogWhisper("[Log]> Écran cliqué")
+                    return jsonify({'message': 'La page a été chargée côté client.'})
+                else:
+                    return jsonify({'message': 'Erreur lors de la vérification du chargement de la page.'})
+            
+
         return cls._instance
+    
+    def exit(self):
+        exit(0)
+        
+
+    def get_ip_address(self):
+        """
+        Retourne l'adresse IP de l'appareil.
+        """
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(("8.8.8.8", 80))
+            ip_address = s.getsockname()[0]
+            s.close()
+            return ip_address
+        except Exception as e:
+            Debug.LogError(f"Erreur lors de la récupération de l'adresse IP : {e}")
+            return None
 
     def show(self, content, mode="text"):
         with self.app.app_context():
+            image_urls = []
+
             if mode == "image":
-                image_url = url_for('static', filename=content, _external=True)
+                image_url = url_for('static', filename="images/" + content, _external=True)
                 content = image_url
+            elif mode == "3images":
+                for image in content.split("|"):
+                    image_url = url_for('static', filename=f"images/{image}", _external=True)
+                    image_urls.append(image_url)
+
+                content = "|".join(image_urls)
 
         if not self.is_running:
             self.string_updater.show(mode + "||" + content)

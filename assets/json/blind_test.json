@@ -1,5 +1,5 @@
 {
-    "Auvergne-Rhônes-Alpes":
+    "Auvergne-Rhône-Alpes":
      [
          {
              "question": "Quelle est cette musique ?",
@@ -45,12 +45,12 @@
 
         {
             "question": "Quelle est cette musique ?",
-            "audio": "",
+            "audio": "2_C2_NE_1.mp3",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "Sur les quais du vieux Paris, Lucienne Delyle",
+                "Mon amant de Saint-Jean, Lucienne Delyle",
+                "Sénérade sans espoir, Lucienne Delyle",
+                "Sous les ponts de Paris, Lucienne Delyle"
             ],
             "correct_answer": "Mon amant de Saint-Jean, Lucienne Delyle",
             "details": "[Suite de la musique]"
@@ -64,25 +64,25 @@
             "question": "Quelle est cette musique ?",
             "audio": "C1_NO_1.mp3",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "Son ar chistr, Alan Stivell",
+                "Aires de Pontevedra, Carlos Núñez",
+                "Tri Martolod, Alan Stivell",
+                "Tango to Evora, Loreena McKennitt"
             ],
-            "correct_answer": "Tri Martolod, Alan Stivel",
+            "correct_answer": "Tri Martolod, Alan Stivell",
             "details": "[Suite de la musique]"
         },
 
         {
             "question": "Quelle est cette musique ?",
-            "audio": "",
+            "audio": "2_C1_NO_audio1.mp3",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "La jument de Michao, Tri Yann",
+                "Tri Martolod, Alan Stivell",
+                "La blanche hermine, Gilles Servat",
+                "La tribu de Dana, Manau"
             ],
-            "correct_answer": "",
+            "correct_answer": "La blanche hermine, Gilles Servat",
             "details": "[Suite de la musique]"
         }
      ],
@@ -94,25 +94,25 @@
             "question": "Quelle est cette musique ?",
             "audio": "C2_NO_8.mp3",
             "answers": [
-                "Souvenir de France",
-                "Souvenir de France",
-                "L’Avventura",
-                "Est ce une fille ou un garçon ?"
+                "Souvenir de France, Stone & Charden",
+                "Made in Normandie, Stone & Charden",
+                "L’Avventura, Stone & Charden",
+                "Est ce une fille ou un garçon ?, Stone & Charden"
             ],
             "correct_answer": "Made in Normandie, Stone & Charden",
             "details": "[Suite de la musique]"
         },
 
         {
-            "question": "Quelle est cette musique ?",
-            "audio": "",
+            "question": "Quel volatile fait ce cri ?",
+            "audio": "C2_NO_20.mp3",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "Un corbeau",
+                "Une mouette",
+                "Un hibou",
+                "Une hirondelle"
             ],
-            "correct_answer": "",
+            "correct_answer": "Une mouette",
             "details": "[Suite de la musique]"
         }
      ],
@@ -134,15 +134,15 @@
         },
 
         {
-            "question": "Quelle est cette musique ?",
-            "audio": "",
+            "question": "Quelle est le nom de cette réalisation architecturale ?",
+            "audio": "Q4_SE_2",
             "answers": [
-                "",
-                "",
-                "",
-                ""
+                "La cité solaire",
+                "La cité de bord de mer",
+                "La cité moderne",
+                "La cité radieuse"
             ],
-            "correct_answer": "",
+            "correct_answer": "La cité radieuse",
             "details": "[Suite de la musique]"
         }
      ]

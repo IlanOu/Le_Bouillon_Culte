@@ -1,5 +1,5 @@
 {
-    "Auvergne-Rhônes-Alpes":
+    "Auvergne-Rhône-Alpes":
      [
          {
              "question": "Pommes de terres sautés + Lardons + Cantal",
@@ -16,7 +16,7 @@
          },
 
          {
-            "question": "",
+            "question": "Vitrail + Sculpture + Marguerite d’Autriche",
             "3_images": ["2_C5_CE_5.jpg", "2_C5_CE_6.jpg", "2_C5_CE_7.jpg"],
             "answers": [
                 "La Cathédrale Notre-Dame de Chartres",
@@ -26,7 +26,7 @@
             ],
             "correct_answer": "Le Monastère royal de Brou",
             "details": "Le monastère de Brou, situé à Bourg-en-Bresse en France, a été construit au début du XVIe siècle par Marguerite d'Autriche en mémoire de son époux, Philibert le Beau. Ce complexe religieux se compose d'une église, d'un cloître et de bâtiments monastiques. L'église est célèbre pour son architecture raffinée, ses vitraux colorés et son retable sculpté.",
-            "details_image": ""
+            "details_image": "2_C5_CE_8.jpg"
         }
      ],
 
@@ -64,7 +64,7 @@
      "Bretagne":
      [
         {
-            "question": "",
+            "question": "Remparts + Place Gambetta + Statue de la Rouërie",
             "3_images": ["C5_NO_5.jpg", "C5_NO_6.jpg", "C5_NO_7.jpg"],
             "answers": [
                 "Rennes",
@@ -74,11 +74,11 @@
             ],
             "correct_answer": "Saint-Malo",
             "details": "Fougères est une ville charmante située en Bretagne, dans le département d'Ille-et-Vilaine. Elle est surtout renommée pour son magnifique château médiéval, l'un des plus grands d'Europe, qui domine la ville et offre une vue imprenable sur les environs. La ville elle-même est riche en histoire, avec ses ruelles pavées, ses maisons à colombages et ses églises anciennes. C'est un lieu idéal pour les amateurs d'histoire, de culture et de nature, avec ses nombreux parcs et jardins à découvrir aux alentours.            ",
-            "details_image": ""
+            "details_image": "C5_NO_9.jpg"
         },
 
         {
-            "question": "",
+            "question": "Hauteur du rocher + Alignement parallèle des rochers + Vue de loin",
             "3_images": ["2_C5_NO_5.jpg", "2_C5_NO_6.jpg", "2_C5_NO_7.jpg"],
             "answers": [
                 "La Pointe du Raz",
@@ -88,7 +88,7 @@
             ],
             "correct_answer": "Les Alignement de Carnac",
             "details": "Les alignements de Carnac sont un site mégalithique situé en France, dans la région de Bretagne. Il s'agit d'un ensemble de pierres dressées, datant du Néolithique, disposées en lignes parallèles sur une distance d'environ 250 mètres. Ces alignements sont constitués de menhirs, certains atteignant plusieurs mètres de hauteur",
-            "details_image": ""
+            "details_image": "2_C5_NO_8.jpg"
         }
      ],
 
@@ -140,7 +140,7 @@
         },
 
         {
-            "question": "",
+            "question": "Farine + Anchois + Tapenade",
             "3_images": ["Q5_SE_4", "Q5_SE_5", "Q5_SE_6"],
             "answers": [
                 "La Tourte Provençale",

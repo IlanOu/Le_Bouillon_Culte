@@ -1,15 +1,15 @@
 {
-    "Auvergne-Rhônes-Alpes":
+    "Auvergne-Rhône-Alpes":
      [
          {
-             "question": "Palais Idéal du Facteur Cheval",
+             "question": "Le Palais Idéal du Facteur Cheval",
              "image": "C3_CE_11.jpg",
              "answers": "Placez le pion sur la carte",
              "correct_answer": "[Cette région]",
              "details": "Le Palais idéal du facteur Cheval est une incroyable construction située à Hauterives. C'est une œuvre unique réalisée par Ferdinand Cheval, un facteur français. Il a passé plus de trente ans à assembler des pierres ramassées lors de ses tournées de courrier pour créer ce monument extraordinaire."
          },
          {
-            "question": "Colline de Fourvière",
+            "question": "La Colline de Fourvière",
             "image": "2_C1_CE_3.jpg",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
