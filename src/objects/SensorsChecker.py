@@ -5,6 +5,8 @@ import threading
 import time
 from src.toolbox.Debug import Debug, Style
 
+from websocket_server import WebsocketServer
+
 class SensorsChecker:
     def __init__(self):
         self.buttons_pin = [16]
@@ -22,29 +24,35 @@ class SensorsChecker:
         
         # Check Buttons
         # ---------------------------------------------------------------------------- #
-        self.check_buttons()
+        # self.check_buttons()
         
-        if self.buttons_error:
-            return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
+        # if self.buttons_error:
+        #     return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
 
+
+        self.check_RFIDs()
 
         # Check WebApp
         # ---------------------------------------------------------------------------- #
-        web_app_data = self.check_displayer()
+        # web_app_data = self.check_displayer()
         
-        if not web_app_data:
-            return {"pass": False, "message": "Temps d'attente dépassé pour charger la page web."}
+        # if not web_app_data:
+        #     return {"pass": False, "message": "Temps d'attente dépassé pour charger la page web."}
         
         
-        return {"pass": True, "message": ""}
+        # return {"pass": True, "message": ""}
         
         
         
     # RFID Checker
     # ---------------------------------------------------------------------------- #
     def check_RFIDs(self):
-        pass
+        WebsocketServer.addCallback(didReceiveMessagee)
+        print()
+        WebsocketServer.send_message_to_all(WebsocketServer.handler_mask_key, "launch")
     
+    def didReceiveMessagee(self, message):
+        print(message)
     
     # Displayer checker
     # ---------------------------------------------------------------------------- #
