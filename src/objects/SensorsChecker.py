@@ -15,12 +15,16 @@ class SensorsChecker:
         
         self.buttons_error = False
         self.buttons_pin_error = None
+        self.rfid_response = None
         self.time_to_press = 10
         self.web_app_loaded = False
 
     # Main Checker
     # ---------------------------------------------------------------------------- #
-    def check_sensors(self):
+    def check_sensors(self, server_thread):
+
+        server_thread.addCallback(self.receive_message)
+
         
         # Check Buttons
         # ---------------------------------------------------------------------------- #
@@ -30,7 +34,7 @@ class SensorsChecker:
         #     return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
 
 
-        self.check_RFIDs()
+        self.check_RFIDs(server_thread)
 
         # Check WebApp
         # ---------------------------------------------------------------------------- #
@@ -42,17 +46,31 @@ class SensorsChecker:
         
         # return {"pass": True, "message": ""}
         
-        
-        
+    def receive_message(self, message):
+        print(f"Message reçu dans SensorsChecker : {message}")
+        self.rfid_response = message
+
     # RFID Checker
     # ---------------------------------------------------------------------------- #
-    def check_RFIDs(self):
-        WebsocketServer.addCallback(didReceiveMessagee)
-        print()
-        WebsocketServer.send_message_to_all(WebsocketServer.handler_mask_key, "launch")
-    
-    def didReceiveMessagee(self, message):
-        print(message)
+    def check_RFIDs(self, server_thread):
+        self.rfid_response = None
+        server_thread.send_message_to_all("launch")
+
+        # Attendre la réponse pendant 10 secondes maximum
+        while self.rfid_response is None:
+            time.sleep(0.1)
+
+        print("Je suis dans la fonction check_RFID !!!")
+        print(self.rfid_response)
+ 
+        if self.rfid_response is None:
+            print("Temps d'attente dépassé pour la réponse RFID")
+        elif self.rfid_response == "test_response_success":
+            print("Test RFID réussi")
+        else:
+            print("Test RFID échoué")
+
+        self.rfid_response = None
     
     # Displayer checker
     # ---------------------------------------------------------------------------- #

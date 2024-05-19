@@ -1,7 +1,6 @@
 import threading
 from websocket_server import WebsocketServer
-import time
-
+import json
 
 # Définition de la classe du serveur WebSocket
 class WebSocketServerThread(threading.Thread):
@@ -18,14 +17,33 @@ class WebSocketServerThread(threading.Thread):
 
     def new_client(self, client, server):
         print(f"Nouveau client connecté : {client['id']}")
+        self.send_message_to_all("hello")
 
     def client_left(self, client, server):
         print(f"Client déconnecté : {client['id']}")
 
     def message_received(self, client, server, message):
         print(f"Message reçu de {client['id']} : {message}")
-        self.addCallback("toto")
-        server.send_message_to_all(f"Client {client['id']} a dit : {message}")
+        if "{" in message:
+            jsonMessage = json.loads(message)
+            if jsonMessage["action"] == "checkRFID":
+                self.send_message_to_callback(jsonMessage["data"])
+        else:
+            pass
+
+    def send_message_to_callback(self, message):
+        if self.callback:
+            self.callback(message)
 
     def addCallback(self, callback):
         self.callback = callback
+
+    def send_message_to_all(self, message):
+        self.server.send_message_to_all(message)
+
+if __name__ == "__main__":
+    host = "0.0.0.0"
+    port = 8080
+    server_thread = WebSocketServerThread(host, port)
+    print(f"Serveur WebSocket démarré sur {host}:{port}")
+    server_thread.start()
