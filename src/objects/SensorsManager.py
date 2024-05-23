@@ -6,6 +6,7 @@ from src.Config import Config
 import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import time
+import threading
 
 from src.toolbox.Singleton import singleton
 
@@ -15,19 +16,47 @@ from src.toolbox.Singleton import singleton
 
 @singleton
 class SensorsManager:
-    def __init__(self, button_pins=[16]):
+    def __init__(self, button_pins=[16, 26, 17, 23]):
         self.buttons = [Button(pin) for pin in button_pins]
         self.RFID = SimpleMFRC522()
         
         self.waiting_for_button = False
-        self.waiting_for_RFID = False
+        self.stop_event = threading.Event()
+        
 
     def read_rfid(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
         Config().webApp.show("Placez le pion sur la carte")
-        
+
         id, text = self.RFID.read()
         return id, text
+
+    def wait_for_read_rfid(self):
+        self.waiting_for_RFID = True
+        self.rfid_result = None
+        self.stop_event.clear()  # Réinitialiser l'événement
+
+        # Lancer la lecture RFID dans un thread séparé
+        rfid_thread = threading.Thread(target=self.read_rfid_with_timeout)
+        rfid_thread.start()
+
+        # Attendre le résultat ou le délai d'expiration
+        rfid_thread.join(timeout=5)  # Attendre 5 secondes maximum
+
+        self.stop_event.set()  # Signaler l'arrêt du thread
+        self.waiting_for_RFID = False
+
+        # Retourner le résultat ou None si le délai est dépassé
+        return self.rfid_result
+
+    def read_rfid_with_timeout(self):
+        try:
+            self.rfid_result = self.read_rfid()
+            self.stop_event.set()  # Signaler l'arrêt du thread si un scan est effectué
+        except Exception as e:
+            print(f"Erreur lors de la lecture RFID : {e}")
+        finally:
+            self.stop_event.set()  # Signaler l'arrêt du thread dans tous les cas
 
     def wait_for_button_press(self, button=None):
         self.waiting_for_button = True

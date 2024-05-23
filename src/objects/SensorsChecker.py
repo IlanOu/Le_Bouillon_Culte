@@ -9,13 +9,15 @@ from websocket_server import WebsocketServer
 
 class SensorsChecker:
     def __init__(self):
-        self.buttons_pin = [16]
+        self.buttons_pin = [16, 26, 17, 23]
         self.sensors_manager = SensorsManager()
         self.timer = None
         
         self.buttons_error = False
         self.buttons_pin_error = None
         self.rfid_response = None
+        self.rfid_error = False
+        self.rfid_zone_error = []
         self.time_to_press = 10
         self.web_app_loaded = False
 
@@ -23,29 +25,35 @@ class SensorsChecker:
     # ---------------------------------------------------------------------------- #
     def check_sensors(self, server_thread):
 
-        server_thread.addCallback(self.receive_message)
+        server_thread.addCallbackTest(self.receive_message)
 
         
         # Check Buttons
         # ---------------------------------------------------------------------------- #
-        # self.check_buttons()
+        self.check_buttons()
         
-        # if self.buttons_error:
-        #     return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
+        if self.buttons_error:
+            return {"pass": False, "message": f"Le bouton avec le pin {self.buttons_pin_error} ne fonctionne pas."}
 
 
+        # Check RFID
+        # ---------------------------------------------------------------------------- #
         self.check_RFIDs(server_thread)
+
+        if self.rfid_error:
+            return {"pass": False, "message": f"Le(s) RFID avec le(s) {self.rfid_zone_error} ne fonctionne pas."}
 
         # Check WebApp
         # ---------------------------------------------------------------------------- #
-        # web_app_data = self.check_displayer()
+        web_app_data = self.check_displayer()
         
-        # if not web_app_data:
-        #     return {"pass": False, "message": "Temps d'attente dépassé pour charger la page web."}
+        if not web_app_data:
+            return {"pass": False, "message": "Temps d'attente dépassé pour charger la page web."}
         
         
-        # return {"pass": True, "message": ""}
-        
+        return {"pass": True, "message": ""}
+
+
     def receive_message(self, message):
         print(f"Message reçu dans SensorsChecker : {message}")
         self.rfid_response = message
@@ -54,23 +62,51 @@ class SensorsChecker:
     # ---------------------------------------------------------------------------- #
     def check_RFIDs(self, server_thread):
         self.rfid_response = None
-        server_thread.send_message_to_all("launch")
+        self.all_wait_rfid = False
+        self.all_rfid = {}
+
+        self.rfid_result = self.sensors_manager.wait_for_read_rfid()
+
+        if self.rfid_result is not None:
+            self.all_rfid["Bretagne"] = True
+        else:
+            self.all_rfid["Bretagne"] = False
+
+        print("J'envoie le test !!!!!")
+
+        server_thread.send_message_to_all("test")
 
         # Attendre la réponse pendant 10 secondes maximum
-        while self.rfid_response is None:
-            time.sleep(0.1)
+        while self.all_wait_rfid is False:
+            while self.rfid_response is None:
+                time.sleep(0.1)
+                
+                
+            key = self.rfid_response.keys()
 
-        print("Je suis dans la fonction check_RFID !!!")
-        print(self.rfid_response)
- 
-        if self.rfid_response is None:
-            print("Temps d'attente dépassé pour la réponse RFID")
-        elif self.rfid_response == "test_response_success":
-            print("Test RFID réussi")
-        else:
-            print("Test RFID échoué")
+            for zone in key :
+                self.all_rfid[zone] = self.rfid_response[zone]
 
-        self.rfid_response = None
+            print("Voici le self.all_rfid : " + str(self.all_rfid))
+
+            if len(self.all_rfid) == 5:
+                self.all_wait_rfid = True
+            
+            self.rfid_response = None
+            
+
+        allKey = self.all_rfid.keys()
+
+        for zone in allKey :
+            if self.all_rfid[zone] == False :
+                self.rfid_zone_error.append(zone)
+                self.rfid_error = True
+
+        return     
+
+        
+
+
     
     # Displayer checker
     # ---------------------------------------------------------------------------- #
@@ -102,7 +138,7 @@ class SensorsChecker:
             self.timer.start()
             self.sensors_manager.wait_for_button_press(button=button)
             self.timer.cancel()
-            return
+        return
 
     def handle_timeout(self, pin_button):
         self.buttons_error = True

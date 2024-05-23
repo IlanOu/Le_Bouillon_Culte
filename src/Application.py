@@ -7,6 +7,7 @@ class App:
     def __init__(self):
         self.running = True
         self.server_thread = None
+        self.checkBool = False
 
     def run(self):
         host = "0.0.0.0"
@@ -14,9 +15,11 @@ class App:
         self.server_thread = WebSocketServerThread(host, port)
         print(f"Serveur WebSocket démarré sur {host}:{port}")
         self.server_thread.start()
-
-        checker = Checker()
-        checker.check_sensors(self.server_thread)
+        if self.checkBool:
+            checker = Checker()
+            checker.check_sensors(self.server_thread)
+        else:
+            self.server_thread.send_message_to_all("launch")
 
         sensors_manager = SensorsManager()
         manager = QuizManager(sensors_manager)

@@ -67,6 +67,7 @@ class Quiz_CultureG(Quiz):
         # 3. Wait for response
         self.sensors_manager.wait_for_button_press()
         
+        
         # 4. Display response
         response = "La bonne réponse était : " + response_value
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
