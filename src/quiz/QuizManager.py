@@ -93,7 +93,7 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1) # Fait
-        self.add_quiz(self.quiz2) # Fait
+        # self.add_quiz(self.quiz2) # Fait
         self.add_quiz(self.quiz3) # Fait
         self.add_quiz(self.quiz4) # Fait
         self.add_quiz(self.quiz5) # Fait
