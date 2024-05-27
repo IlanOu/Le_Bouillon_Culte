@@ -58,8 +58,6 @@ class WebApp(object):
             log = logging.getLogger('werkzeug')
             log.setLevel(logging.ERROR)
 
-
-
             # Redirection
             
             # Home page
