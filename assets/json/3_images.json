@@ -147,9 +147,9 @@
         {
             "question": "Poissons de rochers + Tomates de Provence + Poireaux",
             "3_images": [
-                "Q5_SE_1",
-                "Q5_SE_2",
-                "Q5_SE_3"
+                "Q5_SE_1.webp",
+                "Q5_SE_2.jpg",
+                "Q5_SE_3.jpg"
             ],
             "answers": [
                 "La Bouillabaisse",
@@ -159,14 +159,14 @@
             ],
             "correct_answer": "La Bouillabaisse",
             "details": "La bouillabaisse est originaire de la Grèce Antique. C’était un plat mangé par la population réalisé avec les restes et invendus des pêcheurs.",
-            "details_image": "R5_SE_1"
+            "details_image": "R5_SE_1.png"
         },
         {
             "question": "Farine + Anchois + Tapenade",
             "3_images": [
-                "Q5_SE_4",
-                "Q5_SE_5",
-                "Q5_SE_6"
+                "Q5_SE_4.jpeg",
+                "Q5_SE_5.avif",
+                "Q5_SE_6.webp"
             ],
             "answers": [
                 "La Tourte Provençale",
@@ -176,7 +176,7 @@
             ],
             "correct_answer": "La Pissaladière",
             "details": "Selon de nombreuses rumeurs sur son origine, la pissaladière née à Nice aurait été importée en Italie par de Papes pour ensuite leur inspirer la Pizza",
-            "details_image": "R5_SE_2"
+            "details_image": "R5_SE_2.jpeg"
         }
     ]
 }

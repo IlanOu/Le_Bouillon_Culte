@@ -126,7 +126,10 @@ class WebApp(object):
                 content = image_url
             elif mode == "3images":
                 for image in content.split("|"):
+                    image = image.strip()
+                    Debug.LogFatSeparator("\"" + image + "\"")
                     image_url = url_for('static', filename=f"images/{image}", _external=True)
+                    # image_url.replace("%20", "")
                     image_urls.append(image_url)
 
                 content = "|".join(image_urls)
