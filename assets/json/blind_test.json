@@ -1,19 +1,18 @@
 {
-    "Auvergne-Rhône-Alpes":
-     [
-         {
-             "question": "Quelle est cette musique ?",
-             "audio": "C2_CE_9.mp3",
-             "answers": [
-                 "La Montagne",
-                 "Ma France",
-                 "La dame de Haute-Savoie",
-                 "Accueille-moi paysage"
-             ],
-             "correct_answer": "La Montagne, Jean Ferrat",
-             "details": "[Suite de la musique]"
-         },
-         {
+    "Auvergne-Rhône-Alpes": [
+        {
+            "question": "Quelle est cette musique ?",
+            "audio": "C2_CE_9.mp3",
+            "answers": [
+                "La Montagne",
+                "Ma France",
+                "La dame de Haute-Savoie",
+                "Accueille-moi paysage"
+            ],
+            "correct_answer": "La Montagne, Jean Ferrat",
+            "details": "[Suite de la musique]"
+        },
+        {
             "question": "Quelle est cette musique ?",
             "audio": "Javanaise.mp3",
             "answers": [
@@ -21,15 +20,12 @@
                 "La Javanaise - Serge Gainsbourg",
                 "Ne Me Quitte Pas - Jacques Brel",
                 "Que Reste-t-il de Nos Amours ? - Charles Trenet"
-
             ],
             "correct_answer": "La Javanaise, Serge Gainsbourg",
             "details": "[Suite de la musique]"
         }
-     ],
-
-     "Île-de-France":
-     [
+    ],
+    "Île-de-France": [
         {
             "question": "Quelle est cette musique ?",
             "audio": "C2_NE_1.mp3",
@@ -42,7 +38,6 @@
             "correct_answer": "Ne me quitte pas, Jacques Brel",
             "details": "[Suite de la musique]"
         },
-
         {
             "question": "Quelle est cette musique ?",
             "audio": "2_C2_NE_1.mp3",
@@ -55,11 +50,8 @@
             "correct_answer": "Mon amant de Saint-Jean, Lucienne Delyle",
             "details": "[Suite de la musique]"
         }
-     ],
-
-
-     "Bretagne":
-     [
+    ],
+    "Bretagne": [
         {
             "question": "Quelle est cette musique ?",
             "audio": "C1_NO_1.mp3",
@@ -72,7 +64,6 @@
             "correct_answer": "Tri Martolod, Alan Stivell",
             "details": "[Suite de la musique]"
         },
-
         {
             "question": "Quelle est cette musique ?",
             "audio": "2_C1_NO_audio1.mp3",
@@ -85,11 +76,8 @@
             "correct_answer": "La blanche hermine, Gilles Servat",
             "details": "[Suite de la musique]"
         }
-     ],
-
-
-     "Hauts-de-France":
-     [
+    ],
+    "Hauts-de-France": [
         {
             "question": "Quelle est cette musique ?",
             "audio": "C2_NO_8.mp3",
@@ -102,7 +90,6 @@
             "correct_answer": "Made in Normandie, Stone & Charden",
             "details": "[Suite de la musique]"
         },
-
         {
             "question": "Quel volatile fait ce cri ?",
             "audio": "C2_NO_20.mp3",
@@ -115,11 +102,8 @@
             "correct_answer": "Une mouette",
             "details": "[Suite de la musique]"
         }
-     ],
-
-
-     "Provence-Alpes-Côte d'Azur":
-     [
+    ],
+    "PACA": [
         {
             "question": "Quel insecte produit ce son ?",
             "audio": "Q2_SE_1.mp3",
@@ -132,10 +116,9 @@
             "correct_answer": "La cigale",
             "details": "[Suite de la musique]"
         },
-
         {
             "question": "Quelle est le nom de cette réalisation architecturale ?",
-            "audio": "Q4_SE_2",
+            "audio": "Q4_SE_2.mp3",
             "answers": [
                 "La cité solaire",
                 "La cité de bord de mer",
@@ -145,5 +128,5 @@
             "correct_answer": "La cité radieuse",
             "details": "[Suite de la musique]"
         }
-     ]
+    ]
 }
