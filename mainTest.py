@@ -6,11 +6,11 @@ Debug.prefixActive = False
 
 
 
+Config().webApp.show("Choisissez le nombre de questions : ~ 5 | 7 | 10 | 12", "table")
+
+time.sleep(10)
+
 Config().webApp.show("Placez le pion sur la carte")
-
-time.sleep(2)
-
-Config().webApp.show("A | B | C | D ", "table")
 
 time.sleep(2)
 

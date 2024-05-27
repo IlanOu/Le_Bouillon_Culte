@@ -59,15 +59,28 @@ class DisplayManager:
 
     def _display_table(self, content):
         """Displays a table within the total lines, with separators."""
-        rows = content.split("|")
+        
+        title = ""
+        
+        table_content = content
+        
+        if " ~ " in content:
+            title = content.split(" ~ ")[0]
+            table_content = content.split(" ~ ")[1]
+            
+            
+        rows = table_content.split("|")
         table = [[row.strip() for row in rows[i:i+2] if row.strip()] 
-                 for i in range(0, len(rows), 2)]
+                for i in range(0, len(rows), 2)]
         col_widths = [max(len(str(row[j])) if j < len(row) else 0 
-                           for row in table) 
-                       for j in range(2)]  # Calculate column widths
+                        for row in table) 
+                    for j in range(2)]  # Calculate column widths
+            
         
         lines = []
-        
+        if title != "":
+            lines.append(title)
+            
         # Format table rows
         for row in table:
             line = f"| {row[0]:<{col_widths[0]}} | {row[1]:<{col_widths[1]}} |" if len(row) == 2 else f"| {row[0]:<{col_widths[0]}} |"

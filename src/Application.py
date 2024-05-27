@@ -30,4 +30,3 @@ class App:
 
     def receive_message(self, message):
         print(f"Message reçu dans App : {message}")
-        # Vous pouvez traiter le message ici ou le transmettre à d'autres parties de votre application
