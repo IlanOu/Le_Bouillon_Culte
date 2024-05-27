@@ -87,7 +87,7 @@ class QuizManager:
         self.quiz3 = Quiz_DevineSuite(self.sensors_manager, "./assets/json/devine_suite.json")
         self.quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         self.quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
-        # self.quiz6 = Quiz_TroisImages(self.sensors_manager, "./assets/json/3_images.json")
+        self.quiz6 = Quiz_TroisImages(self.sensors_manager, "./assets/json/3_images.json")
 
 
         # Add quizzes to the system
@@ -97,7 +97,7 @@ class QuizManager:
         self.add_quiz(self.quiz3) # Fait
         self.add_quiz(self.quiz4) # Fait
         self.add_quiz(self.quiz5) # Fait
-        # self.add_quiz(self.quiz6) # Fait
+        self.add_quiz(self.quiz6) # Fait
 
     def read_rfid_worker(self):
         while True:
@@ -109,6 +109,8 @@ class QuizManager:
                 self.rfid_event.clear()
 
     def wait_for_rfid(self):
+        Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
+        Config().webApp.show("Placez le pion sur la carte")
         self.rfid_response = None
         self.rfid_event.set()
         self.start_rfid()
