@@ -58,6 +58,7 @@ class Quiz_TroisImages(Quiz):
         # 1. Display question
         Config().webApp.show(display_images_value, "3images")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        time.sleep(30)
         
         Config().webApp.show(question_value, "text")
         
@@ -78,4 +79,4 @@ class Quiz_TroisImages(Quiz):
         time.sleep(3)
         Config().webApp.show("images/" + details_image_value, "image")
         
-        time.sleep(10)
+        time.sleep(30)

@@ -59,6 +59,7 @@ class Quiz_QuiSuisJe(Quiz):
         # 1. Display question
         Config().webApp.show(question_value, "text")
         Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        time.sleep(30)
         
         # 2.
         Config().webApp.show(display_possible_responses_value, "table")
@@ -76,7 +77,7 @@ class Quiz_QuiSuisJe(Quiz):
         time.sleep(3)
         Config().webApp.show(details_image_value, "image")
         
-        time.sleep(10)
+        time.sleep(30)
         
         
         
