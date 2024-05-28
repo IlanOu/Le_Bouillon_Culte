@@ -16,11 +16,13 @@ from src.Config import Config
 
 import random
 import time
+import threading
 
 
 Debug.prefixActive = False
 
 # ------------------------------- Quiz manager ------------------------------- #
+
 
 class QuizManager:
     def __init__(self, sensors_manager):
@@ -28,9 +30,13 @@ class QuizManager:
         self.current_quiz = None
         self.zone = ""
         self.sensors_manager = sensors_manager
+        self.rfid_response = None
+        self.rfid_thread = None
+        self.rfid_event = threading.Event()
+        self.rfid_is_started = False
 
     def set_zone(self, zone):
-        self.zone = zone
+        Config().zone = zone
 
     def add_quiz(self, quiz: Quiz):
         self.quizzes.append(quiz)
@@ -60,9 +66,20 @@ class QuizManager:
     def __set_current_quiz(self, quiz: Quiz):
         self.current_quiz = quiz
 
+    def start_rfid(self):
+        if not self.rfid_is_started:
+            self.rfid_thread = threading.Thread(target=self.read_rfid_worker)
+            self.rfid_thread.start()
+            self.rfid_is_started = True
     
-    def setup(self):
-        
+    def stop_rfid(self):
+        if self.rfid_is_started:
+            self.rfid_event.set()
+            self.rfid_is_started = False
+    
+    def setup(self, server_thread):
+
+        server_thread.addCallbackRun(self.receive_message)
         # Get quizzes json content
         # ---------------------------------------------------------------------------- #
         self.quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
@@ -77,11 +94,33 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         # self.add_quiz(self.quiz1) # Fait
         # self.add_quiz(self.quiz2) # Fait
-        # self.add_quiz(self.quiz3) # Fait
-        self.add_quiz(self.quiz4) # Fait
-        self.add_quiz(self.quiz5) # Fait
+        #self.add_quiz(self.quiz3) # Fait
+        # self.add_quiz(self.quiz4) # Fait
+        # self.add_quiz(self.quiz5) # Fait
         self.add_quiz(self.quiz6) # Fait
 
+    def read_rfid_worker(self):
+        while True:
+            if self.rfid_event.is_set():
+                if self.sensors_manager.read_rfid():
+                    self.rfid_response = "Bretagne"
+                    self.stop_rfid()
+                    break
+                self.rfid_event.clear()
+
+    def wait_for_rfid(self):
+        Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
+        Config().webApp.show("Placez le pion sur la carte")
+        self.rfid_response = None
+        self.rfid_event.set()
+        self.start_rfid()
+
+        while self.rfid_response is None:
+            time.sleep(0.1)
+
+        self.set_zone(self.rfid_response)
+
+        
 
     def run(self):
         # Turn the wheel
@@ -100,8 +139,8 @@ class QuizManager:
         try:
             if self.current_quiz != self.quiz2:
                 # Wait for RFID
-                self.sensors_manager.read_rfid()
-            
+                self.wait_for_rfid()
+
             # Run quiz
             self.current_quiz.process()
             
@@ -112,3 +151,7 @@ class QuizManager:
         except KeyboardInterrupt:
             Config().webApp.show("❌ Programme stoppé", "stop")
             Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
+    
+    def receive_message(self, message):
+        print(f"Message reçu dans QuizManager : {message}")
+        self.rfid_response = message

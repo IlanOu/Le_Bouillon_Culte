@@ -79,10 +79,31 @@ class Quiz_BlindTest(Quiz):
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
         
         # 4. Attendre la réponse de l'utilisateur
-        self.sensors_manager.wait_for_button_press()
-        
+        button_pin = self.sensors_manager.wait_for_button_press()
+
+        print("Le pin : " + str(button_pin) + " type : " + str(type(button_pin)))
+
+        if button_pin == 16 :
+            print("Réponse 1")
+            buttonResponse = possible_responses_value[0]
+        elif button_pin == 23 :
+            print("Réponse 2")
+            buttonResponse = possible_responses_value[1]
+        elif button_pin == 26 :
+            print("Réponse 3")
+            buttonResponse = possible_responses_value[2]
+        elif button_pin == 17 :
+            print("Réponse 4")
+            buttonResponse = possible_responses_value[3]
+
+        print(f"Ma réponse est : {buttonResponse} et la correct est {response_value}")
         # 5. Afficher la réponse + détails
-        response = "La bonne réponse était : " + response_value
+        if buttonResponse == response_value:
+            response = "La bonne réponse était : " + response_value
+        else:
+            response = "Dommage. La bonne réponse était : " + response_value
+
+
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         Speaker.say(response, GttsEngine())
         player.play_next_random_section()

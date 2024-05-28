@@ -17,6 +17,7 @@ print(Colors.UNDERLINE + "Hello" + Colors.ENDC)
 import datetime
 import inspect
 import sys
+import shutil
 
 class Style:
     HEADER = '\033[95m'
@@ -188,3 +189,28 @@ class Debug:
             Debug._log(str(to_print), style)
         
         Debug.prefixActive = prefix_active
+        
+    @staticmethod
+    def LogPopup(message, style=Style.GREEN):
+        console_width = shutil.get_terminal_size().columns
+
+        lines = message.split('\n')
+
+        max_line_length = max(len(line) for line in lines)
+
+        frame_top = "".rjust(console_width - max_line_length - 4) + "╔" + "═" * (max_line_length + 2) + "╗"
+
+        message_lines = []
+        for line in lines:
+            padding = console_width - len(line) - (max_line_length - len(line)) - 4
+            message_line = "".rjust(padding) + "║ " + line.center(max_line_length) + " ║"
+            message_lines.append(message_line)
+
+        frame_bottom = "".rjust(console_width - max_line_length - 4) + "╚" + "═" * (max_line_length + 2) + "╝"
+
+        Debug.LogColor(frame_top, style)
+        for line in message_lines:
+            Debug.LogColor(line, style)
+        Debug.LogColor(frame_bottom, style)
+
+        print()

@@ -9,6 +9,21 @@
 python3 -m venv --system-site-packages env
 ```
 
+<!-- 
+
+### Create env for Windows
+
+```bash
+python -m venv mon_environnement
+```
+
+### Activate env for Windows
+
+```bash
+.\env\Scripts\activate
+```
+ -->
+
 ### Tout installer
 
 ```bash

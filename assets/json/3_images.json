@@ -1,23 +1,29 @@
 {
-    "Auvergne-Rhône-Alpes":
-     [
-         {
-             "question": "Pommes de terres sautés + Lardons + Cantal",
-             "3_images": ["C5_CE_12.jpg","C5_CE_13.jpg","C5_CE_14.jpg"],
-             "answers": [
-                 "Tartiflette",
-                 "Truffade",
-                 "Aligot",
-                 "Le hachis parmentier"
-             ],
-             "correct_answer": "Truffade",
-             "details": "Les pommes de terre sont coupées en tranches et cuites dans une poêle avec du lard blanc fondu. Quand les pommes de terre sont prêtes, on éteint le feu, on ajoute de l'ail haché et du cantal coupé en morceaux. On laisse le fromage fondre sur les pommes de terre chaudes. On le sert avec des charcuteries locales et de la salade verte.",
-             "details_image": "C5_CE_15.jpg"
-         },
-
-         {
+    "Auvergne-Rhône-Alpes": [
+        {
+            "question": "Pommes de terres sautés + Lardons + Cantal",
+            "3_images": [
+                "C5_CE_12.jpg",
+                "C5_CE_13.jpg",
+                "C5_CE_14.jpg"
+            ],
+            "answers": [
+                "Tartiflette",
+                "Truffade",
+                "Aligot",
+                "Le hachis parmentier"
+            ],
+            "correct_answer": "Truffade",
+            "details": "Les pommes de terre sont coupées en tranches et cuites dans une poêle avec du lard blanc fondu. Quand les pommes de terre sont prêtes, on éteint le feu, on ajoute de l'ail haché et du cantal coupé en morceaux. On laisse le fromage fondre sur les pommes de terre chaudes. On le sert avec des charcuteries locales et de la salade verte.",
+            "details_image": "C5_CE_15.jpg"
+        },
+        {
             "question": "Vitrail + Sculpture + Marguerite d’Autriche",
-            "3_images": ["2_C5_CE_5.jpg", "2_C5_CE_6.jpg", "2_C5_CE_7.jpg"],
+            "3_images": [
+                "2_C5_CE_5.jpg",
+                "2_C5_CE_6.jpg",
+                "2_C5_CE_7.jpg"
+            ],
             "answers": [
                 "La Cathédrale Notre-Dame de Chartres",
                 "La Basilique Notre-Dame de Fourvière",
@@ -28,13 +34,15 @@
             "details": "Le monastère de Brou, situé à Bourg-en-Bresse en France, a été construit au début du XVIe siècle par Marguerite d'Autriche en mémoire de son époux, Philibert le Beau. Ce complexe religieux se compose d'une église, d'un cloître et de bâtiments monastiques. L'église est célèbre pour son architecture raffinée, ses vitraux colorés et son retable sculpté.",
             "details_image": "2_C5_CE_8.jpg"
         }
-     ],
-
-     "Île-de-France":
-     [
+    ],
+    "Île-de-France": [
         {
             "question": "Jardins + Galeries des Glaces + Château",
-            "3_images": ["C5_NE_4.jpg", "C5_NE_5.jpg", "C5_NE_6.jpg"],
+            "3_images": [
+                "C5_NE_4.jpg",
+                "C5_NE_5.jpg",
+                "C5_NE_6.jpg"
+            ],
             "answers": [
                 "Château de Chambord",
                 "Château de Versailles",
@@ -45,10 +53,13 @@
             "details": "Bâtie sous les ordres du Roi Soleil pour en faire sa demeure. Le château de Versailles représente l’une des plus belles représentations de l’art français du XVIIe siècle.",
             "details_image": "C5_NE_7.jpg"
         },
-
         {
             "question": "Passages sous des arcades + Place de jardins au centre de Paris + Bâtiments haussmanniens",
-            "3_images": ["2_C5_NE_1.jpg", "2_C5_NE_2.jpg", "2_C5_NE_3.jpg"],
+            "3_images": [
+                "2_C5_NE_1.jpg",
+                "2_C5_NE_2.jpg",
+                "2_C5_NE_3.jpg"
+            ],
             "answers": [
                 "La place Édouard VII",
                 "La place Vendôme",
@@ -59,13 +70,15 @@
             "details": "La place des Vosges était jusqu’en 1790 la place Royale car elle a été dédiée au roi Henri IV puis à Louis XIII. La place des Vosges se situe dans le quartier du Marais, qui est lui-même à la jonction du 3e et 4e arrondissements de Paris.",
             "details_image": "2_C5_NE_4.jpg"
         }
-     ],
-
-     "Bretagne":
-     [
+    ],
+    "Bretagne": [
         {
             "question": "Remparts + Place Gambetta + Statue de la Rouërie",
-            "3_images": ["C5_NO_5.jpg", "C5_NO_6.jpg", "C5_NO_7.jpg"],
+            "3_images": [
+                "C5_NO_5.jpg",
+                "C5_NO_6.jpg",
+                "C5_NO_7.jpg"
+            ],
             "answers": [
                 "Rennes",
                 "Brest",
@@ -76,10 +89,13 @@
             "details": "Fougères est une ville charmante située en Bretagne, dans le département d'Ille-et-Vilaine. Elle est surtout renommée pour son magnifique château médiéval, l'un des plus grands d'Europe, qui domine la ville et offre une vue imprenable sur les environs. La ville elle-même est riche en histoire, avec ses ruelles pavées, ses maisons à colombages et ses églises anciennes. C'est un lieu idéal pour les amateurs d'histoire, de culture et de nature, avec ses nombreux parcs et jardins à découvrir aux alentours.            ",
             "details_image": "C5_NO_9.jpg"
         },
-
         {
             "question": "Hauteur du rocher + Alignement parallèle des rochers + Vue de loin",
-            "3_images": ["2_C5_NO_5.jpg", "2_C5_NO_6.jpg", "2_C5_NO_7.jpg"],
+            "3_images": [
+                "2_C5_NO_5.jpg",
+                "2_C5_NO_6.jpg",
+                "2_C5_NO_7.jpg"
+            ],
             "answers": [
                 "La Pointe du Raz",
                 "Les Alignement de Carnac",
@@ -90,13 +106,15 @@
             "details": "Les alignements de Carnac sont un site mégalithique situé en France, dans la région de Bretagne. Il s'agit d'un ensemble de pierres dressées, datant du Néolithique, disposées en lignes parallèles sur une distance d'environ 250 mètres. Ces alignements sont constitués de menhirs, certains atteignant plusieurs mètres de hauteur",
             "details_image": "2_C5_NO_8.jpg"
         }
-     ],
-
-     "Hauts-de-France":
-     [
+    ],
+    "Hauts-de-France": [
         {
             "question": "Galerie de peintures + Château + Chantilly",
-            "3_images": ["C5_NO_11.jpg", "C5_NO_12.jpg", "C5_NO_13.jpg"],
+            "3_images": [
+                "C5_NO_11.jpg",
+                "C5_NO_12.jpg",
+                "C5_NO_13.jpg"
+            ],
             "answers": [
                 "Le Château de Moulinsart",
                 "Le Château de Saint-Germain-en-Laye",
@@ -107,10 +125,13 @@
             "details": "Situé dans la ville de Chantilly, dans le département de l’Oise. Le Domaine de Chantilly est l’un des joyaux du patrimoine français. Le château abrite la seconde plus grande collection de peintures anciennes de France, ainsi que des jardins de 115 hectares tout autour du château.",
             "details_image": "C5_NO_14.jpg"
         },
-
         {
             "question": "Saucisse + Frite + Sauce",
-            "3_images": ["C5_NO_22.jpg", "C5_NO_23.jpg", "C5_NO_24.jpg"],
+            "3_images": [
+                "C5_NO_22.jpg",
+                "C5_NO_23.jpg",
+                "C5_NO_24.jpg"
+            ],
             "answers": [
                 "Un hot-dog",
                 "Une Fricadelle",
@@ -121,13 +142,15 @@
             "details": "La Fricadelle est un plat traditionnel des Pays-Bas historique. Ce plat est constitué d’une saucisse panée de viande mélangée (poulet, cheval et porc), accompagnée d’une barquette de frites. Ce plat peut être accompagné d’une sauce épicée.",
             "details_image": "C5_NO_25.jpg"
         }
-     ],
-
-     "Provences-Alpes-Côte-d'Azure":
-     [
+    ],
+    "PACA": [
         {
             "question": "Poissons de rochers + Tomates de Provence + Poireaux",
-            "3_images": ["Q5_SE_1", "Q5_SE_2", "Q5_SE_3"],
+            "3_images": [
+                "Q5_SE_1.webp",
+                "Q5_SE_2.jpg",
+                "Q5_SE_3.jpg"
+            ],
             "answers": [
                 "La Bouillabaisse",
                 "Le Bouillon de mer",
@@ -136,12 +159,15 @@
             ],
             "correct_answer": "La Bouillabaisse",
             "details": "La bouillabaisse est originaire de la Grèce Antique. C’était un plat mangé par la population réalisé avec les restes et invendus des pêcheurs.",
-            "details_image": "R5_SE_1"
+            "details_image": "R5_SE_1.png"
         },
-
         {
             "question": "Farine + Anchois + Tapenade",
-            "3_images": ["Q5_SE_4", "Q5_SE_5", "Q5_SE_6"],
+            "3_images": [
+                "Q5_SE_4.jpeg",
+                "Q5_SE_5.avif",
+                "Q5_SE_6.webp"
+            ],
             "answers": [
                 "La Tourte Provençale",
                 "La Pissaladière",
@@ -150,7 +176,7 @@
             ],
             "correct_answer": "La Pissaladière",
             "details": "Selon de nombreuses rumeurs sur son origine, la pissaladière née à Nice aurait été importée en Italie par de Papes pour ensuite leur inspirer la Pizza",
-            "details_image": "R5_SE_2"
+            "details_image": "R5_SE_2.jpeg"
         }
-     ]
-  }
+    ]
+}

@@ -67,16 +67,34 @@ class Quiz_TroisImages(Quiz):
         Speaker.say(speakeable_possible_responses_value, GttsEngine())
     
         # 3. Wait for response
-        response_index = possible_responses_value.index(response_value)
-        self.sensors_manager.wait_for_button_press(Button(Config().buttons_pins[response_index]))
+        button_pin = self.sensors_manager.wait_for_button_press()
+        
+        if button_pin == 16 :
+            print("Réponse 1")
+            buttonResponse = possible_responses_value[0]
+        elif button_pin == 23 :
+            print("Réponse 2")
+            buttonResponse = possible_responses_value[1]
+        elif button_pin == 26 :
+            print("Réponse 3")
+            buttonResponse = possible_responses_value[2]
+        elif button_pin == 17 :
+            print("Réponse 4")
+            buttonResponse = possible_responses_value[3]
+
+        print(f"Ma réponse est : {buttonResponse} et la correct est {response_value}")
+        # 5. Afficher la réponse + détails
+        if buttonResponse == response_value:
+            response = "La bonne réponse était : " + response_value
+        else:
+            response = "Dommage. La bonne réponse était : " + response_value
         
         # 4. Display response
-        response = "La bonne réponse était : " + response_value
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
         Speaker.say(response, GttsEngine())
         
         time.sleep(3)
-        Config().webApp.show("images/" + details_image_value, "image")
+        Config().webApp.show(details_image_value, "image")
         
         time.sleep(30)
