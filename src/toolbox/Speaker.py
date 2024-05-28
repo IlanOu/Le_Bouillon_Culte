@@ -133,7 +133,7 @@ class PiperEngine(TTSEngine):
 
 
         # Définir la commande à exécuter
-        commande = "echo '" + str(text) + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file welcome.wav"
+        commande = "echo '" + str(text) + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file temp.wav"
 
         # Exécuter la commande
         process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)
@@ -145,16 +145,13 @@ class PiperEngine(TTSEngine):
         if process.returncode == 0:
             print("La commande a été exécutée avec succès !")
             # Ouvrir le fichier audio dans un lecteur externe
-            file = "welcome.wav"
+            file = "temp.wav"
+            
+            
             import simpleaudio as sa
-
-            # Chemin vers votre fichier .wav
+            
             wave_obj = sa.WaveObject.from_wave_file(file)
-
-            # Créer un play object
             play_obj = wave_obj.play()
-
-            # Attendre la fin du son (optionnel)
             play_obj.wait_done()
 
         else:
