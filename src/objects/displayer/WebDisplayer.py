@@ -4,6 +4,8 @@ import logging
 
 from src.toolbox.Debug import *
 
+from src.Config import Config
+
 import socket
 
 """
@@ -43,7 +45,7 @@ class WebApp(object):
             try:
                 ip_adress = cls._instance.get_ip_address()
             except:
-                ip_adress = "10.42.0.1"
+                ip_adress = Config().hotspot_ip
             
             Debug.LogSeparator(f"Server is running on : {ip_adress}:5000")
             
@@ -63,13 +65,11 @@ class WebApp(object):
             log = logging.getLogger('werkzeug')
             log.setLevel(logging.ERROR)
 
-            # Redirection
             
             # Home page
             # ---------------------------------------------------------------------------- #
             @cls._instance.app.route('/')
             def home():
-                
                 return render_template('index.html', string=cls._instance.string_updater.text)
 
 

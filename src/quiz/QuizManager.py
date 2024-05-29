@@ -9,17 +9,14 @@ from src.quiz.Quiz import Quiz
 
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 
-from src.toolbox.Debug import Debug, Style
-
+from src.toolbox.Debug import *
 from src.Config import Config
-
 
 import random
 import time
 import threading
 
 
-Debug.prefixActive = False
 
 # ------------------------------- Quiz manager ------------------------------- #
 
@@ -28,8 +25,9 @@ class QuizManager:
     def __init__(self, sensors_manager):
         self.quizzes = []
         self.current_quiz = None
-        self.zone = ""
+        
         self.sensors_manager = sensors_manager
+        
         self.rfid_response = None
         self.rfid_thread = None
         self.rfid_event = threading.Event()
@@ -93,12 +91,12 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        self.add_quiz(self.quiz1) # Fait
-        self.add_quiz(self.quiz2) # Fait
-        # self.add_quiz(self.quiz3) # Fait
-        self.add_quiz(self.quiz4) # Fait
-        self.add_quiz(self.quiz5) # Fait
-        self.add_quiz(self.quiz6) # Fait
+        self.add_quiz(self.quiz1)
+        self.add_quiz(self.quiz2)
+        # self.add_quiz(self.quiz3)
+        self.add_quiz(self.quiz4)
+        self.add_quiz(self.quiz5)
+        self.add_quiz(self.quiz6)
 
     def read_rfid_worker(self):
         while True:
@@ -112,6 +110,7 @@ class QuizManager:
     def wait_for_rfid(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
         Config().webApp.show("Placez le pion sur la carte")
+        
         self.rfid_response = None
         self.rfid_event.set()
         self.start_rfid()
@@ -154,5 +153,5 @@ class QuizManager:
             Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
     
     def receive_message(self, message):
-        print(f"Message reçu dans QuizManager : {message}")
+        Debug.LogWhisper(f"[Websocket]> Message reçu dans QuizManager : {message}")
         self.rfid_response = message
