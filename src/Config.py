@@ -28,7 +28,7 @@ class Config:
         self.webApp = Displayer(self.test_mode).get_display()
         
         
-        self.buttons_pins = [16, 17, 26, 23]
+        self.buttons_pins = [16, 23, 26, 17]
         
         self.hotspot_ip = "10.42.0.1"
         
@@ -48,6 +48,7 @@ class ScoreConfig:
         self.numbers_question = [2, 7, 10, 12] # [5, 7, 10, 12]
     
     def update_nb_actual_question(self):
+        Debug.LogPopup("+1 à la question !")
         self.nb_actual_question += 1
         
     def update_score(self, quiz, answer):

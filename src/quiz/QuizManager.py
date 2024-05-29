@@ -81,6 +81,9 @@ class QuizManager:
     
     def setup(self, server_thread=None):
 
+        Config().webApp.show("La partie va commencer !")
+
+
         if server_thread != None:
             server_thread.addCallbackRun(self.receive_message)
         # Get quizzes json content
@@ -106,7 +109,7 @@ class QuizManager:
         
     def config_nb_question(self):
         
-        question_value = "Combien de question voulez-vous faire ?"
+        question_value = "Combien de questions voulez-vous faire ?"
         
         # System
         # ---------------------------------------------------------------------------- #
@@ -126,11 +129,11 @@ class QuizManager:
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()
         
-        
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
 
         ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
+
 
     def read_rfid_worker(self):
         while True:
@@ -158,16 +161,29 @@ class QuizManager:
     def run(self):
         ScoreConfig().update_nb_actual_question()
         
+        # Wait for user press button
+        # ---------------------------------------------------------------------------- #
+        
+        Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
+        input("") # TODO -> Utiliser un nouveau bouton plutot que Entrer
+        
+        
+        # Display current question
+        # ---------------------------------------------------------------------------- #
+        score_to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
+        
+        if ScoreConfig().nb_actual_question == ScoreConfig().nb_question:
+            score_to_display = "Attention, vous en êtes à la dernière question !"
+            
+        Config().webApp.show(score_to_display)
+        Speaker.say(score_to_display)
+        
+        
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
-        Config().webApp.show("La partie va commencer !")
-        Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
-        input("")
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
         
-        if self.current_quiz == None:
-            Debug.LogError("[Error]> Aucun quiz n'est définit")
         
         # Run quiz
         # ---------------------------------------------------------------------------- #
@@ -184,8 +200,7 @@ class QuizManager:
         
         # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
-            Config().webApp.show("❌ Programme stoppé", "stop")
-            Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
+            Config().stop_program()
     
     def receive_message(self, message):
         Debug.LogWhisper(f"[Websocket]> Message reçu dans QuizManager : {message}")

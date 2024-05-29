@@ -72,7 +72,7 @@ class Quiz_TroisImages(Quiz):
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
 
-        button_response = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
+        button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
 
         Debug.LogWhisper(f"Ma réponse est : {button_response} et la correct est {response_value}")
         
