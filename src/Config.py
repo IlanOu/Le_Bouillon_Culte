@@ -44,6 +44,8 @@ class ScoreConfig:
         self.nb_actual_question = 0
         self.total_score = 0
         self.quizzes_score = {"BlindTest" : [0,0], "CultureG": [0,0], "DevineSuite": [0, 0], "OuCest": [0, 0], "QuiSuisJe": [0, 0], "TroisImages": [0, 0]}
+        
+        self.numbers_question = [2, 7, 10, 12] # [5, 7, 10, 12]
     
     def update_nb_actual_question(self):
         self.nb_actual_question += 1

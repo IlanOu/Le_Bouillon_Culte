@@ -113,30 +113,24 @@ class QuizManager:
         
         # 1. Display question
         Config().webApp.show(question_value, "text")
-        Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        Speaker.say(question_value.replace("/n", ""))
         
         # 2.
-        Config().webApp.show("5|7|10|12", "table") 
-        Speaker.say("5. 7. 10. 12.", GttsEngine())
+        table = "|".join(map(str, ScoreConfig().numbers_question))
+        Config().webApp.show(table, "table")
+        
+        str_choices = ", ".join(map(str, ScoreConfig().numbers_question))
+        
+        Speaker.say(str_choices)
     
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()
         
-        if button_pin == 16 :
-            print("Réponse 1")
-            ScoreConfig().nb_question = 5
-        elif button_pin == 23 :
-            print("Réponse 2")
-            ScoreConfig().nb_question = 7
-        elif button_pin == 26 :
-            print("Réponse 3")
-            ScoreConfig().nb_question = 10
-        elif button_pin == 17 :
-            print("Réponse 4")
-            ScoreConfig().nb_question = 12
-           
         
-        
+        if not button_pin in Config().buttons_pins:
+            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
+
+        ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
 
     def read_rfid_worker(self):
         while True:
@@ -147,7 +141,7 @@ class QuizManager:
                     break
                 self.rfid_event.clear()
 
-    def wait_for_rfid(self):
+    def wait_for_rfids(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
         Config().webApp.show("Placez le pion sur la carte")
         
@@ -160,7 +154,6 @@ class QuizManager:
 
         self.set_zone(self.rfid_response)
 
-        
 
     def run(self):
         ScoreConfig().update_nb_actual_question()
@@ -181,7 +174,7 @@ class QuizManager:
         try:
             if self.current_quiz != self.quiz2:
                 # Wait for RFID
-                self.wait_for_rfid()
+                self.wait_for_rfids()
 
             # Run quiz
             self.current_quiz.process()

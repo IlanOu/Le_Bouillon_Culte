@@ -25,9 +25,6 @@ class SensorsManager:
         
 
     def read_rfid(self):
-        Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
-        Config().webApp.show("Placez le pion sur la carte")
-
         id, text = self.RFID.read()
         return id, text
 
