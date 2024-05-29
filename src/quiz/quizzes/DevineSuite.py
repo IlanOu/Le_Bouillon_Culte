@@ -5,7 +5,7 @@ from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker, GttsEngine
 from src.quiz.MusicPlayer import MusicPlayer
 
-from src.Config import Config
+from src.Config import Config, ScoreConfig
 
 import random
 import time
@@ -102,8 +102,10 @@ class Quiz_DevineSuite(Quiz):
         # 5. Afficher la réponse + détails
         if buttonResponse == response_value:
             response = "La bonne réponse était : " + response_value
+            ScoreConfig().update_score("DevineSuite", True)
         else:
             response = "Dommage. La bonne réponse était : " + response_value
+            ScoreConfig().update_score("DevineSuite", False)
         
         # 4. Display response
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")

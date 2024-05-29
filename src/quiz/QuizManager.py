@@ -7,11 +7,13 @@ from src.quiz.quizzes.TroisImages import Quiz_TroisImages
 
 from src.quiz.Quiz import Quiz
 
+from src.toolbox.Speaker import *
+
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 
 from src.toolbox.Debug import Debug, Style
 
-from src.Config import Config
+from src.Config import Config, ScoreConfig
 
 
 import random
@@ -98,6 +100,42 @@ class QuizManager:
         # self.add_quiz(self.quiz4) # Fait
         # self.add_quiz(self.quiz5) # Fait
         self.add_quiz(self.quiz6) # Fait
+        
+        self.config_nb_question()
+        
+    def config_nb_question(self):
+        
+        question_value = "Combien de question voulez-vous faire ?"
+        
+        # System
+        # ---------------------------------------------------------------------------- #
+        
+        # 1. Display question
+        Config().webApp.show(question_value, "text")
+        Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        
+        # 2.
+        Config().webApp.show("5|7|10|12", "table") 
+        Speaker.say("5. 7. 10. 12.", GttsEngine())
+    
+        # 3. Wait for response
+        button_pin = self.sensors_manager.wait_for_button_press()
+        
+        if button_pin == 16 :
+            print("Réponse 1")
+            ScoreConfig().nb_question = 5
+        elif button_pin == 23 :
+            print("Réponse 2")
+            ScoreConfig().nb_question = 7
+        elif button_pin == 26 :
+            print("Réponse 3")
+            ScoreConfig().nb_question = 10
+        elif button_pin == 17 :
+            print("Réponse 4")
+            ScoreConfig().nb_question = 12
+           
+        
+        
 
     def read_rfid_worker(self):
         while True:
@@ -123,6 +161,8 @@ class QuizManager:
         
 
     def run(self):
+        ScoreConfig().update_nb_actual_question()
+        
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
         Config().webApp.show("La partie va commencer !")

@@ -9,7 +9,7 @@ from src.quiz.MusicPlayer import MusicPlayer
 
 from src.objects.displayer.WebDisplayer import *
 
-from src.Config import Config
+from src.Config import Config, ScoreConfig
 
 
 # Blind test 
@@ -100,9 +100,10 @@ class Quiz_BlindTest(Quiz):
         # 5. Afficher la réponse + détails
         if buttonResponse == response_value:
             response = "La bonne réponse était : " + response_value
+            ScoreConfig().update_score("BlindTest", True)
         else:
             response = "Dommage. La bonne réponse était : " + response_value
-
+            ScoreConfig().update_score("BlindTest", False)
 
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         Speaker.say(response, GttsEngine())
