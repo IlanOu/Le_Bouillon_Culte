@@ -82,20 +82,22 @@ class Quiz_BlindTest(Quiz):
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
 
         button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
-
-        Debug.LogWhisper(f"Ma réponse est : {button_response} et la correct est {response_value}")
-        
         
         
         # 5. Afficher la réponse + détails
         if button_response == response_value:
-            response = "La bonne réponse était : " + response_value
+            response = "Bravo vous avez trouvé !"
             ScoreConfig().update_score("BlindTest", True)
         else:
-            response = "Dommage. La bonne réponse était : " + response_value
+            response = "Ce n’est pas la bonne réponse."
             ScoreConfig().update_score("BlindTest", False)
 
-        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        
+        Config().webApp.show(response + "/n La réponse correcte est : /n" + response_value, "text")
         Speaker.say(response)
+        
+        Config().webApp.show(details_value, "text")
+        
         player.play_next_random_section()
         
+        self.sensors_manager.wait_for_button_press()

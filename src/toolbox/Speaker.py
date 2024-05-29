@@ -134,7 +134,7 @@ class PiperEngine(TTSEngine):
         text = str(text).replace("'", "")
 
         # Définir la commande à exécuter
-        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file temp.wav"
+        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --speaker 1 --output_file temp.wav"
 
         # Exécuter la commande
         process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)

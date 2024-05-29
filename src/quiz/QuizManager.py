@@ -98,12 +98,12 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # Fait
-        # self.add_quiz(self.quiz2) # Fait
-        #self.add_quiz(self.quiz3) # Fait
-        # self.add_quiz(self.quiz4) # Fait
-        # self.add_quiz(self.quiz5) # Fait
-        self.add_quiz(self.quiz6) # Fait
+        self.add_quiz(self.quiz1)
+        # self.add_quiz(self.quiz2)
+        # self.add_quiz(self.quiz3)
+        # self.add_quiz(self.quiz4)
+        # self.add_quiz(self.quiz5)
+        # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
         
@@ -146,7 +146,7 @@ class QuizManager:
 
     def wait_for_rfids(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
-        Config().webApp.show("Placez le pion sur la carte")
+        Config().webApp.show("Choisissez une zone à l’aide de votre pion")
         
         self.rfid_response = None
         self.rfid_event.set()
@@ -164,8 +164,25 @@ class QuizManager:
         # Wait for user press button
         # ---------------------------------------------------------------------------- #
         
+        text_to_display = "Appuyez sur le gros bouton !"
+        Config().webApp.show(text_to_display)
+        
+        looping = True
+        
+        # Repeat every 20s to press on the button
+        # ---------------------------------------------------------------------------- #
+        def speek_text():
+            while looping:
+                Speaker.say(text_to_display)
+                time.sleep(20)
+
+        thread = threading.Thread(target=speek_text)
+        thread.start()
+    
         Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
-        input("") # TODO -> Utiliser un nouveau bouton plutot que Entrer
+        
+        input("") # Todo -> passer l'input en réel bouton
+        looping = False
         
         
         # Display current question

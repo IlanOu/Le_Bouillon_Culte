@@ -31,29 +31,29 @@ class SensorsManager:
     def wait_for_read_rfid(self):
         self.waiting_for_RFID = True
         self.rfid_result = None
-        self.stop_event.clear()  # Réinitialiser l'événement
+        self.stop_event.clear()
 
-        # Lancer la lecture RFID dans un thread séparé
+      
         rfid_thread = threading.Thread(target=self.read_rfid_with_timeout)
         rfid_thread.start()
 
-        # Attendre le résultat ou le délai d'expiration
-        rfid_thread.join(timeout=5)  # Attendre 5 secondes maximum
+      
+        rfid_thread.join(timeout=5)
 
-        self.stop_event.set()  # Signaler l'arrêt du thread
+        self.stop_event.set()
         self.waiting_for_RFID = False
 
-        # Retourner le résultat ou None si le délai est dépassé
+      
         return self.rfid_result
 
     def read_rfid_with_timeout(self):
         try:
             self.rfid_result = self.read_rfid()
-            self.stop_event.set()  # Signaler l'arrêt du thread si un scan est effectué
+            self.stop_event.set()
         except Exception as e:
             Debug.LogError(f"Erreur lors de la lecture RFID : {e}")
         finally:
-            self.stop_event.set()  # Signaler l'arrêt du thread dans tous les cas
+            self.stop_event.set()
 
     def wait_for_button_press(self, button=None):
         self.waiting_for_button = True
