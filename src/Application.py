@@ -2,6 +2,7 @@ from src.quiz.QuizManager import QuizManager
 from src.objects.SensorsManager import SensorsManager
 from src.objects.Checker import Checker
 from src.toolbox.Websocket import WebSocketServerThread
+from Config import ScoreConfig
 
 from src.toolbox.Debug import Debug
 
@@ -37,7 +38,7 @@ class App:
         manager = QuizManager(sensors_manager)
         manager.setup(self.server_thread)
 
-        while self.running:
+        for i in range (ScoreConfig().nb_question):
             manager.run()
 
     def receive_message(self, message):

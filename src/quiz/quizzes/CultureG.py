@@ -4,7 +4,7 @@ from src.quiz.Quiz import Quiz
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker
 
-from src.Config import Config
+from src.Config import Config, ScoreConfig
 
 import random
 import time
@@ -52,7 +52,7 @@ class Quiz_CultureG(Quiz):
         details_value = question["details"]
         details_image_value = question["details_image"]
 
-    
+
         # System
         # ---------------------------------------------------------------------------- #
         
@@ -85,8 +85,10 @@ class Quiz_CultureG(Quiz):
         # 5. Afficher la réponse + détails
         if buttonResponse == response_value:
             response = "La bonne réponse était : " + response_value
+            ScoreConfig().update_score("CultureG", True)
         else:
             response = "Dommage. La bonne réponse était : " + response_value
+            ScoreConfig().update_score("CultureG", False)
         
         
         # 4. Display response

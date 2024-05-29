@@ -1,8 +1,7 @@
 from src.quiz.Quiz import Quiz
 from src.toolbox.Debug import Debug
-from src.Config import Config
+from src.Config import Config, ScoreConfig
 from src.toolbox.Speaker import Speaker
-from src.objects.button.Button import Button
 
 import json
 import random
@@ -86,8 +85,10 @@ class Quiz_TroisImages(Quiz):
         # 5. Afficher la réponse + détails
         if buttonResponse == response_value:
             response = "La bonne réponse était : " + response_value
+            ScoreConfig().update_score("TroisImages", True)
         else:
             response = "Dommage. La bonne réponse était : " + response_value
+            ScoreConfig().update_score("TroisImages", False)
         
         # 4. Display response
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
