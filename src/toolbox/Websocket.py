@@ -3,6 +3,8 @@ from websocket_server import WebsocketServer
 import json
 import time
 
+from src.toolbox.Debug import *
+
 # Définition de la classe du serveur WebSocket
 class WebSocketServerThread(threading.Thread):
     def __init__(self, host, port):
@@ -21,11 +23,11 @@ class WebSocketServerThread(threading.Thread):
         self.clients_connected += 1
 
     def client_left(self, client, server):
-        print(f"Client déconnecté : {client['id']}")
+        Debug.LogWarning(f"[Websocket]> Client déconnecté : {client['id']}")
 
     def message_received(self, client, server, message):
         if "{" in message:
-            print(message)
+            Debug.LogWhisper("[Websocket]> " + message)
             jsonMessage = json.loads(message)
             if jsonMessage["action"] == "checkRFID":
                 self.send_message_to_callback(jsonMessage["data"])
@@ -55,5 +57,5 @@ if __name__ == "__main__":
     host = "0.0.0.0"
     port = 8080
     server_thread = WebSocketServerThread(host, port)
-    print(f"Serveur WebSocket démarré sur {host}:{port}")
+    Debug.LogWhisper(f"[Websocket]> Serveur WebSocket démarré sur {host}:{port}")
     server_thread.start()

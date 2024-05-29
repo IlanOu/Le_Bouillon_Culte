@@ -144,7 +144,6 @@ class PiperEngine(TTSEngine):
 
         # Vérifier si la commande a réussi
         if process.returncode == 0:
-            print("La commande a été exécutée avec succès !")
             # Ouvrir le fichier audio dans un lecteur externe
             file = "temp.wav"
             
@@ -156,7 +155,7 @@ class PiperEngine(TTSEngine):
             play_obj.wait_done()
 
         else:
-            print("Erreur lors de l'exécution de la commande:", process.returncode)
+            Debug.LogError("Erreur lors de l'exécution de la commande:", process.returncode)
 
 
 

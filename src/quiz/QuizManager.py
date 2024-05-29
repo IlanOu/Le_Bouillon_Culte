@@ -155,7 +155,6 @@ class QuizManager:
         self.set_zone(self.rfid_response)
         
 
-
     def run(self):
         ScoreConfig().update_nb_actual_question()
         

@@ -51,7 +51,7 @@ class SensorsManager:
             self.rfid_result = self.read_rfid()
             self.stop_event.set()  # Signaler l'arrêt du thread si un scan est effectué
         except Exception as e:
-            print(f"Erreur lors de la lecture RFID : {e}")
+            Debug.LogError(f"Erreur lors de la lecture RFID : {e}")
         finally:
             self.stop_event.set()  # Signaler l'arrêt du thread dans tous les cas
 

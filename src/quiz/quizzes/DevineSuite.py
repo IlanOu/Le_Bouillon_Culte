@@ -82,24 +82,21 @@ class Quiz_DevineSuite(Quiz):
         Speaker.say(speakeable_possible_responses_value)
     
         # 3. Wait for response
-        button_pin = self.sensors_manager.wait_for_button_press()
-        
-        if button_pin == 16 :
-            print("Réponse 1")
-            buttonResponse = possible_responses_value[0]
-        elif button_pin == 23 :
-            print("Réponse 2")
-            buttonResponse = possible_responses_value[1]
-        elif button_pin == 26 :
-            print("Réponse 3")
-            buttonResponse = possible_responses_value[2]
-        elif button_pin == 17 :
-            print("Réponse 4")
-            buttonResponse = possible_responses_value[3]
 
-        print(f"Ma réponse est : {buttonResponse} et la correct est {response_value}")
+        button_pin = self.sensors_manager.wait_for_button_press()
+
+        if not button_pin in Config().buttons_pins:
+            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
+
+        button_response = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
+
+        Debug.LogWhisper(f"Ma réponse est : {button_response} et la correct est {response_value}")
+
+
+
+
         # 5. Afficher la réponse + détails
-        if buttonResponse == response_value:
+        if button_response == response_value:
             response = "La bonne réponse était : " + response_value
             ScoreConfig().update_score("DevineSuite", True)
         else:

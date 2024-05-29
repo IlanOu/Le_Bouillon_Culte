@@ -58,7 +58,7 @@ class SensorsChecker:
 
 
     def receive_message(self, message):
-        print(f"Message reçu dans SensorsChecker : {message}")
+        Debug.LogWhisper(f"[Websocket]> Message reçu dans SensorsChecker : {message}")
         self.rfid_response = message
 
     # RFID Checker
@@ -75,7 +75,6 @@ class SensorsChecker:
         else:
             self.all_rfid["Bretagne"] = False
 
-        print("J'envoie le test !!!!!")
 
         server_thread.send_message_to_all("test")
 
@@ -89,8 +88,6 @@ class SensorsChecker:
 
             for zone in key :
                 self.all_rfid[zone] = self.rfid_response[zone]
-
-            print("Voici le self.all_rfid : " + str(self.all_rfid))
 
             if len(self.all_rfid) == 5:
                 self.all_wait_rfid = True
