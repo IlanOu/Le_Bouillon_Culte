@@ -38,7 +38,7 @@ class App:
         manager = QuizManager(sensors_manager)
         
         manager.setup(self.server_thread)
-
+        
         for i in range (ScoreConfig().nb_question):
             manager.run()
             
