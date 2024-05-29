@@ -153,6 +153,7 @@ class QuizManager:
             time.sleep(0.1)
 
         self.set_zone(self.rfid_response)
+        
 
 
     def run(self):
