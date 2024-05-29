@@ -117,7 +117,7 @@ class QuizManager:
         
         # 2.
         table = "|".join(map(str, ScoreConfig().numbers_question))
-        Config().webApp.show(table, "table")
+        Config().webApp.show(question_value + "~" + table, "table")
         
         str_choices = ", ".join(map(str, ScoreConfig().numbers_question))
         
