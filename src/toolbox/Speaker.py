@@ -131,9 +131,10 @@ class PiperEngine(TTSEngine):
     def say(self, text: str):
         import subprocess
 
+        text = str(text).replace("'", "")
 
         # Définir la commande à exécuter
-        commande = "echo '" + str(text) + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file temp.wav"
+        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file temp.wav"
 
         # Exécuter la commande
         process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)
@@ -165,8 +166,10 @@ class Speaker:
     """
     Classe permettant de lire du texte à haute voix en utilisant différents moteurs de synthèse vocale.
     """
+    engine = PiperEngine() # Default engine
+    
     @staticmethod
-    def say(text: str, engine: TTSEngine = SimpleEngine()):
+    def say(text: str):
         """
         Lit le texte donné à haute voix en utilisant le moteur de synthèse vocale spécifié.
         
@@ -178,5 +181,9 @@ class Speaker:
             Debug.LogError("Le TTS a été appelé avec un contenu vide. Vérifiez le TTS puis réessayez.")
         
         Debug.LogColor("[TTS]> " + text, Style.ITALIC + Style.BLUE)
-        engine.say(text)
+        Speaker.engine.say(text)
+    
+    @staticmethod
+    def setEngine(engine: TTSEngine):
+        Speaker.engine = engine
         

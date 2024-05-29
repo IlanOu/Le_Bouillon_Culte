@@ -2,7 +2,7 @@ import json
 import random
 
 from src.toolbox.Debug import Debug
-from src.toolbox.Speaker import *
+from src.toolbox.Speaker import Speaker
 
 from src.quiz.Quiz import Quiz
 from src.quiz.MusicPlayer import MusicPlayer
@@ -67,7 +67,7 @@ class Quiz_BlindTest(Quiz):
         
         # 1. Poser la question
         Config().webApp.show(question_value, "text")
-        Speaker.say(question_value, GttsEngine())
+        Speaker.say(question_value)
         
         # 2. Passer la musique
         player = MusicPlayer(Config().audio_dir)
@@ -76,7 +76,7 @@ class Quiz_BlindTest(Quiz):
     
         # 3. Proposer les réponses
         Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value, GttsEngine())
+        Speaker.say(speakeable_possible_responses_value)
         
         # 4. Attendre la réponse de l'utilisateur
         button_pin = self.sensors_manager.wait_for_button_press()
@@ -105,6 +105,6 @@ class Quiz_BlindTest(Quiz):
 
 
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
-        Speaker.say(response, GttsEngine())
+        Speaker.say(response)
         player.play_next_random_section()
         

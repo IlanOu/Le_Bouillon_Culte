@@ -2,7 +2,7 @@ import json
 from src.quiz.Quiz import Quiz
 
 from src.toolbox.Debug import Debug
-from src.toolbox.Speaker import Speaker, GttsEngine
+from src.toolbox.Speaker import Speaker
 
 from src.Config import Config
 
@@ -58,12 +58,12 @@ class Quiz_CultureG(Quiz):
         
         # 1. Display question
         Config().webApp.show(question_value, "text")
-        Speaker.say(question_value.replace("/n", ""), GttsEngine())
-        time.sleep(30)
+        Speaker.say(question_value.replace("/n", ""))
+        # time.sleep(30)
         
         # 2.
         Config().webApp.show(display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value, GttsEngine())
+        Speaker.say(speakeable_possible_responses_value)
     
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()
@@ -92,10 +92,10 @@ class Quiz_CultureG(Quiz):
         # 4. Display response
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
-        Speaker.say(response, GttsEngine())
+        Speaker.say(response)
         
         time.sleep(3)
         pass # Show image
         Config().webApp.show(details_image_value, "image")
         
-        time.sleep(30)
+        # time.sleep(30)

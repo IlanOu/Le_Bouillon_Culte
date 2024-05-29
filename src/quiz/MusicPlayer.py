@@ -18,12 +18,16 @@ class MusicPlayer:
     def get_audio_files(self):
         return [f for f in os.listdir(self.music_dir) if f.endswith(".mp3") or f.endswith(".wav")]
 
-    def play(self, audio_path: str, duration=None):
-        mixer.music.load(audio_path)
+    def play(self, audio_file: str, duration=None):
+        music_file_path = os.path.join(self.music_dir, audio_file)
+        
+        Debug.LogPopup(music_file_path)
+        
+        mixer.music.load(music_file_path)
         mixer.music.play()
 
         if duration == None:
-            duration = mixer.Sound(audio_path).get_length()
+            duration = mixer.Sound(music_file_path).get_length()
 
         time.sleep(duration)
 

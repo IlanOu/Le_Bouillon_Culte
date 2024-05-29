@@ -39,7 +39,12 @@ class WebApp(object):
 
             cls._instance = super(WebApp, cls).__new__(cls)
             
-            ip_adress = cls._instance.get_ip_address()
+            ip_adress = ""
+            try:
+                ip_adress = cls._instance.get_ip_address()
+            except:
+                ip_adress = "10.42.0.1"
+            
             Debug.LogSeparator(f"Server is running on : {ip_adress}:5000")
             
             cls._instance.app = Flask(__name__)

@@ -194,6 +194,7 @@ class Debug:
     def LogPopup(message, style=Style.GREEN):
         console_width = shutil.get_terminal_size().columns
 
+        message = str(message)
         lines = message.split('\n')
 
         max_line_length = max(len(line) for line in lines)

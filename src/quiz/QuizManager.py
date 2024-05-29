@@ -77,9 +77,10 @@ class QuizManager:
             self.rfid_event.set()
             self.rfid_is_started = False
     
-    def setup(self, server_thread):
+    def setup(self, server_thread=None):
 
-        server_thread.addCallbackRun(self.receive_message)
+        if server_thread != None:
+            server_thread.addCallbackRun(self.receive_message)
         # Get quizzes json content
         # ---------------------------------------------------------------------------- #
         self.quiz1 = Quiz_BlindTest(self.sensors_manager, "./assets/json/blind_test.json")
@@ -92,11 +93,11 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # Fait
-        # self.add_quiz(self.quiz2) # Fait
-        #self.add_quiz(self.quiz3) # Fait
-        # self.add_quiz(self.quiz4) # Fait
-        # self.add_quiz(self.quiz5) # Fait
+        self.add_quiz(self.quiz1) # Fait
+        self.add_quiz(self.quiz2) # Fait
+        # self.add_quiz(self.quiz3) # Fait
+        self.add_quiz(self.quiz4) # Fait
+        self.add_quiz(self.quiz5) # Fait
         self.add_quiz(self.quiz6) # Fait
 
     def read_rfid_worker(self):

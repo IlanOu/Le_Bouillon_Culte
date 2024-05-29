@@ -2,7 +2,7 @@ import json
 from src.quiz.Quiz import Quiz
 
 from src.toolbox.Debug import Debug
-from src.toolbox.Speaker import Speaker, GttsEngine
+from src.toolbox.Speaker import Speaker
 
 from src.Config import Config
 
@@ -57,12 +57,12 @@ class Quiz_OuCest(Quiz):
         
         # 1. Display question
         Config().webApp.show("Où se trouve " + question_value, "text")
-        Speaker.say("Où se trouve : ", GttsEngine())
-        Speaker.say(question_value.replace("/n", ""), GttsEngine())
+        Speaker.say("Où se trouve : ")
+        Speaker.say(question_value.replace("/n", ""))
         
         # 2.
         Config().webApp.show(answer_value, "text")
-        Speaker.say(answer_value, GttsEngine())
+        Speaker.say(answer_value)
     
         # 3. Wait for RFID # TODO -> Obtenir la position grâce aux différents capteurs RFID
         self.sensors_manager.read_rfid()
@@ -71,6 +71,6 @@ class Quiz_OuCest(Quiz):
         response = "La bonne réponse était : " + response_value
         Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
         
-        Speaker.say(response, GttsEngine())
+        Speaker.say(response)
         
         time.sleep(10)
