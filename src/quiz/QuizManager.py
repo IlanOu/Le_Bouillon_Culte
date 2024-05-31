@@ -15,6 +15,7 @@ from src.toolbox.Debug import *
 
 from src.Config import Config, ScoreConfig
 
+from src.objects.button.Button import Button
 
 import random
 import time
@@ -99,11 +100,11 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1)
-        # self.add_quiz(self.quiz2)
-        # self.add_quiz(self.quiz3)
-        # self.add_quiz(self.quiz4)
-        # self.add_quiz(self.quiz5)
-        # self.add_quiz(self.quiz6)
+        # self.add_quiz(self.quiz2) #TODO -> à faire
+        self.add_quiz(self.quiz3)
+        self.add_quiz(self.quiz4)
+        self.add_quiz(self.quiz5)
+        self.add_quiz(self.quiz6)
         
         self.config_nb_question()
         
@@ -139,7 +140,7 @@ class QuizManager:
         while True:
             if self.rfid_event.is_set():
                 if self.sensors_manager.read_rfid():
-                    self.rfid_response = "Bretagne"
+                    self.rfid_response = Config().internal_RFID_zone
                     self.stop_rfid()
                     break
                 self.rfid_event.clear()
@@ -181,7 +182,9 @@ class QuizManager:
     
         Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         
-        input("") # Todo -> passer l'input en réel bouton
+        # input("") # Todo -> passer l'input en réel bouton
+        self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
+        
         looping = False
         
         

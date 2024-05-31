@@ -53,9 +53,10 @@ class WebSocketServerThread(threading.Thread):
             time.sleep(0.3)
             self.send_message_to_all(message)
 
-if __name__ == "__main__":
-    host = "0.0.0.0"
-    port = 8080
-    server_thread = WebSocketServerThread(host, port)
-    Debug.LogWhisper(f"[Websocket]> Serveur WebSocket démarré sur {host}:{port}")
-    server_thread.start()
+
+# if __name__ == "__main__":
+#     host = "0.0.0.0"
+#     port = 8080
+#     server_thread = WebSocketServerThread(host, port)
+#     Debug.LogWhisper(f"[Websocket]> Serveur WebSocket démarré sur {host}:{port}")
+#     server_thread.start()

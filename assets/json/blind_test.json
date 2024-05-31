@@ -4,12 +4,12 @@
             "question": "Quelle est cette musique ?",
             "audio": "C2_CE_9.mp3",
             "answers": [
-                "La Montagne",
-                "Ma France",
-                "La dame de Haute-Savoie",
-                "Accueille-moi paysage"
+                "La Montagne - Jean Ferrat",
+                "Ma France - Bob Marley",
+                "La dame de Haute-Savoie - Eminem",
+                "Accueille-moi paysage - DJ Snake"
             ],
-            "correct_answer": "La Montagne, Jean Ferrat",
+            "correct_answer": "La Montagne - Jean Ferrat",
             "details": "[Suite de la musique]"
         },
         {
