@@ -5,23 +5,23 @@
             "audio": "C2_CE_9.mp3",
             "answers": [
                 "La Montagne - Jean Ferrat",
-                "Ma France - Bob Marley",
-                "La dame de Haute-Savoie - Eminem",
-                "Accueille-moi paysage - DJ Snake"
+                "Ma France - Candice Paris",
+                "La dame de Haute-Savoie - Marianne Proust",
+                "Accueille-moi paysage - Patrick Sébastien"
             ],
             "correct_answer": "La Montagne - Jean Ferrat",
             "details": "[Suite de la musique]"
         },
         {
             "question": "Quelle est cette musique ?",
-            "audio": "Javanaise.mp3",
+            "audio": "2_C1_CE_1.mp3",
             "answers": [
-                "Sous le Ciel de Paris - Yves Montand",
+                "Sous le ciel de Paris - Yves Montand",
                 "La Javanaise - Serge Gainsbourg",
-                "Ne Me Quitte Pas - Jacques Brel",
-                "Que Reste-t-il de Nos Amours ? - Charles Trenet"
+                "Ne me quitte pas - Jacques Brel",
+                "Que reste-t-il de nos amours ? - Charles Trenet"
             ],
-            "correct_answer": "La Javanaise, Serge Gainsbourg",
+            "correct_answer": "La Javanaise - Serge Gainsbourg",
             "details": "[Suite de la musique]"
         }
     ],
@@ -30,24 +30,24 @@
             "question": "Quelle est cette musique ?",
             "audio": "C2_NE_1.mp3",
             "answers": [
-                "Ne pleure pas, Jacques Brel",
-                "Je t’offrirais, Claude François",
-                "Il ne pleut pas, Patrick Bruel",
-                "Ne me quitte pas, Jacques Brel"
+                "Ne pleure pas - Jacques Brel",
+                "Je t’offrirais - Claude François",
+                "Il ne pleut pas - Patrick Bruel",
+                "Ne me quitte pas - Jacques Brel"
             ],
-            "correct_answer": "Ne me quitte pas, Jacques Brel",
+            "correct_answer": "Ne me quitte pas - Jacques Brel",
             "details": "[Suite de la musique]"
         },
         {
             "question": "Quelle est cette musique ?",
             "audio": "2_C2_NE_1.mp3",
             "answers": [
-                "Sur les quais du vieux Paris, Lucienne Delyle",
-                "Mon amant de Saint-Jean, Lucienne Delyle",
-                "Sénérade sans espoir, Lucienne Delyle",
-                "Sous les ponts de Paris, Lucienne Delyle"
+                "Sur les quais du vieux Paris - Lucienne Delyle",
+                "Mon amant de Saint-Jean - Lucienne Delyle",
+                "Sénérade sans espoir - Lucienne Delyle",
+                "Sous les ponts de Paris - Lucienne Delyle"
             ],
-            "correct_answer": "Mon amant de Saint-Jean, Lucienne Delyle",
+            "correct_answer": "Mon amant de Saint-Jean - Lucienne Delyle",
             "details": "[Suite de la musique]"
         }
     ],
@@ -56,24 +56,24 @@
             "question": "Quelle est cette musique ?",
             "audio": "C1_NO_1.mp3",
             "answers": [
-                "Son ar chistr, Alan Stivell",
-                "Aires de Pontevedra, Carlos Núñez",
-                "Tri Martolod, Alan Stivell",
-                "Tango to Evora, Loreena McKennitt"
+                "Son ar chistr - Alan Stivell",
+                "Aires de Pontevedra - Carlos Núñez",
+                "Tri Martolod - Alan Stivell",
+                "Tango to Evora - Loreena McKennitt"
             ],
-            "correct_answer": "Tri Martolod, Alan Stivell",
+            "correct_answer": "Tri Martolod - Alan Stivell",
             "details": "[Suite de la musique]"
         },
         {
             "question": "Quelle est cette musique ?",
             "audio": "2_C1_NO_audio1.mp3",
             "answers": [
-                "La jument de Michao, Tri Yann",
-                "Tri Martolod, Alan Stivell",
-                "La blanche hermine, Gilles Servat",
-                "La tribu de Dana, Manau"
+                "La jument de Michao - Tri Yann",
+                "Tri Martolod - Alan Stivell",
+                "La blanche hermine - Gilles Servat",
+                "La tribu de Dana - Manau"
             ],
-            "correct_answer": "La blanche hermine, Gilles Servat",
+            "correct_answer": "La blanche hermine - Gilles Servat",
             "details": "[Suite de la musique]"
         }
     ],
@@ -82,12 +82,12 @@
             "question": "Quelle est cette musique ?",
             "audio": "C2_NO_8.mp3",
             "answers": [
-                "Souvenir de France, Stone & Charden",
-                "Made in Normandie, Stone & Charden",
-                "L’Avventura, Stone & Charden",
-                "Est ce une fille ou un garçon ?, Stone & Charden"
+                "Souvenir de France - Stone & Charden",
+                "Made in Normandie - Stone & Charden",
+                "L’Avventura - Stone & Charden",
+                "Est ce une fille ou un garçon ? - Stone & Charden"
             ],
-            "correct_answer": "Made in Normandie, Stone & Charden",
+            "correct_answer": "Made in Normandie - Stone & Charden",
             "details": "[Suite de la musique]"
         },
         {

@@ -37,12 +37,11 @@ class App:
         sensors_manager = SensorsManager()
         manager = QuizManager(sensors_manager)
         
-        manager.setup(self.server_thread)
-        
-        for i in range (ScoreConfig().nb_question):
-            manager.run()
+        while True:
+            manager.setup(self.server_thread)
             
-        Config().stop_program()
+            for i in range (ScoreConfig().nb_question):
+                manager.run()
 
     def receive_message(self, message):
         Debug.LogWhisper(f"[Websocket]> Message reçu dans App : {message}")

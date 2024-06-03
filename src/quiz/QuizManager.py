@@ -95,7 +95,7 @@ class QuizManager:
         self.quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         self.quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
         self.quiz6 = Quiz_TroisImages(self.sensors_manager, "./assets/json/3_images.json")
-
+        
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #

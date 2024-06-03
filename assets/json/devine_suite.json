@@ -1,152 +1,152 @@
 {
-    "Auvergne-Rhône-Alpes": [
-      {
-        "question": "Completez la suite :",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "A’rvi ",
-        "answers": [
-          "Dô",
-          "Là",
-          "Pâ",
-          "Si"
-        ],
-        "correct_answer": "Pâ. A'rvi Pâ !",
-        "details": "Cette expression Haute-Savoyarde signifie \"Au revoir\"."
-      },
-      {
-        "question": "Quelle est la suite de la musique ?",
-        "audio-1": "2_C4_CE_audio1.mp3",
-        "audio-2": "2_C4_CE_audio2.mp3",
-        "texte-1": "",
-        "answers": [
-            "Le lac rayonnant",
-            "La rivière insolente",
-            "Le fleuve désolant",
-            "La rivière consolante"
-        ],
-        "correct_answer": "La rivière insolente",
-        "details": "La maladie d’amour, Michel Sardou"
-      }
-    ],
-    "Île-de-France": [
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu, je sais que tu m'attends. J'irai par la forêt, j'irai par la montagne…",
-        "answers": [
-          "Je ne puis demeurer loin de toi plus longtemps.",
-          "Je ne serai plus longtemps loin de toi.",
-          "Aussi loin que tu seras, je demeure près de toi.",
-          "J’irai par les océans."
-        ],
-        "correct_answer": "Je ne puis demeurer loin de toi plus longtemps.",
-        "details": "“Demain, dès l’aube” est un poème très connu de Victor Hugo, publié en 1856 dans le recueil “Les Contemporains”."
-      },
-      {
-        "question": "Quelle est la suite de la musique ?",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "Errent des solitaires",
-          "Trébuchent des amis",
-          "Marchent des amoureux",
-          "Danse des voisins"
-        ],
-        "correct_answer": "Marchent des amoureux",
-        "details": "[Suite de la musique]"
-      }
-    ],
-    "Bretagne": [
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "[Suite de la musique]"
-      },
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "[Suite de la musique]"
-      }
-    ],
-    "Hauts-de-France": [
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "Il pleut comme...",
-        "answers": [
-          "Un torrent d’océan",
-          "Vache qui pisse",
-          "Du pipi de chat",
-          "Un temps écosssais"
-        ],
-        "correct_answer": "Vache qui pisse",
-        "details": "On emploie la vache car une vache laitière peut uriner jusqu’à 19 fois par jour."
-      },
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "[Suite de la musique]"
-      }
-    ],
-    "PACA": [
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "[Suite de la musique]"
-      },
-      {
-        "question": "Completez la suite",
-        "audio-1": "",
-        "audio-2": "",
-        "texte-1": "",
-        "answers": [
-          "",
-          "",
-          "",
-          ""
-        ],
-        "correct_answer": "",
-        "details": "[Suite de la musique]"
-      }
-    ]
-  }
+  "Auvergne-Rhône-Alpes": [
+    {
+      "question": "Completez la suite :",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "A’rvi ",
+      "answers": [
+        "Dô",
+        "Là",
+        "Pâ",
+        "Si"
+      ],
+      "correct_answer": "Pâ",
+      "details": "Cette expression Haute-Savoyarde signifie \"Au revoir\"."
+    },
+    {
+      "question": "Quelle est la suite de la musique ?",
+      "audio-1": "2_C4_CE_audio1.mp3",
+      "audio-2": "2_C4_CE_audio2.mp3",
+      "texte-1": "",
+      "answers": [
+          "Le lac rayonnant",
+          "La rivière insolente",
+          "Le fleuve désolant",
+          "La rivière consolante"
+      ],
+      "correct_answer": "La rivière insolente",
+      "details": "La maladie d’amour, Michel Sardou"
+    }
+  ],
+  "Île-de-France": [
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "Demain, dès l'aube, à l'heure où blanchit la campagne, Je partirai. Vois-tu, je sais que tu m'attends. J'irai par la forêt, j'irai par la montagne…",
+      "answers": [
+        "Je ne puis demeurer loin de toi plus longtemps.",
+        "Je ne serai plus longtemps loin de toi.",
+        "Aussi loin que tu seras, je demeure près de toi.",
+        "J’irai par les océans."
+      ],
+      "correct_answer": "Je ne puis demeurer loin de toi plus longtemps.",
+      "details": "“Demain, dès l’aube” est un poème très connu de Victor Hugo, publié en 1856 dans le recueil \"Les Contemporains\"."
+    },
+    {
+      "question": "Quelle est la suite de la musique ?",
+      "audio-1": "2_C4_NE_audio1.mp3",
+      "audio-2": "2_C4_NE_audio2.mp3",
+      "texte-1": "",
+      "answers": [
+        "Jusqu’au fond de la salle",
+        "Enchaînés l'un et l'autre",
+        "Ensemble toute la nuit",
+        "Mais nos deux Mains restent soudées"
+      ],
+      "correct_answer": "Enchaînés l'un et l'autre",
+      "details": "Edith Piaf, La foule"
+    }
+  ],
+  "Bretagne": [
+    {
+      "question": "Quelle est la suite de la musique ?",
+      "audio-1": "C4_NO_audio1.mp3",
+      "audio-2": "C4_NO_audio2.mp3",
+      "texte-1": "",
+      "answers": [
+        "J'entends le loup, le fleuve, et la belette",
+        "L'hiver viendra, les gars, l'hiver viendra",
+        "C'est dans soixante-dix ans je m'en irai",
+        "J'entends le loup et le renard chanter"
+      ],
+      "correct_answer": "L'hiver viendra, les gars, l'hiver viendra",
+      "details": "La jument de Michao, Nolwenn Leroy"
+    },
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "L’expression: je te fais un pok veut dire…",
+      "answers": [
+        "Je te prépare une salade",
+        "Je t’embrasse",
+        "Je te fais une surprise",
+        "Je te fais marcher"
+      ],
+      "correct_answer": "Je t’embrasse",
+      "details": ""
+    }
+  ],
+  "Hauts-de-France": [
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "Il pleut comme...",
+      "answers": [
+        "Un torrent d’océan",
+        "Vache qui pisse",
+        "Du pipi de chat",
+        "Un temps écosssais"
+      ],
+      "correct_answer": "Vache qui pisse",
+      "details": "On emploie la vache car une vache laitière peut uriner jusqu’à 19 fois par jour."
+    },
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "Il ne faut pas que les poules chantent...",
+      "answers": [
+        "Plus fort que le coq",
+        "Plus haut que les buffles",
+        "Plus que les Picards",
+        "Comme le dindon"
+      ],
+      "correct_answer": "Plus fort que le coq",
+      "details": "\"Il ne faut pas que les poules chantent plus fort que le coq\" est un dicton qui se traduit en picard par \"I'n'faut pas qu'ches glaines i cantent pus fort que'ch'co\"."
+    }
+  ],
+  "PACA": [
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "Mais il est fou celui-là ! C’est un vrai...",
+      "answers": [
+        "Prévoyant",
+        "Malade",
+        "Imbécile",
+        "Fada"
+      ],
+      "correct_answer": "Fada",
+      "details": "Le fada, c'est celui qui est \"touché par les fées\", une manière poétique d'évoquer l'idiot du village. Le fada est donc niais, pour ne pas dire demeuré. Par extension, le mot sert également à désigner une personne folle ou, du moins, qui se comporte comme telle"
+    },
+    {
+      "question": "Completez la suite",
+      "audio-1": "",
+      "audio-2": "",
+      "texte-1": "Il n’a pas été touché par la grâce à sa naissance. C’est une vrai...",
+      "answers": [
+        "Bénédiction",
+        "Piche",
+        "Cagole",
+        "Chagasse"
+      ],
+      "correct_answer": "Piche",
+      "details": "Pour une fille ou garçon être piche c'est quand vous n'avez pas été touché par la grâce à votre naissance. La cagole de Montpellier c'est une piche ou une pichette pour le dire de manière plus affectueuse."
+    }
+  ]
+}

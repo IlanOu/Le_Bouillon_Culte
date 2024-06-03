@@ -41,9 +41,9 @@
     {
       "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. /n Qui suis-je ?",
       "answers": [
-        "Muriel Robin",
         "Chantal Lauby",
         "Florence Foresti",
+        "Muriel Robin",
         "Élodie Poux"
       ],
       "correct_answer": "Chantal Lauby",
@@ -56,16 +56,16 @@
       "question": "Je suis un musicien breton célèbre qui a fait la promotion de la musique celtique et de la culture bretonne avec la harpe celtique. /n Qui suis-je ?",
       "answers": [
         "Francis Cabrel",
-        "Jean-Michel Jarre",
-        "Alan Stivell",
-        "Calogero"
+        "Jean-Micel Jarre",
+        "Calogero",
+        "Alan Stivell"
       ],
       "correct_answer": "Alan Stivell",
-      "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionné des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
+      "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionner des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
       "details_image": "C2_NO_2.jpg"
     },
     {
-      "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques. /nJ'ai également été le maire de ma ville natale en Bretagne. /n Qui suis-je ?",
+      "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques.J'ai également été le maire de ma ville natale en Bretagne. /n Qui suis-je ?",
       "answers": [
         "Valéry Giscard d'Estaing",
         "Georges Pompidou",
@@ -81,8 +81,8 @@
     {
       "question": "Je suis une sainte et docteur d’église, j’ai également écrit un récit autobiographique qui se nomme “Histoire d’une âme”. /n Qui suis-je?",
       "answers": [
-        "Sainte Thérèse de Lisieux",
         "Sainte Marie",
+        "Sainte Thérèse de Lisieux",
         "Sainte Ophélie",
         "Sainte Anne"
       ],
@@ -93,8 +93,8 @@
     {
       "question": "Je suis un grand écrivain du XIXe siècle, j'ai écrit \"Le tour du Monde en quatre-vingts jours\". /n Qui suis-je ?",
       "answers": [
-        "Honoré de Balzac",
         "Jules Verne",
+        "Honoré de Balzac",
         "Victor Hugo",
         "Charles Baudelaire"
       ],
@@ -120,9 +120,9 @@
       "question": "Je suis un acteur, humoriste, chanteur et réalisateur français, né le 8 mai 1903 à Marseille et mort le 26 février 1971 à Paris dans le 16e arrondissemments. Issu du music-hall, durant plusieurs décennies, j'ai été une des plus grandes vedettes du cinéma français. Qui suis-je ?",
       "answers": [
         "Pagnol",
-        "Fernandel",
+        "Jean Gabin",
         "Bourvil",
-        "Jean Gabin"
+        "Fernandel"
       ],
       "correct_answer": "Fernand Joseph Désiré Constandin, dit Fernandel",
       "details": "Lors d'une interview, Fernandel confessa que tous les films qu'il a pu faire en compagnie de Pagnol n'était pas du cinéma. C'était simplement une caméra qui filmait leur quotidien pour en faire transparaître une narration qui allait donner naissance à un film.",
