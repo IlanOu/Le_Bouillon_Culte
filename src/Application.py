@@ -18,8 +18,53 @@ class App:
         self.start_app()
         
     def start_app(self):
-        Config().webApp.show("Bienvenue sur le Bouillon Culte !")
-        time.sleep(5)
+        
+        object = [
+        {
+            "type": "image",
+            "content": "",
+            "images": ["Logo_full.jpg"],
+            "style": ["image-big"]
+        }]
+        
+        Config().webApp.show(object)
+        time.sleep(1)
+        
+        
+        object = [
+        {
+            "type": "text",
+            "content": "Bonjour !\nEt bienvenue dans",
+            "images": [],
+            "style": ["text-big", "text-bold", "text-red", "text-centered"]
+        },
+        {
+            "type": "image",
+            "content": "",
+            "images": ["Logo_text.jpg"],
+            "style": ["image-big"]
+        }]
+        
+        Config().webApp.show(object)
+        time.sleep(1)
+        
+        
+        object = [
+        {
+            "type": "image",
+            "content": "",
+            "images": ["Logo_image.jpg"],
+            "style": ["image-big"]
+        },
+        {
+           "type": "text",
+            "content": "Le jeu qui teste\nvos connaissances\net votre mémoire.",
+            "images": [],
+            "style": ["text-big", "text-bold", "text-red", "text-centered"]
+        }]
+        
+        Config().webApp.show(object)
+        time.sleep(1)
 
     def run(self):
         if Config().use_ESP_connection:
