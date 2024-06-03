@@ -18,6 +18,7 @@
       data.forEach(element => {
         type = element["type"]
         content = element["content"]
+        images = element["images"]
         styles = element["style"]
         
 
@@ -31,7 +32,7 @@
             child = renderTable(content, styles);
             break;
           case 'image':
-            child = renderImage(content, styles);
+            child = renderImage(images[0], styles);
             break;
           case '3images':
             child = render3Images(content, styles);
@@ -213,25 +214,9 @@ body {
     margin: 0;
 }
 
-p {
-    color: white;
-    font-size: 45px;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
-h2 {
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
 .table {
     color: white;
-    text-align: center;
+    text-align: center;c
     font-size: 30px;
     border-collapse: collapse;
     border: 2px solid white;
@@ -246,23 +231,6 @@ h2 {
     width: 25%;
 }
 
-.title {
-    color: white;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-
-.stopError{
-    color: red;
-    text-align: center;
-}
-
-.rollContent{
-  font-size: 40px;
-  color: white;
-  text-align: center;
-}
 
 #dynamic-content {
   width: 100%;
@@ -272,4 +240,29 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+
+/* Text */
+/* ----------------------------------------------------------------------- */
+.text-big{
+  font-size: 25px
+}
+
+.text-red{
+  color: red
+}
+.text-black{
+  color: black;
+}
+.text-white{
+  color: white;
+}
+
+
+/* Image */
+/* ----------------------------------------------------------------------- */
+.image-small{
+  width: 20vw;
+}
+
 </style>

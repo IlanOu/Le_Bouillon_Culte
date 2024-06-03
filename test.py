@@ -5,12 +5,14 @@ object = [
     {
         "type" : "text",
         "content": "je suis un grand titre",
-        "style" : ["grosTitre", "Rouge"]
+        "images": [],
+        "style" : ["text-big", "text-red"]
     },
     {
         "type": "image",
-        "content": "url/de/limage.png",
-        "style": ["centré", "grosse image"]
+        "content": "",
+        "images": ["C5_SO_8.jpg"],
+        "style": ["image-small"]
     }]
 
 

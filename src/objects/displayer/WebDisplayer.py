@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, request, jsonify
+from flask import Flask, render_template, Response, request, jsonify, url_for
 import threading
 import logging
 from src.toolbox.Debug import Debug
@@ -105,6 +105,13 @@ class WebApp(object):
 
     def show(self, content):
         with self.app.app_context():
+            for element in content:
+                transformed_images = []
+                for image in element["images"]:
+                    transformed_images.append(url_for('static', filename="images/" + image, _external=True))
+                
+                element["images"] = transformed_images
+            
             if not self.is_running:
                 self.string_updater.show(content)
 
