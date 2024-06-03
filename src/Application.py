@@ -8,6 +8,8 @@ from src.toolbox.Debug import Debug
 
 from src.Config import Config
 
+from src.toolbox.Standby import StandBy
+
 import time
 
 class App:
@@ -36,6 +38,7 @@ class App:
 
         sensors_manager = SensorsManager()
         manager = QuizManager(sensors_manager)
+        StandBy(sensors_manager)
         
         while True:
             manager.setup(self.server_thread)
