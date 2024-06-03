@@ -9,88 +9,71 @@
   <script>
     const eventSource = new EventSource("/stream");
 
-
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
 
-
-
-      console.log(data)
-
-      console.log(typeof data)
-
       data.forEach(element => {
         type = element["type"]
         content = element["content"]
         styles = element["style"]
+        
+
+        let child = null
+
+        switch (type) {
+          case 'text':
+            child = renderText(content, styles);
+            break;
+          case 'table':
+            child = renderTable(content, styles);
+            break;
+          case 'image':
+            child = renderImage(content, styles);
+            break;
+          case '3images':
+            child = render3Images(content, styles);
+            break;
+          default:
+            console.log("Mode non pris en charge");
+        }
+
+
+        if (child != null){
+          dynamicContent.appendChild(child)
+        }
       });
-
-      // if (data.includes('||')) {
-      //   const [mode, content] = data.split('||');
-
-      //   switch (mode) {
-      //     case 'text':
-      //       renderText(content, dynamicContent);
-      //       break;
-      //     case 'table':
-      //       renderTable(content, dynamicContent);
-      //       break;
-      //     case 'image':
-      //       renderImage(content, dynamicContent);
-      //       break;
-      //     case 'stop':
-      //       renderStop(content, dynamicContent);
-      //       break;
-      //     case 'roll':
-      //       renderRoll(content, dynamicContent);
-      //       break;
-      //     case '3images':
-      //       render3Images(content, dynamicContent);
-      //       break;
-      //     default:
-      //       console.log("Mode non pris en charge");
-      //   }
-      // } else {
-      //   console.log("Erreur, aucun mode n'est spécifié");
-      // }
-
-
 
     };
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Text
     // -----------------------------------------------------
-    function renderText(content, container) {
+    function renderText(content, styles) {
+      const box = document.createElement('div');
+
       const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
         const p = document.createElement('p');
         p.innerText = paragraph;
         return p;
       });
-      paragraphs.forEach(paragraph => container.appendChild(paragraph));
+      paragraphs.forEach(paragraph => box.appendChild(paragraph));
+
+      styles.forEach(style => {
+        box.classList.add(style)
+      });
+      return box
     }
 
     // Table
     // -----------------------------------------------------
-    function renderTable(content, container) {
+    function renderTable(content, styles) {
+      const box = document.createElement('div');
+
       const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
       const words = tableContent.split('|');
 
@@ -98,7 +81,7 @@
         const title = document.createElement('h2');
         title.classList.add('title');
         title.innerText = tableTitle;
-        container.appendChild(title);
+        box.appendChild(title);
       }
 
       const table = document.createElement('table');
@@ -119,26 +102,40 @@
         table.appendChild(row);
       }
 
-      container.appendChild(table);
+      box.appendChild(table);
+
+      styles.forEach(style => {
+        box.classList.add(style)
+      });
+      
+      return box
     }
 
     // Image
     // -----------------------------------------------------
-    function renderImage(content, container) {
+    function renderImage(content, styles) {
+      const box = document.createElement('div');
+      
       const img = document.createElement('img');
       img.src = content;
       img.style.maxWidth = '100%';
       img.style.maxHeight = '100%';
       img.style.objectFit = 'contain';
-      container.appendChild(img);
+      box.appendChild(img);
+
+      styles.forEach(style => {
+        box.classList.add(style)
+      });
+      
+      return box
     }
     
     // 3 images
     // -----------------------------------------------------
-    function render3Images(content, container) {
-      const images = content.split('|');
+    function render3Images(content, styles) {
+      const box = document.createElement('div')
 
-      console.log("Images -> " + images)
+      const images = content.split('|');
 
       if (images.length !== 3) {
         console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");
@@ -157,27 +154,14 @@
         imagesContainer.appendChild(img);
       });
 
-      container.appendChild(imagesContainer);
-    }
+      box.appendChild(imagesContainer);
 
-    // STOP
-    // -----------------------------------------------------
-    function renderStop(stopString, container) {
-      const stopMessage = document.createElement('h2');
-      stopMessage.classList.add('stopError');
-      stopMessage.innerText = stopString;
-      container.appendChild(stopMessage);
+      styles.forEach(style => {
+        box.classList.add(style)
+      });
+      
+      return box
     }
-
-    // Roll
-    // -----------------------------------------------------
-    function renderRoll(rollString, container) {
-      const rollContent = document.createElement('h2');
-      rollContent.classList.add('rollContent');
-      rollContent.innerText = rollString;
-      container.appendChild(rollContent);
-    }
-    
     
 
 
