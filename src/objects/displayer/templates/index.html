@@ -14,67 +14,42 @@
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
+      if (data.includes('||')) {
+        const [mode, content] = data.split('||');
 
-      data.forEach(element => {
-        type = element["type"]
-        content = element["content"]
-        styles = element["style"]
-
-        
-      });
-
-      // if (data.includes('||')) {
-      //   const [mode, content] = data.split('||');
-
-      //   switch (mode) {
-      //     case 'text':
-      //       renderText(content, dynamicContent);
-      //       break;
-      //     case 'table':
-      //       renderTable(content, dynamicContent);
-      //       break;
-      //     case 'image':
-      //       renderImage(content, dynamicContent);
-      //       break;
-      //     case 'stop':
-      //       renderStop(content, dynamicContent);
-      //       break;
-      //     case 'roll':
-      //       renderRoll(content, dynamicContent);
-      //       break;
-      //     case '3images':
-      //       render3Images(content, dynamicContent);
-      //       break;
-      //     default:
-      //       console.log("Mode non pris en charge");
-      //   }
-      // } else {
-      //   console.log("Erreur, aucun mode n'est spécifié");
-      // }
-
-
-
+        switch (mode) {
+          case 'text':
+            renderText(content, dynamicContent);
+            break;
+          case 'table':
+            renderTable(content, dynamicContent);
+            break;
+          case 'image':
+            renderImage(content, dynamicContent);
+            break;
+          case 'stop':
+            renderStop(content, dynamicContent);
+            break;
+          case 'roll':
+            renderRoll(content, dynamicContent);
+            break;
+          case '3images':
+            render3Images(content, dynamicContent);
+            break;
+          default:
+            console.log("Mode non pris en charge");
+        }
+      } else {
+        console.log("Erreur, aucun mode n'est spécifié");
+      }
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Text
     // -----------------------------------------------------
     function renderText(content, container) {
+
+  
       const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
         const p = document.createElement('p');
         p.innerText = paragraph;
@@ -82,42 +57,33 @@
       });
       paragraphs.forEach(paragraph => container.appendChild(paragraph));
     }
-
     // Table
     // -----------------------------------------------------
     function renderTable(content, container) {
       const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
       const words = tableContent.split('|');
-
       if (tableTitle) {
         const title = document.createElement('h2');
         title.classList.add('title');
         title.innerText = tableTitle;
         container.appendChild(title);
       }
-
       const table = document.createElement('table');
       table.classList.add('table');
-
       for (let i = 0; i < words.length; i += 2) {
         const row = document.createElement('tr');
         const cell1 = document.createElement('td');
         cell1.innerHTML = words[i].trim().split('/n').join('<br>');
         row.appendChild(cell1);
-
         if (words[i + 1]) {
           const cell2 = document.createElement('td');
           cell2.innerHTML = words[i + 1].trim().split('/n').join('<br>');
           row.appendChild(cell2);
         }
-
         table.appendChild(row);
       }
-
       container.appendChild(table);
     }
-
-
     // Image
     // -----------------------------------------------------
     function renderImage(content, container) {
@@ -133,17 +99,13 @@
     // -----------------------------------------------------
     function render3Images(content, container) {
       const images = content.split('|');
-
       console.log("Images -> " + images)
-
       if (images.length !== 3) {
         console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");
         return;
       }
-
       const imagesContainer = document.createElement('div');
       imagesContainer.classList.add('images-container');
-
       images.forEach(imageUrl => {
         const img = document.createElement('img');
         img.src = imageUrl.trim();
@@ -152,10 +114,8 @@
         img.style.objectFit = 'contain';
         imagesContainer.appendChild(img);
       });
-
       container.appendChild(imagesContainer);
     }
-
     // STOP
     // -----------------------------------------------------
     function renderStop(stopString, container) {
@@ -164,7 +124,6 @@
       stopMessage.innerText = stopString;
       container.appendChild(stopMessage);
     }
-
     // Roll
     // -----------------------------------------------------
     function renderRoll(rollString, container) {
@@ -173,7 +132,6 @@
       rollContent.innerText = rollString;
       container.appendChild(rollContent);
     }
-    
     
 
 
@@ -188,14 +146,11 @@
           elem.msRequestFullscreen();
         }
       }
-
       // Attacher la fonction openFullscreen() à un événement de clic
       document.addEventListener('click', function() {
         openFullscreen();
         sendLoadedEvent();
       });
-
-
       // Fonction pour envoyer une requête au serveur Flask
       function sendLoadedEvent() {
         fetch('/page-loaded', {
@@ -207,14 +162,11 @@
         })
         .catch(error => console.error('Error:', error));
       }
-
       // Appeler la fonction sendLoadedEvent() lorsque la page est chargée
       // window.onload = sendLoadedEvent;
-
   </script>
 </body>
 </html>
-
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -228,7 +180,6 @@ body {
     transition: all 0.75s ease;
     margin: 0;
 }
-
 p {
     color: white;
     font-size: 45px;
@@ -236,7 +187,6 @@ p {
     width: 100%;
     margin: 0;
 }
-
 h2 {
     color: white;
     font-size: 30px;
@@ -244,7 +194,6 @@ h2 {
     width: 100%;
     margin: 0;
 }
-
 .table {
     color: white;
     text-align: center;
@@ -255,31 +204,25 @@ h2 {
     height: 85%;
     table-layout: fixed;
 }
-
 .table td {
     padding: 10px;
     border: 1px solid white;
     width: 25%;
 }
-
 .title {
     color: white;
     text-align: center;
     margin-bottom: 10px;
 }
-
-
 .stopError{
     color: red;
     text-align: center;
 }
-
 .rollContent{
   font-size: 40px;
   color: white;
   text-align: center;
 }
-
 #dynamic-content {
   width: 100%;
   height: 100vh;
