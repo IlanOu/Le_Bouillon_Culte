@@ -2,25 +2,30 @@
 <html>
 <head>
   <title>Chaîne dynamique</title>
-  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div id="dynamic-content"></div>
   
   <script>
     const eventSource = new EventSource("/stream");
+
+
     eventSource.onmessage = (event) => {
-      const data = event.data;
+      const data = JSON.parse(event.data);
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
+
+
+
+      console.log(data)
+
+      console.log(typeof data)
 
       data.forEach(element => {
         type = element["type"]
         content = element["content"]
         styles = element["style"]
-
-        
       });
 
       // if (data.includes('||')) {
@@ -117,7 +122,6 @@
       container.appendChild(table);
     }
 
-
     // Image
     // -----------------------------------------------------
     function renderImage(content, container) {
@@ -207,10 +211,6 @@
         })
         .catch(error => console.error('Error:', error));
       }
-
-      // Appeler la fonction sendLoadedEvent() lorsque la page est chargée
-      // window.onload = sendLoadedEvent;
-
   </script>
 </body>
 </html>
