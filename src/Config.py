@@ -8,7 +8,7 @@ class Config:
         # Can be changed
         # ---------------------------------------------------------------------------- #
         self.checker_active = False
-        self.use_ESP_connection = True # set it to True
+        self.use_ESP_connection = False # set it to True
         
         self.test_mode = False
         
@@ -29,9 +29,9 @@ class Config:
         self.webApp = Displayer(self.test_mode).get_display()
         
         # Buttons PIN
-        self.buttons_pins = [16, 14, 26, 17] # [16, 23, 26, 17]
-        self.button_wheel = 5 # 29
-        self.button_start = 23 # 8
+        self.buttons_pins = [16, 14, 26, 17]
+        self.button_wheel = 5
+        self.button_start = 23
         
         
         self.hotspot_ip = "10.42.0.1"

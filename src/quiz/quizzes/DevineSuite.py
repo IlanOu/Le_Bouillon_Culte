@@ -79,7 +79,12 @@ class Quiz_DevineSuite(Quiz):
         
         # 2. Display responses
         Config().webApp.show(display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value)
+        # Speaker.say(speakeable_possible_responses_value)
+        
+        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
+        for item in possible_responses_value:
+            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
+            time.sleep(0.25)
     
         # 3. Wait for response
 

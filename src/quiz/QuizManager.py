@@ -101,7 +101,7 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1)
         # self.add_quiz(self.quiz2) #TODO -> à faire
-        self.add_quiz(self.quiz3)
+        # self.add_quiz(self.quiz3)
         self.add_quiz(self.quiz4)
         self.add_quiz(self.quiz5)
         self.add_quiz(self.quiz6)
@@ -123,10 +123,10 @@ class QuizManager:
         table = "|".join(map(str, ScoreConfig().numbers_question))
         Config().webApp.show(question_value + "~" + table, "table")
         
-        str_choices = ", ".join(map(str, ScoreConfig().numbers_question))
-        
+        str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
         Speaker.say(str_choices)
-    
+        
+        
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()
         
@@ -180,7 +180,7 @@ class QuizManager:
         thread = threading.Thread(target=speek_text)
         thread.start()
     
-        Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
+        # Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         
         # input("") # Todo -> passer l'input en réel bouton
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))

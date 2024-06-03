@@ -63,7 +63,11 @@ class Quiz_CultureG(Quiz):
         
         # 2.
         Config().webApp.show(display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value)
+        # Speaker.say(speakeable_possible_responses_value)
+        
+        for item in possible_responses_value:
+            Speaker.say(item)
+            time.sleep(0.25)
     
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()

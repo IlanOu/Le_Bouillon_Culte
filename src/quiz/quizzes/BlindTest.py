@@ -1,5 +1,6 @@
 import json
 import random
+import time
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker
@@ -73,7 +74,11 @@ class Quiz_BlindTest(Quiz):
     
         # 3. Proposer les réponses
         Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value)
+        
+        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
+        for item in possible_responses_value:
+            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
+            time.sleep(0.25)
         
         # 4. Attendre la réponse de l'utilisateur
         button_pin = self.sensors_manager.wait_for_button_press()
@@ -93,11 +98,12 @@ class Quiz_BlindTest(Quiz):
             ScoreConfig().update_score("BlindTest", False)
 
         
+        
         Config().webApp.show(response + "/n La réponse correcte est : /n" + response_value, "text")
-        Speaker.say(response)
+        Speaker.say(response + ". La réponse correcte est : " + response_value)
         
         Config().webApp.show(details_value, "text")
         
         player.play_next_random_section()
         
-        self.sensors_manager.wait_for_button_press()
+        # self.sensors_manager.wait_for_button_press()
