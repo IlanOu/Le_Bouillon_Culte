@@ -22,16 +22,23 @@ webApp.show("A | B | C | D") # Tableau simple
 webApp.show("Titre ~ A | B | C | D") # Tableau avec un titre
 """
 
+
+
+
 class StringUpdater:
     def __init__(self, update_interval=5):
-        self.text = "..."
+        self.content = ""
         self.update_interval = update_interval
         self.update_event = threading.Event()
        
-    def show(self, text: str):
-        self.text = str(text)
+    def show(self, content):
+        self.content = str(content)
         self.update_event.set()
-        Debug.LogWhisper("[Display]> " + text)
+        Debug.LogWhisper("[Display]> " + str(content))
+
+
+
+
 
 class WebApp(object):
     _instance = None
@@ -120,28 +127,29 @@ class WebApp(object):
             Debug.LogError(f"Erreur lors de la récupération de l'adresse IP : {e}")
             return None
 
-    def show(self, content, mode="text"):
-        with self.app.app_context():
-            image_urls = []
+    def show(self, content):
+        # with self.app.app_context():
+        #     image_urls = []
 
-            if mode == "image":
-                image_url = url_for('static', filename="images/" + content, _external=True)
-                content = image_url
-            elif mode == "3images":
-                for image in content.split("|"):
-                    image = image.strip()
-                    Debug.LogFatSeparator("\"" + image + "\"")
-                    image_url = url_for('static', filename=f"images/{image}", _external=True)
-                    # image_url.replace("%20", "")
-                    image_urls.append(image_url)
+        #     if mode == "image":
+        #         image_url = url_for('static', filename="images/" + content, _external=True)
+        #         content = image_url
+        #     elif mode == "3images":
+        #         for image in content.split("|"):
+        #             image = image.strip()
+        #             Debug.LogFatSeparator("\"" + image + "\"")
+        #             image_url = url_for('static', filename=f"images/{image}", _external=True)
+        #             # image_url.replace("%20", "")
+        #             image_urls.append(image_url)
 
-                content = "|".join(image_urls)
+        #         content = "|".join(image_urls)
 
         if not self.is_running:
-            self.string_updater.show(mode + "||" + content)
+            
+            self.string_updater.show(content)
 
             self.server = threading.Thread(target=self.app.run, kwargs={'debug': False, 'use_reloader': False})
             self.server.start()
             self.is_running = True
         else:
-            self.string_updater.show(mode + "||" + content)
+            self.string_updater.show(content)

@@ -14,35 +14,62 @@
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
-      if (data.includes('||')) {
-        const [mode, content] = data.split('||');
 
-        switch (mode) {
-          case 'text':
-            renderText(content, dynamicContent);
-            break;
-          case 'table':
-            renderTable(content, dynamicContent);
-            break;
-          case 'image':
-            renderImage(content, dynamicContent);
-            break;
-          case 'stop':
-            renderStop(content, dynamicContent);
-            break;
-          case 'roll':
-            renderRoll(content, dynamicContent);
-            break;
-          case '3images':
-            render3Images(content, dynamicContent);
-            break;
-          default:
-            console.log("Mode non pris en charge");
-        }
-      } else {
-        console.log("Erreur, aucun mode n'est spécifié");
-      }
+      data.forEach(element => {
+        type = element["type"]
+        content = element["content"]
+        styles = element["style"]
+
+        
+      });
+
+      // if (data.includes('||')) {
+      //   const [mode, content] = data.split('||');
+
+      //   switch (mode) {
+      //     case 'text':
+      //       renderText(content, dynamicContent);
+      //       break;
+      //     case 'table':
+      //       renderTable(content, dynamicContent);
+      //       break;
+      //     case 'image':
+      //       renderImage(content, dynamicContent);
+      //       break;
+      //     case 'stop':
+      //       renderStop(content, dynamicContent);
+      //       break;
+      //     case 'roll':
+      //       renderRoll(content, dynamicContent);
+      //       break;
+      //     case '3images':
+      //       render3Images(content, dynamicContent);
+      //       break;
+      //     default:
+      //       console.log("Mode non pris en charge");
+      //   }
+      // } else {
+      //   console.log("Erreur, aucun mode n'est spécifié");
+      // }
+
+
+
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // Text
@@ -148,6 +175,7 @@
     }
     
     
+
 
 
     function openFullscreen() {
