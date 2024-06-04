@@ -117,41 +117,93 @@ class QuizManager:
         
     def config_nb_question(self):
         
-        question_value = "Combien de manches souhaitez-vous jouer ?"
+        question_value = "Combien de manches \nsouhaitez-vous jouer ?"
         
-        # System
-        # ---------------------------------------------------------------------------- #
+
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 1                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": ScoreConfig().numbers_question,
+                "style": []
+            },{
+                "type": "text",
+                "content": "Utilisez les boutons pour choisir",
+                "style": ["text-medium", "text-italic", "text-black"]
+            }]
         
-        # 1. Display question
-        object = [
-        {
-            "type": "text",
-            "content": question_value,
-            "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
-        },
-        {
-            "type": "table",
-            "items": ScoreConfig().numbers_question,
-            "style": []
-        }]
+        # Afficher et dire la question
         Config().webApp.show(object)
         Speaker.say(question_value.replace("/n", ""))
         
-        # 2.
-        # table = "|".join(map(str, ScoreConfig().numbers_question))
-        # Config().webApp.show(question_value + "~" + table, "table")
         
+        # ---------------------------------------------------------------------------- #
+        
+        # Dire les réponses possibles
         str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
         Speaker.say(str_choices)
         
         
-        # 3. Wait for response
+        # Afficher la réponse de l'utilisateur
+        # ---------------------------------------------------------------------------- #
+
         button_pin = self.sensors_manager.wait_for_button_press()
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
-
+        
+        index_answer = Config().buttons_pins.index(button_pin)
+        
+        answer_value = ScoreConfig().numbers_question[index_answer]
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 2                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": ScoreConfig().numbers_question,
+                "style": [],
+                "answer": answer_value
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            }]
+        Config().webApp.show(object)
+        
+        time.sleep(3)
+        
         ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
+
+
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 3                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "image",
+                "content": "",
+                "images": ["logos/Logo_image.png"],
+                "style": ["image-small"]
+            },{
+                "type": "text",
+                "content": "La partie va \nbientôt commencer",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+            }]
+        
+        Config().webApp.show(object)
+        
+        time.sleep(5)
+
 
 
     def read_rfid_worker(self):
@@ -183,8 +235,24 @@ class QuizManager:
         # Wait for user press button
         # ---------------------------------------------------------------------------- #
         
-        text_to_display = "Appuyez sur le gros bouton !"
-        Config().webApp.show(text_to_display)
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                      2                                       #
+        #? ---------------------------------------------------------------------------- #
+        text_to_display = "Appuyez sur le gros bouton \npour commencer"
+        
+        object = [{
+                "type": "text",
+                "content": text_to_display,
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+            },{
+                "type": "image",
+                "content": "",
+                "images": ["icons/big_button.png"],
+                "style": ["image-small"]
+            }]
+        Config().webApp.show(object)
+        
         
         looping = True
         
@@ -197,10 +265,7 @@ class QuizManager:
 
         thread = threading.Thread(target=speek_text)
         thread.start()
-    
-        # Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         
-        # input("") # Todo -> passer l'input en réel bouton
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
         
         looping = False
@@ -210,10 +275,35 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         score_to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
         
+        
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                  3B - 1                                      #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": "Question",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+            },{
+                "type": "text",
+                "content": str(ScoreConfig().nb_actual_question) + " / " + str(ScoreConfig().nb_question),
+                "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
+            }]
+        
+        
         if ScoreConfig().nb_actual_question == ScoreConfig().nb_question:
             score_to_display = "Attention, vous en êtes à la dernière question !"
             
-        Config().webApp.show(score_to_display)
+            object = [{
+                "type": "text",
+                "content": "Dernière question",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                }]
+        
+        
+        Config().webApp.show(object)
+        
         Speaker.say(score_to_display)
         
         

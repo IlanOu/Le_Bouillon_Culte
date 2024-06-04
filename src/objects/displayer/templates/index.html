@@ -17,11 +17,19 @@
 
 
       data.forEach(element => {
+        // Config
         type = element["type"]
-        content = element["content"]
-        images = element["images"]
         styles = element["style"]
+        
+        // Text
+        content = element["content"]
+        
+        // Images
+        images = element["images"]
+        
+        // Table
         items = element["items"]
+        answer = element["answer"]
         
 
         let child = null
@@ -31,7 +39,7 @@
             child = renderText(content, styles);
             break;
           case 'table':
-            child = renderTable(items, styles);
+            child = renderTable(items, answer, styles);
             break;
           case 'image':
             child = renderImage(images[0], styles);
@@ -76,11 +84,14 @@
 
     // Table
     // -----------------------------------------------------
-    function renderTable(items, styles) {
+    function renderTable(items, answer, styles) {
       const box = document.createElement('div');
 
       const table = document.createElement('table');
       table.classList.add('table');
+
+      let blue_cell = null;
+      
 
       quesions_names = ["A", "B", "C", "D"]
       for (let i = 0; i < items.length; i += 2) {
@@ -96,6 +107,10 @@
 
         cell1.innerHTML += items[i].toString().trim().split('/n').join('<br>');
 
+        if (answer != null && answer == items[i]){
+            blue_cell = cell1;
+        }
+
         row.appendChild(cell1);
 
         if (items[i + 1]) {
@@ -109,6 +124,10 @@
           cell2.appendChild(question_name);
           cell2.innerHTML += items[i + 1].toString().trim().split('/n').join('<br>');
 
+          if (answer != null && answer == items[i + 1]){
+            blue_cell = cell2;
+          }
+
           row.appendChild(cell2);
         }
 
@@ -121,6 +140,10 @@
         styles.forEach(style => {
           box.classList.add(style)
         });
+      }
+
+      if (blue_cell){
+        blue_cell.classList.add("blue-cell")
       }
         
       
