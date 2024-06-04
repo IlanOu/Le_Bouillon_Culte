@@ -106,8 +106,8 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1)
-        self.add_quiz(self.quiz2)
+        self.add_quiz(self.quiz1)
+        # self.add_quiz(self.quiz2)
         # self.add_quiz(self.quiz3)
         # self.add_quiz(self.quiz4)
         # self.add_quiz(self.quiz5)
@@ -323,17 +323,26 @@ class QuizManager:
                 
                 object = [{
                         "type": "text",
-                        "content": "Question",
+                        "content": "Poser votre pion \ndans une région.",
                         "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
-                    },{
-                        "type": "text",
-                        "content": str(ScoreConfig().nb_actual_question) + " / " + str(ScoreConfig().nb_question),
-                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
                     }]
                 Config().webApp.show(object)
                 
                 # Wait for RFID
                 self.wait_for_rfids()
+                
+                
+                object = [{
+                        "type": "text",
+                        "content": "Vous avez choisi",
+                        "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    },{
+                        "type": "text",
+                        "content": Config().zone,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+                    }]
+                Config().webApp.show(object)
+                
             else:
                 
                 to_display = "Attention !\nce jeu est différent des autres"
