@@ -64,7 +64,17 @@ class Quiz_BlindTest(Quiz):
         # ---------------------------------------------------------------------------- #
         
         # 1. Poser la question
-        Config().webApp.show(question_value, "text")
+        # Config().webApp.show(question_value, "text")
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            }]
+        
+        Config().webApp.show(object)
+        
+        
         Speaker.say(question_value)
         
         # 2. Passer la musique
@@ -73,6 +83,68 @@ class Quiz_BlindTest(Quiz):
         player.play_random_section(music_file)
     
         # 3. Proposer les réponses
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                  Question                                    #
+        #? ---------------------------------------------------------------------------- #
+        items_questions = []
+        
+        for item in possible_responses_value:
+            items_questions.append(str(item) + " questions")
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": items_questions,
+                "style": []
+            },{
+                "type": "text",
+                "content": "Utilisez les boutons pour choisir",
+                "style": ["text-medium", "text-italic", "text-black"]
+            }]
+        
+        # Afficher et dire la question
+        Config().webApp.show(object)
+        Speaker.say(question_value.replace("/n", ""))
+        
+        
+        button_pin = self.sensors_manager.wait_for_button_press()
+        
+        if not button_pin in Config().buttons_pins:
+            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
+            
+        #? ---------------------------------------------------------------------------- #
+        #?                                   Réponse                                    #
+        #? ---------------------------------------------------------------------------- #
+        
+        
+        index_answer = Config().buttons_pins.index(button_pin)
+        
+        answer_value = items_questions[index_answer]
+        
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": items_questions,
+                "style": [],
+                "answer": answer_value
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            }]
+        Config().webApp.show(object)
+        
+        time.sleep(3)
+        
+        
         Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
         
         name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
