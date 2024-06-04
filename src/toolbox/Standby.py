@@ -1,6 +1,8 @@
 from src.toolbox.Singleton import singleton
+from src.Config import Config
+from src.objects.SensorsManager import SensorsManager
+from src.Config import Config
 
-import time
 import threading
 
 @singleton
@@ -11,9 +13,9 @@ class StandBy:
     et appelle une fonction après un délai donné.
     """
 
-    def __init__(self, interval, function, args=None, kwargs=None):
-        self.interval = interval
-        self.function = function
+    def __init__(self, args=None, kwargs=None):
+        self.interval = 3
+        self.sensor_manager = SensorsManager()
         self.args = args if args is not None else []
         self.kwargs = kwargs if kwargs is not None else {}
         self.timer = None
@@ -34,8 +36,14 @@ class StandBy:
     def _timer_complete(self):
         """Fonction appelée lorsque le timer est terminé."""
         self.is_running = False
-        self.function(*self.args, **self.kwargs)
+        self._active_standby()
         self.reset()  # Réinitialise le timer pour la prochaine exécution
+
+    def _active_standby(self):
+      Config().webApp.show("", "text")
+      self.sensor_manager.wait_for_button_press(Config().button_start)
+      Config().webApp.show_historic()
+
 
     def cancel(self):
         """Annule le timer s'il est en cours d'exécution."""
@@ -43,17 +51,5 @@ class StandBy:
             self.timer.cancel()
             self.is_running = False
 
-# Exemple d'utilisation:
-def action():
-    print("5 minutes se sont écoulées !")
-
 # Créer un timer qui se déclenche toutes les 5 minutes (300 secondes)
-timer = StandBy(3, action)
-
-# Démarrer le timer
-timer.start()
-
-# ... votre programme continue ...
-
-# Vous pouvez vérifier si le timer est en cours d'exécution avec timer.is_running
-# Vous pouvez arrêter le timer avec timer.cancel()
+StandBy().start()
