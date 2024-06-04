@@ -88,11 +88,11 @@ class Quiz_BlindTest(Quiz):
         
         object = [{
                 "type": "text",
-                "content": possible_responses_value,
+                "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
-                "items": items_questions,
+                "items": possible_responses_value,
                 "style": []
             },{
                 "type": "text",
@@ -121,16 +121,16 @@ class Quiz_BlindTest(Quiz):
         
         index_answer = Config().buttons_pins.index(button_pin)
         
-        answer_value = items_questions[index_answer]
+        answer_value = possible_responses_value[index_answer]
         
         
         object = [{
                 "type": "text",
-                "content": possible_responses_value,
+                "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
-                "items": items_questions,
+                "items": possible_responses_value,
                 "style": [],
                 "answer": answer_value
             },{
@@ -161,7 +161,6 @@ class Quiz_BlindTest(Quiz):
         }]
         
         Config().webApp.show(object)
-        Speaker.say(response)
         
         time.sleep(3)
         
