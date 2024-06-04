@@ -53,8 +53,8 @@ class Quiz_BlindTest(Quiz):
         # ---------------------------------------------------------------------------- #
         question_value = question["question"]
         possible_responses_value = random.sample(question["answers"], len(question["answers"]))
-        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
-        display_possible_responses_value = " | ".join(possible_responses_value)
+        # speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
+        # display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
         audio_value = question["audio"]
         details_value = question["details"]
@@ -62,9 +62,6 @@ class Quiz_BlindTest(Quiz):
         
         # System
         # ---------------------------------------------------------------------------- #
-        
-        # 1. Poser la question
-        # Config().webApp.show(question_value, "text")
         
         object = [{
                 "type": "text",
@@ -77,24 +74,21 @@ class Quiz_BlindTest(Quiz):
         
         Speaker.say(question_value)
         
-        # 2. Passer la musique
+        
         player = MusicPlayer(Config().audio_dir)
         music_file = audio_value
         player.play_random_section(music_file)
     
-        # 3. Proposer les réponses
         
         #? ---------------------------------------------------------------------------- #
         #?                                  Question                                    #
         #? ---------------------------------------------------------------------------- #
         items_questions = []
         
-        for item in possible_responses_value:
-            items_questions.append(str(item) + " questions")
         
         object = [{
                 "type": "text",
-                "content": question_value,
+                "content": possible_responses_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
@@ -108,18 +102,22 @@ class Quiz_BlindTest(Quiz):
         
         # Afficher et dire la question
         Config().webApp.show(object)
-        Speaker.say(question_value.replace("/n", ""))
         
+        
+        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
+        for item in possible_responses_value:
+            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
+            time.sleep(0.25)
         
         button_pin = self.sensors_manager.wait_for_button_press()
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
-            
+        
+        
         #? ---------------------------------------------------------------------------- #
         #?                                   Réponse                                    #
         #? ---------------------------------------------------------------------------- #
-        
         
         index_answer = Config().buttons_pins.index(button_pin)
         
@@ -128,7 +126,7 @@ class Quiz_BlindTest(Quiz):
         
         object = [{
                 "type": "text",
-                "content": question_value,
+                "content": possible_responses_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
@@ -140,42 +138,52 @@ class Quiz_BlindTest(Quiz):
                 "content": "I",
                 "style": ["text-medium", "text-white"]
             }]
+        
         Config().webApp.show(object)
+        
+        button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
+        
+        if button_response == response_value:
+            response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
+            ScoreConfig().update_score("BlindTest", True)
+        else:
+            response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
+            ScoreConfig().update_score("BlindTest", False)
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                            Affichage réponse - 1                             #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": response,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+        }]
+        
+        Config().webApp.show(object)
+        Speaker.say(response)
         
         time.sleep(3)
         
         
-        Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
+        #? ---------------------------------------------------------------------------- #
+        #?                            Affichage réponse - 2                             #
+        #? ---------------------------------------------------------------------------- #
         
-        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
-        for item in possible_responses_value:
-            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
-            time.sleep(0.25)
+        answer_value = "La bonne réponse était : \n" + response_value
         
-        # 4. Attendre la réponse de l'utilisateur
-        button_pin = self.sensors_manager.wait_for_button_press()
-
-        if not button_pin in Config().buttons_pins:
-            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
-
-        button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
+        object = [{
+                "type": "text",
+                "content": answer_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },
+            {
+                "type": "text",
+                "content": details_value,
+                "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
+            }]
         
-        
-        # 5. Afficher la réponse + détails
-        if button_response == response_value:
-            response = "Bravo vous avez trouvé !"
-            ScoreConfig().update_score("BlindTest", True)
-        else:
-            response = "Ce n’est pas la bonne réponse."
-            ScoreConfig().update_score("BlindTest", False)
-
-        
-        
-        Config().webApp.show(response + "/n La réponse correcte est : /n" + response_value, "text")
-        Speaker.say(response + ". La réponse correcte est : " + response_value)
-        
-        Config().webApp.show(details_value, "text")
+        Config().webApp.show(object)
+        Speaker.say(response)
         
         player.play_next_random_section()
-        
-        # self.sensors_manager.wait_for_button_press()
