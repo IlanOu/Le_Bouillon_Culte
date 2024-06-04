@@ -107,7 +107,7 @@ class WebApp(object):
         with self.app.app_context():
             for element in content:
                 transformed_images = []
-                Debug.LogPopup(element)
+                # Debug.LogPopup(element)
                 for image in element["images"]:
                     transformed_images.append(url_for('static', filename="images/" + image, _external=True))
                 

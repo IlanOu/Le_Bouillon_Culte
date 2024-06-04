@@ -82,7 +82,15 @@ class QuizManager:
     
     def setup(self, server_thread=None):
 
-        Config().webApp.show("La partie va commencer !")
+
+        object = [
+        {
+            "type": "text",
+            "content": "La partie va commencer !",
+            "images": [],
+            "style": ["text-big", "text-uppercase", "text-blue", "text-centered"]
+        }]
+        Config().webApp.show(object)
 
 
         if server_thread != None:

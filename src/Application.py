@@ -24,11 +24,11 @@ class App:
             "type": "image",
             "content": "",
             "images": ["Logo_full.jpg"],
-            "style": ["image-big"]
+            "style": ["image-medium"]
         }]
         
         Config().webApp.show(object)
-        time.sleep(1)
+        time.sleep(5)
         
         
         object = [
@@ -36,17 +36,17 @@ class App:
             "type": "text",
             "content": "Bonjour !\nEt bienvenue dans",
             "images": [],
-            "style": ["text-big", "text-bold", "text-red", "text-centered"]
+            "style": ["text-medium", "text-uppercase", "text-bold", "text-red", "text-centered"]
         },
         {
             "type": "image",
             "content": "",
             "images": ["Logo_text.jpg"],
-            "style": ["image-big"]
+            "style": ["image-medium"]
         }]
         
         Config().webApp.show(object)
-        time.sleep(1)
+        time.sleep(5)
         
         
         object = [
@@ -54,17 +54,20 @@ class App:
             "type": "image",
             "content": "",
             "images": ["Logo_image.jpg"],
-            "style": ["image-big"]
+            "style": ["image-small"]
         },
         {
            "type": "text",
             "content": "Le jeu qui teste\nvos connaissances\net votre mémoire.",
             "images": [],
-            "style": ["text-big", "text-bold", "text-red", "text-centered"]
+            "style": ["text-big", "text-uppercase", "text-bold", "text-blue", "text-centered"]
         }]
         
         Config().webApp.show(object)
-        time.sleep(1)
+        
+        Config().stop_program()
+        
+        time.sleep(5)
 
     def run(self):
         if Config().use_ESP_connection:
