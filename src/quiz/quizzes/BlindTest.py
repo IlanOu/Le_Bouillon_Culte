@@ -20,7 +20,7 @@ class Quiz_BlindTest(Quiz):
     def __init__(self, sensors_manager, json_path = ""):
         self.json_path = json_path
         self.datas = {}
-        self.name = "Blind test"
+        self.name = "Retrouvez l’audio"
         self.fill_datas()
         self.sensors_manager = sensors_manager
         

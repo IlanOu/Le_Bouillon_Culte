@@ -106,12 +106,12 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        self.add_quiz(self.quiz1)
+        # self.add_quiz(self.quiz1)
         self.add_quiz(self.quiz2)
-        self.add_quiz(self.quiz3)
-        self.add_quiz(self.quiz4)
-        self.add_quiz(self.quiz5)
-        self.add_quiz(self.quiz6)
+        # self.add_quiz(self.quiz3)
+        # self.add_quiz(self.quiz4)
+        # self.add_quiz(self.quiz5)
+        # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
         
@@ -320,8 +320,50 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         try:
             if self.current_quiz != self.quiz2:
+                
+                object = [{
+                        "type": "text",
+                        "content": "Question",
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    },{
+                        "type": "text",
+                        "content": str(ScoreConfig().nb_actual_question) + " / " + str(ScoreConfig().nb_question),
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
+                    }]
+                Config().webApp.show(object)
+                
                 # Wait for RFID
                 self.wait_for_rfids()
+            else:
+                
+                to_display = "Attention !\nce jeu est différent des autres"
+                
+                object = [{
+                        "type": "text",
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    }]
+                
+                
+                Speaker.say(to_display)
+                Config().webApp.show(to_display)
+
+                time.sleep(3)
+                
+                
+                to_display = "Vous devrez placer le pion \naprès la question !"
+                
+                object = [{
+                        "type": "text",
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    }]
+                
+                Speaker.say(to_display)
+                Config().webApp.show(to_display)
+
+                time.sleep(3)
+
 
             # Run quiz
             self.current_quiz.process()
