@@ -87,7 +87,6 @@ class QuizManager:
         {
             "type": "text",
             "content": "La partie va commencer !",
-            "images": [],
             "style": ["text-big", "text-uppercase", "text-blue", "text-centered"]
         }]
         Config().webApp.show(object)
@@ -118,18 +117,29 @@ class QuizManager:
         
     def config_nb_question(self):
         
-        question_value = "Combien de questions voulez-vous faire ?"
+        question_value = "Combien de manches souhaitez-vous jouer ?"
         
         # System
         # ---------------------------------------------------------------------------- #
         
         # 1. Display question
-        Config().webApp.show(question_value, "text")
+        object = [
+        {
+            "type": "text",
+            "content": question_value,
+            "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+        },
+        {
+            "type": "table",
+            "items": ScoreConfig().numbers_question,
+            "style": []
+        }]
+        Config().webApp.show(object)
         Speaker.say(question_value.replace("/n", ""))
         
         # 2.
-        table = "|".join(map(str, ScoreConfig().numbers_question))
-        Config().webApp.show(question_value + "~" + table, "table")
+        # table = "|".join(map(str, ScoreConfig().numbers_question))
+        # Config().webApp.show(question_value + "~" + table, "table")
         
         str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
         Speaker.say(str_choices)

@@ -21,6 +21,7 @@
         content = element["content"]
         images = element["images"]
         styles = element["style"]
+        items = element["items"]
         
 
         let child = null
@@ -30,7 +31,7 @@
             child = renderText(content, styles);
             break;
           case 'table':
-            child = renderTable(content, styles);
+            child = renderTable(items, styles);
             break;
           case 'image':
             child = renderImage(images[0], styles);
@@ -65,39 +66,49 @@
       });
       paragraphs.forEach(paragraph => box.appendChild(paragraph));
 
-      styles.forEach(style => {
-        box.classList.add(style)
-      });
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
       return box
     }
 
     // Table
     // -----------------------------------------------------
-    function renderTable(content, styles) {
+    function renderTable(items, styles) {
       const box = document.createElement('div');
-
-      const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
-      const words = tableContent.split('|');
-
-      if (tableTitle) {
-        const title = document.createElement('h2');
-        title.classList.add('title');
-        title.innerText = tableTitle;
-        box.appendChild(title);
-      }
 
       const table = document.createElement('table');
       table.classList.add('table');
 
-      for (let i = 0; i < words.length; i += 2) {
+      quesions_names = ["A", "B", "C", "D"]
+      for (let i = 0; i < items.length; i += 2) {
         const row = document.createElement('tr');
         const cell1 = document.createElement('td');
-        cell1.innerHTML = words[i].trim().split('/n').join('<br>');
+        
+
+        question_name = document.createElement('a')
+        question_name.innerText = quesions_names[i] + " - "
+        question_name.classList.add("question-name")
+        cell1.appendChild(question_name);
+
+
+        cell1.innerHTML += items[i].toString().trim().split('/n').join('<br>');
+
         row.appendChild(cell1);
 
-        if (words[i + 1]) {
+        if (items[i + 1]) {
           const cell2 = document.createElement('td');
-          cell2.innerHTML = words[i + 1].trim().split('/n').join('<br>');
+
+          question_name = document.createElement('a')
+          question_name.innerText = quesions_names[i + 1] + " - "
+          question_name.classList.add("question-name")
+          
+          
+          cell2.appendChild(question_name);
+          cell2.innerHTML += items[i + 1].toString().trim().split('/n').join('<br>');
+
           row.appendChild(cell2);
         }
 
@@ -106,9 +117,13 @@
 
       box.appendChild(table);
 
-      styles.forEach(style => {
-        box.classList.add(style)
-      });
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+        
+      
       
       return box
     }
@@ -125,9 +140,11 @@
       img.style.objectFit = 'contain';
       box.appendChild(img);
 
-      styles.forEach(style => {
-        box.classList.add(style)
-      });
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
       
       return box
     }
@@ -158,9 +175,11 @@
 
       box.appendChild(imagesContainer);
 
-      styles.forEach(style => {
-        box.classList.add(style)
-      });
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
       
       return box
     }

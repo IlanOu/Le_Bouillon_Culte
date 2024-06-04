@@ -108,10 +108,11 @@ class WebApp(object):
             for element in content:
                 transformed_images = []
                 # Debug.LogPopup(element)
-                for image in element["images"]:
-                    transformed_images.append(url_for('static', filename="images/" + image, _external=True))
+                if "images" in element:
+                    for image in element["images"]:
+                        transformed_images.append(url_for('static', filename="images/" + image, _external=True))
                 
-                element["images"] = transformed_images
+                    element["images"] = transformed_images
             
             if not self.is_running:
                 self.string_updater.show(content)

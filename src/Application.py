@@ -23,7 +23,7 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["Logo_full.jpg"],
+            "images": ["Logo_full.png"],
             "style": ["image-medium"]
         }]
         
@@ -41,7 +41,7 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["Logo_text.jpg"],
+            "images": ["Logo_text.png"],
             "style": ["image-medium"]
         }]
         
@@ -53,19 +53,16 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["Logo_image.jpg"],
+            "images": ["Logo_image.png"],
             "style": ["image-small"]
         },
         {
-           "type": "text",
+            "type": "text",
             "content": "Le jeu qui teste\nvos connaissances\net votre mémoire.",
-            "images": [],
             "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
         }]
         
         Config().webApp.show(object)
-        
-        Config().stop_program()
         
         time.sleep(5)
 
