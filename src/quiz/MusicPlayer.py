@@ -14,6 +14,7 @@ class MusicPlayer:
         mixer.init()
         self.current_music = None
         self.last_stop_time = None
+        self.sound_thread = None
 
     def get_audio_files(self):
         return [f for f in os.listdir(self.music_dir) if f.endswith(".mp3") or f.endswith(".wav")]
@@ -32,6 +33,42 @@ class MusicPlayer:
         time.sleep(duration)
 
         mixer.music.stop()
+
+    def play_threading(self, audio_file: str, duration=None):
+        """Joue un son dans un thread séparé.
+
+        Args:
+            audio_file (str): Le nom du fichier audio.
+            duration (int, optional): Durée de lecture en secondes. 
+                                        Si None, joue la piste entière.
+        """
+        music_file_path = os.path.join(self.music_dir, audio_file)
+
+        if not os.path.isfile(music_file_path):
+            Debug.LogWarning(f"Le fichier {audio_file} n'existe pas dans le dossier.")
+            return
+
+        def play_sound_thread():
+            try:
+                mixer.music.load(music_file_path)
+                mixer.music.play()
+
+                if duration is None:
+                    duration = mixer.Sound(music_file_path).get_length()
+
+                time.sleep(duration)
+                mixer.music.stop()
+
+            except pygame.error as e:
+                Debug.LogWarning(f"Erreur lors de la lecture du son: {e}")
+
+        # Arrêter le thread précédent s'il est toujours en cours d'exécution
+        if self.sound_thread and self.sound_thread.is_alive():
+            self.sound_thread.join()
+
+        self.sound_thread = threading.Thread(target=play_sound_thread)
+        self.sound_thread.start()
+        
 
     def play_random_section(self, music_file, duration=10):
         music_file_path = os.path.join(self.music_dir, music_file)
