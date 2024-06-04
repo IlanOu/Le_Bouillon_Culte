@@ -36,7 +36,7 @@ class App:
             "type": "text",
             "content": "Bonjour !\nEt bienvenue dans",
             "images": [],
-            "style": ["text-medium", "text-uppercase", "text-bold", "text-red", "text-centered"]
+            "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
         },
         {
             "type": "image",
@@ -60,7 +60,7 @@ class App:
            "type": "text",
             "content": "Le jeu qui teste\nvos connaissances\net votre mémoire.",
             "images": [],
-            "style": ["text-big", "text-uppercase", "text-bold", "text-blue", "text-centered"]
+            "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
         }]
         
         Config().webApp.show(object)
