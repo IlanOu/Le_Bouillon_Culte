@@ -107,8 +107,8 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1)
-        # self.add_quiz(self.quiz2) #TODO -> à faire
-        # self.add_quiz(self.quiz3)
+        self.add_quiz(self.quiz2)
+        self.add_quiz(self.quiz3)
         self.add_quiz(self.quiz4)
         self.add_quiz(self.quiz5)
         self.add_quiz(self.quiz6)
@@ -145,7 +145,6 @@ class QuizManager:
         # Afficher et dire la question
         Config().webApp.show(object)
         Speaker.say(question_value.replace("/n", ""))
-        
         
         # ---------------------------------------------------------------------------- #
         

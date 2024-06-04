@@ -78,7 +78,21 @@ class RollingNumberDisplay:
 
         time.sleep(0.5)
         # Afficher le nombre cible une dernière fois après le ralentissement
-        Config().webApp.show(str(self.target_number), "roll")
+        
+        object = [{
+                "type": "image",
+                "content": "",
+                "images": [f"icons/icon_jeu_{self.numbers.index(self.target_number)}.png"],
+                "style": ["image-small"]
+            },{
+                "type": "text",
+                "content": self.target_number,
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+            }]
+            
+        Config().webApp.show(object)
+        
+        
         Debug.LogWhisper("[Log]> " + self.target_number)
 
 
