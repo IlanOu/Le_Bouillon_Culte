@@ -123,13 +123,18 @@ class QuizManager:
         #? ---------------------------------------------------------------------------- #
         #?                                    1B - 1                                    #
         #? ---------------------------------------------------------------------------- #
+        items_questions = []
+        
+        for item in ScoreConfig().numbers_question:
+            items_questions.append(str(item) + " questions")
+        
         object = [{
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
-                "items": ScoreConfig().numbers_question,
+                "items": items_questions,
                 "style": []
             },{
                 "type": "text",
@@ -159,8 +164,7 @@ class QuizManager:
         
         index_answer = Config().buttons_pins.index(button_pin)
         
-        answer_value = ScoreConfig().numbers_question[index_answer]
-        
+        answer_value = items_questions[index_answer]
         
         #? ---------------------------------------------------------------------------- #
         #?                                    1B - 2                                    #
@@ -171,7 +175,7 @@ class QuizManager:
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "table",
-                "items": ScoreConfig().numbers_question,
+                "items": items_questions,
                 "style": [],
                 "answer": answer_value
             },{
@@ -288,7 +292,7 @@ class QuizManager:
             },{
                 "type": "text",
                 "content": str(ScoreConfig().nb_actual_question) + " / " + str(ScoreConfig().nb_question),
-                "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
             }]
         
         
