@@ -9,19 +9,16 @@ from src.quiz.Quiz import Quiz
 
 from src.toolbox.Speaker import *
 from src.toolbox.Debug import *
-
 from src.toolbox.Standby import StandBy
 
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
+from src.objects.button.Button import Button
 
 from src.Config import Config, ScoreConfig
-
-from src.objects.button.Button import Button
 
 import random
 import time
 import threading
-
 
 
 # ------------------------------- Quiz manager ------------------------------- #
@@ -83,7 +80,9 @@ class QuizManager:
     
     def setup(self, server_thread=None):
 
-
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 3                                    #
+        #? ---------------------------------------------------------------------------- #
         object = [
         {
             "type": "text",

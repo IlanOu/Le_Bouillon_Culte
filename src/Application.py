@@ -5,10 +5,12 @@ from src.toolbox.Websocket import WebSocketServerThread
 from src.Config import ScoreConfig
 
 from src.toolbox.Debug import Debug
+from src.toolbox.Standby import StandBy
 
 from src.Config import Config
 
-from src.toolbox.Standby import StandBy
+from src.quiz.MusicPlayer import MusicPlayer
+
 
 import time
 
@@ -33,6 +35,7 @@ class App:
         }]
         
         Config().webApp.show(object)
+        MusicPlayer(Config().audio_dir).play_threading("sounds/0.mp3")
         time.sleep(5)
         
         

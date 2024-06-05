@@ -1,9 +1,10 @@
 import os
 import random
-from pygame import mixer
-from src.toolbox.Singleton import singleton
+import pygame
 import time
+import threading
 
+from src.toolbox.Singleton import singleton
 from src.toolbox.Debug import Debug
 
 
@@ -11,7 +12,7 @@ from src.toolbox.Debug import Debug
 class MusicPlayer:
     def __init__(self, music_dir):
         self.music_dir = music_dir
-        mixer.init()
+        pygame.mixer.init()
         self.current_music = None
         self.last_stop_time = None
         self.sound_thread = None
@@ -24,17 +25,17 @@ class MusicPlayer:
         
         Debug.LogPopup(music_file_path)
         
-        mixer.music.load(music_file_path)
-        mixer.music.play()
+        pygame.mixer.music.load(music_file_path)
+        pygame.mixer.music.play()
 
         if duration == None:
-            duration = mixer.Sound(music_file_path).get_length()
+            duration = pygame.mixer.Sound(music_file_path).get_length()
 
         time.sleep(duration)
 
-        mixer.music.stop()
+        pygame.mixer.music.stop()
 
-    def play_threading(self, audio_file: str, duration=None):
+    def play_threading(self, audio_file: str):
         """Joue un son dans un thread séparé.
 
         Args:
@@ -42,6 +43,7 @@ class MusicPlayer:
             duration (int, optional): Durée de lecture en secondes. 
                                         Si None, joue la piste entière.
         """
+        Debug.LogPopup("Play sound")
         music_file_path = os.path.join(self.music_dir, audio_file)
 
         if not os.path.isfile(music_file_path):
@@ -50,14 +52,16 @@ class MusicPlayer:
 
         def play_sound_thread():
             try:
-                mixer.music.load(music_file_path)
-                mixer.music.play()
-
-                if duration is None:
-                    duration = mixer.Sound(music_file_path).get_length()
-
+                duration = pygame.mixer.Sound(music_file_path).get_length()
+                
+                pygame.mixer.music.load(music_file_path)
+                pygame.mixer.music.play()
+                Debug.LogPopup("Play -> " + music_file_path)
+                
                 time.sleep(duration)
-                mixer.music.stop()
+
+                pygame.mixer.music.stop()
+                Debug.LogPopup("Stop -> " + music_file_path)
 
             except pygame.error as e:
                 Debug.LogWarning(f"Erreur lors de la lecture du son: {e}")
@@ -77,21 +81,21 @@ class MusicPlayer:
             Debug.LogWarning(f"Le fichier {music_file} n'existe pas dans le dossier.")
             return
 
-        mixer.music.load(music_file_path)
+        pygame.mixer.music.load(music_file_path)
         self.current_music = music_file_path
         self.last_stop_time = None
 
         # Obtenir la durée totale de la musique
-        music_length = mixer.Sound(music_file_path).get_length()
+        music_length = pygame.mixer.Sound(music_file_path).get_length()
 
         # Choisir un temps de départ aléatoire
         start_time = random.uniform(0, music_length - duration*2)
 
-        mixer.music.play(start=start_time)
+        pygame.mixer.music.play(start=start_time)
 
         time.sleep(duration)
 
-        mixer.music.stop()
+        pygame.mixer.music.stop()
         self.last_stop_time = start_time + duration
 
     def play_next_random_section(self, duration=10):
@@ -102,17 +106,17 @@ class MusicPlayer:
         music_file_path = self.current_music
 
         # Obtenir la durée totale de la musique
-        music_length = mixer.Sound(music_file_path).get_length()
+        music_length = pygame.mixer.Sound(music_file_path).get_length()
 
         # Calculer le nouveau temps de départ à partir du dernier temps d'arrêt
         start_time = self.last_stop_time
 
-        mixer.music.load(music_file_path)
-        mixer.music.play(start=start_time)
+        pygame.mixer.music.load(music_file_path)
+        pygame.mixer.music.play(start=start_time)
 
         time.sleep(duration)
 
-        mixer.music.stop()
+        pygame.mixer.music.stop()
         self.last_stop_time = start_time + duration
 
 # # Exemple d'utilisation
