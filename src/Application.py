@@ -24,6 +24,19 @@ class App:
     def start_app(self):
         
         #? ---------------------------------------------------------------------------- #
+        #?                                    Start                                     #
+        #? ---------------------------------------------------------------------------- #
+        object = [
+        {
+            "type": "text",
+            "content": "I",
+            "style": ["text-white"]
+        }]
+        Config().webApp.show(object)
+        
+        time.sleep(5)
+        
+        #? ---------------------------------------------------------------------------- #
         #?                                    1A - 1                                    #
         #? ---------------------------------------------------------------------------- #
         object = [
@@ -33,10 +46,11 @@ class App:
             "images": ["logos/Logo_full.webp"],
             "style": ["image-medium"]
         }]
+        Config().webApp.show(object)
         
         MusicPlayer(Config().audio_dir).play_threading("sounds/0.mp3")
          
-        time.sleep(10)
+        time.sleep(5)
         
         
         #? ---------------------------------------------------------------------------- #
@@ -60,7 +74,7 @@ class App:
         
         MusicPlayer(Config().audio_dir).play_threading("sounds/1A.mp3")
         
-        time.sleep(5)
+        time.sleep(3)
         
         
         #? ---------------------------------------------------------------------------- #
@@ -103,7 +117,7 @@ class App:
         while True:
             manager.setup(self.server_thread)
             
-            for i in range (ScoreConfig().nb_question):
+            for _ in range (ScoreConfig().nb_question):
                 manager.run()
 
     def receive_message(self, message):
