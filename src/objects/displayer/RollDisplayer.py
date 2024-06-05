@@ -31,7 +31,7 @@ class RollingNumberDisplay:
             object = [{
                 "type": "image",
                 "content": "",
-                "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.png"],
+                "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.webp"],
                 "style": ["image-small"]
             },{
                 "type": "text",
@@ -57,7 +57,7 @@ class RollingNumberDisplay:
                 object = [{
                     "type": "image",
                     "content": "",
-                    "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.png"],
+                    "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.webp"],
                     "style": ["image-small"]
                 },{
                     "type": "text",
@@ -82,7 +82,7 @@ class RollingNumberDisplay:
         object = [{
                 "type": "image",
                 "content": "",
-                "images": [f"icons/icon_jeu_{self.numbers.index(self.target_number)}.png"],
+                "images": [f"icons/icon_jeu_{self.numbers.index(self.target_number)}.webp"],
                 "style": ["image-small"]
             },{
                 "type": "text",

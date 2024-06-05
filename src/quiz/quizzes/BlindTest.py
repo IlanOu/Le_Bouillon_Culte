@@ -71,9 +71,7 @@ class Quiz_BlindTest(Quiz):
         
         Config().webApp.show(object)
         
-        
         Speaker.say(question_value)
-        
         
         player = MusicPlayer(Config().audio_dir)
         music_file = audio_value
@@ -84,7 +82,14 @@ class Quiz_BlindTest(Quiz):
         #?                                  Question                                    #
         #? ---------------------------------------------------------------------------- #
         
-        object = [{
+        object = [
+            {
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },
+            {
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -161,6 +166,7 @@ class Quiz_BlindTest(Quiz):
         }]
         
         Config().webApp.show(object)
+        Speaker.say(response)
         
         time.sleep(3)
         
@@ -183,6 +189,6 @@ class Quiz_BlindTest(Quiz):
             }]
         
         Config().webApp.show(object)
-        Speaker.say(response)
+        
         
         player.play_next_random_section()

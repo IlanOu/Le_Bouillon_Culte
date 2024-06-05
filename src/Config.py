@@ -61,7 +61,6 @@ class ScoreConfig:
         self.numbers_question = [2, 7, 10, 12] # [5, 7, 10, 12]
     
     def update_nb_actual_question(self):
-        Debug.LogPopup("+1 à la question !")
         self.nb_actual_question += 1
         
     def update_score(self, quiz, answer):

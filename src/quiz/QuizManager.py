@@ -277,16 +277,14 @@ class QuizManager:
         looping = False
         
         
-        # Display current question
-        # ---------------------------------------------------------------------------- #
-        to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
-        
-        
-        
-        
         #? ---------------------------------------------------------------------------- #
         #?                                  3B - 1                                      #
         #? ---------------------------------------------------------------------------- #
+        
+        
+        # Display current question
+        # ---------------------------------------------------------------------------- #
+        to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
         object = [{
                 "type": "text",
                 "content": "Question",

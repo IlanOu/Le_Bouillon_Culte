@@ -31,6 +31,10 @@
         items = element["items"]
         answer = element["answer"]
         
+        // Score
+        question = element["question"]
+        score = element["score"]
+
 
         let child = null
 
@@ -50,10 +54,12 @@
           case 'standby':
             child = renderStandBy(content, styles);
             break;
+          case 'score':
+            child = renderScore(question, score, styles);
+            break; 
           default:
             console.log("Mode non pris en charge");
         }
-
 
         if (child != null){
           dynamicContent.appendChild(child)
@@ -61,6 +67,46 @@
       });
 
     };
+
+
+
+    function renderScore(question, score, styles){
+      const box = document.createElement('div');
+
+      const parts = document.createElement('div');
+
+      const first = document.createElement('div');
+      const second = document.createElement('div');
+      
+      const question_text = document.createElement('a');
+      const score_text = document.createElement('a');
+
+      box.classList.add("score-parent");
+      parts.classList.add("score-div");
+
+      first.classList.add("score-boxed-red");
+      second.classList.add("score-boxed-blue");
+
+      question_text.innerText = question;
+      score_text.innerText = score;
+
+      first.appendChild(question_text);
+      second.appendChild(score_text);
+
+      parts.appendChild(first);
+      parts.appendChild(second);
+
+      box.appendChild(parts);
+
+
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+
+      return box
+    }
 
 
     function renderStandBy(content, styles) {
