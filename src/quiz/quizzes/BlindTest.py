@@ -63,6 +63,10 @@ class Quiz_BlindTest(Quiz):
         # System
         # ---------------------------------------------------------------------------- #
         
+        #? ---------------------------------------------------------------------------- #
+        #?                               Display question                               #
+        #? ---------------------------------------------------------------------------- #
+        
         object = [{
                 "type": "text",
                 "content": question_value,
@@ -70,7 +74,6 @@ class Quiz_BlindTest(Quiz):
             }]
         
         Config().webApp.show(object)
-        
         Speaker.say(question_value)
         
         player = MusicPlayer(Config().audio_dir)
@@ -128,6 +131,11 @@ class Quiz_BlindTest(Quiz):
         answer_value = possible_responses_value[index_answer]
         
         object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -160,6 +168,11 @@ class Quiz_BlindTest(Quiz):
         #?                            Affichage réponse - 1                             #
         #? ---------------------------------------------------------------------------- #
         object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
                 "type": "text",
                 "content": response,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -178,6 +191,11 @@ class Quiz_BlindTest(Quiz):
         answer_value = "La bonne réponse était : \n" + response_value
         
         object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
                 "type": "text",
                 "content": answer_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]

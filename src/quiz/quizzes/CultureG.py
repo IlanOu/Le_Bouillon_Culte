@@ -56,7 +56,10 @@ class Quiz_CultureG(Quiz):
         # System
         # ---------------------------------------------------------------------------- #
         
-        # 1. Display question
+        #? ---------------------------------------------------------------------------- #
+        #?                               Display question                               #
+        #? ---------------------------------------------------------------------------- #
+
         
         object = [{
                 "type": "text",
@@ -78,8 +81,7 @@ class Quiz_CultureG(Quiz):
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                 "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
                 "style": []
-            },
-            {
+            },{
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -119,6 +121,11 @@ class Quiz_CultureG(Quiz):
         answer_value = possible_responses_value[index_answer]
         
         object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -151,6 +158,11 @@ class Quiz_CultureG(Quiz):
         #?                            Affichage réponse - 1                             #
         #? ---------------------------------------------------------------------------- #
         object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
                 "type": "text",
                 "content": response,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -172,6 +184,11 @@ class Quiz_CultureG(Quiz):
         
         if details_image_value == "":
             object = [{
+                    "type": "score",
+                    "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                    "style": []
+                },{
                     "type": "text",
                     "content": answer_value,
                     "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -183,6 +200,11 @@ class Quiz_CultureG(Quiz):
                 }]
         else:
             object = [{
+                    "type": "score",
+                    "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                    "style": []
+            },{
                     "type": "text",
                     "content": answer_value,
                     "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]

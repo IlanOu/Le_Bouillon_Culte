@@ -112,11 +112,11 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # screens done (presque)
+        # self.add_quiz(self.quiz1) # screens done (normalement)
         # self.add_quiz(self.quiz2)
-        # self.add_quiz(self.quiz3)
+        self.add_quiz(self.quiz3) # Wip
         # self.add_quiz(self.quiz4)
-        self.add_quiz(self.quiz5) # WIP
+        # self.add_quiz(self.quiz5) # screens done (normalement)
         # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
@@ -251,7 +251,7 @@ class QuizManager:
         #? ---------------------------------------------------------------------------- #
         #?                                      2                                       #
         #? ---------------------------------------------------------------------------- #
-        text_to_display = "Appuyez sur le gros bouton \npour commencer"
+        text_to_display = "Appuyez sur le bouton B \npour commencer"
         
         object = [{
                 "type": "text",

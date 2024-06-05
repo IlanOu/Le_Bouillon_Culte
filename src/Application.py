@@ -120,6 +120,8 @@ class App:
             
             for _ in range (ScoreConfig().nb_question):
                 manager.run()
+            
+            
 
     def receive_message(self, message):
         Debug.LogWhisper(f"[Websocket]> Message reçu dans App : {message}")
