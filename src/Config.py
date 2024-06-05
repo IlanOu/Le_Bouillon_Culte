@@ -37,7 +37,14 @@ class Config:
         self.hotspot_ip = "10.42.0.1"
         
     def stop_program(self):
-        self.webApp.show("❌ Programme stoppé", "stop")
+        object = [
+        {
+            "type": "text",
+            "content": "❌ Programme stoppé",
+            "images": [],
+            "style": ["text-big", "text-bold", "text-red", "text-centered"]
+        }]
+        # self.webApp.show(object)
         Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
         self.webApp.exit()
         

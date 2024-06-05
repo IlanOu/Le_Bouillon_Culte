@@ -132,6 +132,7 @@ class PiperEngine(TTSEngine):
         import subprocess
 
         text = str(text).replace("'", "")
+        text = str(text).replace("\n", "")
 
         # Définir la commande à exécuter
         commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --speaker 1 --output_file temp.wav"
