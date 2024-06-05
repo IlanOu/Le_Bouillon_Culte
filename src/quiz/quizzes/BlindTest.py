@@ -190,5 +190,6 @@ class Quiz_BlindTest(Quiz):
         
         Config().webApp.show(object)
         
+        Speaker.say(answer_value)
         
         player.play_next_random_section()

@@ -57,46 +57,149 @@ class Quiz_CultureG(Quiz):
         # ---------------------------------------------------------------------------- #
         
         # 1. Display question
-        Config().webApp.show(question_value, "text")
-        Speaker.say(question_value.replace("/n", ""))
-        # time.sleep(30)
         
-        # 2.
-        Config().webApp.show(display_possible_responses_value, "table")
-        # Speaker.say(speakeable_possible_responses_value)
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            }]
         
+        Config().webApp.show(object)
+        
+        Speaker.say(question_value)
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                  Question                                    #
+        #? ---------------------------------------------------------------------------- #
+        
+        object = [
+            {
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },
+            {
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": possible_responses_value,
+                "style": []
+            },{
+                "type": "text",
+                "content": "Utilisez les boutons pour choisir",
+                "style": ["text-medium", "text-italic", "text-black"]
+            }]
+        
+        # Afficher et dire la question
+        Config().webApp.show(object)
+        
+        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
         for item in possible_responses_value:
-            Speaker.say(item)
+            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
             time.sleep(0.25)
-    
-        # 3. Wait for response
+        
+        
+        
+
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                   Réponse                                    #
+        #? ---------------------------------------------------------------------------- #
+        
         button_pin = self.sensors_manager.wait_for_button_press()
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
-
+        
+        index_answer = Config().buttons_pins.index(button_pin)
+        
+        answer_value = possible_responses_value[index_answer]
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": possible_responses_value,
+                "style": [],
+                "answer": answer_value
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            }]
+        
+        Config().webApp.show(object)
+        
         button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
-
-        Debug.LogWhisper(f"Ma réponse est : {button_response} et la correct est {response_value}")
         
+        time.sleep(3)
         
-        
-        # 5. Afficher la réponse + détails
         if button_response == response_value:
-            response = "La bonne réponse était : " + response_value
-            ScoreConfig().update_score("CultureG", True)
+            response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
+            ScoreConfig().update_score("BlindTest", True)
         else:
-            response = "Dommage. La bonne réponse était : " + response_value
-            ScoreConfig().update_score("CultureG", False)
+            response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
+            ScoreConfig().update_score("BlindTest", False)
         
         
-        # 4. Display response
-        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
+        #? ---------------------------------------------------------------------------- #
+        #?                            Affichage réponse - 1                             #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": response,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+        }]
         
+        Config().webApp.show(object)
         Speaker.say(response)
         
         time.sleep(3)
-        pass # Show image
-        Config().webApp.show(details_image_value, "image")
         
-        # time.sleep(30)
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                            Affichage réponse - 2                             #
+        #? ---------------------------------------------------------------------------- #
+        
+        answer_value = "La bonne réponse était : \n" + response_value
+        
+        object = []
+        
+        if details_image_value == "":
+            object = [{
+                    "type": "text",
+                    "content": answer_value,
+                    "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                },
+                {
+                    "type": "text",
+                    "content": details_value,
+                    "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
+                }]
+        else:
+            object = [{
+                    "type": "text",
+                    "content": answer_value,
+                    "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                },
+                {
+                    "type": "image",
+                    "images": [details_image_value],
+                    "style": ["image-big"]
+                },
+                {
+                    "type": "text",
+                    "content": details_value,
+                    "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
+                }]
+        
+        Config().webApp.show(object)
+        
+        Speaker.say(answer_value)
+        
+        time.sleep(10)

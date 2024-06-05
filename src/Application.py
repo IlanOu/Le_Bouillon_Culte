@@ -74,6 +74,7 @@ class App:
         
         MusicPlayer(Config().audio_dir).play_threading("sounds/1A.mp3")
         
+        
         time.sleep(3)
         
         

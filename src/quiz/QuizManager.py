@@ -79,6 +79,12 @@ class QuizManager:
             self.rfid_is_started = False
     
     def setup(self, server_thread=None):
+        for zone in ScoreConfig().quizzes_score:
+            for scores in zone:
+                scores = 0
+
+        ScoreConfig().total_score = 0
+        ScoreConfig().nb_actual_question = 0
 
         #? ---------------------------------------------------------------------------- #
         #?                                    1B - 3                                    #
@@ -106,11 +112,11 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        self.add_quiz(self.quiz1)
+        # self.add_quiz(self.quiz1) # screens done (presque)
         # self.add_quiz(self.quiz2)
         # self.add_quiz(self.quiz3)
         # self.add_quiz(self.quiz4)
-        # self.add_quiz(self.quiz5)
+        self.add_quiz(self.quiz5) # WIP
         # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
