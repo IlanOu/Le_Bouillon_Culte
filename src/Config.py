@@ -15,6 +15,7 @@ class Config:
         Debug.prefixActive = False
         
         self.zone = "Auvergne-Rhône-Alpes"
+        self.internal_RFID_zone = "Hauts-de-France"
         
         # Speaker.setEngine(GttsEngine())
         
@@ -27,8 +28,11 @@ class Config:
         from src.objects.displayer.Displayer import Displayer
         self.webApp = Displayer(self.test_mode).get_display()
         
+        # Buttons PIN
+        self.buttons_pins = [16, 14, 26, 17]
+        self.button_wheel = 5
+        self.button_start = 23
         
-        self.buttons_pins = [16, 17, 26, 23]
         
         self.hotspot_ip = "10.42.0.1"
         
@@ -48,6 +52,7 @@ class ScoreConfig:
         self.numbers_question = [2, 7, 10, 12] # [5, 7, 10, 12]
     
     def update_nb_actual_question(self):
+        Debug.LogPopup("+1 à la question !")
         self.nb_actual_question += 1
         
     def update_score(self, quiz, answer):

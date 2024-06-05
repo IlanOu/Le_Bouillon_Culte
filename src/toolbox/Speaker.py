@@ -134,7 +134,7 @@ class PiperEngine(TTSEngine):
         text = str(text).replace("'", "")
 
         # Définir la commande à exécuter
-        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --output_file temp.wav"
+        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --speaker 1 --output_file temp.wav"
 
         # Exécuter la commande
         process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)
@@ -144,7 +144,6 @@ class PiperEngine(TTSEngine):
 
         # Vérifier si la commande a réussi
         if process.returncode == 0:
-            print("La commande a été exécutée avec succès !")
             # Ouvrir le fichier audio dans un lecteur externe
             file = "temp.wav"
             
@@ -156,7 +155,7 @@ class PiperEngine(TTSEngine):
             play_obj.wait_done()
 
         else:
-            print("Erreur lors de l'exécution de la commande:", process.returncode)
+            Debug.LogError("Erreur lors de l'exécution de la commande:", process.returncode)
 
 
 

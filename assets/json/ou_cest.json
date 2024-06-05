@@ -3,14 +3,14 @@
      [
          {
              "question": "Le Palais Idéal du Facteur Cheval",
-             "image": "C3_CE_11.jpg",
+             "image": "C3_CE_11.webp",
              "answers": "Placez le pion sur la carte",
              "correct_answer": "[Cette région]",
              "details": "Le Palais idéal du facteur Cheval est une incroyable construction située à Hauterives. C'est une œuvre unique réalisée par Ferdinand Cheval, un facteur français. Il a passé plus de trente ans à assembler des pierres ramassées lors de ses tournées de courrier pour créer ce monument extraordinaire."
          },
          {
             "question": "La Colline de Fourvière",
-            "image": "2_C1_CE_3.jpg",
+            "image": "2_C3_CE_3.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
             "details": "La colline de Fourvière est une élévation emblématique située à Lyon, en France. Elle est célèbre pour sa basilique Notre-Dame de Fourvière qui domine la ville et offre une vue panoramique spectaculaire"
@@ -20,38 +20,52 @@
      [
         {
             "question": "L’Arc de Triomphe",
-            "image": "C3_NE_3.jpg",
+            "image": "C3_NE_3.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
             "details": "Construit sous la demande de Napoléon 1er, l’Arc de Triomphe représente la mémoire que l’on porte à tous les soldats morts pour la France."
         },
         {
-            "question": "La place Dauphine",
-            "image": "",
+            "question": "La place de la Bastille",
+            "image": "C3_NE_1.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
-            "details": "Avant la révolution, la place était utilisée le jour de la fête Dieu pour une exposition de peinture. Selon André Breton la place Dauphine représenterait \"le sexe de Paris\" du fait de sa forme triangulaire."
+            "details": "La place de la Bastille est un lieu historique très important dans la ville de Paris. C’est un lieu symbolique de la Révolution française car entre le 14 juillet 1789 et le 14 juillet 1790, la forteresse de Paris fut détruite. Aujourd'hui sur la place on peut y voir la \"Colonne de Juillet\" qui est un monument qui commémore la révolution des \"Trois Glorieuse\"."
         }
      ],
      "Bretagne":
      [
         {
             "question": "Le château du Taureau",
-            "image": "C3_NO_3.jpg",
+            "image": "C3_NO_3.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
             "details": "Construit au XVIe siècle sur les ordres de Henri II, ce château a servi de défense côtière pendant des siècles. Sa conception circulaire et ses murs massifs en font un exemple impressionnant d'architecture militaire de l'époque. Accessible uniquement par bateau, le château du Taureau offre aujourd'hui aux visiteurs une expérience fascinante de l'histoire maritime de la région."
-        }
+        },
+        { 
+            "question": "La Côte de granit rose",
+            "image": "2_C3_NO_3.webp",
+            "answers": "Placez le pion sur la carte",
+            "correct_answer": "[Cette région]",
+            "details": "La Côte de granit rose, située en Bretagne, est renommée pour ses paysages spectaculaires où les rochers de granit prennent des teintes roses sous la lumière du soleil. Cette côte s'étend sur environ 30 kilomètres le long de la Manche, offrant des plages de sable fin et des criques."   
+        }  
      ],
-
+  
      "Hauts-de-France":
      [
         {
-            "question": "Les Falaises d’Etretat",
-            "image": "C3_NO_10.jpg",
+            "question": "Lille",
+            "image": "C3_NO_10.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
-            "details": "En plus d’être un paysage incontournable et magnifique de Normandie. Ces falaises sont devenues également populaires grâce à leur présence dans l’un des livres des aventures d'Arsène Lupin, écrit par Maurice Leblanc."
+            "details": "Lille est la capitale des Hauts-de-France, cette ville est située à la frontière belge. Lille est à la fois un centre culturel et une ville universitaire très animée. Elle fut autrefois une importante plateforme marchande des Flandres françaises"
+        },
+        {
+            "question": "Phare de Calais",
+            "image": "C3_NO_21.webp",
+            "answers": "Placez le pion sur la carte",
+            "correct_answer": "[Cette région]",
+            "details": "Construit en 1848, puis électrifié quarante ans plus tard. Ce phare est l'œuvre de Léonce Reynaud"
         }
      ],
 
@@ -59,10 +73,17 @@
      [
         {
             "question": "Le prestigieux hôtel \"Le Negresco\" ?",
-            "image": "Q3_SE_1.jpg",
+            "image": "Q3_SE_1.webp",
             "answers": "Placez le pion sur la carte",
             "correct_answer": "[Cette région]",
             "details": "La légende raconte qu’Henri Negresco (propriétaire de l’hôtel) aurait demandé à son architecte de faire construire une coupole rose ayant la forme du sein de sa maîtresse."
+        },
+        {
+            "question": "La Basilique Notre Dame de la Garde",
+            "image": "Q3_SE_2.webp",
+            "answers": "Placez le pion sur la carte",
+            "correct_answer": "[Cette région]",
+            "details": "Il existait autrefois un funiculaire qui transportait directement depuis la rue Jules Moulet sur plus de 80 mètres de haut pour arriver au pied de la chapelle. Il a été ouvert en 1892 mais finalement fermé en 1967 car trop peu rentable."
         }
      ]
 }

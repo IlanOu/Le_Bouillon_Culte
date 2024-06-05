@@ -15,6 +15,7 @@ from src.toolbox.Debug import *
 
 from src.Config import Config, ScoreConfig
 
+from src.objects.button.Button import Button
 
 import random
 import time
@@ -81,6 +82,9 @@ class QuizManager:
     
     def setup(self, server_thread=None):
 
+        Config().webApp.show("La partie va commencer !")
+
+
         if server_thread != None:
             server_thread.addCallbackRun(self.receive_message)
         # Get quizzes json content
@@ -91,22 +95,22 @@ class QuizManager:
         self.quiz4 = Quiz_QuiSuisJe(self.sensors_manager, "./assets/json/qui_suis_je.json")
         self.quiz5 = Quiz_CultureG(self.sensors_manager, "./assets/json/culture_g.json")
         self.quiz6 = Quiz_TroisImages(self.sensors_manager, "./assets/json/3_images.json")
-
+        
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # Fait
-        # self.add_quiz(self.quiz2) # Fait
-        #self.add_quiz(self.quiz3) # Fait
-        # self.add_quiz(self.quiz4) # Fait
-        # self.add_quiz(self.quiz5) # Fait
-        self.add_quiz(self.quiz6) # Fait
+        self.add_quiz(self.quiz1)
+        # self.add_quiz(self.quiz2) #TODO -> à faire
+        # self.add_quiz(self.quiz3)
+        self.add_quiz(self.quiz4)
+        self.add_quiz(self.quiz5)
+        self.add_quiz(self.quiz6)
         
         self.config_nb_question()
         
     def config_nb_question(self):
         
-        question_value = "Combien de question voulez-vous faire ?"
+        question_value = "Combien de questions voulez-vous faire ?"
         
         # System
         # ---------------------------------------------------------------------------- #
@@ -119,31 +123,31 @@ class QuizManager:
         table = "|".join(map(str, ScoreConfig().numbers_question))
         Config().webApp.show(question_value + "~" + table, "table")
         
-        str_choices = ", ".join(map(str, ScoreConfig().numbers_question))
-        
+        str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
         Speaker.say(str_choices)
-    
+        
+        
         # 3. Wait for response
         button_pin = self.sensors_manager.wait_for_button_press()
-        
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
 
         ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
 
+
     def read_rfid_worker(self):
         while True:
             if self.rfid_event.is_set():
                 if self.sensors_manager.read_rfid():
-                    self.rfid_response = "Bretagne"
+                    self.rfid_response = Config().internal_RFID_zone
                     self.stop_rfid()
                     break
                 self.rfid_event.clear()
 
     def wait_for_rfids(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
-        Config().webApp.show("Placez le pion sur la carte")
+        Config().webApp.show("Choisissez une zone à l’aide de votre pion")
         
         self.rfid_response = None
         self.rfid_event.set()
@@ -153,21 +157,53 @@ class QuizManager:
             time.sleep(0.1)
 
         self.set_zone(self.rfid_response)
-
+        
 
     def run(self):
         ScoreConfig().update_nb_actual_question()
         
+        # Wait for user press button
+        # ---------------------------------------------------------------------------- #
+        
+        text_to_display = "Appuyez sur le gros bouton !"
+        Config().webApp.show(text_to_display)
+        
+        looping = True
+        
+        # Repeat every 20s to press on the button
+        # ---------------------------------------------------------------------------- #
+        def speek_text():
+            while looping:
+                Speaker.say(text_to_display)
+                time.sleep(20)
+
+        thread = threading.Thread(target=speek_text)
+        thread.start()
+    
+        # Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
+        
+        # input("") # Todo -> passer l'input en réel bouton
+        self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
+        
+        looping = False
+        
+        
+        # Display current question
+        # ---------------------------------------------------------------------------- #
+        score_to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
+        
+        if ScoreConfig().nb_actual_question == ScoreConfig().nb_question:
+            score_to_display = "Attention, vous en êtes à la dernière question !"
+            
+        Config().webApp.show(score_to_display)
+        Speaker.say(score_to_display)
+        
+        
         # Turn the wheel
         # ---------------------------------------------------------------------------- #
-        Config().webApp.show("La partie va commencer !")
-        Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
-        input("")
         random_quiz = self.__display_random_quiz()
         self.__set_current_quiz(random_quiz)
         
-        if self.current_quiz == None:
-            Debug.LogError("[Error]> Aucun quiz n'est définit")
         
         # Run quiz
         # ---------------------------------------------------------------------------- #
@@ -184,8 +220,7 @@ class QuizManager:
         
         # ------------------------------- Stop program ------------------------------- #
         except KeyboardInterrupt:
-            Config().webApp.show("❌ Programme stoppé", "stop")
-            Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
+            Config().stop_program()
     
     def receive_message(self, message):
         Debug.LogWhisper(f"[Websocket]> Message reçu dans QuizManager : {message}")

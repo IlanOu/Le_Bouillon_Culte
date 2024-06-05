@@ -1,5 +1,6 @@
 import json
 import random
+import time
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker
@@ -52,9 +53,6 @@ class Quiz_BlindTest(Quiz):
         # ---------------------------------------------------------------------------- #
         question_value = question["question"]
         possible_responses_value = random.sample(question["answers"], len(question["answers"]))
-        print(question["answers"])
-        print(possible_responses_value)
-        # print(random.shuffle(question["answers"]))
         speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value)
         display_possible_responses_value = " | ".join(possible_responses_value)
         response_value = question["correct_answer"]
@@ -76,36 +74,36 @@ class Quiz_BlindTest(Quiz):
     
         # 3. Proposer les réponses
         Config().webApp.show(question_value + " ~ " + display_possible_responses_value, "table")
-        Speaker.say(speakeable_possible_responses_value)
+        
+        name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
+        for item in possible_responses_value:
+            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
+            time.sleep(0.25)
         
         # 4. Attendre la réponse de l'utilisateur
         button_pin = self.sensors_manager.wait_for_button_press()
 
-        print("Le pin : " + str(button_pin) + " type : " + str(type(button_pin)))
+        if not button_pin in Config().buttons_pins:
+            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
 
-        if button_pin == 16 :
-            print("Réponse 1")
-            buttonResponse = possible_responses_value[0]
-        elif button_pin == 23 :
-            print("Réponse 2")
-            buttonResponse = possible_responses_value[1]
-        elif button_pin == 26 :
-            print("Réponse 3")
-            buttonResponse = possible_responses_value[2]
-        elif button_pin == 17 :
-            print("Réponse 4")
-            buttonResponse = possible_responses_value[3]
-
-        print(f"Ma réponse est : {buttonResponse} et la correct est {response_value}")
+        button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
+        
+        
         # 5. Afficher la réponse + détails
-        if buttonResponse == response_value:
-            response = "La bonne réponse était : " + response_value
+        if button_response == response_value:
+            response = "Bravo vous avez trouvé !"
             ScoreConfig().update_score("BlindTest", True)
         else:
-            response = "Dommage. La bonne réponse était : " + response_value
+            response = "Ce n’est pas la bonne réponse."
             ScoreConfig().update_score("BlindTest", False)
 
-        Config().webApp.show("Bonne réponse : /n" + response_value + "/n" + details_value, "text")
-        Speaker.say(response)
+        
+        
+        Config().webApp.show(response + "/n La réponse correcte est : /n" + response_value, "text")
+        Speaker.say(response + ". La réponse correcte est : " + response_value)
+        
+        Config().webApp.show(details_value, "text")
+        
         player.play_next_random_section()
         
+        # self.sensors_manager.wait_for_button_press()

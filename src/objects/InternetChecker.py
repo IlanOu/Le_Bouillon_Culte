@@ -15,7 +15,7 @@ class InternetChecker:
             socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((self.host, self.port))
             return True
         except socket.error as ex:
-            print(ex)
+            Debug.LogError(ex)
             return False
 
 

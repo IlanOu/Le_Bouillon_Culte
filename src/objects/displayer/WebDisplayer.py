@@ -121,6 +121,7 @@ class WebApp(object):
             return None
 
     def show(self, content, mode="text"):
+        self.historic = [content, mode]
         with self.app.app_context():
             image_urls = []
 
@@ -145,3 +146,6 @@ class WebApp(object):
             self.is_running = True
         else:
             self.string_updater.show(mode + "||" + content)
+            
+    def show_historic(self):
+        self.show(self.historic[0], self.historic[1])
