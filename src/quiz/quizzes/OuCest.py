@@ -15,7 +15,7 @@ import time
 
 class Quiz_OuCest(Quiz):
     def __init__(self, sensors_manager, json_path = ""):
-        self.name = "Où c'est ?"
+        self.name = "Placez-le"
         self.json_path = json_path
         self.datas = {}
         self.fill_datas()

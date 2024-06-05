@@ -2,121 +2,188 @@
 <html>
 <head>
   <title>Chaîne dynamique</title>
-  <link rel="stylesheet" href="./style.css">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='styles/style.css')}}"/> 
 </head>
 <body>
   <div id="dynamic-content"></div>
   
   <script>
     const eventSource = new EventSource("/stream");
+
     eventSource.onmessage = (event) => {
-      const data = event.data;
+      const data = JSON.parse(event.data);
       const dynamicContent = document.getElementById('dynamic-content');
       dynamicContent.innerHTML = '';
 
-      if (data.includes('||')) {
-        const [mode, content] = data.split('||');
 
-        switch (mode) {
+      data.forEach(element => {
+        // Config
+        type = element["type"]
+        styles = element["style"]
+        
+        // Text
+        content = element["content"]
+        
+        // Images
+        images = element["images"]
+        
+        // Table
+        items = element["items"]
+        answer = element["answer"]
+        
+
+        let child = null
+
+        switch (type) {
           case 'text':
-            renderText(content, dynamicContent);
+            child = renderText(content, styles);
             break;
           case 'table':
-            renderTable(content, dynamicContent);
+            child = renderTable(items, answer, styles);
             break;
           case 'image':
-            renderImage(content, dynamicContent);
-            break;
-          case 'stop':
-            renderStop(content, dynamicContent);
-            break;
-          case 'roll':
-            renderRoll(content, dynamicContent);
+            child = renderImage(images[0], styles);
             break;
           case '3images':
-            render3Images(content, dynamicContent);
+            child = render3Images(content, styles);
             break;
           default:
             console.log("Mode non pris en charge");
         }
-      } else {
-        console.log("Erreur, aucun mode n'est spécifié");
-      }
+
+
+        if (child != null){
+          dynamicContent.appendChild(child)
+        }
+      });
+
     };
+
+
 
 
     // Text
     // -----------------------------------------------------
-    function renderText(content, container) {
+    function renderText(content, styles) {
+      const box = document.createElement('div');
+
       const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
         const p = document.createElement('p');
         p.innerText = paragraph;
         return p;
       });
-      paragraphs.forEach(paragraph => container.appendChild(paragraph));
+      paragraphs.forEach(paragraph => box.appendChild(paragraph));
+
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+      return box
     }
 
     // Table
     // -----------------------------------------------------
-    function renderTable(content, container) {
-      const [tableTitle, tableContent] = content.includes('~') ? content.split('~') : ['', content];
-      const words = tableContent.split('|');
-
-      if (tableTitle) {
-        const title = document.createElement('h2');
-        title.classList.add('title');
-        title.innerText = tableTitle;
-        container.appendChild(title);
-      }
+    function renderTable(items, answer, styles) {
+      const box = document.createElement('div');
 
       const table = document.createElement('table');
       table.classList.add('table');
 
-      for (let i = 0; i < words.length; i += 2) {
+      let blue_cell = null;
+      
+
+      quesions_names = ["A", "B", "C", "D"]
+      for (let i = 0; i < items.length; i += 2) {
         const row = document.createElement('tr');
         const cell1 = document.createElement('td');
-        cell1.innerHTML = words[i].trim().split('/n').join('<br>');
-        row.appendChild(cell1);
+        
 
-        if (words[i + 1]) {
-          const cell2 = document.createElement('td');
-          cell2.innerHTML = words[i + 1].trim().split('/n').join('<br>');
-          row.appendChild(cell2);
+        question_name = document.createElement('a')
+        question_name.innerText = quesions_names[i] + " - "
+        question_name.classList.add("question-name")
+        cell1.appendChild(question_name);
+
+
+        cell1.innerHTML += items[i].toString().trim().split('/n').join('<br>');
+
+        if (answer != null && answer == items[i]){
+            blue_cell = cell1;
         }
 
+        row.appendChild(cell1);
+
+        if (items[i + 1]) {
+          const cell2 = document.createElement('td');
+
+          question_name = document.createElement('a')
+          question_name.innerText = quesions_names[i + 1] + " - "
+          question_name.classList.add("question-name")
+          
+          
+          cell2.appendChild(question_name);
+          cell2.innerHTML += items[i + 1].toString().trim().split('/n').join('<br>');
+
+          if (answer != null && answer == items[i + 1]){
+            blue_cell = cell2;
+          }
+
+          row.appendChild(cell2);
+        }
         table.appendChild(row);
       }
 
-      container.appendChild(table);
-    }
+      box.appendChild(table);
 
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+
+      if (blue_cell){
+        blue_cell.classList.add("blue-cell")
+      }
+        
+      
+      
+      return box
+    }
 
     // Image
     // -----------------------------------------------------
-    function renderImage(content, container) {
+    function renderImage(content, styles) {
+      const box = document.createElement('div');
+      
       const img = document.createElement('img');
       img.src = content;
       img.style.maxWidth = '100%';
       img.style.maxHeight = '100%';
       img.style.objectFit = 'contain';
-      container.appendChild(img);
+      box.appendChild(img);
+
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+      
+      return box
     }
     
     // 3 images
     // -----------------------------------------------------
-    function render3Images(content, container) {
-      const images = content.split('|');
+    function render3Images(content, styles) {
+      const box = document.createElement('div')
 
-      console.log("Images -> " + images)
+      const images = content.split('|');
 
       if (images.length !== 3) {
         console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");
         return;
       }
-
       const imagesContainer = document.createElement('div');
       imagesContainer.classList.add('images-container');
-
       images.forEach(imageUrl => {
         const img = document.createElement('img');
         img.src = imageUrl.trim();
@@ -126,28 +193,18 @@
         imagesContainer.appendChild(img);
       });
 
-      container.appendChild(imagesContainer);
-    }
+      box.appendChild(imagesContainer);
 
-    // STOP
-    // -----------------------------------------------------
-    function renderStop(stopString, container) {
-      const stopMessage = document.createElement('h2');
-      stopMessage.classList.add('stopError');
-      stopMessage.innerText = stopString;
-      container.appendChild(stopMessage);
-    }
-
-    // Roll
-    // -----------------------------------------------------
-    function renderRoll(rollString, container) {
-      const rollContent = document.createElement('h2');
-      rollContent.classList.add('rollContent');
-      rollContent.innerText = rollString;
-      container.appendChild(rollContent);
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+      
+      return box
     }
     
-    
+
 
 
     function openFullscreen() {
@@ -160,14 +217,11 @@
           elem.msRequestFullscreen();
         }
       }
-
       // Attacher la fonction openFullscreen() à un événement de clic
       document.addEventListener('click', function() {
         openFullscreen();
         sendLoadedEvent();
       });
-
-
       // Fonction pour envoyer une requête au serveur Flask
       function sendLoadedEvent() {
         fetch('/page-loaded', {
@@ -179,85 +233,9 @@
         })
         .catch(error => console.error('Error:', error));
       }
-
-      // Appeler la fonction sendLoadedEvent() lorsque la page est chargée
-      // window.onload = sendLoadedEvent;
-
   </script>
 </body>
 </html>
-
 <style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: black;
-    width: 100vw;
-    height: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: all 0.75s ease;
-    margin: 0;
-}
 
-p {
-    color: white;
-    font-size: 45px;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
-h2 {
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin: 0;
-}
-
-.table {
-    color: white;
-    text-align: center;
-    font-size: 30px;
-    border-collapse: collapse;
-    border: 2px solid white;
-    width: 100%;
-    height: 85%;
-    table-layout: fixed;
-}
-
-.table td {
-    padding: 10px;
-    border: 1px solid white;
-    width: 25%;
-}
-
-.title {
-    color: white;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-
-.stopError{
-    color: red;
-    text-align: center;
-}
-
-.rollContent{
-  font-size: 40px;
-  color: white;
-  text-align: center;
-}
-
-#dynamic-content {
-  width: 100%;
-  height: 100vh;
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 </style>

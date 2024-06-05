@@ -82,7 +82,14 @@ class QuizManager:
     
     def setup(self, server_thread=None):
 
-        Config().webApp.show("La partie va commencer !")
+
+        object = [
+        {
+            "type": "text",
+            "content": "La partie va commencer !",
+            "style": ["text-big", "text-uppercase", "text-blue", "text-centered"]
+        }]
+        Config().webApp.show(object)
 
 
         if server_thread != None:
@@ -100,40 +107,109 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1)
-        # self.add_quiz(self.quiz2) #TODO -> à faire
+        # self.add_quiz(self.quiz2)
         # self.add_quiz(self.quiz3)
-        self.add_quiz(self.quiz4)
-        self.add_quiz(self.quiz5)
-        self.add_quiz(self.quiz6)
+        # self.add_quiz(self.quiz4)
+        # self.add_quiz(self.quiz5)
+        # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
         
     def config_nb_question(self):
         
-        question_value = "Combien de questions voulez-vous faire ?"
+        question_value = "Combien de manches \nsouhaitez-vous jouer ?"
         
-        # System
-        # ---------------------------------------------------------------------------- #
+
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 1                                    #
+        #? ---------------------------------------------------------------------------- #
+        items_questions = []
         
-        # 1. Display question
-        Config().webApp.show(question_value, "text")
+        for item in ScoreConfig().numbers_question:
+            items_questions.append(str(item) + " questions")
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": items_questions,
+                "style": []
+            },{
+                "type": "text",
+                "content": "Utilisez les boutons pour choisir",
+                "style": ["text-medium", "text-italic", "text-black"]
+            }]
+        
+        # Afficher et dire la question
+        Config().webApp.show(object)
         Speaker.say(question_value.replace("/n", ""))
         
-        # 2.
-        table = "|".join(map(str, ScoreConfig().numbers_question))
-        Config().webApp.show(question_value + "~" + table, "table")
+        # ---------------------------------------------------------------------------- #
         
+        # Dire les réponses possibles
         str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
         Speaker.say(str_choices)
         
         
-        # 3. Wait for response
+        # Afficher la réponse de l'utilisateur
+        # ---------------------------------------------------------------------------- #
+
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 2                                    #
+        #? ---------------------------------------------------------------------------- #
+        
         button_pin = self.sensors_manager.wait_for_button_press()
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
-
+        
+        index_answer = Config().buttons_pins.index(button_pin)
+        
+        answer_value = items_questions[index_answer]
+        
+        object = [{
+                "type": "text",
+                "content": question_value,
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "table",
+                "items": items_questions,
+                "style": [],
+                "answer": answer_value
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            }]
+        Config().webApp.show(object)
+        
+        time.sleep(3)
+        
         ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
+
+
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 3                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "image",
+                "content": "",
+                "images": ["logos/Logo_image.png"],
+                "style": ["image-small"]
+            },{
+                "type": "text",
+                "content": "La partie va \nbientôt commencer",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+            }]
+        
+        Config().webApp.show(object)
+        
+        time.sleep(5)
+
 
 
     def read_rfid_worker(self):
@@ -147,7 +223,6 @@ class QuizManager:
 
     def wait_for_rfids(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
-        Config().webApp.show("Choisissez une zone à l’aide de votre pion")
         
         self.rfid_response = None
         self.rfid_event.set()
@@ -165,8 +240,24 @@ class QuizManager:
         # Wait for user press button
         # ---------------------------------------------------------------------------- #
         
-        text_to_display = "Appuyez sur le gros bouton !"
-        Config().webApp.show(text_to_display)
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                      2                                       #
+        #? ---------------------------------------------------------------------------- #
+        text_to_display = "Appuyez sur le gros bouton \npour commencer"
+        
+        object = [{
+                "type": "text",
+                "content": text_to_display,
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+            },{
+                "type": "image",
+                "content": "",
+                "images": ["icons/big_button.png"],
+                "style": ["image-small"]
+            }]
+        Config().webApp.show(object)
+        
         
         looping = True
         
@@ -179,10 +270,7 @@ class QuizManager:
 
         thread = threading.Thread(target=speek_text)
         thread.start()
-    
-        # Debug.LogColor("[Action]> Appuyez sur la touche 'Entrer ↵' pour lancer", Style.PURPLE + Style.ITALIC)
         
-        # input("") # Todo -> passer l'input en réel bouton
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
         
         looping = False
@@ -190,13 +278,42 @@ class QuizManager:
         
         # Display current question
         # ---------------------------------------------------------------------------- #
-        score_to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
+        to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
+        
+        
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                  3B - 1                                      #
+        #? ---------------------------------------------------------------------------- #
+        object = [{
+                "type": "text",
+                "content": "Question",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+            },{
+                "type": "text",
+                "content": str(ScoreConfig().nb_actual_question) + " / " + str(ScoreConfig().nb_question),
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
+            }]
+        
         
         if ScoreConfig().nb_actual_question == ScoreConfig().nb_question:
-            score_to_display = "Attention, vous en êtes à la dernière question !"
+            to_display = "Attention, vous en êtes à la dernière question !"
             
-        Config().webApp.show(score_to_display)
-        Speaker.say(score_to_display)
+            #? ---------------------------------------------------------------------------- #
+            #?                                  3B - 2                                      #
+            #? ---------------------------------------------------------------------------- #
+            
+            object = [{
+                "type": "text",
+                "content": "Dernière question",
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                }]
+        
+        
+        Config().webApp.show(object)
+        
+        Speaker.say(to_display)
         
         
         # Turn the wheel
@@ -209,8 +326,81 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         try:
             if self.current_quiz != self.quiz2:
+                
+                to_display = "Poser votre pion \ndans une région."
+                
+                #? ---------------------------------------------------------------------------- #
+                #?                                  4A - 1                                      #
+                #? ---------------------------------------------------------------------------- #
+                
+                object = [{
+                        "type": "text",
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+                    }]
+                
+                Config().webApp.show(object)
+                Speaker.say(to_display)
+                
+                
                 # Wait for RFID
                 self.wait_for_rfids()
+                
+                #? ---------------------------------------------------------------------------- #
+                #?                                  4A - 2                                      #
+                #? ---------------------------------------------------------------------------- #
+                object = [{
+                        "type": "text",
+                        "content": "Vous avez choisi",
+                        "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    },{
+                        "type": "text",
+                        "content": Config().zone,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+                    }]
+                Config().webApp.show(object)
+                
+                Speaker.say("Vous avez choisi la zone : " + Config().zone)
+                
+                time.sleep(3)
+                
+            else:
+                
+                #? ---------------------------------------------------------------------------- #
+                #?                                 Bonus 1                                      #
+                #? ---------------------------------------------------------------------------- #
+                to_display = "Attention !\nce jeu est différent des autres"
+                
+                object = [{
+                        "type": "text",
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    }]
+                
+                
+                Speaker.say(to_display)
+                Config().webApp.show(to_display)
+
+                time.sleep(3)
+                
+                
+                #? ---------------------------------------------------------------------------- #
+                #?                                 Bonus 2                                      #
+                #? ---------------------------------------------------------------------------- #
+                
+                to_display = "Vous devrez placer le pion \naprès la question !"
+                
+                object = [{
+                        "type": "text",
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                    }]
+                
+                Config().webApp.show(to_display)
+                Speaker.say(to_display)
+
+                time.sleep(3)
+
 
             # Run quiz
             self.current_quiz.process()

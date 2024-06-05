@@ -12,7 +12,7 @@ import time
 
 class Quiz_TroisImages(Quiz):
     def __init__(self, sensors_manager, json_path = ""):
-        self.name = "Trois images"
+        self.name = "3 images pour deviner"
         self.json_path = json_path
         self.datas = {}
         self.fill_datas()

@@ -14,7 +14,7 @@ class RollingNumberDisplay:
         self.final_delay = 0.5  # Délai final (ralenti)
 
     def display_rolling_number(self):
-        Config().webApp.show("", "roll")
+        # Config().webApp.show("", "roll")
         time.sleep(2)
         for roll in range(self.num_rolls):
             if roll == self.num_rolls - 1:
@@ -26,12 +26,24 @@ class RollingNumberDisplay:
     def roll_numbers(self):
         # Afficher les nombres de manière aléatoire
         while True:
-            current_number = random.choice(self.numbers)
-            Config().webApp.show(str(current_number), "roll")
+            current_game = random.choice(self.numbers)
+            
+            object = [{
+                "type": "image",
+                "content": "",
+                "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.png"],
+                "style": ["image-small"]
+            },{
+                "type": "text",
+                "content": str(current_game),
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+            }]
+            
+            Config().webApp.show(object)
             time.sleep(self.initial_delay)
 
             # Arrêter le défilement lorsque le nombre cible est atteint
-            if current_number == self.target_number:
+            if current_game == self.target_number:
                 break
 
     def roll_numbers_with_slowdown(self):
@@ -40,8 +52,20 @@ class RollingNumberDisplay:
         num_steps = len(self.numbers) - 1
         if num_steps > 0:
             for i in range(num_steps + 1):
-                current_number = random.choice(self.numbers)
-                Config().webApp.show(str(current_number), "roll")
+                current_game = random.choice(self.numbers)
+                
+                object = [{
+                    "type": "image",
+                    "content": "",
+                    "images": [f"icons/icon_jeu_{self.numbers.index(current_game)}.png"],
+                    "style": ["image-small"]
+                },{
+                    "type": "text",
+                    "content": str(current_game),
+                    "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                }]
+                
+                Config().webApp.show(object)
 
                 # Calculer le nouveau délai avec une fonction exponentielle modifiée
                 delay = self.initial_delay + (self.final_delay - self.initial_delay) * (1 - math.exp(-(i / num_steps)**2))
@@ -50,11 +74,25 @@ class RollingNumberDisplay:
 
                 # Afficher le nombre cible si c'est la dernière itération
                 if i == num_steps:
-                    current_number = self.target_number
+                    current_game = self.target_number
 
         time.sleep(0.5)
         # Afficher le nombre cible une dernière fois après le ralentissement
-        Config().webApp.show(str(self.target_number), "roll")
+        
+        object = [{
+                "type": "image",
+                "content": "",
+                "images": [f"icons/icon_jeu_{self.numbers.index(self.target_number)}.png"],
+                "style": ["image-small"]
+            },{
+                "type": "text",
+                "content": self.target_number,
+                "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+            }]
+            
+        Config().webApp.show(object)
+        
+        
         Debug.LogWhisper("[Log]> " + self.target_number)
 
 

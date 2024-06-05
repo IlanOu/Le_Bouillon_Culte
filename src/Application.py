@@ -20,7 +20,61 @@ class App:
         self.start_app()
         
     def start_app(self):
-        Config().webApp.show("Bienvenue sur le Bouillon Culte !")
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1A - 1                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [
+        {
+            "type": "image",
+            "content": "",
+            "images": ["logos/Logo_full.png"],
+            "style": ["image-medium"]
+        }]
+        
+        Config().webApp.show(object)
+        time.sleep(5)
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1A - 2                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [
+        {
+            "type": "text",
+            "content": "Bonjour !\nEt bienvenue dans",
+            "images": [],
+            "style": ["text-medium", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+        },
+        {
+            "type": "image",
+            "content": "",
+            "images": ["logos/Logo_text.png"],
+            "style": ["image-medium"]
+        }]
+        
+        Config().webApp.show(object)
+        time.sleep(5)
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1A - 3                                    #
+        #? ---------------------------------------------------------------------------- #
+        object = [
+        {
+            "type": "image",
+            "content": "",
+            "images": ["logos/Logo_image.png"],
+            "style": ["image-small"]
+        },
+        {
+            "type": "text",
+            "content": "Le jeu qui teste\nvos connaissances\net votre mémoire.",
+            "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
+        }]
+        
+        Config().webApp.show(object)
+        
         time.sleep(5)
 
     def run(self):
