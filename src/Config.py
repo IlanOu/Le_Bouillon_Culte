@@ -46,7 +46,7 @@ class Config:
             "images": [],
             "style": ["text-big", "text-bold", "text-red", "text-centered"]
         }]
-        # self.webApp.show(object)
+        self.webApp.show(object)
         Debug.LogError("[Error]> Programme interrompu par l'utilisateur")
         self.webApp.exit()
         

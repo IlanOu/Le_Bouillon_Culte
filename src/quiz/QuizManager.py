@@ -410,6 +410,25 @@ class QuizManager:
             # Run quiz
             self.current_quiz.process()
             
+            
+            object = [{
+                "type": "score",
+                "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "style": []
+            },{
+                "type": "text",
+                "content": "Reprennez le pion",
+                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            }]
+        
+            Config().webApp.show(object)
+            
+            Speaker.say(to_display)
+            
+            time.sleep(3)
+            
+            
             # On finish, cleanup GPIO
             self.sensors_manager.cleanup()
         

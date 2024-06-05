@@ -120,6 +120,39 @@ class App:
             
             for _ in range (ScoreConfig().nb_question):
                 manager.run()
+
+            object = [{
+                "type": "image",
+                "images": ["logos/Logo_full.webp"],
+                "style": ["image-medium"]
+            },{
+                "type": "text",
+                "content": "Fin de la partie",
+                "style": ["text-big", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
+            }]
+        
+            Config().webApp.show(object)
+            
+            time.sleep(5)
+            
+            
+            object = [{
+                    "type": "image",
+                    "images": ["logos/Logo_full.webp"],
+                    "style": ["image-medium"]
+                },{
+                    "type": "text",
+                    "content": "Votre score est de",
+                    "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                },{
+                    "type": "text",
+                    "content": str(ScoreConfig().total_score) + " / " + str(ScoreConfig().nb_question),
+                    "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered", "text-boxed-red"]
+                }]
+            
+            Config().webApp.show(object)
+            
+            time.sleep(10)
             
             
 
