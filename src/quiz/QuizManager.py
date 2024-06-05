@@ -156,6 +156,12 @@ class QuizManager:
         # Afficher la réponse de l'utilisateur
         # ---------------------------------------------------------------------------- #
 
+        
+        
+        #? ---------------------------------------------------------------------------- #
+        #?                                    1B - 2                                    #
+        #? ---------------------------------------------------------------------------- #
+        
         button_pin = self.sensors_manager.wait_for_button_press()
         
         if not button_pin in Config().buttons_pins:
@@ -165,9 +171,6 @@ class QuizManager:
         
         answer_value = items_questions[index_answer]
         
-        #? ---------------------------------------------------------------------------- #
-        #?                                    1B - 2                                    #
-        #? ---------------------------------------------------------------------------- #
         object = [{
                 "type": "text",
                 "content": question_value,
@@ -220,7 +223,6 @@ class QuizManager:
 
     def wait_for_rfids(self):
         Debug.LogColor("[Action]> Passez le badge devant le capteur RFID...", Style.PURPLE + Style.ITALIC)
-        Config().webApp.show("Choisissez une zone à l’aide de votre pion")
         
         self.rfid_response = None
         self.rfid_event.set()
@@ -276,7 +278,7 @@ class QuizManager:
         
         # Display current question
         # ---------------------------------------------------------------------------- #
-        score_to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
+        to_display = f"Vous en êtes à la question {str(ScoreConfig().nb_actual_question)} sur {str(ScoreConfig().nb_question)}."
         
         
         
@@ -296,7 +298,11 @@ class QuizManager:
         
         
         if ScoreConfig().nb_actual_question == ScoreConfig().nb_question:
-            score_to_display = "Attention, vous en êtes à la dernière question !"
+            to_display = "Attention, vous en êtes à la dernière question !"
+            
+            #? ---------------------------------------------------------------------------- #
+            #?                                  3B - 2                                      #
+            #? ---------------------------------------------------------------------------- #
             
             object = [{
                 "type": "text",
@@ -307,7 +313,7 @@ class QuizManager:
         
         Config().webApp.show(object)
         
-        Speaker.say(score_to_display)
+        Speaker.say(to_display)
         
         
         # Turn the wheel
@@ -321,17 +327,28 @@ class QuizManager:
         try:
             if self.current_quiz != self.quiz2:
                 
+                to_display = "Poser votre pion \ndans une région."
+                
+                #? ---------------------------------------------------------------------------- #
+                #?                                  4A - 1                                      #
+                #? ---------------------------------------------------------------------------- #
+                
                 object = [{
                         "type": "text",
-                        "content": "Poser votre pion \ndans une région.",
-                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                        "content": to_display,
+                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
                     }]
+                
                 Config().webApp.show(object)
+                Speaker.say(to_display)
+                
                 
                 # Wait for RFID
                 self.wait_for_rfids()
                 
-                
+                #? ---------------------------------------------------------------------------- #
+                #?                                  4A - 2                                      #
+                #? ---------------------------------------------------------------------------- #
                 object = [{
                         "type": "text",
                         "content": "Vous avez choisi",
@@ -343,8 +360,15 @@ class QuizManager:
                     }]
                 Config().webApp.show(object)
                 
+                Speaker.say("Vous avez choisi la zone : " + Config().zone)
+                
+                time.sleep(3)
+                
             else:
                 
+                #? ---------------------------------------------------------------------------- #
+                #?                                 Bonus 1                                      #
+                #? ---------------------------------------------------------------------------- #
                 to_display = "Attention !\nce jeu est différent des autres"
                 
                 object = [{
@@ -360,6 +384,10 @@ class QuizManager:
                 time.sleep(3)
                 
                 
+                #? ---------------------------------------------------------------------------- #
+                #?                                 Bonus 2                                      #
+                #? ---------------------------------------------------------------------------- #
+                
                 to_display = "Vous devrez placer le pion \naprès la question !"
                 
                 object = [{
@@ -368,8 +396,8 @@ class QuizManager:
                         "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
                     }]
                 
-                Speaker.say(to_display)
                 Config().webApp.show(to_display)
+                Speaker.say(to_display)
 
                 time.sleep(3)
 
