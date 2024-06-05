@@ -198,7 +198,7 @@ class QuizManager:
         object = [{
                 "type": "image",
                 "content": "",
-                "images": ["logos/Logo_image.png"],
+                "images": ["logos/Logo_image.webp"],
                 "style": ["image-small"]
             },{
                 "type": "text",
@@ -254,7 +254,7 @@ class QuizManager:
             },{
                 "type": "image",
                 "content": "",
-                "images": ["icons/big_button.png"],
+                "images": ["icons/big_button.webp"],
                 "style": ["image-small"]
             }]
         Config().webApp.show(object)

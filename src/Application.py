@@ -30,13 +30,13 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["logos/Logo_full.png"],
+            "images": ["logos/Logo_full.webp"],
             "style": ["image-medium"]
         }]
         
-        Config().webApp.show(object)
         MusicPlayer(Config().audio_dir).play_threading("sounds/0.mp3")
-        time.sleep(5)
+         
+        time.sleep(10)
         
         
         #? ---------------------------------------------------------------------------- #
@@ -52,11 +52,14 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["logos/Logo_text.png"],
+            "images": ["logos/Logo_text.webp"],
             "style": ["image-medium"]
         }]
         
         Config().webApp.show(object)
+        
+        MusicPlayer(Config().audio_dir).play_threading("sounds/1A.mp3")
+        
         time.sleep(5)
         
         
@@ -67,7 +70,7 @@ class App:
         {
             "type": "image",
             "content": "",
-            "images": ["logos/Logo_image.png"],
+            "images": ["logos/Logo_image.webp"],
             "style": ["image-small"]
         },
         {
