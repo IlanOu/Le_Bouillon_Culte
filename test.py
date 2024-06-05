@@ -30,7 +30,7 @@ class MusicPlayer:
 
         mixer.music.stop()
 
-      def play_threading(self, audio_file: str, duration=None):
+    def play_threading(self, audio_file: str, duration=None):
           """Joue un son dans un thread séparé.
 
           Args:

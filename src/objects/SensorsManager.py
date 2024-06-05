@@ -11,6 +11,7 @@ import threading
 from src.toolbox.Singleton import singleton
 
 
+
 # Sensors Manager
 # ---------------------------------------------------------------------------- #
 
@@ -67,6 +68,14 @@ class SensorsManager:
                 for button in self.buttons:
                     if button.process():
                         Debug.LogWhisper(f"[Log]> Pin du bouton pressé: {button.pin}")
+                        
+                        try:
+                            from src.toolbox.Standby import StandBy
+                            # Reset timer for standby mode
+                            StandBy().reset()
+                        except:
+                            pass
+                        
                         return button.pin
                 time.sleep(0.1)
         else:
@@ -77,6 +86,14 @@ class SensorsManager:
             while self.waiting_for_button:
                 if button.process():
                     Debug.LogWhisper(f"[Log]> Pin du bouton pressé: {button.pin}")
+                    
+                    try:
+                        from src.toolbox.Standby import StandBy
+                        # Reset timer for standby mode
+                        StandBy().reset()
+                    except:
+                        pass
+                    
                     return button.pin
                 time.sleep(0.1)
                 

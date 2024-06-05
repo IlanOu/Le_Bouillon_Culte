@@ -5,6 +5,8 @@ from src.Config import Config
 
 import threading
 
+from src.objects.button.Button import Button
+
 @singleton
 class StandBy:
     """
@@ -14,7 +16,7 @@ class StandBy:
     """
 
     def __init__(self, args=None, kwargs=None):
-        self.interval = 3
+        
         self.sensor_manager = SensorsManager()
         self.args = args if args is not None else []
         self.kwargs = kwargs if kwargs is not None else {}
@@ -29,7 +31,7 @@ class StandBy:
         """Réinitialise le timer à zéro."""
         if self.timer:
             self.timer.cancel()
-        self.timer = threading.Timer(self.interval, self._timer_complete)
+        self.timer = threading.Timer(Config().time_before_sleep, self._timer_complete)
         self.timer.start()
         self.is_running = True
 
@@ -40,9 +42,17 @@ class StandBy:
         self.reset()  # Réinitialise le timer pour la prochaine exécution
 
     def _active_standby(self):
-      Config().webApp.show("", "text")
-      self.sensor_manager.wait_for_button_press(Config().button_start)
-      Config().webApp.show_historic()
+        object = [{
+                "type": "standby",
+                "content": "VEILLE",
+                "style": ["text-black"]
+            }]
+        Config().webApp.show(object)
+        
+        self.sensor_manager.wait_for_button_press(Button(Config().button_start))
+        self.reset()
+        
+        Config().webApp.show_historic()
 
 
     def cancel(self):

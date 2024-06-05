@@ -47,6 +47,9 @@
           case '3images':
             child = render3Images(content, styles);
             break;
+          case 'standby':
+            child = renderStandBy(content, styles);
+            break;
           default:
             console.log("Mode non pris en charge");
         }
@@ -60,7 +63,23 @@
     };
 
 
+    function renderStandBy(content, styles) {
+      const box = document.createElement('div');
 
+      const paragraphs = content.split('/n').filter(p => p.trim() !== '').map(paragraph => {
+        const p = document.createElement('p');
+        p.innerText = paragraph;
+        return p;
+      });
+      paragraphs.forEach(paragraph => box.appendChild(paragraph));
+
+      if (styles.length != 0){
+        styles.forEach(style => {
+          box.classList.add(style)
+        });
+      }
+      return box
+    }
 
     // Text
     // -----------------------------------------------------

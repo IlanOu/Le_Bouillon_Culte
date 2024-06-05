@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Response, request, jsonify, url_for
 import threading
 import logging
-from src.toolbox.Debug import Debug
+from src.toolbox.Debug import *
 from src.Config import Config
 import socket
 import json
@@ -98,10 +98,20 @@ class WebApp(object):
             Debug.LogError(f"Erreur lors de la récupération de l'adresse IP : {e}")
             return None
 
-    def show(self, content, mode="text"):
-        self.historic = [content, mode]
+    def show(self, content):
+        
+        is_historic = False
+        
+        for element in content:
+            if element["type"] == "standby":
+                is_historic = True
+        
+        if not is_historic:
+            self.historic = content
+        
         with self.app.app_context():
             for element in content:
+                
                 transformed_images = []
                 # Debug.LogPopup(element)
                 if "images" in element:
@@ -118,5 +128,8 @@ class WebApp(object):
                 self.is_running = True
             else:
                 self.string_updater.show(content)
-        def show_historic(self):
-            self.show(self.historic[0], self.historic[1])
+                
+    def show_historic(self):
+        Debug.LogPopup("Show historic", Style.RED)
+        
+        self.show(self.historic)

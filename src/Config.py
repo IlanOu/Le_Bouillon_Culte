@@ -17,6 +17,8 @@ class Config:
         self.zone = "Auvergne-Rhône-Alpes"
         self.internal_RFID_zone = "Hauts-de-France"
         
+        self.time_before_sleep = 20 # Todo -> mettre 5 minutes (300 secondes)
+        
         # Speaker.setEngine(GttsEngine())
         
         

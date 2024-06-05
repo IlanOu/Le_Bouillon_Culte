@@ -8,10 +8,11 @@ from src.quiz.quizzes.TroisImages import Quiz_TroisImages
 from src.quiz.Quiz import Quiz
 
 from src.toolbox.Speaker import *
+from src.toolbox.Debug import *
+
+from src.toolbox.Standby import StandBy
 
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
-
-from src.toolbox.Debug import *
 
 from src.Config import Config, ScoreConfig
 
@@ -233,6 +234,7 @@ class QuizManager:
 
         self.set_zone(self.rfid_response)
         
+        StandBy().reset()
 
     def run(self):
         ScoreConfig().update_nb_actual_question()
