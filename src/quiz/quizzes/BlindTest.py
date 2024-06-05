@@ -83,8 +83,6 @@ class Quiz_BlindTest(Quiz):
         #? ---------------------------------------------------------------------------- #
         #?                                  Question                                    #
         #? ---------------------------------------------------------------------------- #
-        items_questions = []
-        
         
         object = [{
                 "type": "text",
@@ -109,20 +107,20 @@ class Quiz_BlindTest(Quiz):
             Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
             time.sleep(0.25)
         
-        button_pin = self.sensors_manager.wait_for_button_press()
-        
-        if not button_pin in Config().buttons_pins:
-            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
         
         
         #? ---------------------------------------------------------------------------- #
         #?                                   Réponse                                    #
         #? ---------------------------------------------------------------------------- #
         
+        button_pin = self.sensors_manager.wait_for_button_press()
+        
+        if not button_pin in Config().buttons_pins:
+            Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
+        
         index_answer = Config().buttons_pins.index(button_pin)
         
         answer_value = possible_responses_value[index_answer]
-        
         
         object = [{
                 "type": "text",
@@ -142,6 +140,8 @@ class Quiz_BlindTest(Quiz):
         Config().webApp.show(object)
         
         button_response = possible_responses_value[Config().buttons_pins.index(button_pin)]
+        
+        time.sleep(3)
         
         if button_response == response_value:
             response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
