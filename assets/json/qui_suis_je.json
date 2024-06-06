@@ -10,7 +10,7 @@
       ],
       "correct_answer": "Fernand Raynaud",
       "details": "Fernand Raynaud est un artiste comique de scène français né le 19 mai 1926 à Clermont-Ferrand",
-      "details_image": "C1_CE_10.webp"
+      "details_image": "questions/C1_CE_10.webp"
     },
     {
       "question": "J'ai joué un rôle crucial dans la résistance pendant la Seconde Guerre mondiale./n Qui suis-je ?",
@@ -22,7 +22,7 @@
       ],
       "correct_answer": "Jean Moulin",
       "details": "Jean Moulin était un haut fonctionnaire français et un héros de la Résistance française pendant la Seconde Guerre mondiale sous l’autorité de Charles de Gaulle. Moulin a été torturé et est décédé des suites de ses blessures en 1943.",
-      "details_image": "2_C2_CE_2.webp"
+      "details_image": "questions/2_C2_CE_2.webp"
     }
   ],
   "Île-de-France": [
@@ -36,7 +36,7 @@
       ],
       "correct_answer": "Jacques Chirac",
       "details": "Il a été maire de Paris de 1977 à 1995 et président de la République de 1995 à 2007.",
-      "details_image": "C1_NE_2.webp"
+      "details_image": "questions/C1_NE_2.webp"
     },
     {
       "question": "Je suis une actrice et humoriste française connue pour mon rôle dans l'émission télévisée \"Les Nuls, l'émission\" dans les années 90. /n Qui suis-je ?",
@@ -48,7 +48,7 @@
       ],
       "correct_answer": "Chantal Lauby",
       "details": "Chantal Lauby, une figure emblématique de la comédie française, est une artiste aux multiples talents. Sa carrière s'étend du cinéma à la télévision en passant par le théâtre. Avec son style unique, elle incarne souvent des personnages hauts en couleur, mêlant subtilité et excentricité.",
-      "details_image": "2_C1_NE_1.webp"
+      "details_image": "questions/2_C1_NE_1.webp"
     }
   ],
   "Bretagne": [
@@ -62,7 +62,7 @@
       ],
       "correct_answer": "Alan Stivell",
       "details": "Alan Stivell est un musicien breton renommé, pionnier de la musique celtique moderne. Il a contribué à populariser la harpe celtique et a fusionner des éléments de musique traditionnelle bretonne avec des sonorités contemporaines.",
-      "details_image": "C2_NO_2.webp"
+      "details_image": "questions/C2_NO_2.webp"
     },
     {
       "question": "Je suis né en Bretagne en 1924, j'ai été un important homme politique français, je suis célèbre pour ma phrase, \"Vous n'avez pas le monopole du coeur\", adressée à mes opposants politiques.J'ai également été le maire de ma ville natale en Bretagne. /n Qui suis-je ?",
@@ -74,7 +74,7 @@
       ],
       "correct_answer": "Valéry Giscard d'Estaing",
       "details": "Valéry Giscard d'Estaing était un homme politique français qui a occupé plusieurs postes de responsabilité au sein du gouvernement français. Il a été président de la Répiblique française de 1974 à 1981. C'était également une personne connu pour son style élégant et son engagement européen.",
-      "details_image": "2_C2_NO_2.webp"
+      "details_image": "questions/2_C2_NO_2.webp"
     }
   ],
   "Hauts-de-France": [
@@ -88,7 +88,7 @@
       ],
       "correct_answer": "Sainte Thérèse de Lisieux",
       "details": "Inconnue de son vivant, sa renommée et sa dévotion se sont répandues dans le monde entier après la publication de ses écrits autobiographiques, sous le titre \"Histoire d’une âme\".",
-      "details_image": "C1_NO_9.webp"
+      "details_image": "questions/C1_NO_9.webp"
     },
     {
       "question": "Je suis un grand écrivain du XIXe siècle, j'ai écrit \"Le tour du Monde en quatre-vingts jours\". /n Qui suis-je ?",
@@ -100,7 +100,7 @@
       ],
       "correct_answer": "Jules Verne",
       "details": "Jules Verne est devenu un écrivain célèbre grâce à ses romans d'aventures évoquant les progrès scientifiques et tecnologiques du XIXe siècle. Il est aujourd'hui le quatrième auteur mondial. ",
-      "details_image": "C1_NO_5.webp"
+      "details_image": "questions/C1_NO_5.webp"
     }
   ],
   "PACA": [
@@ -114,7 +114,7 @@
       ],
       "correct_answer": "Bernard Tapie",
       "details": "",
-      "details_image": "R1_SE_1.webp"
+      "details_image": "questions/R1_SE_1.webp"
     },
     {
       "question": "Je suis un acteur, humoriste, chanteur et réalisateur français, né le 8 mai 1903 à Marseille et mort le 26 février 1971 à Paris dans le 16e arrondissemments. Issu du music-hall, durant plusieurs décennies, j'ai été une des plus grandes vedettes du cinéma français. Qui suis-je ?",
@@ -126,7 +126,7 @@
       ],
       "correct_answer": "Fernand Joseph Désiré Constandin, dit Fernandel",
       "details": "Lors d'une interview, Fernandel confessa que tous les films qu'il a pu faire en compagnie de Pagnol n'était pas du cinéma. C'était simplement une caméra qui filmait leur quotidien pour en faire transparaître une narration qui allait donner naissance à un film.",
-      "details_image": "R1_SE_2.webp"
+      "details_image": "questions/R1_SE_2.webp"
     }
   ]
 }

@@ -10,7 +10,7 @@
       ],
       "correct_answer": "Le Puy de Sancy",
       "details": "Le puy de Sancy est une montagne des monts Dore dans le département du Puy-de-Dôme. Avec ses 1 885 mètres d'altitude, c'est le point le plus élevé du Massif central et le plus haut volcan de France métropolitaine.",
-      "details_image": "C6_CE_16.webp"
+      "details_image": "questions/C6_CE_16.webp"
     },
     {
       "question": "À combien s'élève le Mont-Blanc ?",
@@ -22,7 +22,7 @@
       ],
       "correct_answer": "4 809 mètres",
       "details": "Le Mont-Blanc, situé dans les Alpes françaises, est le plus haut sommet d'Europe occidentale avec 4 809 mètres d'altitude. Il attire les alpinistes du monde entier.",
-      "details_image": "C6_CE_4.webp"
+      "details_image": "questions/C6_CE_4.webp"
     }
   ],
   "Île-de-France": [
@@ -48,7 +48,7 @@
       ],
       "correct_answer": "Antoine de Saint-Exupéry",
       "details": "Antoine de Saint-Exupéry est né en 1900 à Lyon puis à vécu une partie de sa vie à Paris pendant ses études à l'École Supérieure des Beaux Arts de Paris. Il était écrivain, poète, aviateur et reporter français. Il est devenu un écrivain célèbre grâce au conte du \"Petit Prince\" publié en 1943 lorsqu'in était à New York. Maljeureusement Antoine de Saint-Exupéry meurt d'un crash d'avion le 31 juillet 1944 dans la mer Méditerranée au niveau des côtes marseillaises.",
-      "details_image": "2_C6_NE_1.webp"
+      "details_image": "questions/2_C6_NE_1.webp"
     }
   ],
   "Bretagne": [
@@ -62,7 +62,7 @@
       ],
       "correct_answer": "Rhoazon",
       "details": "La ville de Rennes est la capitale de la région de la Bretagne en France, c'est une ville vibrante mêlant histoire et modernité. Connue pour son architecture médiévale préservée, ses rues pavées et sa cathédrale gothique.",
-      "details_image": "C2_NO_8.webp"
+      "details_image": "questions/C2_NO_8.webp"
     },
     {
       "question": "Comment s'appelle le drapeau breton ?",
@@ -114,7 +114,7 @@
       ],
       "correct_answer": "Le festival de Cannes",
       "details": "La première édition du festival de Cannes qui s’est produite en 1939 sera annulée pour cause de guerre en raison de l’invasion de la pologne par l’allemagne. Seule une partie du film Quasimodo a été diffusée avant que le festival ne plis bagage.",
-      "details_image": "R6_SE_1.webp"
+      "details_image": "questions/R6_SE_1.webp"
     },
     {
       "question": "Combien de points doivent être inscrits à la pétanque pour remporter une partie ?",
@@ -126,7 +126,7 @@
       ],
       "correct_answer": "13 points",
       "details": "Sans surprise, la France, pays créateur de la pétanque, est le premier pratiquant de la pétanque. Mais saviez-vous que le deuxième pays ayant le plus de licenciés était la Thaïlande ? Surprenant n'est-ce pas ?",
-      "details_image": "R6_SE_2.webp"
+      "details_image": "questions/R6_SE_2.webp"
     }
   ]
 }

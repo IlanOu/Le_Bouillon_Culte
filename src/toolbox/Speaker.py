@@ -180,6 +180,8 @@ class Speaker:
         if text == "":
             Debug.LogError("Le TTS a été appelé avec un contenu vide. Vérifiez le TTS puis réessayez.")
         
+        text = text.replace("/n", "")
+        
         Debug.LogColor("[TTS]> " + text, Style.ITALIC + Style.BLUE)
         Speaker.engine.say(text)
     

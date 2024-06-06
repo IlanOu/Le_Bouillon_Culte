@@ -1,11 +1,12 @@
 {
     "Auvergne-Rhône-Alpes": [
         {
+            "consigne": "Quelle recette peut-on faire avec ces ingrédients ?",
             "question": "Pommes de terres sautées + Lardons + Cantal",
             "3_images": [
-                "C5_CE_12.webp",
-                "C5_CE_13.webp",
-                "C5_CE_14.webp"
+                "questions/C5_CE_12.webp",
+                "questions/C5_CE_13.webp",
+                "questions/C5_CE_14.webp"
             ],
             "answers": [
                 "Tartiflette",
@@ -15,14 +16,15 @@
             ],
             "correct_answer": "Truffade",
             "details": "Les pommes de terre sont coupées en tranches et cuites dans une poêle avec du lard blanc fondu. Quand les pommes de terre sont prêtes, on éteint le feu, on ajoute de l'ail haché et du cantal coupé en morceaux. On laisse le fromage fondre sur les pommes de terre chaudes. On le sert avec des charcuteries locales et de la salade verte.",
-            "details_image": "C5_CE_15.webp"
+            "details_image": "questions/C5_CE_15.webp"
         },
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Vitrail + Sculpture + Marguerite d’Autriche",
             "3_images": [
-                "2_C5_CE_5.webp",
-                "2_C5_CE_6.webp",
-                "2_C5_CE_7.webp"
+                "questions/2_C5_CE_5.webp",
+                "questions/2_C5_CE_6.webp",
+                "questions/2_C5_CE_7.webp"
             ],
             "answers": [
                 "La Cathédrale Notre-Dame de Chartres",
@@ -32,16 +34,17 @@
             ],
             "correct_answer": "Le Monastère royal de Brou",
             "details": "Le monastère de Brou, situé à Bourg-en-Bresse en France, a été construit au début du XVIe siècle par Marguerite d'Autriche en mémoire de son époux, Philibert le Beau. Ce complexe religieux se compose d'une église, d'un cloître et de bâtiments monastiques. L'église est célèbre pour son architecture raffinée, ses vitraux colorés et son retable sculpté.",
-            "details_image": "2_C5_CE_8.webp"
+            "details_image": "questions/2_C5_CE_8.webp"
         }
     ],
     "Île-de-France": [
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Jardins + Galeries des Glaces + Château",
             "3_images": [
-                "C5_NE_4.webp",
-                "C5_NE_5.webp",
-                "C5_NE_6.webp"
+                "questions/C5_NE_4.webp",
+                "questions/C5_NE_5.webp",
+                "questions/C5_NE_6.webp"
             ],
             "answers": [
                 "Château de Chambord",
@@ -51,14 +54,15 @@
             ],
             "correct_answer": "Château de Versailles",
             "details": "Bâtie sous les ordres du Roi Soleil pour en faire sa demeure. Le château de Versailles représente l’une des plus belles représentations de l’art français du XVIIe siècle.",
-            "details_image": "C5_NE_7.webp"
+            "details_image": "questions/C5_NE_7.webp"
         },
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Passages sous des arcades + Place de jardins au centre de Paris + Bâtiments haussmanniens",
             "3_images": [
-                "2_C5_NE_1.webp",
-                "2_C5_NE_2.webp",
-                "2_C5_NE_3.webp"
+                "questions/2_C5_NE_1.webp",
+                "questions/2_C5_NE_2.webp",
+                "questions/2_C5_NE_3.webp"
             ],
             "answers": [
                 "La place Édouard VII",
@@ -68,16 +72,17 @@
             ],
             "correct_answer": "La place des Vosges",
             "details": "La place des Vosges était jusqu’en 1790 la place Royale car elle a été dédiée au roi Henri IV puis à Louis XIII. La place des Vosges se situe dans le quartier du Marais, qui est lui-même à la jonction du 3e et 4e arrondissements de Paris.",
-            "details_image": "2_C5_NE_4.webp"
+            "details_image": "questions/2_C5_NE_4.webp"
         }
     ],
     "Bretagne": [
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Remparts + Place Gambetta + Statue de la Rouërie",
             "3_images": [
-                "C5_NO_5.webp",
-                "C5_NO_6.webp",
-                "C5_NO_7.webp"
+                "questions/C5_NO_5.webp",
+                "questions/C5_NO_6.webp",
+                "questions/C5_NO_7.webp"
             ],
             "answers": [
                 "Rennes",
@@ -87,14 +92,15 @@
             ],
             "correct_answer": "Saint-Malo",
             "details": "Fougères est une ville charmante située en Bretagne, dans le département d'Ille-et-Vilaine. Elle est surtout renommée pour son magnifique château médiéval, l'un des plus grands d'Europe, qui domine la ville et offre une vue imprenable sur les environs. La ville elle-même est riche en histoire, avec ses ruelles pavées, ses maisons à colombages et ses églises anciennes. C'est un lieu idéal pour les amateurs d'histoire, de culture et de nature, avec ses nombreux parcs et jardins à découvrir aux alentours.            ",
-            "details_image": "C5_NO_9.webp"
+            "details_image": "questions/C5_NO_9.webp"
         },
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Hauteur du rocher + Alignement parallèle des rochers + Vue de loin",
             "3_images": [
-                "2_C5_NO_5.webp",
-                "2_C5_NO_6.webp",
-                "2_C5_NO_7.webp"
+                "questions/2_C5_NO_5.webp",
+                "questions/2_C5_NO_6.webp",
+                "questions/2_C5_NO_7.webp"
             ],
             "answers": [
                 "La Pointe du Raz",
@@ -104,16 +110,17 @@
             ],
             "correct_answer": "Les Alignement de Carnac",
             "details": "Les alignements de Carnac sont un site mégalithique situé en France, dans la région de Bretagne. Il s'agit d'un ensemble de pierres dressées, datant du Néolithique, disposées en lignes parallèles sur une distance d'environ 250 mètres. Ces alignements sont constitués de menhirs, certains atteignant plusieurs mètres de hauteur",
-            "details_image": "2_C5_NO_8.webp"
+            "details_image": "questions/2_C5_NO_8.webp"
         }
     ],
     "Hauts-de-France": [
         {
+            "consigne": "Retrouvez le bon endroit avec ces trois images",
             "question": "Galerie de peintures + Château + Chantilly",
             "3_images": [
-                "C5_NO_11.webp",
-                "C5_NO_12.webp",
-                "C5_NO_13.webp"
+                "questions/C5_NO_11.webp",
+                "questions/C5_NO_12.webp",
+                "questions/C5_NO_13.webp"
             ],
             "answers": [
                 "Le Château de Moulinsart",
@@ -123,14 +130,15 @@
             ],
             "correct_answer": "Le Château de Chantilly",
             "details": "Situé dans la ville de Chantilly, dans le département de l’Oise. Le Domaine de Chantilly est l’un des joyaux du patrimoine français. Le château abrite la seconde plus grande collection de peintures anciennes de France, ainsi que des jardins de 115 hectares tout autour du château.",
-            "details_image": "C5_NO_14.webp"
+            "details_image": "questions/C5_NO_14.webp"
         },
         {
+            "consigne": "Quelle recette peut-on faire avec ces ingrédients ?",
             "question": "Saucisse + Frite + Sauce",
             "3_images": [
-                "C5_NO_22.webp",
-                "C5_NO_23.webp",
-                "C5_NO_24.webp"
+                "questions/C5_NO_22.webp",
+                "questions/C5_NO_23.webp",
+                "questions/C5_NO_24.webp"
             ],
             "answers": [
                 "Un hot-dog",
@@ -140,16 +148,17 @@
             ],
             "correct_answer": "Une Fricadelle",
             "details": "La Fricadelle est un plat traditionnel des Pays-Bas historique. Ce plat est constitué d’une saucisse panée de viande mélangée (poulet, cheval et porc), accompagnée d’une barquette de frites. Ce plat peut être accompagné d’une sauce épicée.",
-            "details_image": "C5_NO_25.webp"
+            "details_image": "questions/C5_NO_25.webp"
         }
     ],
     "PACA": [
         {
+            "consigne": "Quelle recette peut-on faire avec ces ingrédients ?",
             "question": "Poissons de rochers + Tomates de Provence + Poireaux",
             "3_images": [
-                "Q5_SE_1.webp",
-                "Q5_SE_2.webp",
-                "Q5_SE_3.webp"
+                "questions/Q5_SE_1.webp",
+                "questions/Q5_SE_2.webp",
+                "questions/Q5_SE_3.webp"
             ],
             "answers": [
                 "La Bouillabaisse",
@@ -159,14 +168,15 @@
             ],
             "correct_answer": "La Bouillabaisse",
             "details": "La bouillabaisse est originaire de la Grèce Antique. C’était un plat mangé par la population réalisé avec les restes et invendus des pêcheurs.",
-            "details_image": "R5_SE_1.webp"
+            "details_image": "questions/R5_SE_1.webp"
         },
         {
+            "consigne": "Quelle recette peut-on faire avec ces ingrédients ?",
             "question": "Farine + Anchois + Tapenade",
             "3_images": [
-                "Q5_SE_4.webp",
-                "Q5_SE_5.webp",
-                "Q5_SE_6.webp"
+                "questions/Q5_SE_4.webp",
+                "questions/Q5_SE_5.webp",
+                "questions/Q5_SE_6.webp"
             ],
             "answers": [
                 "La Tourte Provençale",
@@ -176,7 +186,7 @@
             ],
             "correct_answer": "La Pissaladière",
             "details": "Selon de nombreuses rumeurs sur son origine, la pissaladière née à Nice aurait été importée en Italie par de Papes pour ensuite leur inspirer la Pizza",
-            "details_image": "R5_SE_2.webp"
+            "details_image": "questions/R5_SE_2.webp"
         }
     ]
 }

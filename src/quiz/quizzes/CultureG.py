@@ -98,10 +98,12 @@ class Quiz_CultureG(Quiz):
         # Afficher et dire la question
         Config().webApp.show(object)
         
+        str_choices = ""
         name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
         for item in possible_responses_value:
-            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
-            # time.sleep(0.25)
+            str_choices += name[possible_responses_value.index(item)] + " : " + item + " ; "
+        
+        Speaker.say(str_choices)
         
         
         
@@ -148,10 +150,10 @@ class Quiz_CultureG(Quiz):
         
         if button_response == response_value:
             response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
-            ScoreConfig().update_score("BlindTest", True)
+            ScoreConfig().update_score("CultureG", True)
         else:
             response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
-            ScoreConfig().update_score("BlindTest", False)
+            ScoreConfig().update_score("CultureG", False)
         
         
         #? ---------------------------------------------------------------------------- #
@@ -204,17 +206,15 @@ class Quiz_CultureG(Quiz):
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                     "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
                     "style": []
-            },{
+                },{
                     "type": "text",
                     "content": answer_value,
                     "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
-                },
-                {
+                },{
                     "type": "image",
                     "images": [details_image_value],
-                    "style": ["image-big"]
-                },
-                {
+                    "style": ["image-medium"]
+                },{
                     "type": "text",
                     "content": details_value,
                     "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]

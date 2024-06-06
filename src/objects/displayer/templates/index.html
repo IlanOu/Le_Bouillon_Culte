@@ -35,6 +35,9 @@
         question = element["question"]
         score = element["score"]
 
+        // 3images
+        consigne = element["consigne"]
+
 
         let child = null
 
@@ -49,7 +52,7 @@
             child = renderImage(images[0], styles);
             break;
           case '3images':
-            child = render3Images(content, styles);
+            child = render3Images(images, styles);
             break;
           case 'standby':
             child = renderStandBy(content, styles);
@@ -238,10 +241,9 @@
     
     // 3 images
     // -----------------------------------------------------
-    function render3Images(content, styles) {
+    function render3Images(images, styles) {
       const box = document.createElement('div')
 
-      const images = content.split('|');
 
       if (images.length !== 3) {
         console.error("Le contenu doit contenir exactement trois URL d'images séparées par des virgules.");

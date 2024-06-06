@@ -150,10 +150,12 @@ class Quiz_DevineSuite(Quiz):
 
         Config().webApp.show(object)
         
+        str_choices = ""
         name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
         for item in possible_responses_value:
-            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
-            # time.sleep(0.25)
+            str_choices += name[possible_responses_value.index(item)] + " : " + item + " ; "
+        
+        Speaker.say(str_choices)
             
             
     
@@ -201,10 +203,10 @@ class Quiz_DevineSuite(Quiz):
 
         if button_response == response_value:
             response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
-            ScoreConfig().update_score("BlindTest", True)
+            ScoreConfig().update_score("DevineSuite", True)
         else:
             response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
-            ScoreConfig().update_score("BlindTest", False)
+            ScoreConfig().update_score("DevineSuite", False)
         
         
         #? ---------------------------------------------------------------------------- #

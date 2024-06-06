@@ -110,10 +110,12 @@ class Quiz_BlindTest(Quiz):
         Config().webApp.show(object)
         
         
+        str_choices = ""
         name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
         for item in possible_responses_value:
-            Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
-            # time.sleep(0.25)
+            str_choices += name[possible_responses_value.index(item)] + " : " + item + " ; "
+        
+        Speaker.say(str_choices)
         
         
         

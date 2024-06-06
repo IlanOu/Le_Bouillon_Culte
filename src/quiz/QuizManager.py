@@ -112,12 +112,12 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        self.add_quiz(self.quiz1) # screens done (normalement)
-        # self.add_quiz(self.quiz2)
-        self.add_quiz(self.quiz3) # screens done (normalement)
-        # self.add_quiz(self.quiz4)
-        self.add_quiz(self.quiz5) # screens done (normalement)
-        # self.add_quiz(self.quiz6)
+        # self.add_quiz(self.quiz1) # screens done (normalement)
+        # self.add_quiz(self.quiz2) 
+        # self.add_quiz(self.quiz3) # screens done (normalement)
+        # self.add_quiz(self.quiz4) # screens done (normalement)
+        # self.add_quiz(self.quiz5) # screens done (normalement)
+        self.add_quiz(self.quiz6) #* Wip
         
         self.config_nb_question()
         
@@ -277,6 +277,8 @@ class QuizManager:
 
         thread = threading.Thread(target=speek_text)
         thread.start()
+        
+        time.sleep(5)
         
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
         

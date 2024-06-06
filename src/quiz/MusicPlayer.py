@@ -43,7 +43,6 @@ class MusicPlayer:
             duration (int, optional): Durée de lecture en secondes. 
                                         Si None, joue la piste entière.
         """
-        Debug.LogPopup("Play sound")
         music_file_path = os.path.join(self.music_dir, audio_file)
 
         if not os.path.isfile(music_file_path):
@@ -61,7 +60,6 @@ class MusicPlayer:
                 time.sleep(duration)
 
                 pygame.mixer.music.stop()
-                Debug.LogPopup("Stop -> " + music_file_path)
 
             except pygame.error as e:
                 Debug.LogWarning(f"Erreur lors de la lecture du son: {e}")
