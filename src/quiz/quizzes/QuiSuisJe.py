@@ -1,5 +1,6 @@
 import json
 from src.quiz.Quiz import Quiz
+from src.quiz.MusicPlayer import MusicPlayer
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker
@@ -113,6 +114,8 @@ class Quiz_QuiSuisJe(Quiz):
         #? ---------------------------------------------------------------------------- #
         
         button_pin = self.sensors_manager.wait_for_button_press()
+        MusicPlayer(Config().audio_dir).play_threading("sounds/selected-answer.mp3")
+        
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
@@ -150,9 +153,11 @@ class Quiz_QuiSuisJe(Quiz):
         if button_response == response_value:
             response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
             ScoreConfig().update_score("QuiSuisJe", True)
+            MusicPlayer(Config().audio_dir).play_threading("sounds/good-answer.mp3")
         else:
             response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
             ScoreConfig().update_score("QuiSuisJe", False)
+            MusicPlayer(Config().audio_dir).play_threading("sounds/bad-answer.mp3")
         
         
         #? ---------------------------------------------------------------------------- #
@@ -170,9 +175,12 @@ class Quiz_QuiSuisJe(Quiz):
         }]
         
         Config().webApp.show(object)
+        
+        time.sleep(2)
+        
         Speaker.say(response)
         
-        time.sleep(3)
+        time.sleep(1)
         
         #? ---------------------------------------------------------------------------- #
         #?                            Affichage réponse - 2                             #

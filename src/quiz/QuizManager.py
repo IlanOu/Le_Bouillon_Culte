@@ -171,6 +171,7 @@ class QuizManager:
         #? ---------------------------------------------------------------------------- #
         
         button_pin = self.sensors_manager.wait_for_button_press()
+        MusicPlayer(Config().audio_dir).play_threading("sounds/selected-answer.mp3")
         
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
@@ -281,6 +282,8 @@ class QuizManager:
         Speaker.say(text_to_display)
         
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
+        MusicPlayer(Config().audio_dir).play_threading("sounds/selected-answer.mp3")
+        
         
         looping = False
         

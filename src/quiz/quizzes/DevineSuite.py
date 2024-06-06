@@ -3,6 +3,8 @@ from src.quiz.Quiz import Quiz
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Speaker import Speaker
+
+from src.quiz.MusicPlayer import MusicPlayer
 from src.quiz.MusicPlayer import MusicPlayer
 
 from src.Config import Config, ScoreConfig
@@ -165,6 +167,8 @@ class Quiz_DevineSuite(Quiz):
         
 
         button_pin = self.sensors_manager.wait_for_button_press()
+        MusicPlayer(Config().audio_dir).play_threading("sounds/selected-answer.mp3")
+        
 
         if not button_pin in Config().buttons_pins:
             Debug.LogError("Il n'y a pas autant de bouton que de cases dans le tableau ! Il en faut 4 !")
@@ -204,9 +208,11 @@ class Quiz_DevineSuite(Quiz):
         if button_response == response_value:
             response = random.choice(["Bien joué ! vous avez trouvé la bonne réponse !", "Félicitations, c’est la bonne réponse!", "C'est gagné !"])
             ScoreConfig().update_score("DevineSuite", True)
+            MusicPlayer(Config().audio_dir).play_threading("sounds/good-answer.mp3")
         else:
             response = random.choice(["C’est raté !", "Malheureusement, ce n'est pas la bonne réponse", "C'est perdu !"])
             ScoreConfig().update_score("DevineSuite", False)
+            MusicPlayer(Config().audio_dir).play_threading("sounds/bad-answer.mp3")
         
         
         #? ---------------------------------------------------------------------------- #
@@ -224,9 +230,12 @@ class Quiz_DevineSuite(Quiz):
         }]
         
         Config().webApp.show(object)
+        
+        time.sleep(2)
+        
         Speaker.say(response)
         
-        time.sleep(3)
+        time.sleep(1)
         
         
         #? ---------------------------------------------------------------------------- #

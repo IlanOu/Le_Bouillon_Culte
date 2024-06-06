@@ -136,7 +136,7 @@ class App:
             }]
         
             Config().webApp.show(object)
-            
+            MusicPlayer(Config().audio_dir).play_threading("sounds/end-of-game.mp3")
             time.sleep(5)
             
             
