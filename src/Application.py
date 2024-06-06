@@ -118,7 +118,11 @@ class App:
         while True:
             manager.setup(self.server_thread)
             
-            for _ in range (ScoreConfig().nb_question):
+            for i in range (ScoreConfig().nb_question):
+                if i == 0 :
+                    Config().game_first_lap = True
+                else:
+                    Config().game_first_lap = False
                 manager.run()
 
             object = [{

@@ -11,6 +11,8 @@ from src.toolbox.Speaker import *
 from src.toolbox.Debug import *
 from src.toolbox.Standby import StandBy
 
+from src.quiz.MusicPlayer import MusicPlayer
+
 from src.objects.displayer.RollDisplayer import RollingNumberDisplay
 from src.objects.button.Button import Button
 
@@ -46,7 +48,6 @@ class QuizManager:
         random_quiz = random.choice(self.quizzes)
         return random_quiz
 
-    
     def __display_random_quiz(self):
         quizzes_names = []
         for quiz in self.quizzes:
@@ -54,7 +55,9 @@ class QuizManager:
         
         random_quiz = self.__get_random_quiz()
         target_quiz = random_quiz.name
-        num_rolls = 20
+        num_rolls = 15
+
+        
 
         rolling_display = RollingNumberDisplay(quizzes_names, target_quiz, num_rolls)
         rolling_display.display_rolling_number()
@@ -62,7 +65,6 @@ class QuizManager:
         time.sleep(3)
         
         return random_quiz 
-
 
     def __set_current_quiz(self, quiz: Quiz):
         self.current_quiz = quiz
@@ -112,13 +114,12 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # screens done (normalement)
-        
+        self.add_quiz(self.quiz1) # screens done (normalement)
         # self.add_quiz(self.quiz2)
-        # self.add_quiz(self.quiz3) # screens done (normalement)
-        # self.add_quiz(self.quiz4)
-        # self.add_quiz(self.quiz5) # screens done (normalement)
-        # self.add_quiz(self.quiz6)
+        self.add_quiz(self.quiz3) # screens done (normalement)
+        self.add_quiz(self.quiz4) # screens done (normalement)
+        self.add_quiz(self.quiz5) # screens done (normalement)
+        self.add_quiz(self.quiz6) # screens done (normalement)
         
         self.config_nb_question()
         
@@ -217,8 +218,6 @@ class QuizManager:
         
         time.sleep(5)
 
-
-
     def read_rfid_worker(self):
         while True:
             if self.rfid_event.is_set():
@@ -267,17 +266,19 @@ class QuizManager:
         Config().webApp.show(object)
         
         
-        looping = True
+        # looping = True
         
         # Repeat every 20s to press on the button
         # ---------------------------------------------------------------------------- #
-        def speek_text():
-            while looping:
-                Speaker.say(text_to_display)
-                time.sleep(20)
+        # def speek_text():
+        #     while looping:
+        #         Speaker.say(text_to_display)
+        #         time.sleep(20)
 
-        thread = threading.Thread(target=speek_text)
-        thread.start()
+        # thread = threading.Thread(target=speek_text)
+        # thread.start()
+        
+        Speaker.say(text_to_display)
         
         self.sensors_manager.wait_for_button_press(Button(Config().button_wheel))
         
@@ -333,25 +334,55 @@ class QuizManager:
         try:
             if self.current_quiz != self.quiz2:
                 
-                to_display = "Posez votre pion \ndans une région."
+                if Config().game_first_lap:
+                    #? ---------------------------------------------------------------------------- #
+                    #?                                  4B - 1                                      #
+                    #? ---------------------------------------------------------------------------- #
+                    to_display = "Les questions sont posées \nen fonction de la région \nque vous choisissez."
+                    object = [{
+                            "type": "text",
+                            "content": to_display,
+                            "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                        }]
+                    Config().webApp.show(object)
+                    
+                    Speaker.say(to_display)
+                    
+                    time.sleep(3)
+                    
+                    
+                    #? ---------------------------------------------------------------------------- #
+                    #?                                  4B - 2                                      #
+                    #? ---------------------------------------------------------------------------- #
+                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur bleu."
+                    object = [{
+                            "type": "text",
+                            "content": to_display,
+                            "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                        }]
+                    Config().webApp.show(object)
+                    
+                    Speaker.say(to_display)
                 
-                #? ---------------------------------------------------------------------------- #
-                #?                                  4A - 1                                      #
-                #? ---------------------------------------------------------------------------- #
-                
-                object = [{
-                        "type": "text",
-                        "content": to_display,
-                        "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
-                    }]
-                
-                Config().webApp.show(object)
-                Speaker.say(to_display)
-                
+                else:
+                    #? ---------------------------------------------------------------------------- #
+                    #?                                  4B - 2                                      #
+                    #? ---------------------------------------------------------------------------- #
+                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur bleu"
+                    object = [{
+                            "type": "text",
+                            "content": to_display,
+                            "style": ["text-big", "text-uppercase", "text-bold-700", "text-red", "text-centered"]
+                        }]
+                    Config().webApp.show(object)
+                    
+                    Speaker.say(to_display)
                 
                 # Wait for RFID
                 self.wait_for_rfids()
                 
+                MusicPlayer(Config().audio_dir).play_threading("sounds/pion-on-card.mp3")
+
                 #? ---------------------------------------------------------------------------- #
                 #?                                  4A - 2                                      #
                 #? ---------------------------------------------------------------------------- #
@@ -368,7 +399,7 @@ class QuizManager:
                 
                 Speaker.say("Vous avez choisi la zone : " + Config().zone)
                 
-                time.sleep(3)
+                time.sleep(3) 
                 
             else:
                 
@@ -415,7 +446,7 @@ class QuizManager:
             object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",

@@ -19,6 +19,9 @@ class Config:
         
         self.time_before_sleep = 300 # 5 minutes (300 secondes)
         
+        
+        self.game_first_lap = True
+        
         # Speaker.setEngine(GttsEngine())
         
         

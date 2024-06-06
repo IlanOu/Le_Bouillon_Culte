@@ -90,12 +90,12 @@ class Quiz_TroisImages(Quiz):
             {
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
-                "type": "text",
-                "content": question_value,
-                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                "type": "3images",
+                "images": images_value,
+                "style": ["image-medium"]
             },{
                 "type": "table",
                 "items": possible_responses_value,
@@ -134,7 +134,7 @@ class Quiz_TroisImages(Quiz):
         object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",
@@ -172,7 +172,7 @@ class Quiz_TroisImages(Quiz):
         object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",
@@ -196,7 +196,7 @@ class Quiz_TroisImages(Quiz):
         object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",

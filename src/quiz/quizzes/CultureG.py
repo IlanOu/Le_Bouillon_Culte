@@ -79,7 +79,7 @@ class Quiz_CultureG(Quiz):
             {
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",
@@ -125,7 +125,7 @@ class Quiz_CultureG(Quiz):
         object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",
@@ -162,7 +162,7 @@ class Quiz_CultureG(Quiz):
         object = [{
                 "type": "score",
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
             },{
                 "type": "text",
@@ -188,7 +188,7 @@ class Quiz_CultureG(Quiz):
             object = [{
                     "type": "score",
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                     "style": []
                 },{
                     "type": "text",
@@ -204,7 +204,7 @@ class Quiz_CultureG(Quiz):
             object = [{
                     "type": "score",
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
-                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_question),
+                    "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                     "style": []
                 },{
                     "type": "text",

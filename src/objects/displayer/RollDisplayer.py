@@ -5,6 +5,8 @@ from src.toolbox.Debug import Debug
 
 from src.Config import Config
 
+from src.quiz.MusicPlayer import MusicPlayer
+
 class RollingNumberDisplay:
     def __init__(self, numbers, target_number, num_rolls=3):
         self.numbers = numbers
@@ -12,10 +14,12 @@ class RollingNumberDisplay:
         self.num_rolls = num_rolls
         self.initial_delay = 0.05  # Délai initial (rapide)
         self.final_delay = 0.5  # Délai final (ralenti)
+        
+        
 
     def display_rolling_number(self):
-        # Config().webApp.show("", "roll")
-        time.sleep(2)
+        MusicPlayer(Config().audio_dir).play_threading("sounds/wheel-spin.mp3")
+        
         for roll in range(self.num_rolls):
             if roll == self.num_rolls - 1:
                 self.roll_numbers_with_slowdown()
