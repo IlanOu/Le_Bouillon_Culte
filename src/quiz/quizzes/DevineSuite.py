@@ -153,7 +153,7 @@ class Quiz_DevineSuite(Quiz):
         name = ["Réponse A", "Réponse B", "Réponse C", "Réponse D"]
         for item in possible_responses_value:
             Speaker.say(name[possible_responses_value.index(item)] + ". " + item)
-            time.sleep(0.25)
+            # time.sleep(0.25)
             
             
     

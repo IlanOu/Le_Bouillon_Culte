@@ -112,11 +112,11 @@ class QuizManager:
 
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
-        # self.add_quiz(self.quiz1) # screens done (normalement)
+        self.add_quiz(self.quiz1) # screens done (normalement)
         # self.add_quiz(self.quiz2)
-        self.add_quiz(self.quiz3) # Wip
+        self.add_quiz(self.quiz3) # screens done (normalement)
         # self.add_quiz(self.quiz4)
-        # self.add_quiz(self.quiz5) # screens done (normalement)
+        self.add_quiz(self.quiz5) # screens done (normalement)
         # self.add_quiz(self.quiz6)
         
         self.config_nb_question()
@@ -251,7 +251,7 @@ class QuizManager:
         #? ---------------------------------------------------------------------------- #
         #?                                      2                                       #
         #? ---------------------------------------------------------------------------- #
-        text_to_display = "Appuyez sur le bouton B \npour commencer"
+        text_to_display = "Appuyez sur le bouton Rouge \npour commencer"
         
         object = [{
                 "type": "text",
@@ -332,7 +332,7 @@ class QuizManager:
         try:
             if self.current_quiz != self.quiz2:
                 
-                to_display = "Poser votre pion \ndans une région."
+                to_display = "Posez votre pion \ndans une région."
                 
                 #? ---------------------------------------------------------------------------- #
                 #?                                  4A - 1                                      #
@@ -424,7 +424,7 @@ class QuizManager:
         
             Config().webApp.show(object)
             
-            Speaker.say(to_display)
+            Speaker.say("Reprenez le pion")
             
             time.sleep(3)
             
