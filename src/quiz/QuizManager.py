@@ -29,6 +29,7 @@ import threading
 class QuizManager:
     def __init__(self, sensors_manager):
         self.quizzes = []
+        self.demo_quizzes = []
         self.current_quiz = None
         
         self.sensors_manager = sensors_manager
@@ -44,8 +45,17 @@ class QuizManager:
     def add_quiz(self, quiz: Quiz):
         self.quizzes.append(quiz)
         
+    def add_demo_quiz(self, quiz: Quiz):
+        self.demo_quizzes.append(quiz)
+    
+    def remove_demo_quiz(self, quiz: Quiz):
+        if len(self.demo_quizzes) > 0:
+            self.demo_quizzes.remove(quiz)
+        else:
+            Debug.LogError("Il n'y a plus de quiz disponnible")
+    
     def __get_random_quiz(self):
-        random_quiz = random.choice(self.quizzes)
+        random_quiz = random.choice(self.demo_quizzes)
         return random_quiz
 
     def __display_random_quiz(self):
@@ -58,7 +68,6 @@ class QuizManager:
         num_rolls = 15
 
         
-
         rolling_display = RollingNumberDisplay(quizzes_names, target_quiz, num_rolls)
         rolling_display.display_rolling_number()
         
@@ -115,16 +124,20 @@ class QuizManager:
         # Add quizzes to the system
         # ---------------------------------------------------------------------------- #
         self.add_quiz(self.quiz1) # screens done (normalement)
-        # self.add_quiz(self.quiz2)
+        self.add_quiz(self.quiz2)
         self.add_quiz(self.quiz3) # screens done (normalement)
         self.add_quiz(self.quiz4) # screens done (normalement)
         self.add_quiz(self.quiz5) # screens done (normalement)
         self.add_quiz(self.quiz6) # screens done (normalement)
         
+        # Add quizzes for demo
+        self.add_demo_quiz(self.quiz1) # quiz3
+        self.add_demo_quiz(self.quiz5)
+        self.add_demo_quiz(self.quiz6)
+        
         self.config_nb_question()
         
     def config_nb_question(self):
-        
         question_value = "Combien de manches \nsouhaitez-vous jouer ?"
         
 
@@ -133,7 +146,9 @@ class QuizManager:
         #? ---------------------------------------------------------------------------- #
         items_questions = []
         
-        for item in ScoreConfig().numbers_question:
+        demo_items_buttons_fake = [3, 5, 7, 10]
+        
+        for item in demo_items_buttons_fake:
             items_questions.append(str(item) + " questions")
         
         object = [{
@@ -157,7 +172,7 @@ class QuizManager:
         # ---------------------------------------------------------------------------- #
         
         # Dire les réponses possibles
-        str_choices = " questions ? ".join(map(str, ScoreConfig().numbers_question)) + " questions ?"
+        str_choices = " questions ? ".join(map(str, demo_items_buttons_fake)) + " questions ?"
         Speaker.say(str_choices)
         
         
@@ -196,7 +211,7 @@ class QuizManager:
             }]
         Config().webApp.show(object)
         
-        time.sleep(3)
+        time.sleep(1)
         
         ScoreConfig().nb_question = ScoreConfig().numbers_question[Config().buttons_pins.index(button_pin)]
 
@@ -357,7 +372,7 @@ class QuizManager:
                     #? ---------------------------------------------------------------------------- #
                     #?                                  4B - 2                                      #
                     #? ---------------------------------------------------------------------------- #
-                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur bleu."
+                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur rouge."
                     object = [{
                             "type": "text",
                             "content": to_display,
@@ -400,7 +415,9 @@ class QuizManager:
                     }]
                 Config().webApp.show(object)
                 
-                Speaker.say("Vous avez choisi la zone : " + Config().zone)
+                time.sleep(1)
+                
+                Speaker.say("Vous avez choisi la région : " + Config().zone)
                 
                 time.sleep(3) 
                 
@@ -463,6 +480,8 @@ class QuizManager:
             
             time.sleep(3)
             
+            
+            self.remove_demo_quiz(self.current_quiz)
             
             # On finish, cleanup GPIO
             self.sensors_manager.cleanup()

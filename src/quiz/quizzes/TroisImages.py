@@ -46,10 +46,8 @@ class Quiz_TroisImages(Quiz):
         question_value = question["question"]
         images_value = question["3_images"]
         consigne_value = question["consigne"]
-        display_images_value = " | ".join(images_value)
-        possible_responses_value = random.sample(question["answers"], len(question["answers"]))
-        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
-        display_possible_responses_value = " | ".join(possible_responses_value)
+        # possible_responses_value = random.sample(question["answers"], len(question["answers"]))
+        possible_responses_value = question["answers"]
         response_value = question["correct_answer"]
         details_value = question["details"]
         details_image_value = question["details_image"]

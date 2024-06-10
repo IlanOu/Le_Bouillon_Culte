@@ -157,8 +157,8 @@ class App:
             Config().webApp.show(object)
             
             time.sleep(10)
-            
-            
+    
+    
 
     def receive_message(self, message):
         Debug.LogWhisper(f"[Websocket]> Message reçu dans App : {message}")

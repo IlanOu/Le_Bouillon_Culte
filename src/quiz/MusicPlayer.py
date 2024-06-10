@@ -25,6 +25,7 @@ class MusicPlayer:
         
         Debug.LogPopup(music_file_path)
         
+        pygame.mixer.music.set_volume(1)
         pygame.mixer.music.load(music_file_path)
         pygame.mixer.music.play()
 
@@ -32,6 +33,11 @@ class MusicPlayer:
             duration = pygame.mixer.Sound(music_file_path).get_length()
 
         time.sleep(duration)
+        
+        
+        for i in range(10, 0, -1):
+            pygame.mixer.music.set_volume(i/10)
+            time.sleep(0.1)
 
         pygame.mixer.music.stop()
 
@@ -88,10 +94,15 @@ class MusicPlayer:
 
         # Choisir un temps de départ aléatoire
         start_time = random.uniform(0, music_length - duration*2)
-
+        
+        pygame.mixer.music.set_volume(1)
         pygame.mixer.music.play(start=start_time)
 
         time.sleep(duration)
+        
+        for i in range(10, 0, -1):
+            pygame.mixer.music.set_volume(i/10)
+            time.sleep(0.1)
 
         pygame.mixer.music.stop()
         self.last_stop_time = start_time + duration
@@ -108,12 +119,16 @@ class MusicPlayer:
 
         # Calculer le nouveau temps de départ à partir du dernier temps d'arrêt
         start_time = self.last_stop_time
-
+        
+        pygame.mixer.music.set_volume(1)
+        
         pygame.mixer.music.load(music_file_path)
         pygame.mixer.music.play(start=start_time)
 
         time.sleep(duration)
-
+        for i in range(10, 0, -1):
+            pygame.mixer.music.set_volume(i/10)
+            time.sleep(0.1)
         pygame.mixer.music.stop()
         self.last_stop_time = start_time + duration
 

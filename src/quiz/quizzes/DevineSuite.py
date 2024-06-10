@@ -49,9 +49,8 @@ class Quiz_DevineSuite(Quiz):
         # Get values
         # ---------------------------------------------------------------------------- #
         question_value = question["question"]
-        possible_responses_value = random.sample(question["answers"], len(question["answers"]))
-        speakeable_possible_responses_value = "\n - " + "\n - ".join(possible_responses_value).replace("/n", "")
-        display_possible_responses_value = " | ".join(possible_responses_value)
+        # possible_responses_value = random.sample(question["answers"], len(question["answers"]))
+        possible_responses_value = question["answers"]
         response_value = question["correct_answer"]
         first_audio_value = question["audio-1"]
         second_audio_value = question["audio-2"]

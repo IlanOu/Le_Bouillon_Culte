@@ -1,4 +1,5 @@
 from src.toolbox.Debug import *
+from src.Config import Config
 
 from abc import ABC, abstractmethod
 
@@ -12,8 +13,6 @@ class TTSEngine(ABC):
     @abstractmethod
     def say(self, text: str):
         pass
-
-
 
 
 
@@ -128,35 +127,58 @@ class GttsEngine(TTSEngine):
 
 
 class PiperEngine(TTSEngine):
+    
+    def remove_symboles(self, text: str):
+        text = text.replace("-","").replace("_","").replace("*","").replace("(","").replace("ç","").replace("{","")
+        text = text.replace(")","").replace("è","").replace("é","").replace("&","").replace("à","").replace("}","")
+        text = text.replace("=","").replace("/","").replace("+","").replace("[","").replace("]","").replace("#","")
+        text = text.replace("^","").replace("ê","").replace("ë","").replace("ù","").replace("%","").replace("?","")
+        text = text.replace(".","").replace(",","").replace("!","").replace("²","").replace(":","").replace(";","")
+        text = text.replace(" ","").replace("`","").replace("§","").replace("’", "")
+        text = text.lower()
+        
+        return text
+    
     def say(self, text: str):
         import subprocess
+        import os
 
         text = str(text).replace("'", "")
         text = str(text).replace("\n", "")
+        
+        
+        name_text_to_save = self.remove_symboles(text)
+        name_text_to_save = name_text_to_save[0:25]
+        name_text_to_save = name_text_to_save + ".wav"
+        
+        filename = os.path.join("assets/audio/voices/", name_text_to_save)
+        
+        if not os.path.exists(filename):
+            # Définir la commande à exécuter
+            commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --speaker 1 --output_file assets/audio/voices/" + name_text_to_save
 
-        # Définir la commande à exécuter
-        commande = "echo '" + text + "' | ./piper/piper --model ./assets/tts_models/fr_FR-upmc-medium.onnx --speaker 1 --output_file temp.wav"
+            # Exécuter la commande
+            process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)
 
-        # Exécuter la commande
-        process = subprocess.Popen(commande, shell=True, stdout=subprocess.PIPE)
+            # Obtenir la sortie de la commande (le message audio)
+            output, _ = process.communicate()
 
-        # Obtenir la sortie de la commande (le message audio)
-        output, _ = process.communicate()
+            # Vérifier si la commande a réussi
+            if process.returncode == 0:
+                import simpleaudio as sa
+                
+                wave_obj = sa.WaveObject.from_wave_file(filename)
+                play_obj = wave_obj.play()
+                play_obj.wait_done()
 
-        # Vérifier si la commande a réussi
-        if process.returncode == 0:
-            # Ouvrir le fichier audio dans un lecteur externe
-            file = "temp.wav"
-            
-            
+            else:
+                Debug.LogError("Erreur lors de l'exécution de la commande:", process.returncode)
+        else:
             import simpleaudio as sa
-            
-            wave_obj = sa.WaveObject.from_wave_file(file)
+                
+            wave_obj = sa.WaveObject.from_wave_file(filename)
             play_obj = wave_obj.play()
             play_obj.wait_done()
-
-        else:
-            Debug.LogError("Erreur lors de l'exécution de la commande:", process.returncode)
 
 
 
