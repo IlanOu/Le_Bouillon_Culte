@@ -181,7 +181,7 @@ class Quiz_CultureG(Quiz):
         
         Speaker.say(response)
         
-        time.sleep(1)
+        time.sleep(2)
         
         
         #? ---------------------------------------------------------------------------- #

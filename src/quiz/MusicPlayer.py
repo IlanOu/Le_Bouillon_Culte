@@ -59,6 +59,8 @@ class MusicPlayer:
             try:
                 duration = pygame.mixer.Sound(music_file_path).get_length()
                 
+                pygame.mixer.music.set_volume(2)
+                
                 pygame.mixer.music.load(music_file_path)
                 pygame.mixer.music.play()
                 Debug.LogPopup("Play -> " + music_file_path)

@@ -232,7 +232,7 @@ class QuizManager:
         
         Config().webApp.show(object)
         
-        time.sleep(5)
+        time.sleep(3)
 
     def read_rfid_worker(self):
         while True:
@@ -263,6 +263,7 @@ class QuizManager:
         # Wait for user press button
         # ---------------------------------------------------------------------------- #
         
+        time.sleep(1)
         
         #? ---------------------------------------------------------------------------- #
         #?                                      2                                       #
@@ -307,6 +308,7 @@ class QuizManager:
         #?                                  3B - 1                                      #
         #? ---------------------------------------------------------------------------- #
         
+        time.sleep(1)
         
         # Display current question
         # ---------------------------------------------------------------------------- #
@@ -386,7 +388,7 @@ class QuizManager:
                     #? ---------------------------------------------------------------------------- #
                     #?                                  4B - 2                                      #
                     #? ---------------------------------------------------------------------------- #
-                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur bleu"
+                    to_display = "Pour choisir une région, \nplacez votre pion sur \nune des régions de \ncouleur rouge"
                     object = [{
                             "type": "text",
                             "content": to_display,

@@ -189,7 +189,7 @@ class Quiz_BlindTest(Quiz):
         
         Speaker.say(response)
         
-        time.sleep(1)
+        time.sleep(2)
         
         
         #? ---------------------------------------------------------------------------- #
