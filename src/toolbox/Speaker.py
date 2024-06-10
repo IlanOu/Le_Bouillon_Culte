@@ -138,6 +138,23 @@ class PiperEngine(TTSEngine):
         text = text.lower()
         
         return text
+
+    def dictionnary_replace(self, text: str):
+        
+        text = text.lower()
+        
+        dict = {
+            "mouette": "mouète",
+            "c'est": "çè",
+            "cest": "çè",
+            "c’est": "çè",
+            }
+        
+        for (key, value) in dict.items():
+            if key in text:
+                text = text.replace(key, value)
+        
+        return text
     
     def say(self, text: str):
         import subprocess
@@ -146,12 +163,14 @@ class PiperEngine(TTSEngine):
         text = str(text).replace("'", "")
         text = str(text).replace("\n", "")
         
-        
         name_text_to_save = self.remove_symboles(text)
         name_text_to_save = name_text_to_save[0:25]
         name_text_to_save = name_text_to_save + ".wav"
         
         filename = os.path.join("assets/audio/voices/", name_text_to_save)
+        
+        
+        text = self.dictionnary_replace(text)
         
         if not os.path.exists(filename):
             # Définir la commande à exécuter

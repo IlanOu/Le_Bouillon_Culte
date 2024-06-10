@@ -93,7 +93,8 @@ class QuizManager:
         for zone in ScoreConfig().quizzes_score:
             for scores in zone:
                 scores = 0
-
+                
+        
         ScoreConfig().total_score = 0
         ScoreConfig().nb_actual_question = 0
 
