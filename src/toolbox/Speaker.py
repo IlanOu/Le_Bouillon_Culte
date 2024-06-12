@@ -134,7 +134,8 @@ class PiperEngine(TTSEngine):
         text = text.replace("=","").replace("/","").replace("+","").replace("[","").replace("]","").replace("#","")
         text = text.replace("^","").replace("ê","").replace("ë","").replace("ù","").replace("%","").replace("?","")
         text = text.replace(".","").replace(",","").replace("!","").replace("²","").replace(":","").replace(";","")
-        text = text.replace(" ","").replace("`","").replace("§","").replace("’", "")
+        text = text.replace(" ","").replace("`","").replace("§","").replace("’","").replace("“","").replace("â","")
+        text = text.replace("î","").replace("ï","")
         text = text.lower()
         
         return text
@@ -147,7 +148,7 @@ class PiperEngine(TTSEngine):
             "mouette": "mouète",
             "c'est": "çè",
             "cest": "çè",
-            "c’est": "çè",
+            "c’est": "çè"
             }
         
         for (key, value) in dict.items():

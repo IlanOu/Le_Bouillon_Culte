@@ -50,10 +50,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  padding: 2vw;
 }
 
 #dynamic-content > div{
-  margin: 3vh 0;
+  margin: 3vh;
 }
 
 p {
@@ -163,6 +165,19 @@ p {
 
 
 
+/* 3 images */
+/* -------------------------------------------------------------------------- */
+.images-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+.images-container img {
+  object-fit: cover;
+}
+
+
+
 
 /* Table */
 /* ----------------------------------------------------------------------- */
@@ -170,7 +185,7 @@ p {
 .table {
   color: var(--black);
   text-align: center;
-  width: 80%;
+  width: 100%;
   height: 85%;
   margin: 0 auto;
   table-layout: fixed;
@@ -210,12 +225,21 @@ p {
 /* ----------------------------------------------------------------------- */
 
 .score-parent{
+  position: absolute;
+  top: 5vh;
   width: 100vw;
   /* padding: 20vw; */
 }
 
+.score-parent::before{
+  position: relative;
+  width: 100vw;
+  height: 5vh;
+  /* padding: 20vw; */
+}
+
 .score-div{
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -247,4 +271,8 @@ p {
   border: 3px solid var(--blue) !important;
   box-shadow: -4px 4px 0px 0px var(--blue) !important;
   color: var(--blue)
+}
+
+.score-question{
+  font-size: 2rem;
 }

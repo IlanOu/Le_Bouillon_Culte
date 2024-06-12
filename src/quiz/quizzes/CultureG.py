@@ -188,11 +188,13 @@ class Quiz_CultureG(Quiz):
         #?                            Affichage réponse - 2                             #
         #? ---------------------------------------------------------------------------- #
         
-        answer_value = "La bonne réponse était : \n" + response_value
+        answer_value = "La bonne réponse était :"
         
         object = []
         
         if details_image_value == "":
+            
+        
             object = [{
                     "type": "score",
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
@@ -200,8 +202,16 @@ class Quiz_CultureG(Quiz):
                     "style": []
                 },{
                     "type": "text",
+                    "content": "I",
+                    "style": ["text-medium", "text-white"]
+                },{
+                    "type": "text",
                     "content": answer_value,
-                    "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                    "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                },{
+                    "type": "text",
+                    "content": response_value,
+                    "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
                 },
                 {
                     "type": "text",
@@ -217,11 +227,11 @@ class Quiz_CultureG(Quiz):
                 },{
                     "type": "text",
                     "content": answer_value,
-                    "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                    "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
                 },{
                     "type": "image",
                     "images": [details_image_value],
-                    "style": ["image-medium"]
+                    "style": ["image-small"]
                 },{
                     "type": "text",
                     "content": details_value,
@@ -230,6 +240,6 @@ class Quiz_CultureG(Quiz):
         
         Config().webApp.show(object)
         
-        Speaker.say(answer_value)
+        Speaker.say(answer_value + " " + response_value)
         
         time.sleep(10)

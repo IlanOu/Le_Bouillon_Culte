@@ -67,10 +67,6 @@ class Quiz_TroisImages(Quiz):
                 "content": consigne_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
-                "type": "text",
-                "content": question_value,
-                "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
-            },{
                 "type": "3images",
                 "images": images_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -92,6 +88,10 @@ class Quiz_TroisImages(Quiz):
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                 "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
             },{
                 "type": "3images",
                 "images": images_value,
@@ -140,8 +140,12 @@ class Quiz_TroisImages(Quiz):
                 "style": []
             },{
                 "type": "text",
-                "content": question_value,
-                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            },{
+                "type": "3images",
+                "images": images_value,
+                "style": ["image-medium"]
             },{
                 "type": "table",
                 "items": possible_responses_value,
@@ -198,7 +202,7 @@ class Quiz_TroisImages(Quiz):
         #? ---------------------------------------------------------------------------- #
         
         
-        answer_value = "La bonne réponse était : \n" + response_value
+        answer_value = "La bonne réponse était :"
 
         object = [{
                 "type": "score",
@@ -208,11 +212,15 @@ class Quiz_TroisImages(Quiz):
             },{
                 "type": "text",
                 "content": answer_value,
-                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "text",
+                "content": response_value,
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },{
                 "type": "image",
                 "images": [details_image_value],
-                "style": ["image-medium"]
+                "style": ["image-small"]
             },{
                 "type": "text",
                 "content": details_value,
@@ -221,6 +229,6 @@ class Quiz_TroisImages(Quiz):
         
         Config().webApp.show(object)
         
-        Speaker.say(answer_value)
+        Speaker.say(answer_value + " " + response_value)
         
         time.sleep(10)

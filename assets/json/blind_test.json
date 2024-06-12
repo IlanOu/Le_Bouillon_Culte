@@ -10,7 +10,7 @@
                 "Accueille-moi paysage - Patrick Sébastien"
             ],
             "correct_answer": "La Montagne - Jean Ferrat",
-            "details": "[Suite de la musique]"
+            "details": ""
         },
         {
             "question": "Quelle est cette musique ?",
@@ -22,7 +22,7 @@
                 "Que reste-t-il de nos amours ? - Charles Trenet"
             ],
             "correct_answer": "La Javanaise - Serge Gainsbourg",
-            "details": "[Suite de la musique]"
+            "details": ""
         }
     ],
     "Île-de-France": [
@@ -36,7 +36,7 @@
                 "Ne me quitte pas - Jacques Brel"
             ],
             "correct_answer": "Ne me quitte pas - Jacques Brel",
-            "details": "[Suite de la musique]"
+            "details": ""
         },
         {
             "question": "Quelle est cette musique ?",
@@ -48,7 +48,7 @@
                 "Sous les ponts de Paris - Lucienne Delyle"
             ],
             "correct_answer": "Mon amant de Saint-Jean - Lucienne Delyle",
-            "details": "[Suite de la musique]"
+            "details": ""
         }
     ],
     "Bretagne": [
@@ -62,7 +62,7 @@
                 "Tango to Evora - Loreena McKennitt"
             ],
             "correct_answer": "Tri Martolod - Alan Stivell",
-            "details": "[Suite de la musique]"
+            "details": ""
         },
         {
             "question": "Quelle est cette musique ?",
@@ -74,7 +74,7 @@
                 "La tribu de Dana - Manau"
             ],
             "correct_answer": "La blanche hermine - Gilles Servat",
-            "details": "[Suite de la musique]"
+            "details": ""
         }
     ],
     "Hauts-de-France": [
@@ -88,7 +88,7 @@
                 "Est ce une fille ou un garçon ? - Stone & Charden"
             ],
             "correct_answer": "Made in Normandie - Stone & Charden",
-            "details": "[Suite de la musique]"
+            "details": ""
         },
         {
             "question": "Quel volatile fait ce cri ?",
@@ -100,7 +100,7 @@
                 "Une hirondelle"
             ],
             "correct_answer": "Une mouette",
-            "details": "[Suite de la musique]"
+            "details": ""
         }
     ],
     "PACA": [
@@ -114,7 +114,7 @@
                 "Le criquet"
             ],
             "correct_answer": "La cigale",
-            "details": "[Suite de la musique]"
+            "details": ""
         },
         {
             "question": "Quelle est le nom de cette réalisation architecturale ?",
@@ -126,7 +126,7 @@
                 "La cité radieuse"
             ],
             "correct_answer": "La cité radieuse",
-            "details": "[Suite de la musique]"
+            "details": ""
         }
     ]
 }

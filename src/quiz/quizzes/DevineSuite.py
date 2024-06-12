@@ -110,8 +110,11 @@ class Quiz_DevineSuite(Quiz):
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                     "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                     "style": []
-                },
-                {
+                },{
+                    "type": "text",
+                    "content": "I",
+                    "style": ["text-medium", "text-white"]
+                },{
                     "type": "text",
                     "content": question_value + "\n\"" + first_text_value + "\"",
                     "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -133,8 +136,11 @@ class Quiz_DevineSuite(Quiz):
                     "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                     "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                     "style": []
-                },
-                {
+                },{
+                    "type": "text",
+                    "content": "I",
+                    "style": ["text-medium", "text-white"]
+                },{
                     "type": "text",
                     "content": question_value,
                     "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -241,7 +247,7 @@ class Quiz_DevineSuite(Quiz):
         #?                            Affichage réponse - 2                             #
         #? ---------------------------------------------------------------------------- #
         
-        answer_value = "La bonne réponse était : \n" + response_value
+        answer_value = "La bonne réponse était :"
         
         object = [{
                 "type": "score",
@@ -251,7 +257,11 @@ class Quiz_DevineSuite(Quiz):
             },{
                 "type": "text",
                 "content": answer_value,
-                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "text",
+                "content": response_value,
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
             },
             {
                 "type": "text",
@@ -261,7 +271,7 @@ class Quiz_DevineSuite(Quiz):
         
         Config().webApp.show(object)
         
-        Speaker.say(answer_value)
+        Speaker.say(answer_value + " " + response_value)
         
         
         # Play Audio

@@ -275,11 +275,6 @@ class QuizManager:
                 "type": "text",
                 "content": text_to_display,
                 "style": ["text-big", "text-uppercase", "text-bold-700", "text-blue", "text-centered"]
-            },{
-                "type": "image",
-                "content": "",
-                "images": ["icons/big_button.webp"],
-                "style": ["image-small"]
             }]
         Config().webApp.show(object)
         

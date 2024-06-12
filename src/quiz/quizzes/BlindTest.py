@@ -90,8 +90,11 @@ class Quiz_BlindTest(Quiz):
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                 "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
-            },
-            {
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
+            },{
                 "type": "text",
                 "content": question_value,
                 "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
@@ -138,6 +141,10 @@ class Quiz_BlindTest(Quiz):
                 "question": "Question " + str(ScoreConfig().nb_actual_question) + "/" + str(ScoreConfig().nb_question),
                 "score": "Score : " + str(ScoreConfig().total_score) + "/" + str(ScoreConfig().nb_actual_question),
                 "style": []
+            },{
+                "type": "text",
+                "content": "I",
+                "style": ["text-medium", "text-white"]
             },{
                 "type": "text",
                 "content": question_value,
@@ -196,7 +203,7 @@ class Quiz_BlindTest(Quiz):
         #?                            Affichage réponse - 2                             #
         #? ---------------------------------------------------------------------------- #
         
-        answer_value = "La bonne réponse était : \n" + response_value
+        answer_value = "La bonne réponse était :"
         
         object = [{
                 "type": "score",
@@ -206,9 +213,12 @@ class Quiz_BlindTest(Quiz):
             },{
                 "type": "text",
                 "content": answer_value,
-                "style": ["text-big", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
-            },
-            {
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
+                "type": "text",
+                "content": response_value,
+                "style": ["text-medium", "text-uppercase", "text-red", "text-bold-700", "text-centered"]
+            },{
                 "type": "text",
                 "content": details_value,
                 "style": ["text-medium", "text-uppercase", "text-blue", "text-bold-700", "text-centered"]
@@ -216,6 +226,6 @@ class Quiz_BlindTest(Quiz):
         
         Config().webApp.show(object)
         
-        Speaker.say(answer_value)
+        Speaker.say(answer_value + " " + response_value)
         
         player.play_next_random_section()

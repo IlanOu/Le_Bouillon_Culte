@@ -90,6 +90,9 @@
       first.classList.add("score-boxed-red");
       second.classList.add("score-boxed-blue");
 
+      question_text.classList.add("score-question");
+      score_text.classList.add("score-question");
+
       question_text.innerText = question;
       score_text.innerText = score;
 
@@ -256,7 +259,7 @@
         img.src = imageUrl.trim();
         img.style.maxWidth = '33%';
         img.style.maxHeight = '100%';
-        img.style.objectFit = 'contain';
+        // img.style.objectFit = 'contain';
         imagesContainer.appendChild(img);
       });
 

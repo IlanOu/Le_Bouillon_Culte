@@ -8,7 +8,7 @@ class Config:
         # Can be changed
         # ---------------------------------------------------------------------------- #
         self.checker_active = False
-        self.use_ESP_connection = False # set it to True
+        self.use_ESP_connection = True # set it to True
         
         self.test_mode = False
         

@@ -6,6 +6,7 @@ from src.Config import ScoreConfig
 
 from src.toolbox.Debug import Debug
 from src.toolbox.Standby import StandBy
+from src.toolbox.Speaker import Speaker
 
 from src.Config import Config
 
@@ -139,7 +140,6 @@ class App:
             MusicPlayer(Config().audio_dir).play_threading("sounds/end-of-game.mp3")
             time.sleep(5)
             
-            
             object = [{
                     "type": "image",
                     "images": ["logos/Logo_full.webp"],
@@ -155,6 +155,9 @@ class App:
                 }]
             
             Config().webApp.show(object)
+            
+            Speaker.say("Votre score est de " + str(ScoreConfig().total_score) + " sur " + str(ScoreConfig().nb_question))
+            
             
             time.sleep(10)
     
