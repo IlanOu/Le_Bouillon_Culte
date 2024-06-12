@@ -15,7 +15,7 @@
                 "Le hachis parmentier"
             ],
             "correct_answer": "Truffade",
-            "details": "Les pommes de terre sont coupées en tranches et cuites dans une poêle avec du lard blanc fondu. Quand les pommes de terre sont prêtes, on éteint le feu, on ajoute de l'ail haché et du cantal coupé en morceaux. On laisse le fromage fondre sur les pommes de terre chaudes. On le sert avec des charcuteries locales et de la salade verte.",
+            "details": "Les pommes de terre tranchées sont cuites avec du lard, puis mélangées avec de l'ail et du cantal fondu. Ce plat est servi avec des charcuteries locales et de la salade verte.",
             "details_image": "questions/C5_CE_15.webp"
         },
         {
@@ -33,7 +33,7 @@
                 "Le Monastère royal de Brou"
             ],
             "correct_answer": "Le Monastère royal de Brou",
-            "details": "Le monastère de Brou, situé à Bourg-en-Bresse en France, a été construit au début du XVIe siècle par Marguerite d'Autriche en mémoire de son époux, Philibert le Beau. Ce complexe religieux se compose d'une église, d'un cloître et de bâtiments monastiques. L'église est célèbre pour son architecture raffinée, ses vitraux colorés et son retable sculpté.",
+            "details": "Le monastère de Brou à Bourg-en-Bresse, construit au début du XVIe siècle par Marguerite d'Autriche en mémoire de Philibert le Beau, est renommé pour son église à l'architecture raffinée, ses vitraux colorés et son retable sculpté.",
             "details_image": "questions/2_C5_CE_8.webp"
         }
     ],
@@ -53,7 +53,7 @@
                 "Château de Vincennes"
             ],
             "correct_answer": "Château de Versailles",
-            "details": "Bâtie sous les ordres du Roi Soleil pour en faire sa demeure. Le château de Versailles représente l’une des plus belles représentations de l’art français du XVIIe siècle.",
+            "details": "Bâti sous les ordres du Roi Soleil pour en faire sa demeure, le château de Versailles représente l’une des plus belles expressions de l’art français du XVIIe siècle.",
             "details_image": "questions/C5_NE_7.webp"
         },
         {
@@ -71,7 +71,7 @@
                 "La place de La Bastille "
             ],
             "correct_answer": "La place des Vosges",
-            "details": "La place des Vosges était jusqu’en 1790 la place Royale car elle a été dédiée au roi Henri IV puis à Louis XIII. La place des Vosges se situe dans le quartier du Marais, qui est lui-même à la jonction du 3e et 4e arrondissements de Paris.",
+            "details": "La place des Vosges, appelée place Royale jusqu'en 1790, est située dans le quartier du Marais, à la jonction des 3e et 4e arrondissements de Paris.",
             "details_image": "questions/2_C5_NE_4.webp"
         }
     ],
@@ -91,7 +91,7 @@
                 "Saint-Malo"
             ],
             "correct_answer": "Saint-Malo",
-            "details": "Fougères est une ville charmante située en Bretagne, dans le département d'Ille-et-Vilaine. Elle est surtout renommée pour son magnifique château médiéval, l'un des plus grands d'Europe, qui domine la ville et offre une vue imprenable sur les environs. La ville elle-même est riche en histoire, avec ses ruelles pavées, ses maisons à colombages et ses églises anciennes. C'est un lieu idéal pour les amateurs d'histoire, de culture et de nature, avec ses nombreux parcs et jardins à découvrir aux alentours.            ",
+            "details": "Fougères, en Bretagne, est célèbre pour son grand château médiéval. La ville historique, avec ses ruelles pavées, maisons à colombages et églises anciennes, attire les amateurs d'histoire, de culture et de nature.",
             "details_image": "questions/C5_NO_9.webp"
         },
         {
@@ -109,7 +109,7 @@
                 "Le Pont-Aven"
             ],
             "correct_answer": "Les Alignement de Carnac",
-            "details": "Les alignements de Carnac sont un site mégalithique situé en France, dans la région de Bretagne. Il s'agit d'un ensemble de pierres dressées, datant du Néolithique, disposées en lignes parallèles sur une distance d'environ 250 mètres. Ces alignements sont constitués de menhirs, certains atteignant plusieurs mètres de hauteur",
+            "details": "Les alignements de Carnac, en Bretagne, sont un site mégalithique composé de menhirs néolithiques disposés en lignes parallèles sur environ 250 mètres.",
             "details_image": "questions/2_C5_NO_8.webp"
         }
     ],
@@ -129,7 +129,7 @@
                 "Le Château fort de Pirou"
             ],
             "correct_answer": "Le Château de Chantilly",
-            "details": "Situé dans la ville de Chantilly, dans le département de l’Oise. Le Domaine de Chantilly est l’un des joyaux du patrimoine français. Le château abrite la seconde plus grande collection de peintures anciennes de France, ainsi que des jardins de 115 hectares tout autour du château.",
+            "details": "Le Domaine de Chantilly, dans l’Oise, est un joyau du patrimoine français, avec le château abritant la seconde plus grande collection de peintures anciennes de France et entouré de 115 hectares de jardins.",
             "details_image": "questions/C5_NO_14.webp"
         },
         {
@@ -147,7 +147,7 @@
                 "Un Cassoulet "
             ],
             "correct_answer": "Une Fricadelle",
-            "details": "La Fricadelle est un plat traditionnel des Pays-Bas historique. Ce plat est constitué d’une saucisse panée de viande mélangée (poulet, cheval et porc), accompagnée d’une barquette de frites. Ce plat peut être accompagné d’une sauce épicée.",
+            "details": "La fricadelle, un plat traditionnel des Pays-Bas historiques, est une saucisse panée de viande mélangée, accompagnée de frites et parfois d'une sauce épicée.",
             "details_image": "questions/C5_NO_25.webp"
         }
     ],
