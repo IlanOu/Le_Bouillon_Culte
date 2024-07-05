@@ -32,8 +32,6 @@ python -m venv my_environment
 
 ### Install all
 
-``bash
+```bash
 sudo ./install.sh
 ```
-
-Translated with DeepL.com (free version)
